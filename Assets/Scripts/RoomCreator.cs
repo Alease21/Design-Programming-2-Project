@@ -12,7 +12,7 @@ namespace WFC
         [SerializeField] private Tilemap _tileMap;
         [SerializeField] private Vector2Int _roomSize;
 
-        public void GenerateRooms(Element[,] grid)
+        public void GenerateRooms(TileElement[,] grid)
         {
             for (int x = 0; x < grid.GetLength(0); x++)
             {
@@ -23,7 +23,7 @@ namespace WFC
             }
         }
 
-        public IEnumerator CreateRoom(Element element, Vector2Int roomSize)
+        public IEnumerator CreateRoom(TileElement element, Vector2Int roomSize)
         {
             TileElement[,] grid = new TileElement[roomSize.x, roomSize.y];
             List<Vector2Int> unreachedPositions = new List<Vector2Int>();
@@ -44,8 +44,8 @@ namespace WFC
 
             while (unreachedPositions.Count > 0)
             {
-                Element curElement;
-                List<Element> lowEntropyElements = new List<Element>();
+                TileElement curElement;
+                List<TileElement> lowEntropyElements = new List<TileElement>();
                 int lowestEntropy = int.MaxValue;
 
                 for (int i = 0; i < unreachedPositions.Count; i++)
