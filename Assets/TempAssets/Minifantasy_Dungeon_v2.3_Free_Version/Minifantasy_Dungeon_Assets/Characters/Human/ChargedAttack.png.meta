@@ -160,6 +160,58 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -572,7 +624,25 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ChargedAttack_0: -1635094420195017620
+      ChargedAttack_1: 7359096433235289326
+      ChargedAttack_10: 4406635728041473269
+      ChargedAttack_11: 1259996497916716504
+      ChargedAttack_12: 3234626142993117414
+      ChargedAttack_13: -8987797994068315458
+      ChargedAttack_14: -2432072913762604111
+      ChargedAttack_15: -8852280423290274425
+      ChargedAttack_16: 4786373148513485045
+      ChargedAttack_17: -598399377209821667
+      ChargedAttack_2: 747032929224239037
+      ChargedAttack_3: -6752782640620877331
+      ChargedAttack_4: -6862624161262331787
+      ChargedAttack_5: -6746383465981509977
+      ChargedAttack_6: 7205454500574225041
+      ChargedAttack_7: 7942957459071275015
+      ChargedAttack_8: -1166191968151788364
+      ChargedAttack_9: 2307437355468272362
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -11,7 +11,8 @@ namespace WFC
         [Tooltip("Map size in rooms")]
         [SerializeField] private Vector2Int _mapSize;
         [SerializeField] private RoomModuleSet _roomSet;
-        [SerializeField] bool _exitMade = false;
+        private bool _exitMade = false;
+        //private Element _startRoom, _exitRoom;
 
         private void Start()
         {
@@ -47,6 +48,7 @@ namespace WFC
             }
             while (!startRoom.GetEdgeBool);
 
+            //_startRoom = startRoom;
             CollapseElement(startRoom, grid, true);
 
             unreachedPositions.RemoveAt(rng);
@@ -85,6 +87,7 @@ namespace WFC
                     {
                         _allowExit = true;
                         _exitMade = true;
+                        //_exitRoom = curElement;
                     }
                 }
 
@@ -94,12 +97,6 @@ namespace WFC
                 yield return null;
             }
         } 
-        private void CreatePaths()
-        {
-            // list of positions for true path?
-                //how to connect to end node
-                //randomly chose from neightbors? 
-        }
         private void CollapseElement(Element curElement, Element[,] grid, bool allowEnterExit)
         {
             curElement.Collapse(transform, allowEnterExit);
@@ -182,7 +179,7 @@ namespace WFC
                 RemoveEdgeOptions(allowEnterExit);
             }
             int rng = Random.Range(0, _options.Count);
-            //Debug.Log("Edge:"+_isEdge+"  Options count: " + _options.Count+$" at {_position.x}, {_position.y}");
+            Debug.Log("Edge:"+_isEdge+"  Options count: " + _options.Count+$" at {_position.x}, {_position.y}");
             _selectedModule = _options[rng];
 
             GameObject newRoomGO = GameObject.Instantiate(Resources.Load<GameObject>("RoomEmpty"), (Vector3Int)(_position * 10), Quaternion.identity, parent);
@@ -225,7 +222,7 @@ namespace WFC
                 if (allowEnterExit)
                 {
                     if ((edgeNS != 'Z' && !curModuleDirections.Contains(edgeNS)) || (edgeEW != 'Z' && !curModuleDirections.Contains(edgeEW)) 
-                        || dirCounter <= 1)
+                        || dirCounter == 1)
                     {
                         _options.RemoveAt(i);
                     }
