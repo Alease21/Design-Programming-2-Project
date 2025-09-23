@@ -12,5 +12,10 @@ namespace WFC
         public TileModule[] east;
         public TileModule[] south;
         public TileModule[] west;
+
+        public string GetDirString()
+        {
+            return name.Substring(name.Length - 4);
+        }
     }
 }

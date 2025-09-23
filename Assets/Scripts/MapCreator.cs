@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 namespace WFC
 {
@@ -12,7 +13,9 @@ namespace WFC
         [SerializeField] private Vector2Int _mapSize;
         [SerializeField] private RoomModuleSet _roomSet;
         private bool _exitMade = false;
-        //private Element _startRoom, _exitRoom;
+        private Element _startRoom, _exitRoom;
+        private Element[,] grid;
+        int numPathsOpen = 0;
 
         private void Start()
         {
@@ -23,10 +26,28 @@ namespace WFC
         {
             StartCoroutine(CreateWorld());
         }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                RestartGeneration();
+            }
+        }
+        public void RestartGeneration()
+        {
+            StopAllCoroutines();
 
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+            _exitMade = false;
+
+            Generate();
+        }
         private IEnumerator CreateWorld()
         {
-            Element[,] grid = new Element[_mapSize.x, _mapSize.y];
+            grid = new Element[_mapSize.x, _mapSize.y];
             List<Vector2Int> unreachedPositions = new List<Vector2Int>();
 
             for (int y = 0; y < _mapSize.y; y++)
@@ -48,7 +69,7 @@ namespace WFC
             }
             while (!startRoom.GetEdgeBool);
 
-            //_startRoom = startRoom;
+            _startRoom = startRoom;
             CollapseElement(startRoom, grid, true);
 
             unreachedPositions.RemoveAt(rng);
@@ -78,16 +99,16 @@ namespace WFC
                 rng = Random.Range(0, lowEntropyElements.Count);
                 curElement = lowEntropyElements[rng];
 
-                float distFromStart = (curElement.GetPosition - startRoom.GetPosition).magnitude * 10; //maybe fix to adjust with room size
+                float distFromStart = (float)(curElement.GetPosition - startRoom.GetPosition).magnitude;
 
-                if ((float)unreachedPositions.Count / (grid.GetLength(0) * grid.GetLength(1)) < 0.75f &&
-                    distFromStart > 80f) //maybe fix to adjust with room size
+                if ((float)unreachedPositions.Count / (float)(grid.GetLength(0) * grid.GetLength(1)) < 0.25f && 
+                    distFromStart > ((grid.GetLength(0) + grid.GetLength(1)) * 0.5 * 0.75)) // if distance from start is > (3/4) * avg between grid size components, 
                 {
                     if (curElement.GetEdgeBool && !_exitMade)
                     {
                         _allowExit = true;
                         _exitMade = true;
-                        //_exitRoom = curElement;
+                        _exitRoom = curElement;
                     }
                 }
 
@@ -96,10 +117,11 @@ namespace WFC
 
                 yield return null;
             }
+            StartCoroutine(SearchPathCoro());
         } 
         private void CollapseElement(Element curElement, Element[,] grid, bool allowEnterExit)
         {
-            curElement.Collapse(transform, allowEnterExit);
+            curElement.Collapse(allowEnterExit);
 
             for (int y = -1; y <= 1; y++)
             {
@@ -139,6 +161,99 @@ namespace WFC
                 }
             }
         }
+
+        public IEnumerator SearchPathCoro()
+        {
+            SearchTruePath(_startRoom);
+            yield return new WaitUntil(() => numPathsOpen == 0);
+            //yield return new WaitForSeconds(1);
+            if (!grid[_exitRoom.GetPosition.x, _exitRoom.GetPosition.y].isTruePath)
+            {
+                RestartGeneration();
+            }
+            else
+            {
+                for (int x = 0; x < grid.GetLength(0) ; x++)
+                {
+                    for (int y = 0; y < grid.GetLength(1); y++)
+                    {
+                        if (!grid[x, y].isTruePath)
+                        {
+                            grid[x, y] = null;
+                        }
+                        else
+                        {
+                            GameObject newRoomGO = GameObject.Instantiate(Resources.Load<GameObject>("RoomEmpty"), (Vector3Int)(grid[x, y].GetPosition * 10), Quaternion.identity, transform);
+                            SpriteRenderer roomRenderer = newRoomGO.GetComponentInChildren<SpriteRenderer>();
+                            roomRenderer.sprite = grid[x,y].GetSelectedModule.roomSprite;
+
+                            if (x == _startRoom.GetPosition.x && y == _startRoom.GetPosition.y)
+                            {
+                                roomRenderer.color = Color.green;
+                            }
+                            else if (x == _exitRoom.GetPosition.x && y == _exitRoom.GetPosition.y)
+                            {
+                                roomRenderer.color = Color.red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public void SearchTruePath(Element currElement, char trueNeighborDir = 'Z')
+        {
+            if (currElement.isTruePath)
+                return;
+            currElement.isTruePath = true;
+
+            Dictionary<Element,char> trueNeighbours = new();
+            string dirs = currElement.GetSelectedModule.GetDirString();
+
+            foreach (char dir in dirs)
+            {
+                Vector2Int neighbourPos;
+                if (dir == 'N' && trueNeighborDir != 'N')
+                {
+                    neighbourPos = new Vector2Int(currElement.GetPosition.x, currElement.GetPosition.y + 1);
+                    if (CheckIfInBounds(neighbourPos))
+                        trueNeighbours.Add(grid[neighbourPos.x, neighbourPos.y], 'S');
+                }
+                else if (dir == 'E' && trueNeighborDir != 'E')
+                {
+                    neighbourPos = new Vector2Int(currElement.GetPosition.x + 1, currElement.GetPosition.y);
+                    if (CheckIfInBounds(neighbourPos))
+                        trueNeighbours.Add(grid[neighbourPos.x, neighbourPos.y], 'W');
+                }
+                else if (dir == 'S' && trueNeighborDir != 'S')
+                {
+                    neighbourPos = new Vector2Int(currElement.GetPosition.x, currElement.GetPosition.y - 1);
+                    if (CheckIfInBounds(neighbourPos))
+                        trueNeighbours.Add(grid[neighbourPos.x, neighbourPos.y], 'N');
+                }
+                else if (dir == 'W' && trueNeighborDir != 'W')
+                {
+                    neighbourPos = new Vector2Int(currElement.GetPosition.x - 1, currElement.GetPosition.y);
+                    if (CheckIfInBounds(neighbourPos))
+                        trueNeighbours.Add(grid[neighbourPos.x, neighbourPos.y], 'E');
+                }
+            }
+            numPathsOpen += trueNeighbours.Count;
+
+            foreach (KeyValuePair<Element,char> kvp in trueNeighbours)
+            {
+                SearchTruePath(kvp.Key, kvp.Value);
+                numPathsOpen--;
+            }
+        }
+
+        public bool CheckIfInBounds(Vector2Int pos)
+        {
+            if (pos.x >= _mapSize.x || pos.x < 0 || pos.y >= _mapSize.y || pos.y < 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
     public class Element
     {
@@ -147,6 +262,8 @@ namespace WFC
         private RoomModule _selectedModule;
         private bool _isEdge;
         private Vector2Int _mapSize;
+
+        public bool isTruePath = false; //make better?
 
         public Vector2Int GetPosition { get { return _position; } }
         public RoomModule GetSelectedModule { get { return _selectedModule; } }
@@ -172,23 +289,20 @@ namespace WFC
                 }
             }
         }
-        public void Collapse(Transform parent, bool allowEnterExit)
+        public void Collapse(bool allowEnterExit)
         {
             if (_isEdge)
             {
                 RemoveEdgeOptions(allowEnterExit);
             }
             int rng = Random.Range(0, _options.Count);
-            Debug.Log("Edge:"+_isEdge+"  Options count: " + _options.Count+$" at {_position.x}, {_position.y}");
+            //Debug.Log("Edge:"+_isEdge+"  Options count: " + _options.Count+$" at {_position.x}, {_position.y}");
             _selectedModule = _options[rng];
-
-            GameObject newRoomGO = GameObject.Instantiate(Resources.Load<GameObject>("RoomEmpty"), (Vector3Int)(_position * 10), Quaternion.identity, parent);
-            newRoomGO.GetComponentInChildren<SpriteRenderer>().sprite = _selectedModule.roomSprite;
         }
         public void RemoveEdgeOptions(bool allowEnterExit)
         {
-            char edgeNS = 'Z';
-            char edgeEW = 'Z';
+            char edgeNS = 'Z'; // Z used just because it is not found in directions
+            char edgeEW = 'Z'; // and unsure if using (char != "") is a good method
 
             if (_position.x == 0)
             {
@@ -209,7 +323,7 @@ namespace WFC
 
             for (int i = _options.Count - 1; i >= 0; i--)
             {
-                string curModuleDirections = _options[i].name.Substring(_options[i].name.Length - 4);
+                string curModuleDirections = _options[i].GetDirString();
                 int dirCounter = 0;
                 foreach (char dir in curModuleDirections)
                 {

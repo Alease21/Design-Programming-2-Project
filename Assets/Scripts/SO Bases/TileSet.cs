@@ -20,8 +20,8 @@ namespace WFC
 
                 for (int j = 0; j < tileModules.Length; j++)
                 {
-                    string curModuleDirections = tileModules[i].name.Substring(tileModules[i].name.Length - 4); // set up to grab last 4 chars
-                    string moduleToEvaluate = tileModules[j].name.Substring(tileModules[i].name.Length - 4);
+                    string curModuleDirections = tileModules[i].GetDirString(); // set up to grab last 4 chars
+                    string moduleToEvaluate = tileModules[j].GetDirString();
 
                     if (curModuleDirections.Contains('N') && moduleToEvaluate.Contains('S') ||
                         curModuleDirections.Contains('N') == false && moduleToEvaluate.Contains('S') == false)

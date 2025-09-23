@@ -12,5 +12,10 @@ namespace WFC
         public RoomModule[] east;
         public RoomModule[] south;
         public RoomModule[] west;
+
+        public string GetDirString()
+        {
+            return name.Substring(name.Length - 4);
+        }
     }
 }

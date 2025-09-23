@@ -118,7 +118,7 @@ namespace WFC
 
     public class TileElement
     {
-        private List<Module> _options;
+        private List<TileModule> _options;
         private Vector2Int _position;
         private TileModule _selectedModule;
 
@@ -137,9 +137,9 @@ namespace WFC
             _position = position;
         }
 
-        public void RemoveOptions(Module[] legalNeighbors)
+        public void RemoveOptions(TileModule[] legalNeighbors)
         {
-            List<Module> temp = new List<Module>(legalNeighbors);
+            List<TileModule> temp = new List<TileModule>(legalNeighbors);
             for (int i = _options.Count - 1; i >= 0; i--)
             {
                 if (temp.Contains(_options[i]) == false)

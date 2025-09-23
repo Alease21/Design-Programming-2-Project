@@ -21,8 +21,8 @@ namespace WFC
 
                 for (int j = 0; j < roomModules.Length; j++)
                 {
-                    string curModuleDirections = roomModules[i].name.Substring(roomModules[i].name.Length - 4); // set up to grab last 4 chars
-                    string moduleToEvaluate = roomModules[j].name.Substring(roomModules[i].name.Length - 4);
+                    string curModuleDirections = roomModules[i].GetDirString(); // set up to grab last 4 chars
+                    string moduleToEvaluate = roomModules[j].GetDirString();
 
                     if (curModuleDirections.Contains('N') && moduleToEvaluate.Contains('S') ||
                         curModuleDirections.Contains('N') == false && moduleToEvaluate.Contains('S') == false)
