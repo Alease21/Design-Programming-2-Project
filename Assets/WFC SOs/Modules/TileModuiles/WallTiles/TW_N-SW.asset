@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55ed1d5695a97b240a70acbabcb5dee7, type: 3}
-  m_Name: TF_N-EW
+  m_Name: TW_N-SW
   m_EditorClassIdentifier: 
-  tileBase: {fileID: 11400000, guid: ce7c173459424424283ebdb8383211fc, type: 2}
+  tileBase: {fileID: 11400000, guid: 192638ea05a6ad94e9bf59284e966c75, type: 2}
   north: []
   east: []
   south: []

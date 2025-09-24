@@ -21,55 +21,60 @@ namespace WFC
                 for (int y = 0; y < grid.GetLength(1); y++)
                 {
                     if (grid[x,y] != null && grid[x,y].isTruePath)
-                        StartCoroutine(CreateRoom(grid[x, y], _roomSize));
+                        StartCoroutine(CreateRoom(grid[x, y]));
                 }
             }
         }
-        private void CreateFloors()
-        {
 
-        }
-
-        private void CreateWalls()
+        public IEnumerator CreateRoom(Element room)
         {
-
-        }
-        public IEnumerator CreateRoom(Element room, Vector2Int roomSize)
-        {
-            TileElement[,] grid = new TileElement[roomSize.x, roomSize.y];
+            TileElement[,] tileGrid = new TileElement[_roomSize.x, _roomSize.y];
             List<Vector2Int> unreachedPositions = new List<Vector2Int>();
 
-            for (int y = 0; y < roomSize.y; y++)
+            for (int y = 0; y < _roomSize.y; y++)
             {
-                for (int x = 0; x < roomSize.x; x++)
+                for (int x = 0; x < _roomSize.x; x++)
                 {
-                    Vector2Int position = new Vector2Int(x, y);
+                    Vector2Int position = new Vector2Int(x,y);
+                    Vector2Int adjustedPosition = position + room.GetPosition * _roomSize;
                     bool isFloor = true;
 
-                    if (x == 0 || x == roomSize.x - 1)
+                    if (x == 0)
                     {
                         string exits = room.GetSelectedModule.GetDirString();
 
                         isFloor = false;
-                        if (exits[1] == 'E' && y >= (int)(roomSize.y * 0.5f) && y <= (int)(roomSize.y * 0.5f))
-                        {
-                            isFloor = true;
-                        }
-                        if (exits[3] == 'W' && y >= (int)(roomSize.y * 0.5f) && y <= (int)(roomSize.y * 0.5f))
+                        if (exits[3] == 'W' && y >= (int)(_roomSize.y * 0.5f - 1) && y <= (int)(_roomSize.y * 0.5f - 1))
                         {
                             isFloor = true;
                         }
                     }
-                    else if (y == 0 || y == roomSize.y - 1)
+                    else if (x == _roomSize.x - 1)
                     {
                         string exits = room.GetSelectedModule.GetDirString();
 
                         isFloor = false;
-                        if (exits[1] == 'N' && x >= (int)(roomSize.x * 0.5f) && x <= (int)(roomSize.x * 0.5f))
+                        if (exits[1] == 'E' && y >= (int)(_roomSize.y * 0.5f - 1) && y <= (int)(_roomSize.y * 0.5f - 1))
                         {
                             isFloor = true;
                         }
-                        if (exits[3] == 'S' && x >= (int)(roomSize.x * 0.5f) && x <= (int)(roomSize.x * 0.5f))
+                    }
+                    else if (y == 0)
+                    {
+                        string exits = room.GetSelectedModule.GetDirString();
+
+                        isFloor = false;
+                        if (exits[2] == 'S' && x >= (int)(_roomSize.x * 0.5f - 1) && x <= (int)(_roomSize.x * 0.5f - 1))
+                        {
+                            isFloor = true;
+                        }
+                    }
+                    else if (y == _roomSize.y - 1)
+                    {
+                        string exits = room.GetSelectedModule.GetDirString();
+
+                        isFloor = false;
+                        if (exits[0] == 'N' && x >= (int)(_roomSize.x * 0.5f - 1) && x <= (int)(_roomSize.x * 0.5f - 1))
                         {
                             isFloor = true;
                         }
@@ -77,18 +82,18 @@ namespace WFC
 
                     if (isFloor)
                     {
-                        grid[x, y] = new TileElement(_floorTileSet.tileModules, new Vector2Int(x, y) + room.GetPosition * roomSize, isFloor);
+                        tileGrid[x, y] = new TileElement(_floorTileSet.tileModules, adjustedPosition, isFloor);
                     }
                     else
                     {
-                        grid[x, y] = new TileElement(_wallTileSet.tileModules, new Vector2Int(x, y) + room.GetPosition * roomSize, isFloor);
+                        tileGrid[x, y] = new TileElement(_wallTileSet.tileModules, adjustedPosition, isFloor);
                     }
                     unreachedPositions.Add(position);
                 }
             }
             int rng = Random.Range(0, unreachedPositions.Count);
 
-            CollapseElement(grid[unreachedPositions[rng].x, unreachedPositions[rng].y], grid);
+            CollapseElement(tileGrid[unreachedPositions[rng].x, unreachedPositions[rng].y], tileGrid);
             unreachedPositions.RemoveAt(rng);
 
             while (unreachedPositions.Count > 0)
@@ -99,7 +104,7 @@ namespace WFC
 
                 for (int i = 0; i < unreachedPositions.Count; i++)
                 {
-                    curElement = grid[unreachedPositions[i].x, unreachedPositions[i].y];
+                    curElement = tileGrid[unreachedPositions[i].x, unreachedPositions[i].y];
                     if (curElement.GetEntropy < lowestEntropy)
                     {
                         lowestEntropy = curElement.GetEntropy;
@@ -115,9 +120,8 @@ namespace WFC
                 rng = Random.Range(0, lowEntropyElements.Count);
                 curElement = lowEntropyElements[rng];
 
-                CollapseElement(curElement, grid);
-                unreachedPositions.Remove(curElement.GetPosition);
-
+                CollapseElement(curElement, tileGrid);
+                unreachedPositions.Remove(curElement.GetPosition - room.GetPosition * _roomSize);
                 yield return null;
             }
         }
@@ -205,7 +209,7 @@ namespace WFC
         public void Collapse(Tilemap tilemap)
         {
             int rng = Random.Range(0, _options.Count);
-            Debug.Log($"options count: {_options.Count}");
+            //Debug.Log($"options count: {_options.Count}");
             _selectedModule = _options[rng];
 
             tilemap.SetTile((Vector3Int)_position, _selectedModule.tileBase);
