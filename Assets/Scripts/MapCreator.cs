@@ -4,11 +4,14 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace WFC
 {
     public class MapCreator : MonoBehaviour
     {
+        private RoomCreator _roomCreator;
+
         [Tooltip("Map size in rooms")]
         [SerializeField] private Vector2Int _mapSize;
         [SerializeField] private RoomModuleSet _roomSet;
@@ -16,9 +19,11 @@ namespace WFC
         private Element _startRoom, _exitRoom;
         private Element[,] grid;
         int numPathsOpen = 0;
+        [SerializeField] int numDungeonTiles = 0;
 
         private void Start()
         {
+            _roomCreator = GetComponent<RoomCreator>();
             Generate();
         }
 
@@ -28,7 +33,7 @@ namespace WFC
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.G))
+            if (Input.GetKeyDown(KeyCode.G)) //remove me later
             {
                 RestartGeneration();
             }
@@ -42,7 +47,10 @@ namespace WFC
                 Destroy(transform.GetChild(i).gameObject);
             }
             _exitMade = false;
+            numDungeonTiles = 0;
+            numPathsOpen = 0;
 
+            Debug.Log("regenerating");
             Generate();
         }
         private IEnumerator CreateWorld()
@@ -101,7 +109,7 @@ namespace WFC
 
                 float distFromStart = (float)(curElement.GetPosition - startRoom.GetPosition).magnitude;
 
-                if ((float)unreachedPositions.Count / (float)(grid.GetLength(0) * grid.GetLength(1)) < 0.25f && 
+                if ((float)unreachedPositions.Count / (float)(grid.GetLength(0) * grid.GetLength(1)) < 0.25f &&
                     distFromStart > ((grid.GetLength(0) + grid.GetLength(1)) * 0.5 * 0.75)) // if distance from start is > (3/4) * avg between grid size components, 
                 {
                     if (curElement.GetEdgeBool && !_exitMade)
@@ -118,7 +126,7 @@ namespace WFC
                 yield return null;
             }
             StartCoroutine(SearchPathCoro());
-        } 
+        }
         private void CollapseElement(Element curElement, Element[,] grid, bool allowEnterExit)
         {
             curElement.Collapse(allowEnterExit);
@@ -167,13 +175,15 @@ namespace WFC
             SearchTruePath(_startRoom);
             yield return new WaitUntil(() => numPathsOpen == 0);
             //yield return new WaitForSeconds(1);
-            if (!grid[_exitRoom.GetPosition.x, _exitRoom.GetPosition.y].isTruePath)
+
+            if (/*numDungeonTiles > (0.65 * _mapSize.x * _mapSize.y) || numDungeonTiles < (0.35 * _mapSize.x * _mapSize.y) ||*/ 
+                !grid[_exitRoom.GetPosition.x, _exitRoom.GetPosition.y].isTruePath)
             {
                 RestartGeneration();
             }
             else
             {
-                for (int x = 0; x < grid.GetLength(0) ; x++)
+                for (int x = 0; x < grid.GetLength(0); x++)
                 {
                     for (int y = 0; y < grid.GetLength(1); y++)
                     {
@@ -183,9 +193,10 @@ namespace WFC
                         }
                         else
                         {
-                            GameObject newRoomGO = GameObject.Instantiate(Resources.Load<GameObject>("RoomEmpty"), (Vector3Int)(grid[x, y].GetPosition * 10), Quaternion.identity, transform);
+                            GameObject newRoomGO = GameObject.Instantiate(Resources.Load<GameObject>("RoomEmpty"), 
+                                    (Vector3Int)(grid[x, y].GetPosition * 10), Quaternion.identity, transform);
                             SpriteRenderer roomRenderer = newRoomGO.GetComponentInChildren<SpriteRenderer>();
-                            roomRenderer.sprite = grid[x,y].GetSelectedModule.roomSprite;
+                            roomRenderer.sprite = grid[x, y].GetSelectedModule.roomSprite;
 
                             if (x == _startRoom.GetPosition.x && y == _startRoom.GetPosition.y)
                             {
@@ -205,8 +216,9 @@ namespace WFC
             if (currElement.isTruePath)
                 return;
             currElement.isTruePath = true;
+            numDungeonTiles++;
 
-            Dictionary<Element,char> trueNeighbours = new();
+            Dictionary<Element, char> trueNeighbours = new();
             string dirs = currElement.GetSelectedModule.GetDirString();
 
             foreach (char dir in dirs)
@@ -239,7 +251,7 @@ namespace WFC
             }
             numPathsOpen += trueNeighbours.Count;
 
-            foreach (KeyValuePair<Element,char> kvp in trueNeighbours)
+            foreach (KeyValuePair<Element, char> kvp in trueNeighbours)
             {
                 SearchTruePath(kvp.Key, kvp.Value);
                 numPathsOpen--;
@@ -308,7 +320,7 @@ namespace WFC
             {
                 edgeEW = 'W';
             }
-            else if (_position.x == _mapSize.x -1)
+            else if (_position.x == _mapSize.x - 1)
             {
                 edgeEW = 'E';
             }
@@ -335,7 +347,7 @@ namespace WFC
 
                 if (allowEnterExit)
                 {
-                    if ((edgeNS != 'Z' && !curModuleDirections.Contains(edgeNS)) || (edgeEW != 'Z' && !curModuleDirections.Contains(edgeEW)) 
+                    if ((edgeNS != 'Z' && !curModuleDirections.Contains(edgeNS)) || (edgeEW != 'Z' && !curModuleDirections.Contains(edgeEW))
                         || dirCounter == 1)
                     {
                         _options.RemoveAt(i);

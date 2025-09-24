@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017767823}
   - component: {fileID: 1017767822}
+  - component: {fileID: 1017767825}
   - component: {fileID: 1017767824}
   m_Layer: 0
   m_Name: MapAnchor
@@ -149,8 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733287865370ce34ebb80fc3a4a5f7a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapSize: {x: 10, y: 10}
+  _mapSize: {x: 6, y: 4}
   _roomSet: {fileID: 11400000, guid: 1299c683d3b404642968773d777aeffa, type: 2}
+  numDungeonTiles: 0
 --- !u!4 &1017767823
 Transform:
   m_ObjectHideFlags: 0
@@ -204,6 +206,21 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1017767825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017767821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f11e7a584419c34a9e5f47165143386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tileSet: {fileID: 0}
+  _tileMap: {fileID: 0}
+  _roomSize: {x: 10, y: 10}
 --- !u!1 &1247251220
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +232,7 @@ GameObject:
   - component: {fileID: 1247251223}
   - component: {fileID: 1247251222}
   - component: {fileID: 1247251221}
+  - component: {fileID: 1247251224}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -296,6 +314,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247251224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247251220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

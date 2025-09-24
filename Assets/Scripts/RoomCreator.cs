@@ -12,6 +12,7 @@ namespace WFC
         [SerializeField] private Tilemap _tileMap;
         [SerializeField] private Vector2Int _roomSize;
 
+        public Vector2Int GetRoomSize { get { return _roomSize; } }
         public void GenerateRooms(TileElement[,] grid)
         {
             for (int x = 0; x < grid.GetLength(0); x++)
