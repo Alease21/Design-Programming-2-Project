@@ -17,5 +17,9 @@ namespace WFC
         {
             return name.Substring(name.Length - 4);
         }
+        public char GetTileTypeChar()
+        {
+            return name[1];
+        }
     }
 }

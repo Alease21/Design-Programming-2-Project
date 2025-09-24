@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da13a08851c1a2409c4be59c2cb34ba, type: 3}
+  m_Name: FloorTileSet
+  m_EditorClassIdentifier: 
+  tileModules:
+  - {fileID: 11400000, guid: 006328c4503219948ade407f6b2954cd, type: 2}
+  - {fileID: 11400000, guid: 6b42b91bab54aa741816e7d37e6219bf, type: 2}
+  - {fileID: 11400000, guid: 252e98b2b54f192498fb5772bf04704f, type: 2}
+  - {fileID: 11400000, guid: b69bb1a4934bf344d9b293a964512357, type: 2}
+  - {fileID: 11400000, guid: 601ab7543ee81744682fa0f89711ae8c, type: 2}
+  - {fileID: 11400000, guid: 6b5a8a05f5202b941994b6ef2810ab25, type: 2}
+  - {fileID: 11400000, guid: db8d130063c2b1947bde7d94da1a296f, type: 2}
+  - {fileID: 11400000, guid: 1076d8aae546f444fae03f8bbda9f5d6, type: 2}
+  - {fileID: 11400000, guid: 0374def07283a7a44ad1dad32c7e05bd, type: 2}
+  - {fileID: 11400000, guid: d40e579bfaee5184da7c2e47c63544d9, type: 2}
+  - {fileID: 11400000, guid: 35b8df29be739354c9471367ed133a98, type: 2}
+  - {fileID: 11400000, guid: fbb65f1b9ed01374c951a152d3211f4b, type: 2}
+  - {fileID: 11400000, guid: a5879d9ac84910849884850c75143e35, type: 2}
+  - {fileID: 11400000, guid: ffad46206fe382f4d824190573997b71, type: 2}
+  - {fileID: 11400000, guid: b5287afb1b6b85f4981bc3da6854a2df, type: 2}
+  - {fileID: 11400000, guid: 30350cd64ad077e4e853d6b10f106e4e, type: 2}

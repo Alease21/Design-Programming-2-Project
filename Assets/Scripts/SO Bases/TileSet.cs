@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WFC
 {
-    [CreateAssetMenu(menuName = "WFC/Modules/New TileSet")]
+    [CreateAssetMenu(menuName = "WFC/Module Sets/New TileSet")]
     public class TileSet : ScriptableObject
     {
         public TileModule[] tileModules;

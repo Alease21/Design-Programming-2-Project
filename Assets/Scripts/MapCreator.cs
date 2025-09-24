@@ -176,7 +176,7 @@ namespace WFC
             yield return new WaitUntil(() => numPathsOpen == 0);
             //yield return new WaitForSeconds(1);
 
-            if (/*numDungeonTiles > (0.65 * _mapSize.x * _mapSize.y) || numDungeonTiles < (0.35 * _mapSize.x * _mapSize.y) ||*/ 
+            if (numDungeonTiles > (0.75 * _mapSize.x * _mapSize.y) || /*numDungeonTiles < (0.35 * _mapSize.x * _mapSize.y) ||*/ 
                 !grid[_exitRoom.GetPosition.x, _exitRoom.GetPosition.y].isTruePath)
             {
                 RestartGeneration();
@@ -209,6 +209,7 @@ namespace WFC
                         }
                     }
                 }
+                _roomCreator.GenerateRooms(grid);
             }
         }
         public void SearchTruePath(Element currElement, char trueNeighborDir = 'Z')

@@ -1,16 +1,16 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace WFC
 {
-    [CustomEditor(typeof(TileSet))]
-    public class TileSetEditor : Editor
+    [CustomEditor(typeof(RoomModuleSet))]
+    public class RoomModuleSetEditor : Editor
     {
-        private TileSet _tileSet;
+        private RoomModuleSet _roomModuleSet;
 
         private void OnEnable()
         {
-            _tileSet = target as TileSet;
+            _roomModuleSet = target as RoomModuleSet;
         }
 
         public override void OnInspectorGUI()
@@ -19,7 +19,7 @@ namespace WFC
 
             if (GUILayout.Button("Generate Neighbours"))
             {
-                _tileSet.SetNeighbours();
+                _roomModuleSet.SetNeighbours();
             }
         }
     }

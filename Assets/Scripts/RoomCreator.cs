@@ -8,23 +8,33 @@ namespace WFC
 {
     public class RoomCreator : MonoBehaviour
     {
-        [SerializeField] private TileSet _tileSet;
+        [SerializeField] private TileSet _floorTileSet, _wallTileSet;
         [SerializeField] private Tilemap _tileMap;
         [SerializeField] private Vector2Int _roomSize;
 
         public Vector2Int GetRoomSize { get { return _roomSize; } }
-        public void GenerateRooms(TileElement[,] grid)
+
+        public void GenerateRooms(Element[,] grid)
         {
             for (int x = 0; x < grid.GetLength(0); x++)
             {
                 for (int y = 0; y < grid.GetLength(1); y++)
                 {
-                    StartCoroutine(CreateRoom(grid[x, y], _roomSize));
+                    if (grid[x,y] != null && grid[x,y].isTruePath)
+                        StartCoroutine(CreateRoom(grid[x, y], _roomSize));
                 }
             }
         }
+        private void CreateFloors()
+        {
 
-        public IEnumerator CreateRoom(TileElement element, Vector2Int roomSize)
+        }
+
+        private void CreateWalls()
+        {
+
+        }
+        public IEnumerator CreateRoom(Element room, Vector2Int roomSize)
         {
             TileElement[,] grid = new TileElement[roomSize.x, roomSize.y];
             List<Vector2Int> unreachedPositions = new List<Vector2Int>();
@@ -34,7 +44,45 @@ namespace WFC
                 for (int x = 0; x < roomSize.x; x++)
                 {
                     Vector2Int position = new Vector2Int(x, y);
-                    grid[x, y] = new TileElement(_tileSet.tileModules, new Vector2Int(x, y));
+                    bool isFloor = true;
+
+                    if (x == 0 || x == roomSize.x - 1)
+                    {
+                        string exits = room.GetSelectedModule.GetDirString();
+
+                        isFloor = false;
+                        if (exits[1] == 'E' && y >= (int)(roomSize.y * 0.5f) && y <= (int)(roomSize.y * 0.5f))
+                        {
+                            isFloor = true;
+                        }
+                        if (exits[3] == 'W' && y >= (int)(roomSize.y * 0.5f) && y <= (int)(roomSize.y * 0.5f))
+                        {
+                            isFloor = true;
+                        }
+                    }
+                    else if (y == 0 || y == roomSize.y - 1)
+                    {
+                        string exits = room.GetSelectedModule.GetDirString();
+
+                        isFloor = false;
+                        if (exits[1] == 'N' && x >= (int)(roomSize.x * 0.5f) && x <= (int)(roomSize.x * 0.5f))
+                        {
+                            isFloor = true;
+                        }
+                        if (exits[3] == 'S' && x >= (int)(roomSize.x * 0.5f) && x <= (int)(roomSize.x * 0.5f))
+                        {
+                            isFloor = true;
+                        }
+                    }
+
+                    if (isFloor)
+                    {
+                        grid[x, y] = new TileElement(_floorTileSet.tileModules, new Vector2Int(x, y) + room.GetPosition * roomSize, isFloor);
+                    }
+                    else
+                    {
+                        grid[x, y] = new TileElement(_wallTileSet.tileModules, new Vector2Int(x, y) + room.GetPosition * roomSize, isFloor);
+                    }
                     unreachedPositions.Add(position);
                 }
             }
@@ -96,19 +144,19 @@ namespace WFC
 
                     TileElement curNeighbour = grid[curX, curY];
 
-                    if (x > 0)
+                    if (x > 0 && (curNeighbour.GetIsFloor != curElement.GetIsFloor))
                     {
                         curNeighbour.RemoveOptions(curElement.GetSelectedModule.east);
                     }
-                    else if (x < 0)
+                    else if (x < 0 && (curNeighbour.GetIsFloor != curElement.GetIsFloor))
                     {
                         curNeighbour.RemoveOptions(curElement.GetSelectedModule.west);
                     }
-                    else if (y > 0)
+                    else if (y > 0 && (curNeighbour.GetIsFloor != curElement.GetIsFloor))
                     {
                         curNeighbour.RemoveOptions(curElement.GetSelectedModule.north);
                     }
-                    else if (y < 0)
+                    else if (y < 0 && (curNeighbour.GetIsFloor != curElement.GetIsFloor))
                     {
                         curNeighbour.RemoveOptions(curElement.GetSelectedModule.south);
                     }
@@ -122,20 +170,24 @@ namespace WFC
         private List<TileModule> _options;
         private Vector2Int _position;
         private TileModule _selectedModule;
+        private bool _isFloor = false;
 
         public Vector2Int GetPosition { get { return _position; } }
         public TileModule GetSelectedModule { get { return _selectedModule; } }
         public int GetEntropy { get { return _options.Count; } }
+        public bool GetIsFloor { get { return _isFloor; } }
 
-        public TileElement(List<TileModule> options, Vector2Int position)
+        public TileElement(List<TileModule> options, Vector2Int position, bool isFloor)
         {
             _options = options;
             _position = position;
+            _isFloor = isFloor;
         }
-        public TileElement(TileModule[] options, Vector2Int position)
+        public TileElement(TileModule[] options, Vector2Int position, bool isFloor)
         {
             _options = new List<TileModule>(options);
             _position = position;
+            _isFloor = isFloor;
         }
 
         public void RemoveOptions(TileModule[] legalNeighbors)
@@ -149,9 +201,11 @@ namespace WFC
                 }
             }
         }
+
         public void Collapse(Tilemap tilemap)
         {
             int rng = Random.Range(0, _options.Count);
+            Debug.Log($"options count: {_options.Count}");
             _selectedModule = _options[rng];
 
             tilemap.SetTile((Vector3Int)_position, _selectedModule.tileBase);
