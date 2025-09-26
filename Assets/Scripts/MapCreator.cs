@@ -1,10 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace WFC
 {
@@ -14,6 +12,7 @@ namespace WFC
 
         [Tooltip("Map size in rooms")]
         [SerializeField] private Vector2Int _mapSize;
+
         [SerializeField] private RoomModuleSet _roomSet;
         private bool _exitMade = false;
         private Element _startRoom, _exitRoom;
@@ -21,14 +20,19 @@ namespace WFC
         int numPathsOpen = 0;
         [SerializeField] int numDungeonTiles = 0;
 
+        Stopwatch _stopWatch = new Stopwatch();
+
         private void Start()
         {
             _roomCreator = GetComponent<RoomCreator>();
+            _roomCreator.TileGenereationDone += GenerationTimer;
             Generate();
         }
 
         public void Generate()
         {
+            transform.position = new Vector3(_roomCreator.GetRoomSize.x * 0.5f, _roomCreator.GetRoomSize.y * 0.5f, 0f);
+
             StartCoroutine(CreateWorld());
         }
         private void Update()
@@ -38,6 +42,13 @@ namespace WFC
                 RestartGeneration();
             }
         }
+        public void GenerationTimer()
+        {
+            _stopWatch.Stop();
+
+            UnityEngine.Debug.Log($"Genereation Time: {_stopWatch.Elapsed}");
+            _stopWatch.Reset();
+        }
         public void RestartGeneration()
         {
             StopAllCoroutines();
@@ -46,15 +57,18 @@ namespace WFC
             {
                 Destroy(transform.GetChild(i).gameObject);
             }
+            _roomCreator.ClearTiles();
             _exitMade = false;
             numDungeonTiles = 0;
             numPathsOpen = 0;
 
-            Debug.Log("regenerating");
+            //Debug.Log("regenerating");
             Generate();
         }
         private IEnumerator CreateWorld()
         {
+            _stopWatch.Start();
+
             grid = new Element[_mapSize.x, _mapSize.y];
             List<Vector2Int> unreachedPositions = new List<Vector2Int>();
 
@@ -72,7 +86,7 @@ namespace WFC
             Element startRoom;
             do
             {
-                rng = Random.Range(0, _mapSize.x);//always start from bottom row
+                rng = UnityEngine.Random.Range(0, _mapSize.x);//always start from bottom row
                 startRoom = grid[unreachedPositions[rng].x, unreachedPositions[rng].y];
             }
             while (!startRoom.GetEdgeBool);
@@ -104,7 +118,7 @@ namespace WFC
                 }
 
                 bool _allowExit = false;
-                rng = Random.Range(0, lowEntropyElements.Count);
+                rng = UnityEngine.Random.Range(0, lowEntropyElements.Count);
                 curElement = lowEntropyElements[rng];
 
                 float distFromStart = (float)(curElement.GetPosition - startRoom.GetPosition).magnitude;
@@ -176,7 +190,9 @@ namespace WFC
             yield return new WaitUntil(() => numPathsOpen == 0);
             //yield return new WaitForSeconds(1);
 
-            if (numDungeonTiles > (0.75 * _mapSize.x * _mapSize.y) || /*numDungeonTiles < (0.35 * _mapSize.x * _mapSize.y) ||*/ 
+            if (_exitRoom == null) { UnityEngine.Debug.Log("exit room null"); }
+
+            if (numDungeonTiles > (0.70f * _mapSize.x * _mapSize.y) || /*numDungeonTiles < (0.35 * _mapSize.x * _mapSize.y) ||*/ 
                 !grid[_exitRoom.GetPosition.x, _exitRoom.GetPosition.y].isTruePath)
             {
                 RestartGeneration();
@@ -193,10 +209,16 @@ namespace WFC
                         }
                         else
                         {
-                            GameObject newRoomGO = GameObject.Instantiate(Resources.Load<GameObject>("RoomEmpty"), 
-                                    (Vector3Int)(grid[x, y].GetPosition * 10), Quaternion.identity, transform);
+                            grid[x, y].GetSelectedModule.roomType = (RoomModule.RoomType)UnityEngine.Random.Range((int)0, 2);
+
+                            GameObject newRoomGO = GameObject.Instantiate(Resources.Load<GameObject>("RoomEmpty"), transform);
+                            newRoomGO.transform.localPosition = new Vector3Int(grid[x, y].GetPosition.x * _roomCreator.GetRoomSize.x, 
+                                grid[x, y].GetPosition.y * _roomCreator.GetRoomSize.y, (int)newRoomGO.transform.localPosition.z);
                             SpriteRenderer roomRenderer = newRoomGO.GetComponentInChildren<SpriteRenderer>();
                             roomRenderer.sprite = grid[x, y].GetSelectedModule.roomSprite;
+                            Transform newTileTrans = newRoomGO.transform.GetChild(0).transform;
+                            newTileTrans.localScale = new Vector3(newTileTrans.localScale.x * _roomCreator.GetRoomSize.x,
+                                newTileTrans.localScale.y * _roomCreator.GetRoomSize.y, newTileTrans.localScale.z);
 
                             if (x == _startRoom.GetPosition.x && y == _startRoom.GetPosition.y)
                             {
@@ -308,7 +330,7 @@ namespace WFC
             {
                 RemoveEdgeOptions(allowEnterExit);
             }
-            int rng = Random.Range(0, _options.Count);
+            int rng = UnityEngine.Random.Range(0, _options.Count);
             //Debug.Log("Edge:"+_isEdge+"  Options count: " + _options.Count+$" at {_position.x}, {_position.y}");
             _selectedModule = _options[rng];
         }

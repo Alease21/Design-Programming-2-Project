@@ -20,28 +20,89 @@ namespace WFC
 
                 for (int j = 0; j < tileModules.Length; j++)
                 {
-                    string curModuleDirections = tileModules[i].GetDirString(); // set up to grab last 4 chars
-                    string moduleToEvaluate = tileModules[j].GetDirString();
 
-                    if (curModuleDirections.Contains('N') && moduleToEvaluate.Contains('S') ||
-                        curModuleDirections.Contains('N') == false && moduleToEvaluate.Contains('S') == false)
+                    if (tileModules[i].tileType == TileModule.TileType.Wall &&
+                        tileModules[j].tileType == TileModule.TileType.Wall)
                     {
-                        north.Add(tileModules[j]);
+                        string curModuleDirections = tileModules[i].GetWallDirections(); // set up to grab last 4 chars
+                        string moduleToEvaluate = tileModules[j].GetWallDirections();
+
+                        if (curModuleDirections.Contains('N') && moduleToEvaluate.Contains('S'))
+                        {
+                                north.Add(tileModules[j]); 
+                        }
+                        if (curModuleDirections.Contains('E') && moduleToEvaluate.Contains('W'))
+                        {
+                                east.Add(tileModules[j]);
+                        }
+                        if (curModuleDirections.Contains('S') && moduleToEvaluate.Contains('N'))
+                        {
+                                south.Add(tileModules[j]);
+                        }
+                        if (curModuleDirections.Contains('W') && moduleToEvaluate.Contains('E'))
+                        {
+                                west.Add(tileModules[j]);
+                        }
                     }
-                    if (curModuleDirections.Contains('E') && moduleToEvaluate.Contains('W') ||
-                        curModuleDirections.Contains('E') == false && moduleToEvaluate.Contains('W') == false)
+                    else if (tileModules[i].tileType == TileModule.TileType.Pit)
                     {
-                        east.Add(tileModules[j]);
+                        char curTileSubType = tileModules[i].GetTileSubType();
+                        char TileSubTypeToEval = tileModules[j].GetTileSubType();
+
+                        if (curTileSubType == '0')
+                        {
+                            east.Add(tileModules[j]);
+                            west.Add(tileModules[j]);
+                            if (tileModules[j].tileType != TileModule.TileType.Pit)
+                            {
+                                north.Add(tileModules[j]);
+                            }
+                            if (tileModules[j].tileType == TileModule.TileType.Pit &&
+                                TileSubTypeToEval == '1')
+                            {
+                                south.Add(tileModules[j]);
+                            }
+                        }
+                        else if (curTileSubType == '1')
+                        {
+                            east.Add(tileModules[j]);
+                            west.Add(tileModules[j]);
+
+                            if (tileModules[j].tileType != TileModule.TileType.Pit)
+                            {
+                                south.Add(tileModules[j]);
+                            }
+
+                            if (tileModules[j].tileType == TileModule.TileType.Pit &&
+                                TileSubTypeToEval == '0')
+                            {
+                                north.Add(tileModules[j]);
+                            }
+                        }
                     }
-                    if (curModuleDirections.Contains('S') && moduleToEvaluate.Contains('N') ||
-                        curModuleDirections.Contains('S') == false && moduleToEvaluate.Contains('N') == false)
+                    else if (tileModules[i].tileType == TileModule.TileType.Floor)
                     {
-                        south.Add(tileModules[j]);
-                    }
-                    if (curModuleDirections.Contains('W') && moduleToEvaluate.Contains('E') ||
-                        curModuleDirections.Contains('W') == false && moduleToEvaluate.Contains('E') == false)
-                    {
-                        west.Add(tileModules[j]);
+                        if (tileModules[j].tileType != TileModule.TileType.Wall)
+                        {
+                            east.Add(tileModules[j]);
+                            if (tileModules[j].tileType == TileModule.TileType.Pit)
+                            {
+                                if (tileModules[j].GetTileSubType() != '0')
+                                {
+                                    south.Add(tileModules[j]);
+                                }
+                                else if (tileModules[j].GetTileSubType() != '1')
+                                {
+                                    north.Add(tileModules[j]);
+                                }
+                            }
+                            else
+                            {
+                                north.Add(tileModules[j]);
+                                south.Add(tileModules[j]);
+                            }
+                            west.Add(tileModules[j]);
+                        }
                     }
                 }
 

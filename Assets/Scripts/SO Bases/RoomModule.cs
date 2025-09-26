@@ -5,6 +5,14 @@ namespace WFC
     [CreateAssetMenu(menuName = "WFC/Modules/New Room Module")]
     public class RoomModule : ScriptableObject
     {
+        public enum RoomType
+        {
+            None,
+            PitRoom,
+            //TilePatternRoom,
+            //TableRoom
+        }
+        public RoomType roomType;
         public Vector2Int roomSize;
         public Sprite roomSprite;
 
