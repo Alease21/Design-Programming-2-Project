@@ -416,7 +416,6 @@ GameObject:
   - component: {fileID: 1017767823}
   - component: {fileID: 1017767822}
   - component: {fileID: 1017767825}
-  - component: {fileID: 1017767824}
   - component: {fileID: 1017767826}
   m_Layer: 0
   m_Name: MapAnchor
@@ -439,7 +438,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapSize: {x: 5, y: 5}
   _roomSet: {fileID: 11400000, guid: 1299c683d3b404642968773d777aeffa, type: 2}
-  numDungeonTiles: 0
 --- !u!4 &1017767823
 Transform:
   m_ObjectHideFlags: 0
@@ -455,44 +453,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1839735485 &1017767824
-Tilemap:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017767821}
-  m_Enabled: 1
-  m_Tiles: {}
-  m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
-  m_TileObjectToInstantiateArray: []
-  m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
-  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
-  m_TileOrientation: 0
-  m_TileOrientationMatrix:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
 --- !u!114 &1017767825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f11e7a584419c34a9e5f47165143386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemCreator: {fileID: 0}
   _floorTileSet: {fileID: 11400000, guid: 9dfcc0a18082cef4780ae796a407149a, type: 2}
   _tileMap: {fileID: 676939269}
   _roomSize: {x: 18, y: 10}
@@ -521,7 +480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fde2f0fbe6f5ed48a70c39c50e21aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomCreator: {fileID: 0}
   _itemSet: {fileID: 11400000, guid: f3509994b61d8ab4488ecf7d4bacc0b8, type: 2}
   _tileMap: {fileID: 106961257}
 --- !u!1 &1247251220

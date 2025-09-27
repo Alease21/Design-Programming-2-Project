@@ -18,92 +18,174 @@ namespace WFC
                 List<TileModule> south = new List<TileModule>();
                 List<TileModule> west = new List<TileModule>();
 
+                
                 for (int j = 0; j < tileModules.Length; j++)
                 {
+                    north.Add(tileModules[j]);
+                    east.Add(tileModules[j]);
+                    south.Add(tileModules[j]);
+                    west.Add(tileModules[j]);
 
-                    if (tileModules[i].tileType == TileModule.TileType.Wall &&
-                        tileModules[j].tileType == TileModule.TileType.Wall)
+                    /* Failed Attempt @ setting neighbours for tiles
+                    TileModule curTile = tileModules[i];
+                    TileModule tileToEvaluate = tileModules[j];
+
+                    if (curTile.tileType == TileModule.TileType.Wall)
                     {
-                        string curModuleDirections = tileModules[i].GetWallDirections(); // set up to grab last 4 chars
-                        string moduleToEvaluate = tileModules[j].GetWallDirections();
+                        string curTileDirections = curTile.GetWallDirections(); // set up to grab last 4 of string
 
-                        if (curModuleDirections.Contains('N') && moduleToEvaluate.Contains('S'))
+                        if (tileToEvaluate.tileType == TileModule.TileType.Wall)
                         {
-                                north.Add(tileModules[j]); 
-                        }
-                        if (curModuleDirections.Contains('E') && moduleToEvaluate.Contains('W'))
-                        {
-                                east.Add(tileModules[j]);
-                        }
-                        if (curModuleDirections.Contains('S') && moduleToEvaluate.Contains('N'))
-                        {
-                                south.Add(tileModules[j]);
-                        }
-                        if (curModuleDirections.Contains('W') && moduleToEvaluate.Contains('E'))
-                        {
-                                west.Add(tileModules[j]);
-                        }
-                    }
-                    else if (tileModules[i].tileType == TileModule.TileType.Pit)
-                    {
-                        char curTileSubType = tileModules[i].GetTileSubType();
-                        char TileSubTypeToEval = tileModules[j].GetTileSubType();
+                            string stringToEvaluate = tileToEvaluate.GetWallDirections();
 
-                        if (curTileSubType == '0')
-                        {
-                            east.Add(tileModules[j]);
-                            west.Add(tileModules[j]);
-                            if (tileModules[j].tileType != TileModule.TileType.Pit)
+                            if (curTileDirections.Contains('N') && stringToEvaluate.Contains('S'))
                             {
-                                north.Add(tileModules[j]);
+                                north.Add(tileToEvaluate);
                             }
-                            if (tileModules[j].tileType == TileModule.TileType.Pit &&
-                                TileSubTypeToEval == '1')
+                            if (curTileDirections.Contains('E') && stringToEvaluate.Contains('W'))
                             {
-                                south.Add(tileModules[j]);
+                                east.Add(tileToEvaluate);
+                            }
+                            if (curTileDirections.Contains('S') && stringToEvaluate.Contains('N'))
+                            {
+                                south.Add(tileToEvaluate);
+                            }
+                            if (curTileDirections.Contains('W') && stringToEvaluate.Contains('E'))
+                            {
+                                west.Add(tileToEvaluate);
                             }
                         }
-                        else if (curTileSubType == '1')
+                        else
                         {
-                            east.Add(tileModules[j]);
-                            west.Add(tileModules[j]);
-
-                            if (tileModules[j].tileType != TileModule.TileType.Pit)
+                            if (!curTileDirections.Contains('N'))
                             {
-                                south.Add(tileModules[j]);
+                                north.Add(tileToEvaluate);
                             }
-
-                            if (tileModules[j].tileType == TileModule.TileType.Pit &&
-                                TileSubTypeToEval == '0')
+                            if (!curTileDirections.Contains('E'))
                             {
-                                north.Add(tileModules[j]);
+                                east.Add(tileToEvaluate);
+                            }
+                            if (!curTileDirections.Contains('S'))
+                            {
+                                south.Add(tileToEvaluate);
+                            }
+                            if (!curTileDirections.Contains('W'))
+                            {
+                                west.Add(tileToEvaluate);
                             }
                         }
                     }
-                    else if (tileModules[i].tileType == TileModule.TileType.Floor)
+
+                    if (curTile.tileType == TileModule.TileType.Pit)
                     {
-                        if (tileModules[j].tileType != TileModule.TileType.Wall)
+                        char curTileSubtype = curTile.GetTileSubType();
+                        char tileTypeToEvaluate = tileToEvaluate.GetTileSubType();
+
+                        if (curTileSubtype == '0')
                         {
-                            east.Add(tileModules[j]);
-                            if (tileModules[j].tileType == TileModule.TileType.Pit)
+                            if (tileToEvaluate.tileType == TileModule.TileType.Pit && 
+                                tileTypeToEvaluate == '1')
                             {
-                                if (tileModules[j].GetTileSubType() != '0')
-                                {
-                                    south.Add(tileModules[j]);
-                                }
-                                else if (tileModules[j].GetTileSubType() != '1')
-                                {
-                                    north.Add(tileModules[j]);
-                                }
+                                south.Add(tileToEvaluate);
+                            }
+                            else if (tileToEvaluate.tileType == TileModule.TileType.Pit &&
+                                tileTypeToEvaluate == '0')
+                            {
+                                east.Add(tileToEvaluate);
+                                west.Add(tileToEvaluate);
                             }
                             else
                             {
-                                north.Add(tileModules[j]);
-                                south.Add(tileModules[j]);
+                                north.Add(tileToEvaluate);
+                                east.Add(tileToEvaluate);
+                                west.Add(tileToEvaluate);
                             }
-                            west.Add(tileModules[j]);
+                        }
+                        else if (curTileSubtype == '1')
+                        {
+                            if (tileToEvaluate.tileType == TileModule.TileType.Pit &&
+                                tileTypeToEvaluate == '0')
+                            {
+                                north.Add(tileToEvaluate);
+                            }
+                            else
+                            {
+                                east.Add(tileToEvaluate);
+                                south.Add(tileToEvaluate);
+                                west.Add(tileToEvaluate);
+                            }
                         }
                     }
+
+                    if (curTile.tileType == TileModule.TileType.Floor)
+                    {
+                        char curTileSubtype = curTile.GetTileSubType();
+                        char tileTypeToEvaluate = tileToEvaluate.GetTileSubType();
+
+                        switch (curTileSubtype)
+                        {
+                            case '0'://No Cracks
+                                north.Add(tileToEvaluate);
+                                east.Add(tileToEvaluate);
+                                south.Add(tileToEvaluate);
+                                west.Add(tileToEvaluate);
+                                break;
+                            case '1': //Med Crack
+                                if (tileToEvaluate.tileType == TileModule.TileType.Floor)
+                                {
+                                    if (tileTypeToEvaluate == '0' ||
+                                        tileTypeToEvaluate == '5')
+                                    {
+                                        north.Add(tileToEvaluate);
+                                    }
+                                }
+                                else
+                                {
+                                    east.Add(tileToEvaluate);
+                                    south.Add(tileToEvaluate);
+                                    west.Add(tileToEvaluate);
+                                }
+                                break;
+                            case '2': //Small crack
+                                north.Add(tileToEvaluate);
+                                east.Add(tileToEvaluate);
+                                south.Add(tileToEvaluate);
+                                west.Add(tileToEvaluate);
+                                break;
+                            case '3': //Dirt Corner
+                                if (tileToEvaluate.tileType == TileModule.TileType.Wall ||
+                                    tileToEvaluate.tileType == TileModule.TileType.Pit)
+                                {
+                                    north.Add(tileToEvaluate);
+                                    west.Add(tileToEvaluate);
+                                }
+                                else
+                                {
+                                    south.Add(tileToEvaluate);
+                                    east.Add(tileToEvaluate);
+                                }
+                                break;
+                            case '4':
+                                //not implemented currently
+                                break;
+                            case '5': //Big Crack
+                                if (tileToEvaluate.tileType == TileModule.TileType.Floor)
+                                {
+                                    if (tileTypeToEvaluate == '1' ||
+                                        tileToEvaluate.tileType != TileModule.TileType.Floor)
+                                    {
+                                        south.Add(tileToEvaluate);
+                                    }
+                                    else
+                                    {
+                                        north.Add(tileToEvaluate);
+                                        east.Add(tileToEvaluate);
+                                        west.Add(tileToEvaluate);
+                                    }
+                                }
+                                break;
+                        }
+                    }*/
                 }
 
                 tileModules[i].north = north.ToArray();

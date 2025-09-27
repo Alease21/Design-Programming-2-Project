@@ -17,10 +17,4 @@ MonoBehaviour:
   north: []
   east: []
   south: []
-  west:
-  - {fileID: 11400000, guid: 639868d4244203a4ca54761a37643975, type: 2}
-  - {fileID: 11400000, guid: b56a31b6746b56541a558e85eae6f747, type: 2}
-  - {fileID: 11400000, guid: 0bfc33ddfdea0d84aa7c0ca4068ae879, type: 2}
-  - {fileID: 11400000, guid: 78bc0f2e88ffb454fa0443d276a8b4a3, type: 2}
-  - {fileID: 11400000, guid: 7269b9d77c456f14badc0f07dcc6ba49, type: 2}
-  - {fileID: 11400000, guid: 3f29efdac34af39419679904fb319a29, type: 2}
+  west: []

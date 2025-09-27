@@ -1,32 +1,42 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace WFC
 {
     public class RoomCreator : MonoBehaviour
     {
-        [SerializeField] private ItemCreator _itemCreator;
+        //Singleton setup
+        public static RoomCreator instance;
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+
+            _floorTileSet.SetNeighbours();
+        }
+        //
 
         [SerializeField] private TileSet _floorTileSet;
         [SerializeField] private Tilemap _tileMap;
         [SerializeField] private Vector2Int _roomSize;
         private Vector2Int _numRoomsCompleted; // used for tracking room tile generation (done/max)
+        public Vector2Int GetRoomSize { get { return _roomSize; } }
 
         public Action TileGenereationDone;
 
-        public Vector2Int GetRoomSize { get { return _roomSize; } }
-
-        private void Start()
+        public void GenerateRooms(RoomElement[,] grid)
         {
-            _itemCreator = GetComponent<ItemCreator>();
-        }
-        public void GenerateRooms(Element[,] grid)
-        {
-            GameObject boundaryEmpty = new GameObject("DungeonBoundaries"); //parent to grid
+            GameObject boundaryEmpty = new GameObject("DungeonBoundaries");
             boundaryEmpty.transform.parent = _tileMap.transform.parent;
             boundaryEmpty.transform.position = Vector3.zero;
 
@@ -45,7 +55,7 @@ namespace WFC
         {
             _tileMap.ClearAllTiles();
         }
-        public IEnumerator CreateRoom(Element room)
+        public IEnumerator CreateRoom(RoomElement room)
         {
             _numRoomsCompleted.y++;
 
@@ -118,22 +128,18 @@ namespace WFC
 
                     posInfo = new Vector2Int[] { position, adjustedPosition, _roomSize };
                     tileGrid[x, y] = new TileElement(_floorTileSet.tileModules, posInfo, isFloor, isPit);
-
+                    
                     if (isFloor)
-                    {
                         tileGrid[x, y].RemoveOptions(TileModule.TileType.Wall);
-                        //if (!isExitFloor) 
-                            //_itemCreator.GenerateItems(posInfo);
-                    }
                     if (isExitFloor || !isPit)
                         tileGrid[x,y].RemoveOptions(TileModule.TileType.Pit);
                     if (isPit)
                         tileGrid[x, y].RemoveOptions(TileModule.TileType.Floor);
-
+                    
                     unreachedPositions.Add(position);
                 }
             }
-            _itemCreator.AddTileGrid(tileGrid);
+            ItemCreator.instance.AddTileGrid(tileGrid);
 
             int rng = UnityEngine.Random.Range(0, unreachedPositions.Count);
 
@@ -181,7 +187,7 @@ namespace WFC
             {
                 for (int x = -1; x <= 1; x++)
                 {
-                    if ((x == 0 && y == 0) || (Mathf.Abs(x) == 1 && Mathf.Abs(y) == 1)) // setting up for neighbors, but not diags (1,1)
+                    if ((x == 0 && y == 0) || (Mathf.Abs(x) == 1 && Mathf.Abs(y) == 1))
                     {
                         continue;
                     }
@@ -196,26 +202,16 @@ namespace WFC
 
                     TileElement curNeighbour = grid[curX, curY];
                     
-                    if (curElement.GetIsFloor)
-                    {/*
-                        if (x > 0)
-                        {
-                            curNeighbour.RemoveOptions(curElement.GetSelectedModule.east);
-                        }
-                        else if (x < 0)
-                        {
-                            curNeighbour.RemoveOptions(curElement.GetSelectedModule.west);
-                        }
-                        else if (y > 0)
-                        {
-                            curNeighbour.RemoveOptions(curElement.GetSelectedModule.north);
-                        }
-                        else if (y < 0)
-                        {
-                            curNeighbour.RemoveOptions(curElement.GetSelectedModule.south);
-                        }
-                        */
-                    }
+                    /*
+                    if (x > 0)
+                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.east);
+                    else if (x < 0)
+                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.west);
+                    else if (y > 0)
+                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.north);
+                    else if (y < 0)
+                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.south);
+                    */
                 }
             }
         }
@@ -249,15 +245,14 @@ namespace WFC
             _adjustedPosition = tileAndRoomPos[1];
         }
 
-        public void RemoveOptions(TileModule[] illegalNeighbors)
+        public void RemoveOptions(TileModule[] legalNeighbors)
         {
-            List<TileModule> temp = new List<TileModule>(illegalNeighbors);
+            List<TileModule> temp = new List<TileModule>(legalNeighbors);
+
             for (int i = _options.Count - 1; i >= 0; i--)
             {
-                if (temp.Contains(_options[i]))
-                {
+                if (temp.Contains(_options[i]) == false)
                     _options.RemoveAt(i);
-                }
             }
         }
         public void RemoveOptions(TileModule.TileType illegaltype)
@@ -289,17 +284,16 @@ namespace WFC
                 RemoveWallOptions();
             }
             int rng = UnityEngine.Random.Range(0, _options.Count);
-            //Debug.Log($"options count: {_options.Count}");
 
             // Weighted rng for different base floors
             if (_options[rng].tileType == TileModule.TileType.Floor)
             {
-                int floorWeighRNG = UnityEngine.Random.Range(1, 100);
+                int floorWeightRNG = UnityEngine.Random.Range(1, 100);
 
-                switch (floorWeighRNG)
+                switch (floorWeightRNG)
                 {
                     case > 95:
-                        RemoveOptions( TileModule.TileType.Floor, '5');
+                        RemoveOptions(TileModule.TileType.Floor, '5');
                         break;
                     case > 90:
                         RemoveOptions(TileModule.TileType.Floor, '3');
@@ -322,7 +316,7 @@ namespace WFC
             }
 
             tilemap.SetTile((Vector3Int)_adjustedPosition, _selectedModule.tileBase);
-            if (!_isFloor)
+            if (_selectedModule.tileType != TileModule.TileType.Floor)
             {
                 GameObject tileBounds = new ($"({_adjustedPosition.x},{_adjustedPosition.y})");
                 tileBounds.transform.parent = tilemap.transform.parent.Find("DungeonBoundaries");

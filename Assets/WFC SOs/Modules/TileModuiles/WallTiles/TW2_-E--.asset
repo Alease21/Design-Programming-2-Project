@@ -15,10 +15,6 @@ MonoBehaviour:
   tileType: 1
   tileBase: {fileID: 11400000, guid: 788ce8fe150f9fe408ac390066b0188d, type: 2}
   north: []
-  east:
-  - {fileID: 11400000, guid: b3cf26a3e48f3fb479f58811589f689b, type: 2}
-  - {fileID: 11400000, guid: acef693650ec92248b9698d1ea09ff3d, type: 2}
-  - {fileID: 11400000, guid: b56a31b6746b56541a558e85eae6f747, type: 2}
-  - {fileID: 11400000, guid: 08a025ef919aa30408188328e3e7fb3e, type: 2}
+  east: []
   south: []
   west: []

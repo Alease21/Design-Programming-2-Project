@@ -14,15 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileType: 1
   tileBase: {fileID: 11400000, guid: 63e553f564587b44b8516c818e10fd05, type: 2}
-  north:
-  - {fileID: 11400000, guid: 1f1ef26d81b7a4c4590add6080f3a13a, type: 2}
-  - {fileID: 11400000, guid: acef693650ec92248b9698d1ea09ff3d, type: 2}
-  - {fileID: 11400000, guid: 0bfc33ddfdea0d84aa7c0ca4068ae879, type: 2}
-  - {fileID: 11400000}
+  north: []
   east: []
-  south:
-  - {fileID: 11400000, guid: 796a8e8d45395d5419cc29a9f276e091, type: 2}
-  - {fileID: 11400000, guid: 08a025ef919aa30408188328e3e7fb3e, type: 2}
-  - {fileID: 11400000}
-  - {fileID: 11400000, guid: 78bc0f2e88ffb454fa0443d276a8b4a3, type: 2}
+  south: []
   west: []
