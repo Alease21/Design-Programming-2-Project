@@ -5,13 +5,15 @@ using UnityEngine;
 namespace WFC
 {
     [CreateAssetMenu(menuName = "WFC/Module Sets/New TileSet")]
-    public class TileSet : ScriptableObject
+    public class TileSet : ScriptableObject, IModuleSet
     {
-        public TileModule[] tileModules;
+        public TileModule[] _tileModules;
+
+        public IModule[] Modules { get => _tileModules; set => value = _tileModules; }
 
         public void SetNeighbours()
         {
-            for (int i = 0; i < tileModules.Length; i++)
+            for (int i = 0; i < _tileModules.Length; i++)
             {
                 List<TileModule> north = new List<TileModule>();
                 List<TileModule> east = new List<TileModule>();
@@ -19,12 +21,12 @@ namespace WFC
                 List<TileModule> west = new List<TileModule>();
 
                 
-                for (int j = 0; j < tileModules.Length; j++)
+                for (int j = 0; j < _tileModules.Length; j++)
                 {
-                    north.Add(tileModules[j]);
-                    east.Add(tileModules[j]);
-                    south.Add(tileModules[j]);
-                    west.Add(tileModules[j]);
+                    north.Add(_tileModules[j]);
+                    east.Add(_tileModules[j]);
+                    south.Add(_tileModules[j]);
+                    west.Add(_tileModules[j]);
 
                     /* Failed Attempt @ setting neighbours for tiles
                     TileModule curTile = tileModules[i];
@@ -188,10 +190,10 @@ namespace WFC
                     }*/
                 }
 
-                tileModules[i].north = north.ToArray();
-                tileModules[i].east = east.ToArray();
-                tileModules[i].south = south.ToArray();
-                tileModules[i].west = west.ToArray();
+                _tileModules[i].North = north.ToArray();
+                _tileModules[i].East = east.ToArray();
+                _tileModules[i].South = south.ToArray();
+                _tileModules[i].West = west.ToArray();
             }
         }
     }

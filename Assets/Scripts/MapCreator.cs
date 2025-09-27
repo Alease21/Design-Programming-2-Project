@@ -26,7 +26,7 @@ namespace WFC
 
         [Tooltip("Map size in rooms")]
         [SerializeField] private Vector2Int _mapSize;
-        [SerializeField] private RoomModuleSet _roomSet;
+        [SerializeField] private RoomSet _roomSet;
 
         private bool _exitMade = false;
         private RoomElement _startRoom, 
@@ -103,7 +103,7 @@ namespace WFC
                 for (int x = 0; x < _mapSize.x; x++)
                 {
                     Vector2Int position = new Vector2Int(x, y);
-                    grid[x, y] = new RoomElement(_roomSet.roomModules, position, _mapSize);
+                    grid[x, y] = new RoomElement(_roomSet.Modules as RoomModule[], position, _mapSize);
                     unreachedPositions.Add(position);
                 }
             }
@@ -187,11 +187,11 @@ namespace WFC
                     RoomElement curNeighbour = grid[curX, curY];
 
                     if (x > 0)
-                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.east);
+                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.East);
                     else if (x < 0)
-                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.west);
+                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.West);
                     else if (y > 0)
-                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.north);
+                        curNeighbour.RemoveOptions(curElement.GetSelectedModule.North);
                     else if (y < 0)
                         curNeighbour.RemoveOptions(curElement.GetSelectedModule.south);
                 }

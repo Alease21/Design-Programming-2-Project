@@ -4,40 +4,42 @@ using UnityEngine;
 namespace WFC
 {
     [CreateAssetMenu(menuName = "WFC/Module Sets/New Item Module Set")]
-    public class ItemSet : ScriptableObject
+    public class ItemSet : ScriptableObject, IModuleSet
     {
-        public ItemModule[] itemModules;
+        private ItemModule[] _itemModules;
+
+        public IModule[] Modules { get => _itemModules; set => value = _itemModules; }
 
         public void SetNeighbours()
         {
-            for (int i = 0; i < itemModules.Length; i++)
+            for (int i = 0; i < _itemModules.Length; i++)
             {
                 List<ItemModule> north = new List<ItemModule>();
                 List<ItemModule> east = new List<ItemModule>();
                 List<ItemModule> south = new List<ItemModule>();
                 List<ItemModule> west = new List<ItemModule>();
 
-                for (int j = 0; j < itemModules.Length; j++)
+                for (int j = 0; j < _itemModules.Length; j++)
                 {
-                    ItemModule.ItemType curItemtype = itemModules[i].itemType;
-                    ItemModule.ItemType itemTypeToEval = itemModules[j].itemType;
+                    ItemModule.ItemType curItemtype = _itemModules[i].itemType;
+                    ItemModule.ItemType itemTypeToEval = _itemModules[j].itemType;
 
                     switch ((int)curItemtype)
                     {
                         case 0: // None
-                            north.Add(itemModules[j]);
-                            east.Add(itemModules[j]);
-                            south.Add(itemModules[j]);
-                            west.Add(itemModules[j]);
+                            north.Add(_itemModules[j]);
+                            east.Add(_itemModules[j]);
+                            south.Add(_itemModules[j]);
+                            west.Add(_itemModules[j]);
                             break;
                         case 1:
                             if (itemTypeToEval == ItemModule.ItemType.None ||
                                 itemTypeToEval == ItemModule.ItemType.Box)
                             {
-                                north.Add(itemModules[j]);
-                                east.Add(itemModules[j]);
-                                south.Add(itemModules[j]);
-                                west.Add(itemModules[j]);
+                                north.Add(_itemModules[j]);
+                                east.Add(_itemModules[j]);
+                                south.Add(_itemModules[j]);
+                                west.Add(_itemModules[j]);
                             }
                             break;
                         case 2:// Table
@@ -46,20 +48,20 @@ namespace WFC
                                 itemTypeToEval == ItemModule.ItemType.Table ||
                                 itemTypeToEval == ItemModule.ItemType.Chair)
                             {
-                                north.Add(itemModules[j]);
-                                east.Add(itemModules[j]);
-                                south.Add(itemModules[j]);
-                                west.Add(itemModules[j]);
+                                north.Add(_itemModules[j]);
+                                east.Add(_itemModules[j]);
+                                south.Add(_itemModules[j]);
+                                west.Add(_itemModules[j]);
                             }
 
                             break;
                         case 4:// Rocks
                             if (itemTypeToEval == ItemModule.ItemType.None)
                             {
-                                north.Add(itemModules[j]);
-                                east.Add(itemModules[j]);
-                                south.Add(itemModules[j]);
-                                west.Add(itemModules[j]);
+                                north.Add(_itemModules[j]);
+                                east.Add(_itemModules[j]);
+                                south.Add(_itemModules[j]);
+                                west.Add(_itemModules[j]);
                             }
                             break;
                         case 5:// torch
@@ -69,19 +71,19 @@ namespace WFC
                                 itemTypeToEval == ItemModule.ItemType.Rocks ||
                                 itemTypeToEval == ItemModule.ItemType.Chair)
                             {
-                                north.Add(itemModules[j]);
-                                east.Add(itemModules[j]);
-                                south.Add(itemModules[j]);
-                                west.Add(itemModules[j]);
+                                north.Add(_itemModules[j]);
+                                east.Add(_itemModules[j]);
+                                south.Add(_itemModules[j]);
+                                west.Add(_itemModules[j]);
                             }
                             break;
                     }
                 }
 
-                itemModules[i].north = north.ToArray();
-                itemModules[i].east = east.ToArray();
-                itemModules[i].south = south.ToArray();
-                itemModules[i].west = west.ToArray();
+                _itemModules[i].North = north.ToArray();
+                _itemModules[i].East = east.ToArray();
+                _itemModules[i].South = south.ToArray();
+                _itemModules[i].West = west.ToArray();
             }
         }
     }

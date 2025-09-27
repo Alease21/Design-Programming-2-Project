@@ -3,7 +3,7 @@ using UnityEngine;
 namespace WFC
 {
     [CreateAssetMenu(menuName = "WFC/Modules/New Room Module")]
-    public class RoomModule : ScriptableObject
+    public class RoomModule : ScriptableObject, IModule
     {
         public enum RoomType
         {
@@ -16,10 +16,15 @@ namespace WFC
         public Vector2Int roomSize;
         public Sprite roomSprite;
 
-        public RoomModule[] north;
-        public RoomModule[] east;
-        public RoomModule[] south;
-        public RoomModule[] west;
+        private RoomModule[] _north;
+        private RoomModule[] _east;
+        private RoomModule[] _south;
+        private RoomModule[] _west;
+
+        public IModule[] North { get => _north; set => value = _north; }
+        public IModule[] East { get => _north; set => value = _north; }
+        public IModule[] South { get => _north; set => value = _north; }
+        public IModule[] West { get => _north; set => value = _north; }
 
         public string GetDirString()
         {

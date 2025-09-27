@@ -6,50 +6,52 @@ using WFC;
 namespace WFC
 {
     [CreateAssetMenu(menuName = "WFC/Module Sets/New Room Module Set")]
-    public class RoomModuleSet : ScriptableObject
+    public class RoomSet : ScriptableObject, IModuleSet
     {
-        public RoomModule[] roomModules;
+        private RoomModule[] _roomModules;
+
+        public IModule[] Modules { get => _roomModules; set => value = _roomModules; }
 
         public void SetNeighbours()
         {
-            for (int i = 0; i < roomModules.Length; i++)
+            for (int i = 0; i < _roomModules.Length; i++)
             {
                 List<RoomModule> north = new List<RoomModule>();
                 List<RoomModule> east = new List<RoomModule>();
                 List<RoomModule> south = new List<RoomModule>();
                 List<RoomModule> west = new List<RoomModule>();
 
-                for (int j = 0; j < roomModules.Length; j++)
+                for (int j = 0; j < _roomModules.Length; j++)
                 {
-                    string curModuleDirections = roomModules[i].GetDirString(); // set up to grab last 4 chars
-                    string moduleToEvaluate = roomModules[j].GetDirString();
+                    string curModuleDirections = _roomModules[i].GetDirString(); // set up to grab last 4 chars
+                    string moduleToEvaluate = _roomModules[j].GetDirString();
 
                     if (curModuleDirections.Contains('N') && moduleToEvaluate.Contains('S') ||
                         curModuleDirections.Contains('N') == false && moduleToEvaluate.Contains('S') == false)
                     {
-                        north.Add(roomModules[j]);
+                        north.Add(_roomModules[j]);
                     }
                     if (curModuleDirections.Contains('E') && moduleToEvaluate.Contains('W') ||
                         curModuleDirections.Contains('E') == false && moduleToEvaluate.Contains('W') == false)
                     {
-                        east.Add(roomModules[j]);
+                        east.Add(_roomModules[j]);
                     }
                     if (curModuleDirections.Contains('S') && moduleToEvaluate.Contains('N')||
                         curModuleDirections.Contains('S') == false && moduleToEvaluate.Contains('N') == false)
                     {
-                        south.Add(roomModules[j]);
+                        south.Add(_roomModules[j]);
                     }
                     if (curModuleDirections.Contains('W') && moduleToEvaluate.Contains('E') ||
                         curModuleDirections.Contains('W') == false && moduleToEvaluate.Contains('E') == false)
                     {
-                        west.Add(roomModules[j]);
+                        west.Add(_roomModules[j]);
                     }
                 }
 
-                roomModules[i].north = north.ToArray();
-                roomModules[i].east = east.ToArray();
-                roomModules[i].south = south.ToArray();
-                roomModules[i].west = west.ToArray();
+                _roomModules[i].North = north.ToArray();
+                _roomModules[i].East = east.ToArray();
+                _roomModules[i].South = south.ToArray();
+                _roomModules[i].West = west.ToArray();
             }
         }
     }

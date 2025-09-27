@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 namespace WFC
 {
     [CreateAssetMenu(menuName = "WFC/Modules/New Tile Module")]
-    public class TileModule : ScriptableObject
+    public class TileModule : ScriptableObject, IModule
     {
         public enum TileType
         {
@@ -15,10 +15,15 @@ namespace WFC
         public TileType tileType;
         public TileBase tileBase;
 
-        public TileModule[] north;
-        public TileModule[] east;
-        public TileModule[] south;
-        public TileModule[] west;
+        private TileModule[] _north;
+        private TileModule[] _east;
+        private TileModule[] _south;
+        private TileModule[] _west;
+
+        public IModule[] North { get => _north; set => value = _north; }
+        public IModule[] East { get => _north; set => value = _east; }
+        public IModule[] South { get => _north; set => value = _south; }
+        public IModule[] West { get => _north; set => value = _west; }
 
         public string GetWallDirections()
         {
