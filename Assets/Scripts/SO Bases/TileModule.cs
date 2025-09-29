@@ -12,22 +12,24 @@ namespace WFC
             Wall,
             Pit
         }
-        public TileType tileType;
-        public TileBase tileBase;
+        [SerializeField] private TileType _tileType;
+        [SerializeField] private TileBase _tileBase;
 
-        private TileModule[] _north;
-        private TileModule[] _east;
-        private TileModule[] _south;
-        private TileModule[] _west;
+        [SerializeField] private TileModule[] _north;
+        [SerializeField] private TileModule[] _east;
+        [SerializeField] private TileModule[] _south;
+        [SerializeField] private TileModule[] _west;
 
-        public IModule[] North { get => _north; set => value = _north; }
-        public IModule[] East { get => _north; set => value = _east; }
-        public IModule[] South { get => _north; set => value = _south; }
-        public IModule[] West { get => _north; set => value = _west; }
+        public TileType GetTileType { get { return _tileType; } }
+        public TileBase GetTileBase { get { return _tileBase; } }
+        public IModule[] North { get => _north; set => _north = value as TileModule[]; }
+        public IModule[] East { get => _east; set => _east = value as TileModule[]; }
+        public IModule[] South { get => _south; set => _south = value as TileModule[]; }
+        public IModule[] West { get => _west; set => _west = value as TileModule[]; }
 
         public string GetWallDirections()
         {
-            if (tileType == TileType.Wall)
+            if (_tileType == TileType.Wall)
                 return name.Substring(name.Length - 4);
             else 
             {
@@ -35,6 +37,7 @@ namespace WFC
                 return "----";
             }
         }
+
         public char GetTileSubType()
         {
             return name[2];

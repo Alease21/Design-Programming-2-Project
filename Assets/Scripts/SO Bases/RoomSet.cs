@@ -8,9 +8,8 @@ namespace WFC
     [CreateAssetMenu(menuName = "WFC/Module Sets/New Room Module Set")]
     public class RoomSet : ScriptableObject, IModuleSet
     {
-        private RoomModule[] _roomModules;
-
-        public IModule[] Modules { get => _roomModules; set => value = _roomModules; }
+        [SerializeField] private RoomModule[] _roomModules;
+        public IModule[] Modules { get => _roomModules; set => _roomModules = value as RoomModule[]; }
 
         public void SetNeighbours()
         {

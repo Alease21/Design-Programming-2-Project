@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace WFC
 {
+    /*
     public class MapCreator : MonoBehaviour
     {
         //Singleton setup
@@ -185,7 +186,7 @@ namespace WFC
                         continue;
 
                     RoomElement curNeighbour = grid[curX, curY];
-
+                    /*
                     if (x > 0)
                         curNeighbour.RemoveOptions(curElement.GetSelectedModule.East);
                     else if (x < 0)
@@ -194,6 +195,7 @@ namespace WFC
                         curNeighbour.RemoveOptions(curElement.GetSelectedModule.North);
                     else if (y < 0)
                         curNeighbour.RemoveOptions(curElement.GetSelectedModule.south);
+                    
                 }
             }
         }
@@ -400,4 +402,5 @@ namespace WFC
         }
     }
     #endregion
+*/
 }

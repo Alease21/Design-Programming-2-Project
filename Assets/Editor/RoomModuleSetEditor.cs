@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace WFC
 {
-    [CustomEditor(typeof(RoomModuleSet))]
+    [CustomEditor(typeof(RoomSet))]
     public class RoomModuleSetEditor : Editor
     {
-        private RoomModuleSet _roomModuleSet;
+        private RoomSet _roomModuleSet;
 
         private void OnEnable()
         {
-            _roomModuleSet = target as RoomModuleSet;
+            _roomModuleSet = target as RoomSet;
         }
 
         public override void OnInspectorGUI()

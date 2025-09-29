@@ -6,9 +6,14 @@ namespace WFC
     //Attempt at static WFC class that can be used for different modules/modulesets
     public static class WaveFunctionCollapse
     {
+        private enum CurrentElementType { None, Room, Tile, Item };
+        private static CurrentElementType _curElementType;
+
         public static ElementBase[,] WFCGenerate(IModule[] moduleSet, Vector2Int gridSize)
         {
-            ElementBase[,] grid = new ElementBase[gridSize.x, gridSize.y];
+            _curElementType = DetermineType(moduleSet[0]);
+
+            ElementBase[,] grid = DetermineGridType(gridSize);
             List<Vector2Int> unreachedPositions = new List<Vector2Int>();
 
             for (int y = 0; y < gridSize.y; y++)
@@ -16,7 +21,8 @@ namespace WFC
                 for (int x = 0; x < gridSize.x; x++)
                 {
                     Vector2Int position = new Vector2Int(x, y);
-                    grid[x, y] = DetermineElementToCreate(moduleSet, position, gridSize);
+                    grid[x, y] = DetermineElementType(moduleSet, position, gridSize);
+
                     unreachedPositions.Add(position);
                 }
             }
@@ -45,25 +51,66 @@ namespace WFC
                         lowEntropyElements.Add(curElement);
                     }
                 }
-
                 rng = Random.Range(0, lowEntropyElements.Count);
                 curElement = lowEntropyElements[rng];
 
                 CollapseElement(curElement, grid);
                 unreachedPositions.Remove(curElement.GetPosition);
             }
-            return grid;
+            switch (_curElementType)
+            {
+                case CurrentElementType.Room:
+                    return grid as RoomElement[,];
+                case CurrentElementType.Tile:
+                    return grid as TileElement[,];
+                case CurrentElementType.Item:
+                    return grid as ItemElement[,];
+                default:
+                    Debug.Log("Grid returned null.");
+                    return null;
+            }
         }
-        private static ElementBase DetermineElementToCreate(IModule[] moduleSet, Vector2Int position, Vector2Int gridSize)
+        // Determine and return element to create and use in WFC method
+        private static CurrentElementType DetermineType(IModule module)
+        {
+            switch (module)
+            {
+                case RoomModule:
+                    return CurrentElementType.Room;
+                case TileModule:
+                    return CurrentElementType.Tile;
+                case ItemModule:
+                    return CurrentElementType.Item;
+            }
+
+            Debug.Log("Unmatched Element Type. WFC determining type.");
+            return CurrentElementType.None;
+        }
+        private static ElementBase[,] DetermineGridType(Vector2Int gridSize)
+        {
+            switch (_curElementType)
+            {
+                case CurrentElementType.Room:
+                    return new RoomElement[gridSize.x, gridSize.y];
+                case CurrentElementType.Tile:
+                    return new TileElement[gridSize.x, gridSize.y];
+                case CurrentElementType.Item:
+                    return new ItemElement[gridSize.x, gridSize.y];
+            }
+
+            Debug.Log("Module type not found. WFC determining element");
+            return null;
+        }
+        private static ElementBase DetermineElementType(IModule[] moduleSet, Vector2Int position, Vector2Int gridSize)
         {
             switch (moduleSet[0])
             {
                 case RoomModule:
-                    return new _RoomElement(moduleSet, position, gridSize);
+                    return new RoomElement(moduleSet, position);
                 case TileModule:
-                    return new _TileElement(moduleSet, position, gridSize);
+                    return new TileElement(moduleSet, position);
                 case ItemModule:
-                    return new _ItemElement(moduleSet, position, gridSize);
+                    return new ItemElement(moduleSet, position, gridSize);
             }
 
             Debug.Log("Module type not found. WFC determining element");

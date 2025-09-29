@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace WFC
-{
+/*
     public class ItemCreator : MonoBehaviour
     {
         //Singleton setup
@@ -147,7 +146,7 @@ namespace WFC
         }
     }
 
-    public class ItemElement
+    public class OLD_ItemElement
     {
         List<ItemModule> _options;
         ItemModule _selectedModule;
@@ -257,5 +256,4 @@ namespace WFC
                 bc.size = Vector2.one;
             }
         }
-    }
-}
+    }*/

@@ -16,18 +16,20 @@ namespace WFC
             Torch,
             Banner
         }
-        public ItemType itemType;
-        public TileBase tileBase;
+        [SerializeField] private ItemType _itemType;
+        [SerializeField] private TileBase _tileBase;
 
-        private ItemModule[] _north;
-        private ItemModule[] _east;
-        private ItemModule[] _south;
-        private ItemModule[] _west;
+        [SerializeField] private ItemModule[] _north;
+        [SerializeField] private ItemModule[] _east;
+        [SerializeField] private ItemModule[] _south;
+        [SerializeField] private ItemModule[] _west;
 
-        public IModule[] North { get => _north; set => value = _north; }
-        public IModule[] East { get => _north; set => value = _north; }
-        public IModule[] South { get => _north; set => value = _north; }
-        public IModule[] West { get => _north; set => value = _north; }
+        public ItemType GetItemType { get { return _itemType; } }
+        public TileBase GetTileBase { get { return _tileBase; } }
+        public IModule[] North { get => _north; set => _north = value as ItemModule[]; }
+        public IModule[] East { get => _east; set => _east = value as ItemModule[]; }
+        public IModule[] South { get => _south; set => _south = value as ItemModule[]; }
+        public IModule[] West { get => _west; set => _west = value as ItemModule[]; }
 
         public char GetTileSubType()
         {

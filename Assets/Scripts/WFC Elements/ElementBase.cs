@@ -8,12 +8,12 @@ namespace WFC
         protected List<IModule> _options;
         protected IModule _selectedModule;
         protected Vector2Int _position;
-        protected Vector2Int _gridSize;
+        protected bool _isEdge;
 
         public virtual List<IModule> GetOptions { get => _options; }
         public virtual IModule GetSelectedModule { get => _selectedModule; }
         public virtual Vector2Int GetPosition { get => _position; }
-        public virtual Vector2Int GetGridSize { get => _gridSize; }
+        public virtual bool GetEdgeBool { get => _isEdge; }
         public virtual int GetEntropy { get => _options.Count; }
 
         public abstract void Collapse();
@@ -23,9 +23,13 @@ namespace WFC
 
             for (int i = _options.Count - 1; i >= 0; i--)
             {
-                if (temp.Contains(_options[i]) == false)
+                if (!temp.Contains(_options[i]))
                     _options.RemoveAt(i);
             }
+        }
+        public virtual void RemoveOptionsFromPosition()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

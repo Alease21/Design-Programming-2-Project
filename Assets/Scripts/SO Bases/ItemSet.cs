@@ -6,9 +6,8 @@ namespace WFC
     [CreateAssetMenu(menuName = "WFC/Module Sets/New Item Module Set")]
     public class ItemSet : ScriptableObject, IModuleSet
     {
-        private ItemModule[] _itemModules;
-
-        public IModule[] Modules { get => _itemModules; set => value = _itemModules; }
+        [SerializeField] private ItemModule[] _itemModules;
+        public IModule[] Modules { get => _itemModules; set => _itemModules = value as ItemModule[]; }
 
         public void SetNeighbours()
         {
@@ -21,8 +20,8 @@ namespace WFC
 
                 for (int j = 0; j < _itemModules.Length; j++)
                 {
-                    ItemModule.ItemType curItemtype = _itemModules[i].itemType;
-                    ItemModule.ItemType itemTypeToEval = _itemModules[j].itemType;
+                    ItemModule.ItemType curItemtype = _itemModules[i].GetItemType;
+                    ItemModule.ItemType itemTypeToEval = _itemModules[j].GetItemType;
 
                     switch ((int)curItemtype)
                     {
