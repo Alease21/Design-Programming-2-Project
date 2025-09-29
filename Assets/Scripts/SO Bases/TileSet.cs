@@ -48,8 +48,9 @@ namespace WFC
                             if (curWallDirs[3] == 'W' && wallDirsToEvaluate[1] != 'E')
                                 west.Remove(tileToEvaluate);
                         }
+                        /*
                         else
-                        {/*
+                        {
                             if (curWallDirs[0] == 'N')
                                 north.Remove(tileToEvaluate);
                             if (curWallDirs[1] == 'E')
@@ -58,8 +59,7 @@ namespace WFC
                                 south.Remove(tileToEvaluate);
                             if (curWallDirs[3] == 'W')
                                 west.Remove(tileToEvaluate);
-                            */
-                        }
+                        }*/
                     }
                 }
 

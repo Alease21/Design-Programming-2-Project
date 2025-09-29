@@ -37,7 +37,7 @@ namespace WFC
 
         [SerializeField] Vector2Int _mapSize;
         [SerializeField] Vector2Int _roomSize;
-        [SerializeField] Tilemap _environTileMap;
+        [SerializeField] public Tilemap _environTileMap;
         [SerializeField] Tilemap _itemTileMap;
 
         private bool _isStartMade = false,
