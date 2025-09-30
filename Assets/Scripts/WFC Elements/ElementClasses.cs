@@ -155,120 +155,136 @@ namespace WFC
 
         public override void RemoveOptionsFromPosition()
         {
-            DungeonCreator dc = DungeonCreator.instance;
 
             for (int i = _options.Count - 1; i >= 0; i--)
             {
+                DungeonCreator dc = DungeonCreator.instance;
                 TileModule option = _options[i] as TileModule;
                 RoomModule curRM = dc.CurrentRoom.GetSelectedModule as RoomModule;
                 string roomExitDirs = curRM.GetDirString();
 
-                if (!_isEdge)
+                RemoveWallOptions(i);
+
+                if (_position.x == 1 || _position.x == dc.GetRoomSize.x - 2 ||
+                    _position.y == 1 || _position.y == dc.GetRoomSize.y - 2)
                 {
-                    if (option.GetTileType == TileModule.TileType.Wall)
+
+                }
+            }
+        }
+
+        public void RemoveWallOptions(int i)
+        {
+            DungeonCreator dc = DungeonCreator.instance;
+            TileModule option = _options[i] as TileModule;
+            RoomModule curRM = dc.CurrentRoom.GetSelectedModule as RoomModule;
+            string roomExitDirs = curRM.GetDirString();
+
+            if (!_isEdge)
+            {
+                if (option.GetTileType == TileModule.TileType.Wall)
+                    _options.RemoveAt(i);
+
+                if (_options.Count == 0)
+                    Debug.Log("Options 0 in !isedge");
+            }
+            else if (_position.x >= (float)dc.GetRoomSize.x / 2f - 1f && _position.x <= (float)dc.GetRoomSize.x / 2f)
+            {
+                if (_position.y == 0 && curRM.GetDirString()[2] == 'S')
+                {
+                    if (option.GetTileType != TileModule.TileType.Floor)
                         _options.RemoveAt(i);
-                    
-                    if (_options.Count == 0)
-                        Debug.Log("Options 0 in !isedge");
                 }
-                else if (_position.x >= (float)dc.GetRoomSize.x / 2f - 1f && _position.x <= (float)dc.GetRoomSize.x / 2f)
+                else if (_position.y == dc.GetRoomSize.y - 1 && curRM.GetDirString()[0] == 'N')
                 {
-                    if (_position.y == 0 && curRM.GetDirString()[2] == 'S')
-                    {
-                        if (option.GetTileType != TileModule.TileType.Floor)
-                            _options.RemoveAt(i);
-                    }
-                    else if (_position.y == dc.GetRoomSize.y - 1 && curRM.GetDirString()[0] == 'N')
-                    {
-                        if (option.GetTileType != TileModule.TileType.Floor)
-                            _options.RemoveAt(i);
-                    }
-                    else
-                    {
-                        if (option.GetTileType != TileModule.TileType.Wall)
-                        {
-                            _options.RemoveAt(i);
-                        }
-                    }
-
-                    if (_options.Count == 0)
-                        Debug.Log("Options 0 in x exit zone");
-                }
-                else if (_position.y >= (float)dc.GetRoomSize.y / 2f - 1f && _position.y <= (float)dc.GetRoomSize.y / 2f)
-                {
-                    if (_position.x == 0 && curRM.GetDirString()[3] == 'W')
-                    {
-                        if (option.GetTileType != TileModule.TileType.Floor)
-                            _options.RemoveAt(i);
-                    }
-                    else if (_position.x == dc.GetRoomSize.x - 1 && curRM.GetDirString()[1] == 'E')
-                    {
-                        if (option.GetTileType != TileModule.TileType.Floor)
-                            _options.RemoveAt(i);
-                    }
-                    else
-                    {
-                        if (option.GetTileType != TileModule.TileType.Wall)
-                            _options.RemoveAt(i);
-                    }
-
-                    if (_options.Count == 0)
-                        Debug.Log("Options 0 in y exit zone");
+                    if (option.GetTileType != TileModule.TileType.Floor)
+                        _options.RemoveAt(i);
                 }
                 else
                 {
                     if (option.GetTileType != TileModule.TileType.Wall)
                     {
                         _options.RemoveAt(i);
+                    }
+                }
+
+                if (_options.Count == 0)
+                    Debug.Log("Options 0 in x exit zone");
+            }
+            else if (_position.y >= (float)dc.GetRoomSize.y / 2f - 1f && _position.y <= (float)dc.GetRoomSize.y / 2f)
+            {
+                if (_position.x == 0 && curRM.GetDirString()[3] == 'W')
+                {
+                    if (option.GetTileType != TileModule.TileType.Floor)
+                        _options.RemoveAt(i);
+                }
+                else if (_position.x == dc.GetRoomSize.x - 1 && curRM.GetDirString()[1] == 'E')
+                {
+                    if (option.GetTileType != TileModule.TileType.Floor)
+                        _options.RemoveAt(i);
+                }
+                else
+                {
+                    if (option.GetTileType != TileModule.TileType.Wall)
+                        _options.RemoveAt(i);
+                }
+
+                if (_options.Count == 0)
+                    Debug.Log("Options 0 in y exit zone");
+            }
+            else
+            {
+                if (option.GetTileType != TileModule.TileType.Wall)
+                {
+                    _options.RemoveAt(i);
+
+                    if (_options.Count == 0)
+                        Debug.Log("Options 0 in != wall edge");
+                }
+                else
+                {
+                    if ((_position.x == 0 || _position.x == dc.GetRoomSize.x - 1) &&
+                        (_position.y == 0 || _position.y == dc.GetRoomSize.y - 1))
+                    {
+                        if (_position == new Vector2Int(0, 0))
+                        {
+                            if (option.GetWallDirections()[2] == 'S' || option.GetWallDirections()[3] == 'W')
+                                _options.RemoveAt(i);
+                        }
+                        else if (_position == new Vector2Int(0, dc.GetRoomSize.y - 1))
+                        {
+                            if (option.GetWallDirections()[0] == 'N' || option.GetWallDirections()[3] == 'W')
+                                _options.RemoveAt(i);
+                        }
+                        else if (_position == new Vector2Int(dc.GetRoomSize.x - 1, 0))
+                        {
+                            if (option.GetWallDirections()[0] == 'S' || option.GetWallDirections()[1] == 'E')
+                                _options.RemoveAt(i);
+                        }
+                        else if (_position == new Vector2Int(dc.GetRoomSize.x - 1, dc.GetRoomSize.y - 1))
+                        {
+                            if (option.GetWallDirections()[0] == 'N' || option.GetWallDirections()[1] == 'E')
+                                _options.RemoveAt(i);
+                        }
 
                         if (_options.Count == 0)
-                            Debug.Log("Options 0 in != wall edge");
+                            Debug.Log("Options 0 in corner walls");
                     }
                     else
                     {
-                        if ((_position.x == 0 || _position.x == dc.GetRoomSize.x - 1) &&
-                            (_position.y == 0 || _position.y == dc.GetRoomSize.y - 1))
+                        if (_position.x == 0 || _position.x == dc.GetRoomSize.x - 1)
                         {
-                            if (_position == new Vector2Int(0, 0))
-                            {
-                                if (option.GetWallDirections()[2] == 'S' || option.GetWallDirections()[3] == 'W')
-                                    _options.RemoveAt(i);
-                            }
-                            else if (_position == new Vector2Int(0, dc.GetRoomSize.y - 1))
-                            {
-                                if (option.GetWallDirections()[0] == 'N' || option.GetWallDirections()[3] == 'W')
-                                    _options.RemoveAt(i);
-                            }
-                            else if (_position == new Vector2Int(dc.GetRoomSize.x - 1, 0))
-                            {
-                                if (option.GetWallDirections()[0] == 'S' || option.GetWallDirections()[1] == 'E')
-                                    _options.RemoveAt(i);
-                            }
-                            else if (_position == new Vector2Int(dc.GetRoomSize.x - 1, dc.GetRoomSize.y - 1))
-                            {
-                                if (option.GetWallDirections()[0] == 'N' || option.GetWallDirections()[1] == 'E')
-                                    _options.RemoveAt(i);
-                            }
-
-                            if (_options.Count == 0)
-                                Debug.Log("Options 0 in corner walls");
+                            if (option.GetWallDirections()[0] == 'W' || option.GetWallDirections()[1] == 'E')
+                                _options.RemoveAt(i);
                         }
-                        else
+                        else if (_position.y == 0 || _position.y == dc.GetRoomSize.y - 1)
                         {
-                            if (_position.x == 0 || _position.x == dc.GetRoomSize.x - 1)
-                            {
-                                if (option.GetWallDirections()[0] == 'W' || option.GetWallDirections()[1] == 'E')
-                                    _options.RemoveAt(i);
-                            }
-                            else if (_position.y == 0 || _position.y == dc.GetRoomSize.y - 1)
-                            {
-                                if (option.GetWallDirections()[0] == 'N' || option.GetWallDirections()[2] == 'S')
-                                    _options.RemoveAt(i);
-                            }
-
-                            if (_options.Count == 0)
-                                Debug.Log("Options 0 in non corner, non exit walls");
+                            if (option.GetWallDirections()[0] == 'N' || option.GetWallDirections()[2] == 'S')
+                                _options.RemoveAt(i);
                         }
+
+                        if (_options.Count == 0)
+                            Debug.Log("Options 0 in non corner, non exit walls");
                     }
                 }
             }
