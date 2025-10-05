@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35795c911a5d834f9fb107b07d1dd89, type: 3}
   m_Name: R_-ES-
   m_EditorClassIdentifier: 
-  _roomType: 0
+  _roomType: 1
+  _roomPrefabOptions:
+  - {fileID: 1514518168445184505, guid: 00bb68ff4454e7e4997b609d77fedf0e, type: 3}
+  - {fileID: 1514518168445184505, guid: a17946cdf6a0ab041bab79a3f7b400ca, type: 3}
+  - {fileID: 1514518168445184505, guid: 7fac0400c00f7994ca08131c13588b2a, type: 3}
+  - {fileID: 1514518168445184505, guid: cc131b436df76be449021857f298b082, type: 3}
   _roomSprite: {fileID: 5829866559121211939, guid: 63a887c70ea206b488b30d8aacfe3144, type: 3}
   _north:
   - {fileID: 11400000, guid: e5687d9eb1bc47b4691e4ace63c77fd0, type: 2}

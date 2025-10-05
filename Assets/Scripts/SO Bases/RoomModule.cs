@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace WFC
 {
@@ -13,6 +14,7 @@ namespace WFC
             //TableRoom
         }
         [SerializeField] private RoomTypes _roomType;
+        [SerializeField] private Tilemap[] _roomPrefabOptions;
         [SerializeField] private Sprite _roomSprite;
 
         [SerializeField] private RoomModule[] _north;
@@ -22,6 +24,7 @@ namespace WFC
 
         public RoomTypes RoomType { get { return _roomType; } set { _roomType = value; } }
         public Sprite GetRoomSprite { get { return _roomSprite; } }
+        public Tilemap[] GetRoomPrefabs { get { return _roomPrefabOptions; } }
         public IModule[] North { get => _north; set => _north = value as RoomModule[]; }
         public IModule[] East { get => _east; set => _east = value as RoomModule[]; }
         public IModule[] South { get => _south; set => _south = value as RoomModule[]; }

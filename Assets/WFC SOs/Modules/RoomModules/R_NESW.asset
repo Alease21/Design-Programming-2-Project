@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35795c911a5d834f9fb107b07d1dd89, type: 3}
   m_Name: R_NESW
   m_EditorClassIdentifier: 
-  _roomType: 1
+  _roomType: 0
+  _roomPrefabOptions:
+  - {fileID: 5601637934193506539, guid: 440c1234c1314474e95ff069a69efb60, type: 3}
+  - {fileID: 7791982542631626705, guid: c046b165b4d486146bef4fece3e84846, type: 3}
+  - {fileID: 2438735673323661104, guid: 2a5c664cee4c64b4a9998cad4e0d6d4e, type: 3}
+  - {fileID: 8882897022868610816, guid: 3b21a31a59cb72d4c981161eb1ee3bb5, type: 3}
   _roomSprite: {fileID: -8147409504821671991, guid: 411e77d6dc6718a4f860278592e140ae, type: 3}
   _north:
   - {fileID: 11400000, guid: df76e0eabc7bb8846be70d680202dde4, type: 2}

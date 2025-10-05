@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: R_NES-
   m_EditorClassIdentifier: 
   _roomType: 0
+  _roomPrefabOptions:
+  - {fileID: 155874311138943876, guid: a236fdb4280e65f4595dca7247219e28, type: 3}
+  - {fileID: 155874311138943876, guid: b7477794b0cdaa240a0b8decebc0a90f, type: 3}
+  - {fileID: 155874311138943876, guid: 6ce81cabcaf89e84e845b8fa33c610a6, type: 3}
+  - {fileID: 155874311138943876, guid: a5b018492cfca6b4db042727ff4fe7cc, type: 3}
   _roomSprite: {fileID: 4514746774029599080, guid: e1289b97cfa73494aa6ef6a7b4f66ed9, type: 3}
   _north:
   - {fileID: 11400000, guid: df76e0eabc7bb8846be70d680202dde4, type: 2}

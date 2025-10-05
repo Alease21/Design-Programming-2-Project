@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: R_N-SW
   m_EditorClassIdentifier: 
   _roomType: 0
+  _roomPrefabOptions:
+  - {fileID: 8511175844795570877, guid: 5658e845cbde0b046ac3c2aa6ffe29fe, type: 3}
+  - {fileID: 8511175844795570877, guid: f6be12b315d242c4c8160f25a4817e3b, type: 3}
+  - {fileID: 8511175844795570877, guid: 73d25c3a3171dec44a5141137a738e4f, type: 3}
+  - {fileID: 8511175844795570877, guid: 3c6934ad3e953d54a99b9296c64af2dd, type: 3}
   _roomSprite: {fileID: -1115281248100020169, guid: c1c59f7121c6ab84aa1108f97296beff, type: 3}
   _north:
   - {fileID: 11400000, guid: df76e0eabc7bb8846be70d680202dde4, type: 2}

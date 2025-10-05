@@ -153,9 +153,9 @@ namespace WFC
                         else
                         {
                             Vector2Int pos = new Vector2Int(x, y);
-                            CreateRoomPlaceholderSprite(pos);
+                            CreateRoom(_roomGrid[x,y]);
 
-                            CollapseTiles(_roomGrid[x, y]);
+                            //CollapseTiles(_roomGrid[x, y]);
                             //Item WFC, item place, and add grid to list
                             yield return null;
                         }
@@ -221,28 +221,41 @@ namespace WFC
         }
         #endregion
 
-        public void CreateRoomPlaceholderSprite(Vector2Int pos)
+        public void CreateRoom(RoomElement room)
         {
-            RoomModule roomModule = _roomGrid[pos.x, pos.y].GetSelectedModule as RoomModule;
+            RoomModule roomModule = room.GetSelectedModule as RoomModule;
             roomModule.RoomType = (RoomModule.RoomTypes)Random.Range((int)0, 2);
 
             GameObject newRoomGO = GameObject.Instantiate(Resources.Load<GameObject>("RoomEmpty"), transform);
             SpriteRenderer roomRenderer = newRoomGO.GetComponentInChildren<SpriteRenderer>();
             Transform newTileTrans = newRoomGO.transform.GetChild(0).transform;
 
-            newRoomGO.transform.localPosition = new Vector3Int(_roomGrid[pos.x, pos.y].GetPosition.x * _roomSize.x,
-                _roomGrid[pos.x, pos.y].GetPosition.y * _roomSize.y, (int)newRoomGO.transform.localPosition.z);
+            newRoomGO.transform.localPosition = new Vector3Int(room.GetPosition.x * _roomSize.x,
+                room.GetPosition.y * _roomSize.y, (int)newRoomGO.transform.localPosition.z);
             roomRenderer.sprite = roomModule.GetRoomSprite;
             newTileTrans.localScale = new Vector3(newTileTrans.localScale.x * _roomSize.x,
                 newTileTrans.localScale.y * _roomSize.y, newTileTrans.localScale.z);
 
-            if (pos.x == _startRoom.GetPosition.x && pos.y == _startRoom.GetPosition.y)
+            if (room.GetPosition.x == _startRoom.GetPosition.x && room.GetPosition.y == _startRoom.GetPosition.y)
             {
                 roomRenderer.color = Color.green;
             }
-            else if (pos.x == _exitRoom.GetPosition.x && pos.y == _exitRoom.GetPosition.y)
+            else if (room.GetPosition.x == _exitRoom.GetPosition.x && room.GetPosition.y == _exitRoom.GetPosition.y)
             {
                 roomRenderer.color = Color.red;
+            }
+
+            int rng = Random.Range(0, roomModule.GetRoomPrefabs.Length);
+            Tilemap tilemapPrefab = roomModule.GetRoomPrefabs[rng];
+
+            for (int x = 0; x < _roomSize.x ; x++)
+            {
+                for (int y = 0; y < _roomSize.y; y++)
+                {
+                    _environTileMap.SetTile(new Vector3Int(x + room.GetPosition.x * _roomSize.x - _roomSize.x / 2, 
+                            y + room.GetPosition.y * _roomSize.y - _roomSize.y / 2, (int)_environTileMap.transform.position.z), 
+                            tilemapPrefab.GetTile(new Vector3Int(x - _roomSize.x / 2, y - _roomSize.y /2)));
+                }
             }
         }
         public void CreateTiles(TileElement[,] curTileGrid)
