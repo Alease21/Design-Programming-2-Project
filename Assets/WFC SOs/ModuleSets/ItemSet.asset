@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9055c35042ce4774e8029f4eb11b08c0, type: 3}
   m_Name: ItemSet
   m_EditorClassIdentifier: 
-  itemModules:
+  _itemModules:
   - {fileID: 11400000, guid: e6ff67c6f02791647b78b5289886e671, type: 2}
   - {fileID: 11400000, guid: 17ca4f698cc283b48972af1fd731775e, type: 2}
   - {fileID: 11400000, guid: ab52b9d8c3ced4d46ad22b207e8fa5d2, type: 2}
@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95f2c77008c9fa9489f7f1f84170fef5, type: 2}
   - {fileID: 11400000, guid: b24f33728b637dd4694d17d41ced89f7, type: 2}
   - {fileID: 11400000, guid: a03a621a86ea3f94282ad599cfc5f1b7, type: 2}
+  - {fileID: 11400000, guid: 805360e9915a7b1448aca96a3747f6db, type: 2}

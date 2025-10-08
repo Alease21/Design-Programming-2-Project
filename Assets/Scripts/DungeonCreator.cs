@@ -32,8 +32,8 @@ namespace WFC
         [SerializeField] private TileSet _tileSet;
         [SerializeField] private ItemSet _itemSet;
         private RoomElement[,] _roomGrid;
-        private Dictionary<TileElement[,], RoomElement> _tileGridDict = new Dictionary<TileElement[,], RoomElement>();
-        private Dictionary<ItemElement[,], RoomElement> _itemGridDict = new Dictionary<ItemElement[,], RoomElement>();
+        //private Dictionary<TileElement[,], RoomElement> _tileGridDict = new Dictionary<TileElement[,], RoomElement>();
+        //private Dictionary<RoomElement, byte[,]> _itemGridDict = new Dictionary<RoomElement, byte[,]>();
 
         [SerializeField] Vector2Int _mapSize;
         [SerializeField] Vector2Int _roomSize;
@@ -56,8 +56,8 @@ namespace WFC
         public RoomElement StartRoom { get { return _startRoom; } set { _startRoom = value; } }
         public RoomElement ExitRoom { get { return _exitRoom; } set { _exitRoom = value; } }
         public RoomElement CurrentRoom { get { return _currentRoom; } set { _currentRoom = value; } }
-        public Dictionary<TileElement[,], RoomElement> GetTileGridDict { get { return _tileGridDict; } }
-        public Dictionary<ItemElement[,], RoomElement> GetItemGridDict { get { return _itemGridDict; } }
+        //public Dictionary<TileElement[,], RoomElement> GetTileGridDict { get { return _tileGridDict; } }
+        //public Dictionary<RoomElement, byte[,]> GetItemGridDict { get { return _itemGridDict; } }
         public Vector2Int GetMapSize { get { return _mapSize; } }
         public Vector2Int GetRoomSize { get { return _roomSize; } }
 
@@ -107,23 +107,25 @@ namespace WFC
         public void CollapseRooms()
         {
             _stopWatch.Start();
+            _roomGrid = new RoomElement[_roomSize.x, _roomSize.y];
 
             _roomGrid = WFCGenerate(_roomSet.Modules, _mapSize) as RoomElement[,];
             StartCoroutine(SearchPathCoro());
         }
-        public void CollapseTiles(RoomElement curRoom)
+
+        /*public void CollapseTiles(RoomElement curRoom)
         {
             _currentRoom = curRoom;
 
             TileElement[,] curTileGrid = WFCGenerate(_tileSet.Modules, _roomSize) as TileElement[,];
             _tileGridDict.Add(curTileGrid, curRoom);
-            CreateTiles(curTileGrid);
-        }
-        public void CollaposeItems()
+            //CreateTiles(curTileGrid);
+        }*/
+
+        public void CollapseItems(RoomElement room)
         {
-            ItemElement[,] curTileGrid = WFCGenerate(_tileSet.Modules, _roomSize) as ItemElement[,];
-            //_itemGrids.Add(curTileGrid);
-            //CreateItems(curTileGrid);
+            ItemElement[,] curItemGrid = WFCGenerate(_itemSet.Modules, _roomSize, room) as ItemElement[,];
+            CreateItems(curItemGrid, room);
         }
 
         #region True Path Recursion
@@ -153,9 +155,9 @@ namespace WFC
                         else
                         {
                             Vector2Int pos = new Vector2Int(x, y);
-                            CreateRoom(_roomGrid[x,y]);
+                            CreateRoom(_roomGrid[x, y]);
+                            CollapseItems(_roomGrid[x, y]);
 
-                            //CollapseTiles(_roomGrid[x, y]);
                             //Item WFC, item place, and add grid to list
                             yield return null;
                         }
@@ -245,20 +247,20 @@ namespace WFC
                 roomRenderer.color = Color.red;
             }
 
-            int rng = Random.Range(0, roomModule.GetRoomPrefabs.Length);
-            Tilemap tilemapPrefab = roomModule.GetRoomPrefabs[rng];
+            Tilemap tilemapPrefab = room.GetSelectedRoomPrefab;
+            byte[,] tileTypeMap = new byte[_roomSize.x, _roomSize.y];
 
-            for (int x = 0; x < _roomSize.x ; x++)
+            for (int x = 0; x < _roomSize.x; x++)
             {
                 for (int y = 0; y < _roomSize.y; y++)
                 {
-                    _environTileMap.SetTile(new Vector3Int(x + room.GetPosition.x * _roomSize.x - _roomSize.x / 2, 
-                            y + room.GetPosition.y * _roomSize.y - _roomSize.y / 2, (int)_environTileMap.transform.position.z), 
-                            tilemapPrefab.GetTile(new Vector3Int(x - _roomSize.x / 2, y - _roomSize.y /2)));
+                    _environTileMap.SetTile(new Vector3Int(x + room.GetPosition.x * _roomSize.x - _roomSize.x / 2,
+                            y + room.GetPosition.y * _roomSize.y - _roomSize.y / 2, (int)_environTileMap.transform.position.z),
+                            tilemapPrefab.GetTile(new Vector3Int(x - _roomSize.x / 2, y - _roomSize.y / 2)));
                 }
             }
         }
-        public void CreateTiles(TileElement[,] curTileGrid)
+        /*public void CreateTiles(TileElement[,] curTileGrid)
         {
             for (int x = 0; x < curTileGrid.GetLength(0); x++)
             {
@@ -278,6 +280,23 @@ namespace WFC
                         bc.size = Vector2.one;
                     }
                 }
+            }
+        }*/
+        public void CreateItems(ItemElement[,] itemRoomGrid, RoomElement room)
+        {
+            for (int x = 0; x < itemRoomGrid.GetLength(0); x++)
+            {
+                for (int y = 0; y < itemRoomGrid.GetLength(1); y++)
+                {
+                    ItemModule item = itemRoomGrid[x, y].GetSelectedModule as ItemModule;
+
+                    if (item.GetItemSubType() != 'N')
+                    {
+                        _itemTileMap.SetTile(new Vector3Int(x + room.GetPosition.x * _roomSize.x - _roomSize.x / 2,
+                            y + room.GetPosition.y * _roomSize.y - _roomSize.y / 2, (int)_itemTileMap.transform.position.z),
+                            item.GetTileBase);
+                    }
+                } 
             }
         }
     }

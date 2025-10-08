@@ -1,13 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 namespace WFC
 {
     public class RoomElement : ElementBase
     {
         private bool _isTruePath = false;
+        private Tilemap _selectedRoomPrefab;
+        private byte[,] _roomByteMap;
 
         public bool IsTruePath { get { return _isTruePath; } set { _isTruePath = value; } }
+        public Tilemap GetSelectedRoomPrefab { get { return _selectedRoomPrefab; } }
+        public byte[,] GetRoomByteMap { get { return _roomByteMap; } }
 
         public RoomElement(IModule[] options, Vector2Int position)
         {
@@ -24,10 +29,32 @@ namespace WFC
 
         public override void Collapse()
         {
+
             RemoveOptionsFromPosition();
 
             int rng = Random.Range(0, _options.Count);
             _selectedModule = _options[rng];
+
+            //set tilemap prefab for ref in item WFC
+            rng = Random.Range(0, (_selectedModule as RoomModule).GetRoomPrefabs.Length);
+            _selectedRoomPrefab = (_selectedModule as RoomModule).GetRoomPrefabs[rng];
+
+            Vector2Int roomSize = DungeonCreator.instance.GetRoomSize;
+            _roomByteMap = new byte[roomSize.x, roomSize.y];
+
+            for (int x = 0; x < roomSize.x; x++)
+            {
+                for (int y = 0; y < roomSize.y; y++)
+                {
+                    if (_selectedRoomPrefab.GetTile(new Vector3Int(x - roomSize.x / 2, y - roomSize.y / 2)).name[0] == 'P') //If tile is pit set to 2
+                        _roomByteMap[x, y] = 2;
+                    else if (_selectedRoomPrefab.GetTile(new Vector3Int(x - roomSize.x / 2, y - roomSize.y / 2)).name[0] == 'W')//If tile is wall set to 1
+                        _roomByteMap[x, y] = 1;
+                    else //If tile is floor set to 0
+                        _roomByteMap[x, y] = 0;
+                }
+            }
+
         }
 
         public override void RemoveOptionsFromPosition()
@@ -54,7 +81,8 @@ namespace WFC
                     edgeNS = 'N';
 
                 if (!dc.IsStartMade ||
-                    !dc.IsExitMade && distFromStart > 0.65f * dc.GetMapSize.magnitude)
+                    !dc.IsExitMade && distFromStart > 0.65f * dc.GetMapSize.magnitude) // 0.65f just a magic number for min dist an exit can be made
+                                                                                       // (make variable at some point)
                 {
                     if (!dc.IsStartMade)
                     {
@@ -102,9 +130,10 @@ namespace WFC
             }
         }
     }
-
+    /*
     public class TileElement : ElementBase
     {
+        
         public TileElement(IModule[] options, Vector2Int position)
         {
             _options = new List<IModule>(options);
@@ -132,23 +161,23 @@ namespace WFC
                 _selectedModule = _options[rng];
 
 
-            
+
             //Moved here for debugging
             //
-                DungeonCreator dc = DungeonCreator.instance;
-                TileModule tm = _selectedModule as TileModule;
-                Vector2Int adjustedPos = _position + dc.CurrentRoom.GetPosition * dc.GetRoomSize;
+            DungeonCreator dc = DungeonCreator.instance;
+            TileModule tm = _selectedModule as TileModule;
+            Vector2Int adjustedPos = _position + dc.CurrentRoom.GetPosition * dc.GetRoomSize;
 
-                dc._environTileMap.SetTile((Vector3Int)adjustedPos, tm.GetTileBase);
+            dc._environTileMap.SetTile((Vector3Int)adjustedPos, tm.GetTileBase);
 
-                if (tm.GetTileType != TileModule.TileType.Floor)
-                {
-                    GameObject tileBounds = new($"({adjustedPos.x},{adjustedPos.y})");
-                    tileBounds.transform.parent = dc._environTileMap.transform.parent.Find("DungeonBoundaries");
-                    tileBounds.transform.position = new Vector3(adjustedPos.x + 0.5f, adjustedPos.y + 0.5f, 0);
-                    BoxCollider2D bc = tileBounds.AddComponent<BoxCollider2D>();
-                    bc.size = Vector2.one;
-                }
+            if (tm.GetTileType != TileModule.TileType.Floor)
+            {
+                GameObject tileBounds = new($"({adjustedPos.x},{adjustedPos.y})");
+                tileBounds.transform.parent = dc._environTileMap.transform.parent.Find("DungeonBoundaries");
+                tileBounds.transform.position = new Vector3(adjustedPos.x + 0.5f, adjustedPos.y + 0.5f, 0);
+                BoxCollider2D bc = tileBounds.AddComponent<BoxCollider2D>();
+                bc.size = Vector2.one;
+            }
             //
             //
         }
@@ -290,13 +319,16 @@ namespace WFC
             }
         }
     }
-
+    */
     public class ItemElement : ElementBase
     {
-        public ItemElement(IModule[] options, Vector2Int position, Vector2Int roomSize)
+        private RoomElement _room;
+
+        public ItemElement(IModule[] options, Vector2Int position, RoomElement room)
         {
             _options = new List<IModule>(options);
             _position = position;
+            _room = room;
 
             if (_position.x == 0 || _position.x == DungeonCreator.instance.GetRoomSize.x - 1 ||
                 _position.y == 0 || _position.y == DungeonCreator.instance.GetRoomSize.y - 1)
@@ -308,7 +340,38 @@ namespace WFC
 
         public override void Collapse()
         {
-            //
+            RemoveOptionsFromPosition();
+
+            int rng = Random.Range(0, _options.Count);
+            _selectedModule = _options[rng];
+        }
+
+        public override void RemoveOptionsFromPosition()
+        {
+            DungeonCreator dc = DungeonCreator.instance;
+
+            for (int i = _options.Count - 1; i >= 0; i--)
+            {
+                ItemModule option = _options[i] as ItemModule;
+                char locType = option.GetItemLocationType();
+                char subType = option.GetItemSubType();
+
+                switch (_room.GetRoomByteMap[_position.x, _position.y])
+                {
+                    case 0:
+                        if (locType != 'F' && subType != 'N') // remove non floor items
+                            _options.RemoveAt(i);
+                        break;
+                    case 1:
+                        if (locType != 'W' && subType != 'N') // remove non wall items
+                            _options.RemoveAt(i);
+                        break;
+                    case 2:
+                        if (subType != 'N') // remove non "None" type items if tile is a pit
+                            _options.RemoveAt(i);
+                        break;
+                }
+            }
         }
     }
 }

@@ -12,37 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b23f50a851114488ac69b52ae9afb3, type: 3}
   m_Name: IWB0
   m_EditorClassIdentifier: 
-  itemType: 6
-  tileBase: {fileID: 11400000, guid: a1dffc2c2cdae92429181b0acc50f406, type: 2}
-  north:
+  _itemType: 6
+  _tileBase: {fileID: 11400000, guid: 39d22989576bccf4fbdb247e828e9c3e, type: 2}
+  _north:
   - {fileID: 11400000, guid: e6ff67c6f02791647b78b5289886e671, type: 2}
   - {fileID: 11400000, guid: 17ca4f698cc283b48972af1fd731775e, type: 2}
   - {fileID: 11400000, guid: ab52b9d8c3ced4d46ad22b207e8fa5d2, type: 2}
-  - {fileID: 11400000, guid: 73fc617a2199e074d8c57f4821e1c95b, type: 2}
-  - {fileID: 11400000}
   - {fileID: 11400000, guid: b24f33728b637dd4694d17d41ced89f7, type: 2}
-  - {fileID: 11400000, guid: a03a621a86ea3f94282ad599cfc5f1b7, type: 2}
-  east:
+  _east:
   - {fileID: 11400000, guid: e6ff67c6f02791647b78b5289886e671, type: 2}
   - {fileID: 11400000, guid: 17ca4f698cc283b48972af1fd731775e, type: 2}
   - {fileID: 11400000, guid: ab52b9d8c3ced4d46ad22b207e8fa5d2, type: 2}
-  - {fileID: 11400000, guid: 73fc617a2199e074d8c57f4821e1c95b, type: 2}
-  - {fileID: 11400000}
   - {fileID: 11400000, guid: b24f33728b637dd4694d17d41ced89f7, type: 2}
-  - {fileID: 11400000, guid: a03a621a86ea3f94282ad599cfc5f1b7, type: 2}
-  south:
+  _south:
   - {fileID: 11400000, guid: e6ff67c6f02791647b78b5289886e671, type: 2}
   - {fileID: 11400000, guid: 17ca4f698cc283b48972af1fd731775e, type: 2}
   - {fileID: 11400000, guid: ab52b9d8c3ced4d46ad22b207e8fa5d2, type: 2}
-  - {fileID: 11400000, guid: 73fc617a2199e074d8c57f4821e1c95b, type: 2}
-  - {fileID: 11400000}
   - {fileID: 11400000, guid: b24f33728b637dd4694d17d41ced89f7, type: 2}
-  - {fileID: 11400000, guid: a03a621a86ea3f94282ad599cfc5f1b7, type: 2}
-  west:
+  _west:
   - {fileID: 11400000, guid: e6ff67c6f02791647b78b5289886e671, type: 2}
   - {fileID: 11400000, guid: 17ca4f698cc283b48972af1fd731775e, type: 2}
   - {fileID: 11400000, guid: ab52b9d8c3ced4d46ad22b207e8fa5d2, type: 2}
-  - {fileID: 11400000, guid: 73fc617a2199e074d8c57f4821e1c95b, type: 2}
-  - {fileID: 11400000}
   - {fileID: 11400000, guid: b24f33728b637dd4694d17d41ced89f7, type: 2}
-  - {fileID: 11400000, guid: a03a621a86ea3f94282ad599cfc5f1b7, type: 2}

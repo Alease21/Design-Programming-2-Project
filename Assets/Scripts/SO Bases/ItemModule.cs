@@ -31,9 +31,13 @@ namespace WFC
         public IModule[] South { get => _south; set => _south = value as ItemModule[]; }
         public IModule[] West { get => _west; set => _west = value as ItemModule[]; }
 
-        public char GetTileSubType()
+        public char GetItemSubType()
         {
-            return name[3];
+            return name[2];
+        }
+        public char GetItemLocationType()
+        {
+            return name[1];
         }
     }
 }
