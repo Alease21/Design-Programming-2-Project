@@ -67,7 +67,7 @@ namespace WFC
                 case CurrentElementType.Item:
                     return grid as ItemElement[,];
                 default:
-                    Debug.Log("Grid returned null.");
+                    Debug.LogError("Grid returned null.");
                     return null;
             }
         }
@@ -84,7 +84,7 @@ namespace WFC
                     return CurrentElementType.Item;
             }
 
-            Debug.Log("Unmatched Element Type. WFC determining type.");
+            Debug.LogError("Unmatched Element Type. WFC determining type.");
             return CurrentElementType.None;
         }
         private static ElementBase[,] DetermineGridType(Vector2Int gridSize)
@@ -100,7 +100,7 @@ namespace WFC
                     return new ItemElement[gridSize.x, gridSize.y];
             }
 
-            Debug.Log("Module type not found. WFC determining element");
+            Debug.LogError("Module type not found. WFC determining element");
             return null;
         }
         private static ElementBase DetermineElementType(IModule[] moduleSet, Vector2Int position, RoomElement room)
@@ -116,7 +116,7 @@ namespace WFC
                     return new ItemElement(moduleSet, position, room);
             }
 
-            Debug.Log("Module type not found. WFC determining element");
+            Debug.LogError("Module type not found. WFC determining element");
             return null;
         }
 

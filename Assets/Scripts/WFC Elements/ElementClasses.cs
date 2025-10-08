@@ -130,7 +130,8 @@ namespace WFC
             }
         }
     }
-    /*
+    /*  Tile Elements currently not used. Swapped to preset room layouts
+     * 
     public class TileElement : ElementBase
     {
         
@@ -359,15 +360,15 @@ namespace WFC
                 switch (_room.GetRoomByteMap[_position.x, _position.y])
                 {
                     case 0:
-                        if (locType != 'F' && subType != 'N') // remove non floor items
+                        if (locType != 'F' && subType != 'N') // remove non floor type items
                             _options.RemoveAt(i);
                         break;
                     case 1:
-                        if (locType != 'W' && subType != 'N') // remove non wall items
+                        if (locType != 'W' && subType != 'N') // remove non wall type items
                             _options.RemoveAt(i);
                         break;
                     case 2:
-                        if (subType != 'N') // remove non "None" type items if tile is a pit
+                        if (subType != 'N') // if tile is pit, remove any items that aren't "None" type
                             _options.RemoveAt(i);
                         break;
                 }

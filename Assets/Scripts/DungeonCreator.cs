@@ -23,6 +23,7 @@ namespace WFC
             }
             //
 
+            //Initial neighbor sets in case project didn't load with them correctly
             _roomSet.SetNeighbours();
             _tileSet.SetNeighbours();
             _itemSet.SetNeighbours();
@@ -32,8 +33,6 @@ namespace WFC
         [SerializeField] private TileSet _tileSet;
         [SerializeField] private ItemSet _itemSet;
         private RoomElement[,] _roomGrid;
-        //private Dictionary<TileElement[,], RoomElement> _tileGridDict = new Dictionary<TileElement[,], RoomElement>();
-        //private Dictionary<RoomElement, byte[,]> _itemGridDict = new Dictionary<RoomElement, byte[,]>();
 
         [SerializeField] Vector2Int _mapSize;
         [SerializeField] Vector2Int _roomSize;
@@ -43,8 +42,7 @@ namespace WFC
         private bool _isStartMade = false,
                      _isExitMade = false;
         private RoomElement _startRoom,
-                            _exitRoom,
-                            _currentRoom; //used to track and reference in WFC during tile & items
+                            _exitRoom;
         private int numPathsOpen = 0,
                     numDungeonTiles = 0;
 
@@ -55,9 +53,6 @@ namespace WFC
         public bool IsExitMade { get { return _isExitMade; } set { _isExitMade = value; } }
         public RoomElement StartRoom { get { return _startRoom; } set { _startRoom = value; } }
         public RoomElement ExitRoom { get { return _exitRoom; } set { _exitRoom = value; } }
-        public RoomElement CurrentRoom { get { return _currentRoom; } set { _currentRoom = value; } }
-        //public Dictionary<TileElement[,], RoomElement> GetTileGridDict { get { return _tileGridDict; } }
-        //public Dictionary<RoomElement, byte[,]> GetItemGridDict { get { return _itemGridDict; } }
         public Vector2Int GetMapSize { get { return _mapSize; } }
         public Vector2Int GetRoomSize { get { return _roomSize; } }
 
@@ -112,15 +107,6 @@ namespace WFC
             _roomGrid = WFCGenerate(_roomSet.Modules, _mapSize) as RoomElement[,];
             StartCoroutine(SearchPathCoro());
         }
-
-        /*public void CollapseTiles(RoomElement curRoom)
-        {
-            _currentRoom = curRoom;
-
-            TileElement[,] curTileGrid = WFCGenerate(_tileSet.Modules, _roomSize) as TileElement[,];
-            _tileGridDict.Add(curTileGrid, curRoom);
-            //CreateTiles(curTileGrid);
-        }*/
 
         public void CollapseItems(RoomElement room)
         {
@@ -260,28 +246,6 @@ namespace WFC
                 }
             }
         }
-        /*public void CreateTiles(TileElement[,] curTileGrid)
-        {
-            for (int x = 0; x < curTileGrid.GetLength(0); x++)
-            {
-                for (int y = 0; y < curTileGrid.GetLength(1); y++)
-                {
-                    Vector2Int adjustedPos = new Vector2Int(x, y) + _tileGridDict[curTileGrid].GetPosition * _roomSize;
-                    
-                    TileModule curTileModule = curTileGrid[x, y].GetSelectedModule as TileModule;
-                    _environTileMap.SetTile((Vector3Int)adjustedPos, curTileModule.GetTileBase);
-
-                    if (curTileModule.GetTileType != TileModule.TileType.Floor)
-                    {
-                        GameObject tileBounds = new($"({adjustedPos.x},{adjustedPos.y})");
-                        tileBounds.transform.parent = _environTileMap.transform.parent.Find("DungeonBoundaries");
-                        tileBounds.transform.position = new Vector3(adjustedPos.x + 0.5f, adjustedPos.y + 0.5f, 0);
-                        BoxCollider2D bc = tileBounds.AddComponent<BoxCollider2D>();
-                        bc.size = Vector2.one;
-                    }
-                }
-            }
-        }*/
         public void CreateItems(ItemElement[,] itemRoomGrid, RoomElement room)
         {
             for (int x = 0; x < itemRoomGrid.GetLength(0); x++)
