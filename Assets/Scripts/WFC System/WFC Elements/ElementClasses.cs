@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using static WFC.AStarPathfinding;
+using Unity.VisualScripting;
 
 namespace WFC
 {
@@ -43,7 +44,8 @@ namespace WFC
             Vector2Int mapSize = DungeonCreator.instance.GetMapSize;
             Vector2Int roomSize = DungeonCreator.instance.GetRoomSize;
             _roomByteMap = new byte[roomSize.x, roomSize.y];
-            List<Vector2Int> exitLocations = new();
+
+            List<Vector2Int> pathLocations = new();
 
             for (int x = 0; x < roomSize.x; x++)
             {
@@ -63,15 +65,31 @@ namespace WFC
                         if (_position.x == 0 && tilePos.x == 0 || _position.x == mapSize.x - 1 && tilePos.x == roomSize.x - 1 ||
                             _position.y == 0 && tilePos.y == 0 || _position.y == mapSize.y - 1 && tilePos.y == roomSize.y - 1)
                         {
-                            _roomByteMap[x, y] = 4;//Tile is entrance or exit
+                            _roomByteMap[x, y] = 5;//Tile is dungeon entrance/exit (used for tile color)
                         }
-                        exitLocations.Add(tilePos);
+                        else
+                            _roomByteMap[x, y] = 4;
+
+
+                            pathLocations.Add(tilePos);
                     }
                 }
             }
+            
+            int newPathCounter = 0;
+            //Find 2 walkable points within room to path between
+            do
+            {
+                Vector2Int pathPoint = new Vector2Int(Random.Range(1, roomSize.x - 2), Random.Range(1, roomSize.y - 2));
+                if (pathLocations.Contains(pathPoint) || _roomByteMap[pathPoint.x, pathPoint.y] != 0)
+                    continue;
+
+                pathLocations.Add(pathPoint);
+                newPathCounter++;
+            } while (newPathCounter <= 2); //make a variable for adjusting
 
             //A* pathfinding to flip true path byte to 3
-            _roomByteMap = FindTruePathThroughRoom(_roomByteMap, exitLocations.ToArray());
+            _roomByteMap = FindTruePathThroughRoom(_roomByteMap, pathLocations.ToArray());
         }
 
         //Determine if a tile is an entrance or exit for byte flipping in Collapse method
@@ -209,10 +227,10 @@ namespace WFC
                         break;
                     case 2:// if tile is pit
                     case 3:// or tile is true path between exits
-                    case 4:// or tile is dungeon entrance/exit, remove any items that aren't "None" type
+                    case 4:// or tile is room exit
+                    case 5:// or tile is dungeon entrance/exit, remove any items that aren't "None" type
                         if (subType != 'N')
                             _options.RemoveAt(i);
-                        //Debug.Log("3 found in bytematp");
                         break;
                 }
             }

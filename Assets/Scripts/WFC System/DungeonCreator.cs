@@ -269,9 +269,9 @@ namespace WFC
 
                     _environTileMap.SetTileFlags(tilePos, TileFlags.None);
 
-                    if (room.GetRoomByteMap[x, y] == 3)
+                    if (room.GetRoomByteMap[x, y] == 3 || room.GetRoomByteMap[x,y] == 4)
                         _environTileMap.SetColor(tilePos, Color.blue + new Color(0.5f, 0.5f, 0));
-                    else if (room.GetRoomByteMap[x, y] == 4)
+                    else if (room.GetRoomByteMap[x, y] == 5)
                     {
                         if (_startRoom == room)
                             _environTileMap.SetColor(tilePos, Color.green);

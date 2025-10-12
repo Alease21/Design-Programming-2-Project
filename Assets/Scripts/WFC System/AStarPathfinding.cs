@@ -22,15 +22,16 @@ namespace WFC
                                                       new MapLocation(-1,0),
                                                       new MapLocation(0,-1) };
 
-        public static byte[,] FindTruePathThroughRoom(byte[,] roomByteMap, Vector2Int[] exitPositions)
+        public static byte[,] FindTruePathThroughRoom(byte[,] roomByteMap, Vector2Int[] pathPositions)
         {
             currByteMap = roomByteMap;
+            Vector2Int[] trimmedPathPosition = RemoveNeighborPathPoints(pathPositions);
 
-            for (int i = exitPositions.Length - 1; i >= 0; i--)
+            for (int i = trimmedPathPosition.Length - 1; i >= 0; i--)
             {
                 for (int j = 0; j <= i - 1; j++)
                 {
-                    BeginSearch(exitPositions[i], exitPositions[j]);
+                    BeginSearch(trimmedPathPosition[i], trimmedPathPosition[j]);
                     do
                     {
                         Search(lastPos);
@@ -40,6 +41,30 @@ namespace WFC
             }
 
             return currByteMap;
+        }
+        private static Vector2Int[] RemoveNeighborPathPoints(Vector2Int[] pathPositions)
+        {
+            List<Vector2Int> temp = new List<Vector2Int>(pathPositions);
+            bool continueILoop = false;
+
+            for (int i = temp.Count - 1; i >= 0; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    foreach (MapLocation dir in directions)
+                    {
+                        if (temp[i] + new Vector2Int((int)dir.x, (int)dir.y) == temp[j])
+                        {
+                            temp.RemoveAt(j);
+                            continueILoop = true;
+                            break;
+                        }
+                    }
+                    if (continueILoop)
+                        break;
+                }
+            }
+            return temp.ToArray();
         }
         private static void BeginSearch(Vector2Int startPos, Vector2Int endPos)
         {
@@ -114,7 +139,7 @@ namespace WFC
 
             while (begin != null)
             {
-                if (currByteMap[begin.location.x, begin.location.y] != 4)
+                if (currByteMap[begin.location.x, begin.location.y] != 4 && currByteMap[begin.location.x,begin.location.y] != 5)
                     currByteMap[begin.location.x, begin.location.y] = 3;//set byte to 3 to indicate true path
                 begin = begin.parent;
             }
