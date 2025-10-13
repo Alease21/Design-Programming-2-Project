@@ -289,7 +289,7 @@ namespace WFC
                 {
                     ItemModule item = itemRoomGrid[x, y].GetSelectedModule as ItemModule;
 
-                    if (item.GetItemSubType() != 'N')
+                    if (item.GetItemSubType()[0] != 'N')
                     {
                         _itemTileMap.SetTile(new Vector3Int(x + room.GetPosition.x * _roomSize.x - _roomSize.x / 2,
                             y + room.GetPosition.y * _roomSize.y - _roomSize.y / 2, (int)_itemTileMap.transform.position.z),

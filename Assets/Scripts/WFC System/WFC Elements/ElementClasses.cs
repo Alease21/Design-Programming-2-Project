@@ -208,29 +208,111 @@ namespace WFC
         public override void RemoveOptionsFromPosition()
         {
             DungeonCreator dc = DungeonCreator.instance;
+            Vector2Int northNeighbour = _position + Vector2Int.up,
+                       eastNeighbour = _position + Vector2Int.right,
+                       southNeighbour = _position + Vector2Int.down,
+                       westNeighbour = _position + Vector2Int.left;
 
             for (int i = _options.Count - 1; i >= 0; i--)
             {
                 ItemModule option = _options[i] as ItemModule;
                 char locType = option.GetItemLocationType();
-                char subType = option.GetItemSubType();
+                string subType = option.GetItemSubType();
 
                 switch (_room.GetRoomByteMap[_position.x, _position.y])
                 {
                     case 0:
-                        if (locType != 'F' && subType != 'N') // remove non floor type items
+                        if (locType != 'F' && subType[0] != 'N')// remove non floor type items
+                        {
                             _options.RemoveAt(i);
+                            continue;
+                        }
                         break;
                     case 1:
-                        if (locType != 'W' && subType != 'N') // remove non wall type items
+                        if (locType != 'W' && subType[0] != 'N')// remove non wall type items
+                        {
                             _options.RemoveAt(i);
+                            continue;
+                        }
                         break;
                     case 2:// if tile is pit
                     case 3:// or tile is true path between exits
                     case 4:// or tile is room exit
                     case 5:// or tile is dungeon entrance/exit, remove any items that aren't "None" type
-                        if (subType != 'N')
+                        if (subType[0] != 'N') 
+                        {
                             _options.RemoveAt(i);
+                            continue;
+                        }
+                        break;
+                }
+
+                // Check neighbouring environment tiles to further trim options & avoid nonsensical placements
+                switch (subType[0])
+                {
+                    case 'B': // Box or Banner depending on location **Fix this in naming convention to be better
+                        switch (subType[1])
+                        {
+                            case '0':
+                                // ternary expression for location type?
+                                break;
+                            case '1':
+                                // ternary expression for location type?
+                                break;
+                        }
+                        break;
+                    case 'C': // Chair
+                        switch (subType[1])
+                        {
+                            case 'N':
+                                if (_room.GetRoomByteMap[northNeighbour.x, northNeighbour.y] == 1 ||
+                                    _room.GetRoomByteMap[northNeighbour.x, northNeighbour.y] == 2)
+                                {
+                                    _options.RemoveAt(i);
+                                    continue;
+                                }
+                                break;
+                            case 'E':
+                                if (_room.GetRoomByteMap[eastNeighbour.x, eastNeighbour.y] == 1 ||
+                                    _room.GetRoomByteMap[eastNeighbour.x, eastNeighbour.y] == 2)
+                                {
+                                    _options.RemoveAt(i);
+                                    continue;
+                                }
+                                break;
+                            case 'S':
+                                if (_room.GetRoomByteMap[southNeighbour.x, southNeighbour.y] == 1 ||
+                                    _room.GetRoomByteMap[southNeighbour.x, southNeighbour.y] == 2)
+                                {
+                                    _options.RemoveAt(i);
+                                    continue;
+                                }
+                                break;
+                            case 'W':
+                                if (_room.GetRoomByteMap[westNeighbour.x, westNeighbour.y] == 1 ||
+                                    _room.GetRoomByteMap[westNeighbour.x, westNeighbour.y] == 2)
+                                {
+                                    _options.RemoveAt(i);
+                                    continue;
+                                }
+                                break;
+                        }
+                        break;
+                    case 'T': // Table or torch depending on location **Fix this in naming convention to be better
+                        switch (subType[1])
+                        {
+                            case '0':
+                                // ternary expression for location type?
+                                break;
+                            case '1':
+                                break;
+                            case '2':
+                                break;
+                            case '3':
+                                break;
+                            case '4':
+                                break;
+                        }
                         break;
                 }
             }

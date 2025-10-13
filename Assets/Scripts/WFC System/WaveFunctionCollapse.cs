@@ -125,7 +125,7 @@ namespace WFC
                     int curX = curElement.GetPosition.x + x;
                     int curY = curElement.GetPosition.y + y;
 
-                    if ((curX < 0 || curY < 0) || (curX > grid.GetLength(0) - 1 || curY > grid.GetLength(1) - 1))
+                    if (curX < 0 || curY < 0 || curX > grid.GetLength(0) - 1 || curY > grid.GetLength(1) - 1)
                         continue;
 
                     ElementBase curNeighbour = grid[curX, curY];

@@ -20,12 +20,6 @@ namespace WFC
 
                 for (int j = 0; j < _itemModules.Length; j++)
                 {
-                    north.Add(_itemModules[j]);
-                    east.Add(_itemModules[j]);
-                    south.Add(_itemModules[j]);
-                    west.Add(_itemModules[j]);
-
-                    /*
                     ItemModule.ItemType curItemtype = _itemModules[i].GetItemType;
                     ItemModule.ItemType itemTypeToEval = _itemModules[j].GetItemType;
 
@@ -37,9 +31,9 @@ namespace WFC
                             south.Add(_itemModules[j]);
                             west.Add(_itemModules[j]);
                             break;
-                        case 1:
+                        case 1:// Box
                             if (itemTypeToEval == ItemModule.ItemType.None ||
-                                itemTypeToEval == ItemModule.ItemType.Box)
+                                itemTypeToEval == ItemModule.ItemType.Table)
                             {
                                 north.Add(_itemModules[j]);
                                 east.Add(_itemModules[j]);
@@ -48,9 +42,7 @@ namespace WFC
                             }
                             break;
                         case 2:// Table
-                        case 3:// Chair
-                            if (itemTypeToEval == ItemModule.ItemType.None ||
-                                itemTypeToEval == ItemModule.ItemType.Table ||
+                            if (itemTypeToEval == ItemModule.ItemType.None || 
                                 itemTypeToEval == ItemModule.ItemType.Chair)
                             {
                                 north.Add(_itemModules[j]);
@@ -58,7 +50,16 @@ namespace WFC
                                 south.Add(_itemModules[j]);
                                 west.Add(_itemModules[j]);
                             }
-
+                            break;
+                        case 3:// Chair
+                            if (itemTypeToEval == ItemModule.ItemType.None ||
+                                itemTypeToEval == ItemModule.ItemType.Table)
+                            {
+                                north.Add(_itemModules[j]);
+                                east.Add(_itemModules[j]);
+                                south.Add(_itemModules[j]);
+                                west.Add(_itemModules[j]);
+                            }
                             break;
                         case 4:// Rocks
                             if (itemTypeToEval == ItemModule.ItemType.None)
@@ -83,7 +84,7 @@ namespace WFC
                             }
                             break;
                     }
-                    */
+                    //
                 }
                 _itemModules[i].North = north.ToArray();
                 _itemModules[i].East = east.ToArray();

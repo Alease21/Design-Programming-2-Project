@@ -31,9 +31,9 @@ namespace WFC
         public IModule[] South { get => _south; set => _south = value as ItemModule[]; }
         public IModule[] West { get => _west; set => _west = value as ItemModule[]; }
 
-        public char GetItemSubType()
+        public string GetItemSubType()
         {
-            return name[4];
+            return $"{name[4]}{name[5]}";
         }
         public char GetItemLocationType()
         {
