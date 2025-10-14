@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WFC
 {
-    //[CreateAssetMenu(menuName = "WFC/Module Sets/New TileSet")]
+    [CreateAssetMenu(menuName = "WFC/Module Sets/New TileSet")]
     public class TileSet : ScriptableObject, IModuleSet
     {
         [SerializeField] private TileModule[] _tileModules;
@@ -24,43 +24,10 @@ namespace WFC
                     TileModule curTile = _tileModules[i];
                     TileModule tileToEvaluate = _tileModules[j];
 
-                    //initial add every tile
                     north.Add(tileToEvaluate);
                     east.Add(tileToEvaluate);
                     south.Add(tileToEvaluate);
                     west.Add(tileToEvaluate);
-                    
-                    //shave options away
-                    if (curTile.GetTileType == TileModule.TileType.Wall)
-                    {
-                        string curWallDirs = curTile.GetWallDirections();
-
-                        if (tileToEvaluate.GetTileType == TileModule.TileType.Wall)
-                        {
-                            string wallDirsToEvaluate = tileToEvaluate.GetWallDirections();
-
-                            if (curWallDirs[0] == 'N' && wallDirsToEvaluate[2] != 'S')
-                                north.Remove(tileToEvaluate);
-                            if (curWallDirs[1] == 'E' && wallDirsToEvaluate[3] != 'W')
-                                east.Remove(tileToEvaluate);
-                            if (curWallDirs[2] == 'S' && wallDirsToEvaluate[0] != 'N')
-                                south.Remove(tileToEvaluate);
-                            if (curWallDirs[3] == 'W' && wallDirsToEvaluate[1] != 'E')
-                                west.Remove(tileToEvaluate);
-                        }
-                        /*
-                        else
-                        {
-                            if (curWallDirs[0] == 'N')
-                                north.Remove(tileToEvaluate);
-                            if (curWallDirs[1] == 'E')
-                                east.Remove(tileToEvaluate);
-                            if (curWallDirs[2] == 'S')
-                                south.Remove(tileToEvaluate);
-                            if (curWallDirs[3] == 'W')
-                                west.Remove(tileToEvaluate);
-                        }*/
-                    }
                 }
 
                 _tileModules[i].North = north.ToArray();
