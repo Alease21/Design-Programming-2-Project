@@ -875,6 +875,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5756202362399190919, guid: b24463163024b3a48ac103baf81b8977, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4238605866392419152, guid: b24463163024b3a48ac103baf81b8977, type: 3}
       propertyPath: m_Name
       value: PlayerCircle
