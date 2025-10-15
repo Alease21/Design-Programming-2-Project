@@ -1,14 +1,19 @@
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
+    [HideInInspector]
+    public int id;
+
     [Range(0, 20)]
     [SerializeField] private float _playerSpeed;
     private Vector2 _move;
     private Rigidbody _rb;
+    public Player photonPlayer;
 
-    //value read input
     public void OnMove(InputAction.CallbackContext context)
     {
         _move = context.ReadValue<Vector2>();
@@ -18,35 +23,51 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
+    [PunRPC]
+    public void Initialize(Player player)
+    {
+        photonPlayer = player;
+        id = player.ActorNumber;
+        GameManager.instance.players[id - 1] = this;
+
+        if (id == 1) //can do random selection here if wanted
+        {
+            //GameManager.instance.GiveFlag(id, true);
+        }
+
+        if (!photonView.IsMine)
+            _rb.isKinematic = true;
+    }
+
     private void FixedUpdate()
     {
-        Vector3 currentVelo = _rb.linearVelocity;
-        Vector3 targetVelo = new Vector3(_move.x, _move.y, 0f) * _playerSpeed;
+        if (photonView.IsMine)
+        {
+            /*
+            Vector3 currentVelo = _rb.linearVelocity;
+            Vector3 targetVelo = new Vector3(_move.x, _move.y, 0f) * _playerSpeed;
 
-        targetVelo = transform.TransformDirection(targetVelo);
-        Vector3 veloChange = targetVelo - currentVelo;
+            targetVelo = transform.TransformDirection(targetVelo);
+            Vector3 veloChange = targetVelo - currentVelo;
 
-        _rb.AddForce(new Vector3(veloChange.x, veloChange.y, 0), ForceMode.VelocityChange); //forcemode velocitychange is mass agnostic
-                                                                                            //also can split this to ignore y if gravity is odd
+            _rb.AddForce(new Vector3(veloChange.x, veloChange.y, 0), ForceMode.VelocityChange); //forcemode velocitychange is mass agnostic
+                                                                                                //also can split this to ignore y if gravity is odd
+            */
+            OnMove();
+        }
+    }
+    private void OnMove()
+    {
+        float x = Input.GetAxis("Horizontal") * _playerSpeed;
+        float y = Input.GetAxis("Vertical") * _playerSpeed;
+        _rb.linearVelocity = new Vector3(x, y, _rb.linearVelocity.z);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting) { }
+            //stream.SendNext(curFlagTime);
+        else if (stream.IsReading) { }
+            //curFlagTime = (float)stream.ReceiveNext();
     }
 }
-
-/* Other movement system I had before in class example
- * keeping here just in case 
- * 
-private CharacterController _characterController;
-private InputAction _moveAction;
-
-[Range(0, 10)]
-[SerializeField] private float _playerSpeed;
-void Start()
-{
-    _characterController = GetComponent<CharacterController>();
-    _moveAction = InputSystem.actions.FindAction("Move");
-}
-
-void Update()
-{
-    _characterController.Move(_moveAction.ReadValue<Vector2>().normalized * _playerSpeed * 0.01f); //float value is just from trial & error
-}
-*/
