@@ -10,17 +10,19 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     [Range(0, 20)]
     [SerializeField] private float _playerSpeed;
-    private Vector2 _move;
+    //private Vector2 _move;
     private Rigidbody _rb;
     public Player photonPlayer;
+    public Animator spriteAnimator;
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        _move = context.ReadValue<Vector2>();
+        //_move = context.ReadValue<Vector2>();
     }
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        spriteAnimator = GetComponent<Animator>();
     }
 
     [PunRPC]
@@ -58,9 +60,16 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     }
     private void OnMove()
     {
-        float x = Input.GetAxis("Horizontal") * _playerSpeed;
-        float y = Input.GetAxis("Vertical") * _playerSpeed;
-        _rb.linearVelocity = new Vector3(x, y, _rb.linearVelocity.z);
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        SetAnimFloats(horizontal, vertical);
+        _rb.linearVelocity = new Vector3(horizontal * _playerSpeed, vertical * _playerSpeed, _rb.linearVelocity.z);
+    }
+
+    public void SetAnimFloats(float hori, float verti)
+    {
+        spriteAnimator.SetFloat("Horizontal", hori);
+        spriteAnimator.SetFloat("Vertical", verti);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

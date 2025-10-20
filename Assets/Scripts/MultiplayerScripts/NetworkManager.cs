@@ -1,8 +1,11 @@
 using Photon.Pun;
+using UnityEngine;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public static NetworkManager instance;
+    public bool useRandomSeed;
+    public int dungeonSeed;
 
     private void Awake()
     {
@@ -32,6 +35,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void CreateRoom(string roomName)
     {
         PhotonNetwork.CreateRoom(roomName);
+        if (useRandomSeed) dungeonSeed = Random.Range(0, int.MaxValue);
+        Random.InitState(dungeonSeed);
     }
 
     public void JoinRoom(string roomName)

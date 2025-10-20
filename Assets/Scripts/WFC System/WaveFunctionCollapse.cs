@@ -47,9 +47,7 @@ namespace WFC
                         lowEntropyElements.Add(curElement);
                     }
                     else if (curElement.GetEntropy == lowestEntropy)
-                    {
                         lowEntropyElements.Add(curElement);
-                    }
                 }
                 rng = Random.Range(0, lowEntropyElements.Count);
                 curElement = lowEntropyElements[rng];

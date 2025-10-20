@@ -14,13 +14,9 @@ namespace WFC
         private void Awake()
         {
             if (instance == null)
-            {
                 instance = this;
-            }
             else
-            {
                 Destroy(this.gameObject);
-            }
             //
 
             //Initial neighbor sets in case project didn't load with them correctly

@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Player Testing.unity
     guid: 1ca20752ea944ea45a1df88fbce2a31f
+  - enabled: 1
+    path: Assets/Scenes/WFC Testing.unity
+    guid: 0d928124628e4394b93fd0dca3124a50
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
