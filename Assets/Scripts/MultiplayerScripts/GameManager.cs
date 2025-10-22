@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         else if (instance != this)
             Destroy(gameObject);
 
-        DungeonCreator.instance.WFCFinished += this.OnWFCDone;
+        DungeonCreator.instance.WFCFinished += OnWFCDone;
     }
 
     private void OnWFCDone()

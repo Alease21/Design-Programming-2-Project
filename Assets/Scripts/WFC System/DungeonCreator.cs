@@ -52,7 +52,8 @@ namespace WFC
         [SerializeField] private bool _showTileHighlights = false;
         [SerializeField] private bool _createRoomPathPlaceholders = false;
 
-        public event Action WFCFinished;
+        public event Action WFCFinished; //currently just used for triggering client side player spawn
+                                         //kept in case more needed to be added
 
         public bool IsStartMade { get { return _isStartMade; } set { _isStartMade = value; } }
         public bool IsExitMade { get { return _isExitMade; } set { _isExitMade = value; } }
@@ -77,17 +78,14 @@ namespace WFC
                 CollapseRooms();
             }
         }
-        public void MasterWFCComplete()
-        {
-            photonView.RPC("NonMasterStatup", RpcTarget.All);
-        }
 
         [PunRPC]
-        public void NonMasterStatup()
+        public void NonMasterStatup(int seed)
         {
             if (!PhotonNetwork.IsMasterClient)
             {
-                UnityEngine.Random.InitState(NetworkManager.instance.dungeonSeed);
+                NetworkManager.instance.dungeonSeed = seed;
+                UnityEngine.Random.InitState(seed);
                 CollapseRooms();
             }
         }
@@ -188,6 +186,7 @@ namespace WFC
                 }
                 GenerationTimer();
                 WFCFinished?.Invoke();
+                photonView.RPC("NonMasterStatup", RpcTarget.All, NetworkManager.instance.dungeonSeed); //Start other client WFC with true seed
             }
         }
 
@@ -300,7 +299,7 @@ namespace WFC
                         GameObject playerSpawn = Instantiate(Resources.Load<GameObject>("PlayerSpawn"), spawnedObjPos, Quaternion.identity);
                         GameManager.instance.spawnPoints[0] = playerSpawn.transform;
                         playerSpawnSpawned = true;
-                        UnityEngine.Debug.Log("Player Spawn Spawned");
+                        UnityEngine.Debug.Log("[Placeholder] Player Spawn Spawned");
                     }
 
                     if (!_showTileHighlights) continue; // skip tile coloring if bool not checked

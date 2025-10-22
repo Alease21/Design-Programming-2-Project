@@ -19,21 +19,30 @@ MonoBehaviour:
   westNeighbours: []
   trueTiles:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 516da64d0876d4049a430703ed7b1067, type: 2}
   - {fileID: 11400000, guid: 1493a081bd1a3dc4eb96e52fe9531e50, type: 2}
+  - {fileID: 11400000, guid: 3428da8228b1d0d4881047145956eff0, type: 2}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 2b4b2dbb3fc224547807311f322787e0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 3428da8228b1d0d4881047145956eff0, type: 2}
+  - {fileID: 11400000, guid: 1293b79025ff59c4babf0c59158e22ff, type: 2}
+  - {fileID: 11400000, guid: 1493a081bd1a3dc4eb96e52fe9531e50, type: 2}
   - {fileID: 0}
   nKey: []
   eKey: []
   sKey:
-  - {fileID: 0}
-  - {fileID: 11400000, guid: 516da64d0876d4049a430703ed7b1067, type: 2}
-  - {fileID: 11400000, guid: 1493a081bd1a3dc4eb96e52fe9531e50, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b0ee8ce0179e29240b0e401931971ea9, type: 2}
+  - {fileID: 11400000, guid: feedb2deb8af3ae4891e0341f8e2ea17, type: 2}
+  - {fileID: 11400000, guid: b0ee8ce0179e29240b0e401931971ea9, type: 2}
+  - {fileID: 11400000, guid: feedb2deb8af3ae4891e0341f8e2ea17, type: 2}
+  - {fileID: 11400000, guid: 2b4b2dbb3fc224547807311f322787e0, type: 2}
   wKey:
   - {fileID: 0}
-  - {fileID: 11400000, guid: 1293b79025ff59c4babf0c59158e22ff, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -15,7 +15,6 @@ public class TileModule : ScriptableObject
     [SerializeField] public TileBase[] trueTiles;
     [SerializeField] public TileBase[] nKey, eKey, sKey, wKey;
     
-    
     public void SetBasesAndKeys(TileBase[] tileArray)
     {
         int keyDepth = keyDepthByModuleWidth.x;

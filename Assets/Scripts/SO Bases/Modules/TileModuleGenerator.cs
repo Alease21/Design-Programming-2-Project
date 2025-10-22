@@ -29,9 +29,9 @@ public class TileModuleGenerator : MonoBehaviour
                 Vector3Int moduleOrigin = new Vector3Int(tilemap.origin.x + x * moduleWidth, tilemap.origin.y + y * moduleWidth);
                 List<TileBase> tiles = new List<TileBase>();
 
-                for (int i = keyDepth; i < width; i++)
+                for (int i = keyDepth - 1; i < width; i++)
                 {
-                    for (int j = keyDepth; j < height; j++)
+                    for (int j = keyDepth - 1; j < height; j++)
                     {
                         Vector3Int newPos = moduleOrigin + new Vector3Int(x * moduleWidth + i, y * moduleWidth + j);
                         tiles.Add(tilemap.GetTile(newPos));
