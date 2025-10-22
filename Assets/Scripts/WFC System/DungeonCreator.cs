@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static WFC.WaveFunctionCollapse;
 
 namespace WFC
 {
-    public class DungeonCreator : MonoBehaviour
+    public class DungeonCreator : MonoBehaviourPunCallbacks
     {
         // Singleton setup
         public static DungeonCreator instance;
@@ -49,6 +52,8 @@ namespace WFC
         [SerializeField] private bool _showTileHighlights = false;
         [SerializeField] private bool _createRoomPathPlaceholders = false;
 
+        public event Action WFCFinished;
+
         public bool IsStartMade { get { return _isStartMade; } set { _isStartMade = value; } }
         public bool IsExitMade { get { return _isExitMade; } set { _isExitMade = value; } }
         public RoomElement StartRoom { get { return _startRoom; } set { _startRoom = value; } }
@@ -66,7 +71,30 @@ namespace WFC
             if (_createRoomPathPlaceholders) 
                 _placeholderMapParent = new GameObject("PlaceholderMap").transform;
 
-            CollapseRooms();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                UnityEngine.Random.InitState(NetworkManager.instance.dungeonSeed);
+                CollapseRooms();
+            }
+        }
+        public void MasterWFCComplete()
+        {
+            photonView.RPC("NonMasterStatup", RpcTarget.All);
+        }
+
+        [PunRPC]
+        public void NonMasterStatup()
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                UnityEngine.Random.InitState(NetworkManager.instance.dungeonSeed);
+                CollapseRooms();
+            }
+        }
+        public void ReGenerateSeed()
+        {
+            NetworkManager.instance.dungeonSeed = UnityEngine.Random.Range(0, int.MaxValue);
+            UnityEngine.Random.InitState(NetworkManager.instance.dungeonSeed);
         }
         private void Update()
         {
@@ -86,6 +114,8 @@ namespace WFC
         // Delete current dungeon rooms, tile, items and restart generation
         private void RestartGeneration()
         {
+            ReGenerateSeed();
+
             StopAllCoroutines();
 
             //Placeholder map stuff
@@ -110,7 +140,7 @@ namespace WFC
         private void CollapseRooms()
         {
             _stopWatch.Start();
-            _roomGrid = new RoomElement[_roomSize.x, _roomSize.y];
+            _roomGrid = new RoomElement[_mapSize.x, _mapSize.y];
 
             _roomGrid = WFCGenerate(_roomSet.Modules, _mapSize) as RoomElement[,];
             StartCoroutine(SearchPathCoro());
@@ -134,11 +164,11 @@ namespace WFC
             // Regenerate dungeon if number of rooms is greater that 75% of map size,
             // else start creating rooms & items
             if (numDungeonTiles > (0.75f * _mapSize.x * _mapSize.y) || !_exitRoom.IsTruePath)
-            {
                 RestartGeneration();
-            }
             else
             {
+                Camera.main.transform.position = new Vector3(_startRoom.GetPosition.x * _roomSize.x, _startRoom.GetPosition.y * _roomSize.y, -10);
+
                 for (int x = 0; x < _roomGrid.GetLength(0); x++)
                 {
                     for (int y = 0; y < _roomGrid.GetLength(1); y++)
@@ -157,6 +187,7 @@ namespace WFC
                     }
                 }
                 GenerationTimer();
+                WFCFinished?.Invoke();
             }
         }
 
@@ -241,6 +272,10 @@ namespace WFC
 
             Tilemap tilemapPrefab = room.GetSelectedRoomPrefab;
 
+            //
+            bool playerSpawnSpawned = false; // Temp bool
+            //
+
             for (int x = 0; x < _roomSize.x; x++)
             {
                 for (int y = 0; y < _roomSize.y; y++)
@@ -252,12 +287,20 @@ namespace WFC
 
                     _environTileMap.SetTile(tilePos, tilemapPrefab.GetTile(prefabTilePos));
 
+                    Vector3 spawnedObjPos = (Vector3)tilePos + new Vector3(0.5f, 0.5f, 0f);
                     if (room.GetRoomByteMap[x, y] == 1)
                     {
                         GameObject newTileBoundary = new GameObject($"({x},{y})");
                         newTileBoundary.transform.parent = _boundaryParent;
-                        newTileBoundary.transform.position = (Vector3)tilePos + new Vector3(0.5f, 0.5f, 0f);
-                        newTileBoundary.AddComponent<BoxCollider2D>().size = Vector2.one;
+                        newTileBoundary.transform.position = spawnedObjPos;
+                        newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                    }
+                    else if (room == _startRoom && !playerSpawnSpawned)
+                    {
+                        GameObject playerSpawn = Instantiate(Resources.Load<GameObject>("PlayerSpawn"), spawnedObjPos, Quaternion.identity);
+                        GameManager.instance.spawnPoints[0] = playerSpawn.transform;
+                        playerSpawnSpawned = true;
+                        UnityEngine.Debug.Log("Player Spawn Spawned");
                     }
 
                     if (!_showTileHighlights) continue; // skip tile coloring if bool not checked
@@ -265,7 +308,7 @@ namespace WFC
                     _environTileMap.SetTileFlags(tilePos, TileFlags.None);
 
                     if (room.GetRoomByteMap[x, y] == 3 || room.GetRoomByteMap[x,y] == 4)
-                        _environTileMap.SetColor(tilePos, Color.blue + new Color(0.5f, 0.5f, 0));
+                        _environTileMap.SetColor(tilePos, Color.blue + new Color(0.5f, 0.5f, 0f));
                     else if (room.GetRoomByteMap[x, y] == 5)
                     {
                         if (_startRoom == room)

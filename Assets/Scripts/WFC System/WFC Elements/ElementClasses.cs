@@ -70,8 +70,7 @@ namespace WFC
                         else
                             _roomByteMap[x, y] = 4;
 
-
-                            pathLocations.Add(tilePos);
+                        pathLocations.Add(tilePos);
                     }
                 }
             }

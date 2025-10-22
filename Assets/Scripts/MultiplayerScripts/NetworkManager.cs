@@ -1,5 +1,6 @@
 using Photon.Pun;
 using UnityEngine;
+using WFC;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -16,14 +17,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
             PhotonView view = GetComponent<PhotonView>();
             if (view != null && view.ViewID == 0)//0 = invalid
-            {
                 view.ViewID = 5; //over max (4 players)
-            }
         }
         else if (instance != this)
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Start()
@@ -36,7 +33,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.CreateRoom(roomName);
         if (useRandomSeed) dungeonSeed = Random.Range(0, int.MaxValue);
-        Random.InitState(dungeonSeed);
     }
 
     public void JoinRoom(string roomName)

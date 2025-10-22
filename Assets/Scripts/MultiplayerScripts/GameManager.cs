@@ -1,7 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
 using System.Linq;
+using WFC;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Header("Players")]
     public string playerPrefabLoc;
 
-    public Transform[] spawnPoints;
+    public Transform[] spawnPoints = new Transform[1];
     public PlayerMovement[] players;
     private int _playersInGame;
 
@@ -21,14 +21,15 @@ public class GameManager : MonoBehaviourPunCallbacks
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        DungeonCreator.instance.WFCFinished += this.OnWFCDone;
     }
 
-    private void Start()
+    private void OnWFCDone()
     {
         players = new PlayerMovement[PhotonNetwork.PlayerList.Length];
         photonView.RPC("ImInGame", RpcTarget.All);
     }
-
     [PunRPC]
     private void ImInGame()
     {

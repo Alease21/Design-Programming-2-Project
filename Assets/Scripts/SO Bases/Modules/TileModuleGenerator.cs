@@ -3,6 +3,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+#if UNITY_EDITOR
+
 [RequireComponent(typeof(Tilemap))]
 public class TileModuleGenerator : MonoBehaviour
 {
@@ -91,24 +93,4 @@ public class TileModuleGenerator : MonoBehaviour
         return true;
     }
 }
-
-[CustomEditor(typeof(TileModuleGenerator))]
-public class TileModulkeGenerator_Editor : Editor
-{
-    private TileModuleGenerator _cur;
-
-    private void OnEnable()
-    {
-        _cur = (TileModuleGenerator)target;
-    }
-
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        if(GUILayout.Button("Generate Tile Modules"))
-        {
-            _cur?.GenerateTileModules();
-        }
-    }
-}
+#endif

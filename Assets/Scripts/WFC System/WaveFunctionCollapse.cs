@@ -11,6 +11,8 @@ namespace WFC
 
         public static ElementBase[,] WFCGenerate(IModule[] moduleSet, Vector2Int gridSize, RoomElement curRoom = null)
         {
+            Random.InitState(NetworkManager.instance.dungeonSeed);
+
             _curElementType = DetermineType(moduleSet[0]);
 
             ElementBase[,] grid = DetermineGridType(gridSize);
