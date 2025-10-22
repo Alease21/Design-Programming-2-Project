@@ -17,7 +17,6 @@ namespace WFC
                 instance = this;
             else
                 Destroy(this.gameObject);
-            //
 
             //Initial neighbor sets in case project didn't load with them correctly
             _roomSet.SetNeighbours();
@@ -152,7 +151,7 @@ namespace WFC
                         {
                             Vector2Int pos = new Vector2Int(x, y);
                             CreateRoom(_roomGrid[x, y]);
-                            CollapseItems(_roomGrid[x, y]);
+                            //CollapseItems(_roomGrid[x, y]);
                             yield return null;
                         }
                     }

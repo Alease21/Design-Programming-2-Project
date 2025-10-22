@@ -1,30 +1,59 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace WFC
+[CreateAssetMenu(fileName = "TileModule", menuName = "Scriptable Objects/TileModule")]
+public class TileModule : ScriptableObject
 {
-    [CreateAssetMenu(menuName = "WFC/Modules/New Tile Module")]
-    public class TileModule : ScriptableObject, IModule
+    public Vector2Int keyDepthByModuleWidth;
+
+    public TileModule[] northNeighbours;
+    public TileModule[] eastNeighbours;
+    public TileModule[] southNeighbours;
+    public TileModule[] westNeighbours;
+
+    [SerializeField] public TileBase[] trueTiles;
+    [SerializeField] public TileBase[] nKey, eKey, sKey, wKey;
+    
+    
+    public void SetBasesAndKeys(TileBase[] tileArray)
     {
-        public enum TileType
+        int keyDepth = keyDepthByModuleWidth.x;
+        int width = keyDepthByModuleWidth.y;
+        List<TileBase> n = new(), e = new(), s = new(), w = new();
+        List<TileBase> trueTileList = new();
+
+        /*/
+         *  index calc is i = y * w + x
+         *  --------------
+         *  % gives x 
+         *      (width) for min x
+         *      (width - 1) for max x
+         *  / gives y
+         *      (width) for min y
+         *      (width - 1) for max y
+        /*/
+        for (int i = 0; i < tileArray.Length; i++)
         {
-            //
+            if ((i % width < keyDepth || i % (width - 1) > (width - keyDepth - 1)) &&
+                 (i / width < keyDepth || i / (width - 1) > (width - keyDepth - 1)))
+                continue;
+            else if (i / (width - 1) > (width - keyDepth - 1))
+                n.Add(tileArray[i]);
+            else if (i % (width - 1) > (width - keyDepth - 1))
+                e.Add(tileArray[i]);
+            else if (i / width < keyDepth)
+                s.Add(tileArray[i]);
+            else if (i % width < keyDepth)
+                w.Add(tileArray[i]);
+            else
+                trueTileList.Add(tileArray[i]);
         }
-        //[SerializeField] private TileType _tileType;
-        [SerializeField] private Tilemap _tilePrefab;
-        private Vector2Int _tileSize = new Vector2Int(4,4);// here just so i don't have magic numbers in code? maybe change
 
-        [SerializeField] private TileModule[] _north;
-        [SerializeField] private TileModule[] _east;
-        [SerializeField] private TileModule[] _south;
-        [SerializeField] private TileModule[] _west;
-
-        //public TileType GetTileType { get { return _tileType; } }
-        public Tilemap GetTilePrefab { get { return _tilePrefab; } }
-        public Vector2Int TileSize { get { return _tileSize; } }
-        public IModule[] North { get => _north; set => _north = value as TileModule[]; }
-        public IModule[] East { get => _east; set => _east = value as TileModule[]; }
-        public IModule[] South { get => _south; set => _south = value as TileModule[]; }
-        public IModule[] West { get => _west; set => _west = value as TileModule[]; }
+        nKey = n.ToArray();
+        eKey = e.ToArray();
+        sKey = s.ToArray();
+        wKey = w.ToArray();
+        trueTiles = trueTileList.ToArray();
     }
 }
