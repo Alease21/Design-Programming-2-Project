@@ -23,7 +23,7 @@ namespace WFC
 
             //Initial neighbor sets in case project didn't load with them correctly
             _roomSet.SetNeighbours();
-            //_itemSet.SetNeighbours();
+            _itemTileSet.SetNeighbours();
         }
 
         [Space(5)]
@@ -72,8 +72,6 @@ namespace WFC
             if (_createRoomPathPlaceholders) 
                 _placeholderMapParent = new GameObject("PlaceholderMap").transform;
 
-            CollapseRooms();
-
             if (PhotonNetwork.IsMasterClient)
             {
                 UnityEngine.Random.InitState(NetworkManager.instance.dungeonSeed);
@@ -99,8 +97,8 @@ namespace WFC
         private void Update()
         {
             // Quick input to regenerate dungeon, remove later
-            if (Input.GetKeyDown(KeyCode.G))
-                RestartGeneration();
+            //if (Input.GetKeyDown(KeyCode.G))
+                //RestartGeneration();
         }
 
         // Displays elapsed time during dungeon generation
@@ -114,7 +112,7 @@ namespace WFC
         // Delete current dungeon rooms, tile, items and restart generation
         private void RestartGeneration()
         {
-            //ReGenerateSeed();
+            ReGenerateSeed();
 
             StopAllCoroutines();
 
@@ -191,7 +189,9 @@ namespace WFC
                 }
                 GenerationTimer();
                 WFCFinished?.Invoke();
-                photonView.RPC("NonMasterStatup", RpcTarget.All, NetworkManager.instance.dungeonSeed); //Start other client WFC with true seed
+
+                if (PhotonNetwork.IsMasterClient)
+                    photonView.RPC("NonMasterStatup", RpcTarget.All, NetworkManager.instance.dungeonSeed); //Start other client WFC with true seed
             }
         }
 
@@ -276,9 +276,7 @@ namespace WFC
 
             Tilemap tilemapPrefab = room.GetSelectedRoomPrefab;
 
-            //
-            bool playerSpawnSpawned = false; // Temp bool
-            //
+            bool playerSpawnSpawned = false; // Temp bool?
 
             for (int x = 0; x < _roomSize.x; x++)
             {

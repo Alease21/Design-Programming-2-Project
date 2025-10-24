@@ -30,7 +30,7 @@ namespace WFC
 
         public override void Collapse()
         {
-            //Random.InitState(NetworkManager.instance.dungeonSeed);
+            Random.InitState(NetworkManager.instance.dungeonSeed);
             RemoveOptionsFromPosition();
 
             int rng = Random.Range(0, _options.Count);
@@ -193,8 +193,8 @@ namespace WFC
 
         public override void Collapse()
         {
-            //Random.InitState(NetworkManager.instance.dungeonSeed);
-            //RemoveOptionsFromPosition();
+            Random.InitState(NetworkManager.instance.dungeonSeed);
+            RemoveOptionsFromPosition();
 
             int rng = Random.Range(0, _options.Count);
             _selectedModule = _options[rng];
