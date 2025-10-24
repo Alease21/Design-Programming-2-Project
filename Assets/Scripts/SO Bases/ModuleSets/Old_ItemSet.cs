@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace WFC
 {
-    [CreateAssetMenu(menuName = "WFC/Module Sets/New Item Module Set")]
-    public class ItemSet : ScriptableObject, IModuleSet
+    /*
+    //[CreateAssetMenu(menuName = "WFC/Module Sets/New Item Module Set")]
+    public class Old_ItemSet : ScriptableObject, IModuleSet
     {
         [SerializeField] private ItemModule[] _itemModules;
         public IModule[] Modules { get => _itemModules; set => _itemModules = value as ItemModule[]; }
@@ -92,5 +93,5 @@ namespace WFC
                 _itemModules[i].West = west.ToArray();
             }
         }
-    }
+    }*/
 }

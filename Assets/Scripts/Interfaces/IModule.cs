@@ -6,6 +6,5 @@ namespace WFC
         public IModule[] East { get; set; }
         public IModule[] South { get; set; }
         public IModule[] West { get; set; }
-
     }
 }

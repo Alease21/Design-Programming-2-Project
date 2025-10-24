@@ -11,7 +11,7 @@ namespace WFC
 
         public static ElementBase[,] WFCGenerate(IModule[] moduleSet, Vector2Int gridSize, RoomElement curRoom = null)
         {
-            Random.InitState(NetworkManager.instance.dungeonSeed);
+            //Random.InitState(NetworkManager.instance.dungeonSeed);
 
             _curElementType = DetermineType(moduleSet[0]);
 
@@ -75,7 +75,7 @@ namespace WFC
             {
                 case RoomModule:
                     return CurrentElementType.Room;
-                case ItemModule:
+                case ItemTileModule:
                     return CurrentElementType.Item;
             }
 
@@ -101,7 +101,7 @@ namespace WFC
             {
                 case RoomModule:
                     return new RoomElement(moduleSet, position);
-                case ItemModule:
+                case ItemTileModule:
                     return new ItemElement(moduleSet, position, room);
             }
 

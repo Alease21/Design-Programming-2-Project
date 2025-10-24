@@ -1,23 +1,26 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(ItemTileModuleGenerator))]
-public class TileModuleGenerator_Editor : Editor
+namespace WFC
 {
-    private ItemTileModuleGenerator _cur;
-
-    private void OnEnable()
+    [CustomEditor(typeof(ItemTileModuleGenerator))]
+    public class TileModuleGenerator_Editor : Editor
     {
-        _cur = (ItemTileModuleGenerator)target;
-    }
+        private ItemTileModuleGenerator _cur;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        if(GUILayout.Button("Generate Tile Modules"))
+        private void OnEnable()
         {
-            _cur?.GenerateTileModules();
+            _cur = (ItemTileModuleGenerator)target;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            if (GUILayout.Button("Generate Tile Modules"))
+            {
+                _cur?.GenerateTileModules();
+            }
         }
     }
 }

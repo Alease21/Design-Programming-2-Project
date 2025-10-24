@@ -3,14 +3,14 @@ using UnityEditor;
 
 namespace WFC
 {
-    [CustomEditor(typeof(ItemSet))]
-    public class ItemSetEditor : Editor
+    [CustomEditor(typeof(ItemTileSet))]
+    public class ItemTileSetEditor : Editor
     {
-        private ItemSet _itemSet;
+        private ItemTileSet _itemTileSet;
 
         private void OnEnable()
         {
-            _itemSet = target as ItemSet;
+            _itemTileSet = target as ItemTileSet;
         }
 
         public override void OnInspectorGUI()
@@ -19,7 +19,7 @@ namespace WFC
 
             if (GUILayout.Button("Generate Neighbours"))
             {
-                _itemSet.SetNeighbours();
+                _itemTileSet.SetNeighbours();
             }
         }
     }

@@ -23,12 +23,12 @@ namespace WFC
 
             //Initial neighbor sets in case project didn't load with them correctly
             _roomSet.SetNeighbours();
-            _itemSet.SetNeighbours();
+            //_itemSet.SetNeighbours();
         }
 
         [Space(5)]
         [SerializeField] private RoomSet _roomSet;
-        [SerializeField] private ItemSet _itemSet;
+        [SerializeField] private ItemTileSet _itemTileSet;
         private RoomElement[,] _roomGrid;
 
         [Header("Map & Room Options")]
@@ -72,6 +72,8 @@ namespace WFC
             if (_createRoomPathPlaceholders) 
                 _placeholderMapParent = new GameObject("PlaceholderMap").transform;
 
+            CollapseRooms();
+
             if (PhotonNetwork.IsMasterClient)
             {
                 UnityEngine.Random.InitState(NetworkManager.instance.dungeonSeed);
@@ -112,7 +114,7 @@ namespace WFC
         // Delete current dungeon rooms, tile, items and restart generation
         private void RestartGeneration()
         {
-            ReGenerateSeed();
+            //ReGenerateSeed();
 
             StopAllCoroutines();
 
@@ -146,7 +148,10 @@ namespace WFC
 
         private void CollapseItems(RoomElement room)
         {
-            ItemElement[,] curItemGrid = WFCGenerate(_itemSet.Modules, _roomSize, room) as ItemElement[,];
+            Vector2Int itemTileGridSize = new Vector2Int((_roomSize.x - 2) / _itemTileSet.GetTrueModuleWidth, (_roomSize.y - 2) / _itemTileSet.GetTrueModuleWidth); // subtract 2 from room dimesions to account for walls
+                                                                                                                                                                    // and divide by module width
+
+            ItemElement[,] curItemGrid = WFCGenerate(_itemTileSet.Modules, itemTileGridSize, room) as ItemElement[,];
             CreateItems(curItemGrid, room);
         }
 
@@ -179,7 +184,7 @@ namespace WFC
                         {
                             Vector2Int pos = new Vector2Int(x, y);
                             CreateRoom(_roomGrid[x, y]);
-                            //CollapseItems(_roomGrid[x, y]);
+                            CollapseItems(_roomGrid[x, y]);
                             yield return null;
                         }
                     }
@@ -320,20 +325,41 @@ namespace WFC
         }
         private void CreateItems(ItemElement[,] itemRoomGrid, RoomElement room)
         {
+            //loop through grid of tile modules
             for (int x = 0; x < itemRoomGrid.GetLength(0); x++)
             {
                 for (int y = 0; y < itemRoomGrid.GetLength(1); y++)
                 {
-                    ItemModule item = itemRoomGrid[x, y].GetSelectedModule as ItemModule;
+                    ItemTileModule itemTile = itemRoomGrid[x, y].GetSelectedModule as ItemTileModule;
 
+
+                    // Loop through tiles in module area
+                    for (int i = 0; i < _itemTileSet.GetTrueModuleWidth; i++)
+                    {
+                        for (int j = 0; j < _itemTileSet.GetTrueModuleWidth; j++)
+                        {
+                            int tileIndex = itemTile.GetTrueTileIndex(i, j);
+
+                            _itemTileMap.SetTile(GetTilePosition(x,y,i,j,room.GetPosition), itemTile.GetTrueTiles[tileIndex]);
+                        }
+                    }
+
+                    /*
                     if (item.GetItemSubType()[0] != 'N')
                     {
                         _itemTileMap.SetTile(new Vector3Int(x + room.GetPosition.x * _roomSize.x - _roomSize.x / 2,
                             y + room.GetPosition.y * _roomSize.y - _roomSize.y / 2, (int)_itemTileMap.transform.position.z),
                             item.GetTileBase);
                     }
+                    */
                 }
             }
+        }
+        private Vector3Int GetTilePosition(int x, int y, int i, int j, Vector2Int roomPos)
+        {
+            Vector3Int moduleOrigin = new Vector3Int(x * _itemTileSet.GetTrueModuleWidth + roomPos.x * _roomSize.x - _roomSize.x / 2 + 1,
+                                                     y * _itemTileSet.GetTrueModuleWidth + roomPos.y * _roomSize.y - _roomSize.y / 2 + 1); // +1 to account for walls in room
+            return moduleOrigin + new Vector3Int(i,j);
         }
     }
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using static WFC.AStarPathfinding;
-using Unity.VisualScripting;
 
 namespace WFC
 {
@@ -31,7 +30,7 @@ namespace WFC
 
         public override void Collapse()
         {
-
+            //Random.InitState(NetworkManager.instance.dungeonSeed);
             RemoveOptionsFromPosition();
 
             int rng = Random.Range(0, _options.Count);
@@ -68,13 +67,15 @@ namespace WFC
                             _roomByteMap[x, y] = 5;//Tile is dungeon entrance/exit (used for tile color)
                         }
                         else
-                            _roomByteMap[x, y] = 4;
+                            _roomByteMap[x, y] = 4;// general room entrance/exit tile
 
                         pathLocations.Add(tilePos);
                     }
                 }
             }
             
+            /* A Star pathfinding for true path disabled for now
+             * 
             int newPathCounter = 0;
             //Find 2 walkable points within room to path between
             do
@@ -89,6 +90,7 @@ namespace WFC
 
             //A* pathfinding to flip true path byte to 3
             _roomByteMap = FindTruePathThroughRoom(_roomByteMap, pathLocations.ToArray());
+            */
         }
 
         //Determine if a tile is an entrance or exit for byte flipping in Collapse method
@@ -183,6 +185,32 @@ namespace WFC
         private RoomElement _room;
 
         public ItemElement(IModule[] options, Vector2Int position, RoomElement room)
+        {
+            _options = new List<IModule>(options);
+            _position = position;
+            _room = room;
+        }
+
+        public override void Collapse()
+        {
+            //Random.InitState(NetworkManager.instance.dungeonSeed);
+            //RemoveOptionsFromPosition();
+
+            int rng = Random.Range(0, _options.Count);
+            _selectedModule = _options[rng];
+        }
+
+        public override void RemoveOptionsFromPosition()
+        {
+
+        }
+    }
+    /*
+    public class Old_ItemElement : ElementBase
+    {
+        private RoomElement _room;
+
+        public Old_ItemElement(IModule[] options, Vector2Int position, RoomElement room)
         {
             _options = new List<IModule>(options);
             _position = position;
@@ -316,5 +344,5 @@ namespace WFC
                 }
             }
         }
-    }
+    }*/
 }

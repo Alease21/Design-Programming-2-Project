@@ -3,7 +3,8 @@ using UnityEngine.Tilemaps;
 
 namespace WFC
 {
-    [CreateAssetMenu(menuName = "WFC/Modules/New Item Module")]
+    /*
+    //[CreateAssetMenu(menuName = "WFC/Modules/New Item Module")]
     public class ItemModule : ScriptableObject, IModule
     {
         public enum ItemType
@@ -39,5 +40,5 @@ namespace WFC
         {
             return name[2];
         }
-    }
+    }*/
 }

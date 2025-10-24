@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roomSet: {fileID: 11400000, guid: 1299c683d3b404642968773d777aeffa, type: 2}
-  _itemSet: {fileID: 11400000, guid: f3509994b61d8ab4488ecf7d4bacc0b8, type: 2}
+  _itemTileSet: {fileID: 11400000, guid: db053795e23018f46ad1fab8bb7cb69f, type: 2}
   _mapSize: {x: 6, y: 6}
   _roomSize: {x: 18, y: 10}
   _showTileHighlights: 0
