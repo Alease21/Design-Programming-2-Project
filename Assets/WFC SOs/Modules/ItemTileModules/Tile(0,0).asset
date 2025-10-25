@@ -21,9 +21,9 @@ MonoBehaviour:
   _trueTiles:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2475c40fda818f54cb50b53d4b9cf161, type: 2}
   - {fileID: 11400000, guid: e5f8ca4aa0470ce43ab996ae26b8acf6, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: be7894a18a9b6764890f39cfb58b0550, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 413b36ae022ee92498a1e1b45ac7c3e8, type: 2}

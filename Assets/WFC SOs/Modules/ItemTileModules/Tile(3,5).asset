@@ -34,7 +34,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 5ab5b17451f526b4d80b12fc036b0b04, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: be7894a18a9b6764890f39cfb58b0550, type: 2}
   _nKey:
   - {fileID: 11400000, guid: 2b4b2dbb3fc224547807311f322787e0, type: 2}
   - {fileID: 11400000, guid: 3428da8228b1d0d4881047145956eff0, type: 2}

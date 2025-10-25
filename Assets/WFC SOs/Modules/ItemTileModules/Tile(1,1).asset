@@ -32,7 +32,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: d624ee5e3247ba3468c3556283aed36b, type: 2}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: be7894a18a9b6764890f39cfb58b0550, type: 2}
   - {fileID: 11400000, guid: 56d3103c0a76dad438cd2bc84e0b6329, type: 2}
   - {fileID: 0}
   _nKey:

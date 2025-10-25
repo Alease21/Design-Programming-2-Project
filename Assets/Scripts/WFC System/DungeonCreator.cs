@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -69,7 +70,7 @@ namespace WFC
             _boundaryParent = transform.Find("DungeonBoundaries");
 
             //Placeholder map stuff
-            if (_createRoomPathPlaceholders) 
+            if (_createRoomPathPlaceholders)
                 _placeholderMapParent = new GameObject("PlaceholderMap").transform;
 
             if (PhotonNetwork.IsMasterClient)
@@ -98,7 +99,7 @@ namespace WFC
         {
             // Quick input to regenerate dungeon, remove later
             //if (Input.GetKeyDown(KeyCode.G))
-                //RestartGeneration();
+            //RestartGeneration();
         }
 
         // Displays elapsed time during dungeon generation
@@ -119,7 +120,7 @@ namespace WFC
             //Placeholder map stuff
             if (_placeholderMapParent != null)
                 Destroy(_placeholderMapParent.gameObject);
-            if (_createRoomPathPlaceholders) 
+            if (_createRoomPathPlaceholders)
                 _placeholderMapParent = new GameObject("PlaceholderMap").transform;
 
             for (int i = 0; i < _boundaryParent.transform.childCount; i++)
@@ -168,7 +169,7 @@ namespace WFC
                 RestartGeneration();
             else
             {
-                Camera.main.transform.position = new Vector3(_startRoom.GetPosition.x * _roomSize.x, _startRoom.GetPosition.y * _roomSize.y, -10);
+                //Camera.main.transform.position = new Vector3(_startRoom.GetPosition.x * _roomSize.x, _startRoom.GetPosition.y * _roomSize.y, -10);
 
                 for (int x = 0; x < _roomGrid.GetLength(0); x++)
                 {
@@ -255,6 +256,48 @@ namespace WFC
             RoomModule roomModule = room.GetSelectedModule as RoomModule;
             //roomModule.RoomType = (RoomModule.RoomTypes)Random.Range((int)0, 2);
 
+            /*/Set up room transitions for each room REMOVED FOR NOW
+            GameObject newRoomTar = Instantiate(Resources.Load<GameObject>("RoomTarget"));
+            newRoomTar.transform.localPosition = new Vector3Int(room.GetPosition.x * _roomSize.x,
+                room.GetPosition.y * _roomSize.y, (int)newRoomTar.transform.localPosition.z);
+            GameObject NorthTrans = newRoomTar.transform.Find("NorthRoomTrans").gameObject,
+                       EastTrans = newRoomTar.transform.Find("EastRoomTrans").gameObject,
+                       SouthTrans = newRoomTar.transform.Find("SouthRoomTrans").gameObject,
+                       WestTrans = newRoomTar.transform.Find("WestRoomTrans").gameObject;
+            GameObject[] roomTransitions = { NorthTrans, EastTrans, SouthTrans, WestTrans };
+
+            string roomDirs = roomModule.GetDirString();
+            if (roomDirs[0] == '-')
+                NorthTrans.SetActive(false);
+            if (roomDirs[1] == '-')
+                EastTrans.SetActive(false);
+            if (roomDirs[2] == '-')
+                SouthTrans.SetActive(false);
+            if (roomDirs[3] == '-')
+                WestTrans.SetActive(false);
+
+            if (room.GetEdgeBool)
+            {
+                if (room.GetPosition.x == 0 && roomDirs[3] == 'W')
+                    WestTrans.SetActive(false);
+                if (room.GetPosition.y == 0 && roomDirs[2] == 'S')
+                    SouthTrans.SetActive(false);
+                if (room.GetPosition.x == _roomGrid.GetLength(0) && roomDirs[1] == 'E')
+                    EastTrans.SetActive(false);
+                if (room.GetPosition.y == _roomGrid.GetLength(1) && roomDirs[0] == 'N')
+                    NorthTrans.SetActive(false);
+            }
+
+            foreach (GameObject roomTrans in roomTransitions)
+            {
+                if (!roomTrans.activeInHierarchy) continue;
+
+                TransTriggerScripts tts = roomTrans.GetComponent<TransTriggerScripts>();
+                tts.SetRoomTargets()
+
+            }
+            */
+
             // Create placeholder room path for editing & visual reference 
             if (_createRoomPathPlaceholders)
             {
@@ -276,7 +319,7 @@ namespace WFC
 
             Tilemap tilemapPrefab = room.GetSelectedRoomPrefab;
 
-            bool playerSpawnSpawned = false; // Temp bool?
+            int playerSpawnsSet = 0;
 
             for (int x = 0; x < _roomSize.x; x++)
             {
@@ -290,26 +333,60 @@ namespace WFC
                     _environTileMap.SetTile(tilePos, tilemapPrefab.GetTile(prefabTilePos));
 
                     Vector3 spawnedObjPos = (Vector3)tilePos + new Vector3(0.5f, 0.5f, 0f);
-                    if (room.GetRoomByteMap[x, y] == 1)
+
+                    if (room.GetRoomByteMap[x, y] == 1 || room.GetRoomByteMap[x, y] == 2)
                     {
                         GameObject newTileBoundary = new GameObject($"({x},{y})");
                         newTileBoundary.transform.parent = _boundaryParent;
                         newTileBoundary.transform.position = spawnedObjPos;
                         newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
                     }
-                    else if (room == _startRoom && !playerSpawnSpawned)
+                    else if (room == _startRoom && playerSpawnsSet < PhotonNetwork.PlayerList.Length &&
+                             room.GetRoomByteMap[x, y] == 5)
                     {
                         GameObject playerSpawn = Instantiate(Resources.Load<GameObject>("PlayerSpawn"), spawnedObjPos, Quaternion.identity);
-                        GameManager.instance.spawnPoints[0] = playerSpawn.transform;
-                        playerSpawnSpawned = true;
-                        UnityEngine.Debug.Log("[Placeholder] Player Spawn Spawned");
+                        GameManager.instance.spawnPoints[playerSpawnsSet] = playerSpawn.transform;
+                        playerSpawnsSet++;
+                        UnityEngine.Debug.Log("Player Spawn Spawned");
+                    }
+
+                    if ((room == _startRoom) && room.GetRoomByteMap[x, y] == 5)
+                    {
+                        if (x == 0)
+                        {
+                            GameObject newTileBoundary = new GameObject();
+                            newTileBoundary.transform.parent = _boundaryParent;
+                            newTileBoundary.transform.position = spawnedObjPos + Vector3.left;
+                            newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                        }
+                        if (y == 0)
+                        {
+                            GameObject newTileBoundary = new GameObject();
+                            newTileBoundary.transform.parent = _boundaryParent;
+                            newTileBoundary.transform.position = spawnedObjPos + Vector3.down;
+                            newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                        }
+                        if (x == _roomGrid.GetLength(0) - 1)
+                        {
+                            GameObject newTileBoundary = new GameObject();
+                            newTileBoundary.transform.parent = _boundaryParent;
+                            newTileBoundary.transform.position = spawnedObjPos + Vector3.right;
+                            newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                        }
+                        if (y == _roomGrid.GetLength(1) - 1)
+                        {
+                            GameObject newTileBoundary = new GameObject();
+                            newTileBoundary.transform.parent = _boundaryParent;
+                            newTileBoundary.transform.position = spawnedObjPos + Vector3.up;
+                            newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                        }
                     }
 
                     if (!_showTileHighlights) continue; // skip tile coloring if bool not checked
 
                     _environTileMap.SetTileFlags(tilePos, TileFlags.None);
 
-                    if (room.GetRoomByteMap[x, y] == 3 || room.GetRoomByteMap[x,y] == 4)
+                    if (room.GetRoomByteMap[x, y] == 3 || room.GetRoomByteMap[x, y] == 4)
                         _environTileMap.SetColor(tilePos, Color.blue + new Color(0.5f, 0.5f, 0f));
                     else if (room.GetRoomByteMap[x, y] == 5)
                     {
@@ -321,6 +398,7 @@ namespace WFC
                 }
             }
         }
+
         private void CreateItems(ItemElement[,] itemRoomGrid, RoomElement room)
         {
             //loop through grid of tile modules
@@ -330,34 +408,91 @@ namespace WFC
                 {
                     ItemTileModule itemTile = itemRoomGrid[x, y].GetSelectedModule as ItemTileModule;
 
-
                     // Loop through tiles in module area
                     for (int i = 0; i < _itemTileSet.GetTrueModuleWidth; i++)
                     {
                         for (int j = 0; j < _itemTileSet.GetTrueModuleWidth; j++)
                         {
                             int tileIndex = itemTile.GetTrueTileIndex(i, j);
+                            TileBase tile = itemTile.GetTrueTiles[tileIndex];
+                            Vector3Int moduleOriginRoom = new Vector3Int(x * _itemTileSet.GetTrueModuleWidth, y * _itemTileSet.GetTrueModuleWidth);
+                            Vector3Int moduleOriginWorld = new Vector3Int(moduleOriginRoom.x + room.GetPosition.x * _roomSize.x - _roomSize.x / 2,
+                                                                          moduleOriginRoom.y + room.GetPosition.y * _roomSize.y - _roomSize.y / 2); // +1 to account for walls in room
 
-                            _itemTileMap.SetTile(GetTilePosition(x,y,i,j,room.GetPosition), itemTile.GetTrueTiles[tileIndex]);
+                            if (room.GetRoomByteMap[moduleOriginRoom.x + i, moduleOriginRoom.y + j] != 0) continue; //if tile is non-floor, do not place anything
+                            if (tile == null) continue;// if no tile base, continue
+
+                            //check if it is multi tile object (naming convention)
+                            if (tile.name[0] == 'M')
+                            {
+                                string connectionDirs = tile.name.Substring(tile.name.Length - 4);
+                                Vector2Int nNeighbour = new Vector2Int(moduleOriginRoom.x + i, moduleOriginRoom.y + j) + Vector2Int.up,
+                                           eNeighbour = new Vector2Int(moduleOriginRoom.x + i, moduleOriginRoom.y + j) + Vector2Int.right,
+                                           sNeighbour = new Vector2Int(moduleOriginRoom.x + i, moduleOriginRoom.y + j) + Vector2Int.down,
+                                           wNeighbour = new Vector2Int(moduleOriginRoom.x + i, moduleOriginRoom.y + j) + Vector2Int.left;
+
+                                // if multi tile object overlaps non floor tile, do not place anything/continue loop
+                                if (connectionDirs[0] == 'N' && room.GetRoomByteMap[nNeighbour.x, nNeighbour.y] != 0 ||
+                                    connectionDirs[1] == 'E' && room.GetRoomByteMap[eNeighbour.x, eNeighbour.y] != 0 ||
+                                    connectionDirs[2] == 'S' && room.GetRoomByteMap[sNeighbour.x, sNeighbour.y] != 0 ||
+                                    connectionDirs[3] == 'W' && room.GetRoomByteMap[wNeighbour.x, wNeighbour.y] != 0)
+                                    continue;
+                            }
+
+                            if (tile.name[1] == 'B' && tile.name[tile.name.Length - 1] == '0') // chest tile
+                            {
+                                GameObject newChest = Instantiate(Resources.Load<GameObject>("Chest"));
+                                newChest.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
+
+                                // spawn collider seperate from chest item for trigger enter functions
+                                GameObject newTileBoundary = new GameObject($"({x},{y})");
+                                newTileBoundary.transform.parent = _boundaryParent;
+                                newTileBoundary.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
+                                newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+
+                                continue;
+                            }
+                            else if (tile.name[1] == 'P' && tile.name[tile.name.Length - 1] == '5') // coin tile
+                            {
+                                GameObject newCoin = Instantiate(Resources.Load<GameObject>("Coin"));
+                                newCoin.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.11f, 0f);
+                                continue;
+                            }
+                            else if (tile.name == "Props_78")// Enemy tile **rename me
+                            {
+                                GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Enemy"));
+                                newEnemy.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
+                                continue;
+                            }
+                            else if (tile.name == "Props_76")// Health pot tile **rename me
+                            {
+                                GameObject newHealthPot = Instantiate(Resources.Load<GameObject>("HealthPotion"));
+                                newHealthPot.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0f, 0f);
+                                continue;
+                            }
+                            /* removed merchant for now, couldn't get gui to work right/didnt have time
+                            else if (tile.name == "Props_74")// Merchant tile **rename me
+                            {
+                                GameObject newMerchant = Instantiate(Resources.Load<GameObject>("ShopKeep"));
+                                newMerchant.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
+                                newMerchant.AddComponent<BoxCollider>().size = Vector2.one;
+                                continue;
+                            }
+                            */
+
+                            if (tile.name[3] == 'C')
+                            {
+                                GameObject newTileBoundary = new GameObject($"({x},{y})");
+                                newTileBoundary.transform.parent = _boundaryParent;
+                                newTileBoundary.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
+                                newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                            }
+
+                            _itemTileMap.SetTile(moduleOriginWorld + new Vector3Int(i, j), tile);
                         }
                     }
-
-                    /*
-                    if (item.GetItemSubType()[0] != 'N')
-                    {
-                        _itemTileMap.SetTile(new Vector3Int(x + room.GetPosition.x * _roomSize.x - _roomSize.x / 2,
-                            y + room.GetPosition.y * _roomSize.y - _roomSize.y / 2, (int)_itemTileMap.transform.position.z),
-                            item.GetTileBase);
-                    }
-                    */
                 }
             }
-        }
-        private Vector3Int GetTilePosition(int x, int y, int i, int j, Vector2Int roomPos)
-        {
-            Vector3Int moduleOrigin = new Vector3Int(x * _itemTileSet.GetTrueModuleWidth + roomPos.x * _roomSize.x - _roomSize.x / 2 + 1,
-                                                     y * _itemTileSet.GetTrueModuleWidth + roomPos.y * _roomSize.y - _roomSize.y / 2 + 1); // +1 to account for walls in room
-            return moduleOrigin + new Vector3Int(i,j);
         }
     }
 }

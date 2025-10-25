@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using WFC;
 
 public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -12,17 +13,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private float _playerSpeed;
     //private Vector2 _move;
     private Rigidbody _rb;
+    private Camera _camera;
     public Player photonPlayer;
     public Animator spriteAnimator;
+    public bool _playerFrozen = false;
 
     public void OnMove(InputAction.CallbackContext context)
     {
         //_move = context.ReadValue<Vector2>();
-    }
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
-        spriteAnimator = GetComponent<Animator>();
     }
 
     [PunRPC]
@@ -40,22 +38,19 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (!photonView.IsMine)
             _rb.isKinematic = true;
     }
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _camera = Camera.main;
+        spriteAnimator = GetComponent<Animator>();
+    }
 
     private void FixedUpdate()
     {
-        if (photonView.IsMine)
+        if (photonView.IsMine && !_playerFrozen)
         {
-            /*
-            Vector3 currentVelo = _rb.linearVelocity;
-            Vector3 targetVelo = new Vector3(_move.x, _move.y, 0f) * _playerSpeed;
-
-            targetVelo = transform.TransformDirection(targetVelo);
-            Vector3 veloChange = targetVelo - currentVelo;
-
-            _rb.AddForce(new Vector3(veloChange.x, veloChange.y, 0), ForceMode.VelocityChange); //forcemode velocitychange is mass agnostic
-                                                                                                //also can split this to ignore y if gravity is odd
-            */
             OnMove();
+            _camera.transform.position = new Vector3(transform.position.x, transform.position.y, _camera.transform.position.z);
         }
     }
     private void OnMove()

@@ -26,12 +26,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: 5f95dd69b4f3f184b84b6ff759246adc, type: 2}
   - {fileID: 11400000, guid: 8cc9e242984986e449f5c8dd9503acc6, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: be7894a18a9b6764890f39cfb58b0550, type: 2}
   - {fileID: 0}
   - {fileID: 11400000, guid: 35d70313ddee5d64890b743d77d61042, type: 2}
   - {fileID: 11400000, guid: 01c37f48c7cf89c45932bc282d74b442, type: 2}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2475c40fda818f54cb50b53d4b9cf161, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

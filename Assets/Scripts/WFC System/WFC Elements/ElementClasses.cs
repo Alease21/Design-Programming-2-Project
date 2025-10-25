@@ -30,7 +30,7 @@ namespace WFC
 
         public override void Collapse()
         {
-            Random.InitState(NetworkManager.instance.dungeonSeed);
+            Random.InitState(NetworkManager.instance.dungeonSeed + int.Parse($"{_position.x}{_position.y}"));
             RemoveOptionsFromPosition();
 
             int rng = Random.Range(0, _options.Count);
@@ -45,7 +45,7 @@ namespace WFC
             _roomByteMap = new byte[roomSize.x, roomSize.y];
 
             List<Vector2Int> pathLocations = new();
-
+            List<Vector2Int> extraPlayerSpawnLocations = new();
             for (int x = 0; x < roomSize.x; x++)
             {
                 for (int y = 0; y < roomSize.y; y++)
@@ -65,6 +65,7 @@ namespace WFC
                             _position.y == 0 && tilePos.y == 0 || _position.y == mapSize.y - 1 && tilePos.y == roomSize.y - 1)
                         {
                             _roomByteMap[x, y] = 5;//Tile is dungeon entrance/exit (used for tile color)
+                            extraPlayerSpawnLocations.Add(tilePos + SpawnPlaceDir(tilePos));
                         }
                         else
                             _roomByteMap[x, y] = 4;// general room entrance/exit tile
@@ -73,9 +74,6 @@ namespace WFC
                     }
                 }
             }
-            
-            /* A Star pathfinding for true path disabled for now
-             * 
             int newPathCounter = 0;
             //Find 2 walkable points within room to path between
             do
@@ -86,11 +84,27 @@ namespace WFC
 
                 pathLocations.Add(pathPoint);
                 newPathCounter++;
-            } while (newPathCounter <= 2); //make a variable for adjusting
+            } while (newPathCounter <= 1); //make a variable for adjusting
 
             //A* pathfinding to flip true path byte to 3
             _roomByteMap = FindTruePathThroughRoom(_roomByteMap, pathLocations.ToArray());
-            */
+
+            foreach (Vector2Int spawnLoc in extraPlayerSpawnLocations)
+                _roomByteMap[spawnLoc.x, spawnLoc.y] = 5;
+        }
+        public Vector2Int SpawnPlaceDir(Vector2Int dungeonExitPos)
+        {
+            if (dungeonExitPos.x == 0)
+                return Vector2Int.right;
+            else if (dungeonExitPos.x == DungeonCreator.instance.GetRoomSize.x - 1)
+                return Vector2Int.left;
+            else if (dungeonExitPos.y == 0)
+                return Vector2Int.up;
+            else if (dungeonExitPos.y == DungeonCreator.instance.GetRoomSize.y - 1)
+                return Vector2Int.down;
+
+            UnityEngine.Debug.LogError($"Player spawn determine failed. ({dungeonExitPos.x},{dungeonExitPos.y})");
+            return Vector2Int.zero;
         }
 
         //Determine if a tile is an entrance or exit for byte flipping in Collapse method
@@ -193,7 +207,8 @@ namespace WFC
 
         public override void Collapse()
         {
-            Random.InitState(NetworkManager.instance.dungeonSeed);
+            Random.InitState(NetworkManager.instance.dungeonSeed + int.Parse($"{_position.x}{_position.y}") + 
+                int.Parse($"{_room.GetPosition.x}{_room.GetPosition.y}"));
             RemoveOptionsFromPosition();
 
             int rng = Random.Range(0, _options.Count);
@@ -205,144 +220,4 @@ namespace WFC
 
         }
     }
-    /*
-    public class Old_ItemElement : ElementBase
-    {
-        private RoomElement _room;
-
-        public Old_ItemElement(IModule[] options, Vector2Int position, RoomElement room)
-        {
-            _options = new List<IModule>(options);
-            _position = position;
-            _room = room;
-
-            if (_position.x == 0 || _position.x == DungeonCreator.instance.GetRoomSize.x - 1 ||
-                _position.y == 0 || _position.y == DungeonCreator.instance.GetRoomSize.y - 1)
-            {
-                _isEdge = true;
-            }
-            else _isEdge = false;
-        }
-
-        public override void Collapse()
-        {
-            RemoveOptionsFromPosition();
-
-            int rng = Random.Range(0, _options.Count);
-            _selectedModule = _options[rng];
-        }
-
-        public override void RemoveOptionsFromPosition()
-        {
-            DungeonCreator dc = DungeonCreator.instance;
-            Vector2Int northNeighbour = _position + Vector2Int.up,
-                       eastNeighbour = _position + Vector2Int.right,
-                       southNeighbour = _position + Vector2Int.down,
-                       westNeighbour = _position + Vector2Int.left;
-
-            for (int i = _options.Count - 1; i >= 0; i--)
-            {
-                ItemModule option = _options[i] as ItemModule;
-                char locType = option.GetItemLocationType();
-                string subType = option.GetItemSubType();
-
-                switch (_room.GetRoomByteMap[_position.x, _position.y])
-                {
-                    case 0:
-                        if (locType != 'F' && subType[0] != 'N')// remove non floor type items
-                        {
-                            _options.RemoveAt(i);
-                            continue;
-                        }
-                        break;
-                    case 1:
-                        if (locType != 'W' && subType[0] != 'N')// remove non wall type items
-                        {
-                            _options.RemoveAt(i);
-                            continue;
-                        }
-                        break;
-                    case 2:// if tile is pit
-                    case 3:// or tile is true path between exits
-                    case 4:// or tile is room exit
-                    case 5:// or tile is dungeon entrance/exit, remove any items that aren't "None" type
-                        if (subType[0] != 'N') 
-                        {
-                            _options.RemoveAt(i);
-                            continue;
-                        }
-                        break;
-                }
-
-                // Check neighbouring environment tiles to further trim options & avoid nonsensical placements
-                switch (subType[0])
-                {
-                    case 'B': // Box or Banner depending on location **Fix this in naming convention to be better
-                        switch (subType[1])
-                        {
-                            case '0':
-                                // ternary expression for location type?
-                                break;
-                            case '1':
-                                // ternary expression for location type?
-                                break;
-                        }
-                        break;
-                    case 'C': // Chair
-                        switch (subType[1])
-                        {
-                            case 'N':
-                                if (_room.GetRoomByteMap[northNeighbour.x, northNeighbour.y] == 1 ||
-                                    _room.GetRoomByteMap[northNeighbour.x, northNeighbour.y] == 2)
-                                {
-                                    _options.RemoveAt(i);
-                                    continue;
-                                }
-                                break;
-                            case 'E':
-                                if (_room.GetRoomByteMap[eastNeighbour.x, eastNeighbour.y] == 1 ||
-                                    _room.GetRoomByteMap[eastNeighbour.x, eastNeighbour.y] == 2)
-                                {
-                                    _options.RemoveAt(i);
-                                    continue;
-                                }
-                                break;
-                            case 'S':
-                                if (_room.GetRoomByteMap[southNeighbour.x, southNeighbour.y] == 1 ||
-                                    _room.GetRoomByteMap[southNeighbour.x, southNeighbour.y] == 2)
-                                {
-                                    _options.RemoveAt(i);
-                                    continue;
-                                }
-                                break;
-                            case 'W':
-                                if (_room.GetRoomByteMap[westNeighbour.x, westNeighbour.y] == 1 ||
-                                    _room.GetRoomByteMap[westNeighbour.x, westNeighbour.y] == 2)
-                                {
-                                    _options.RemoveAt(i);
-                                    continue;
-                                }
-                                break;
-                        }
-                        break;
-                    case 'T': // Table or torch depending on location **Fix this in naming convention to be better
-                        switch (subType[1])
-                        {
-                            case '0':
-                                // ternary expression for location type?
-                                break;
-                            case '1':
-                                break;
-                            case '2':
-                                break;
-                            case '3':
-                                break;
-                            case '4':
-                                break;
-                        }
-                        break;
-                }
-            }
-        }
-    }*/
 }

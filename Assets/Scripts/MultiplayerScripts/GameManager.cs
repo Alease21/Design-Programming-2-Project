@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Header("Players")]
     public string playerPrefabLoc;
 
-    public Transform[] spawnPoints = new Transform[1];
+    public Transform[] spawnPoints = new Transform[4];
     public PlayerMovement[] players;
     private int _playersInGame;
 
@@ -40,9 +40,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SpawnPlayer()
     {
-        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLoc, 
-            spawnPoints[Random.Range(0, spawnPoints.Length)].position, 
-            Quaternion.identity);
+        int playerIndex = 0;
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+            if (PhotonNetwork.PlayerList[i] == PhotonNetwork.LocalPlayer)
+            {
+                playerIndex = i;
+                break;
+            }
+
+        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLoc, spawnPoints[playerIndex].position, Quaternion.identity);
 
         PlayerMovement playerScript = playerObj.GetComponent<PlayerMovement>();
 

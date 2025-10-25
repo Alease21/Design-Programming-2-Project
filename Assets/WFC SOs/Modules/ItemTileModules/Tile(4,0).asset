@@ -29,7 +29,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2475c40fda818f54cb50b53d4b9cf161, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 957d3b1bf8a9c0b4bb1d64051658d275, type: 2}

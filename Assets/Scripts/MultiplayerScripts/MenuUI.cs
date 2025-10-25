@@ -87,6 +87,6 @@ public class MenuUI : MonoBehaviourPunCallbacks
     public void StartGameButton()
     {
         NetworkManager.instance.photonView.RPC("ChangeScene",
-            RpcTarget.All, "WFC Testing");
+            RpcTarget.All, "MainScene");
     }
 }

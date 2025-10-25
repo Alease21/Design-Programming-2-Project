@@ -24,11 +24,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ea63e723b9672f34f80fc2e4d41a15fc, type: 2}
   - {fileID: 0}
   - {fileID: 11400000, guid: 445c133c67d50c440b5e193019c4ae74, type: 2}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: be7894a18a9b6764890f39cfb58b0550, type: 2}
   - {fileID: 0}
   - {fileID: 11400000, guid: fb00665a20864944581837b02f8ce633, type: 2}
   - {fileID: 0}
