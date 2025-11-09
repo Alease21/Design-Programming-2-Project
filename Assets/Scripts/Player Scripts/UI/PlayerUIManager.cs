@@ -12,7 +12,7 @@ public class PlayerHUD : MonoBehaviour
 
     void Start()
     { 
-        player = FindObjectOfType<PlayerHealthManager>();
+        player = FindAnyObjectByType<PlayerHealthManager>();
 
         if (healthSlider != null)
         {

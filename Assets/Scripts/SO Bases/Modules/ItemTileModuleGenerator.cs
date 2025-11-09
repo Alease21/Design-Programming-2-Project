@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -9,14 +11,18 @@ namespace WFC
     [RequireComponent(typeof(Tilemap))]
     public class ItemTileModuleGenerator : MonoBehaviour
     {
+        [SerializeField] private ItemTileSet _itemTileSet;
+        private List<ItemTileModule> _tileModules;
+
         [SerializeField] private int _moduleWidth = 6;
         [SerializeField] private int _keyDepth = 1;
-
-        [SerializeField] private List<ItemTileModule> _tileModules;
+        private int _maxNullTilesInModule;// number of tiles within a module, that are null & have no tilebase (catches tilemap sections with no modules)
+        private int _numEmptyTiles = 0;// number of tile modules with no items present
 
         public void GenerateTileModules()
         {
             _tileModules = new List<ItemTileModule>();
+            _maxNullTilesInModule = _moduleWidth * _moduleWidth - (_moduleWidth - 2 * _keyDepth) * 4;
 
             Tilemap tilemap = GetComponent<Tilemap>();
             tilemap.CompressBounds();
@@ -39,9 +45,17 @@ namespace WFC
                         }
                     }
 
-                    ItemTileModule asset = ScriptableObject.CreateInstance<ItemTileModule>();
-                    AssetDatabase.CreateAsset(asset, $"Assets/WFC SOs/Modules/ItemTileModules/Tile({x},{y}).asset");
+                    string assetPath = $"Assets/WFC SOs/Modules/ItemTileModules/Tile({x},{y}).asset";
+                    ItemTileModule asset = AssetDatabase.LoadAssetAtPath<ItemTileModule>(assetPath);
+
+                    if (asset != null)
+                        ClearItemTileModule(asset);
+
+                    asset = ScriptableObject.CreateInstance<ItemTileModule>();
+                    AssetDatabase.CreateAsset(asset, assetPath);
                     AssetDatabase.SaveAssets();
+
+                    if (!CheckNullAndEmptyModules(tiles)) continue;
 
                     asset.keyDepth = _keyDepth;
                     asset.moduleWidth = _moduleWidth;
@@ -52,12 +66,37 @@ namespace WFC
                 }
             }
 
-            //SetModuleNeighbours();
+            _itemTileSet.Modules = _tileModules.ToArray();
+            _itemTileSet.SetNeighbours();
+        }
+
+        private bool CheckNullAndEmptyModules(List<TileBase> tiles)
+        {
+            int nullCount = 0;
+
+            foreach (TileBase tile in tiles)
+            {
+                if (tile == null)
+                    nullCount++;
+
+                if (nullCount > _maxNullTilesInModule)
+                    return false;
+            }
+
+            if (nullCount == _maxNullTilesInModule)
+            {
+                if (_numEmptyTiles == 0)
+                    _numEmptyTiles++;
+                else
+                    return false;
+            }
+
+            return true;
         }
         public void ClearItemTileModule(ItemTileModule asset)
         {
             EditorUtility.ClearDirty(asset);
-            DestroyImmediate(asset);
+            DestroyImmediate(asset, true);
         }
     }
 }

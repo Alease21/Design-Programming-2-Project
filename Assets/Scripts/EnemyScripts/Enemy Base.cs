@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using static MagicManager;
 
-public class EnemyBase : MonoBehaviour, IEnemy
+public class EnemyBase : MultiplayerObjBase, IEnemy
 {
     public EnemySO baseStats;
     public List<EnemyAttackSO> attacks;
@@ -18,8 +18,10 @@ public class EnemyBase : MonoBehaviour, IEnemy
     public SpriteRenderer spriteRenderer;
     public GameObject coins;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();// call base Awake from MultiplayerGameObject for setting GUID & maybe other stuff eventually
+        
         curHP = baseStats.hp;
         targetPlayer = GameObject.FindGameObjectWithTag("Player");
         if (baseStats.charSprite != null)
