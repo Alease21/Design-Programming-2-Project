@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102a817412e33bf4295e8159a9a79fb1, type: 3}
+  m_Name: Plate test
+  m_EditorClassIdentifier: 
+  armorName: Test Plate
+  armorDescription: Test Armor Description
+  _armorType: 2
+  _armorPrefab: {fileID: 0}
+  _baseArmorValue: 0
+  _armorResistances: 28
+  _physResist: 0
+  _iceResist: 2
+  _fireResist: 3
+  _holyResist: 4
+  _unholyResist: 0

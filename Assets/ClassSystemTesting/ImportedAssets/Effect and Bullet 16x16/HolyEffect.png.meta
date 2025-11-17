@@ -1,0 +1,1216 @@
+fileFormatVersion: 2
+guid: b6a6d281055b0244abc68b268c3c7cd3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -330686504290200089
+    second: Purple Effect and Bullet 16x16_0
+  - first:
+      213: -8752039300726188132
+    second: Purple Effect and Bullet 16x16_1
+  - first:
+      213: -1767103687961742494
+    second: Purple Effect and Bullet 16x16_2
+  - first:
+      213: 6982429890961090207
+    second: Purple Effect and Bullet 16x16_3
+  - first:
+      213: -2274549137567357645
+    second: Purple Effect and Bullet 16x16_4
+  - first:
+      213: 1324829027440268289
+    second: Purple Effect and Bullet 16x16_5
+  - first:
+      213: 472391454631138053
+    second: Purple Effect and Bullet 16x16_6
+  - first:
+      213: -8870007566483462978
+    second: Purple Effect and Bullet 16x16_7
+  - first:
+      213: 4251802966743112501
+    second: Purple Effect and Bullet 16x16_8
+  - first:
+      213: 2163419025250137070
+    second: Purple Effect and Bullet 16x16_9
+  - first:
+      213: -2197530867757062177
+    second: Purple Effect and Bullet 16x16_10
+  - first:
+      213: -8751315181325927154
+    second: Purple Effect and Bullet 16x16_11
+  - first:
+      213: 5172056230599459112
+    second: Purple Effect and Bullet 16x16_12
+  - first:
+      213: -4512281339388893024
+    second: Purple Effect and Bullet 16x16_13
+  - first:
+      213: -497651165347815664
+    second: Purple Effect and Bullet 16x16_14
+  - first:
+      213: -5973990745295215364
+    second: Purple Effect and Bullet 16x16_15
+  - first:
+      213: 5130563070579728729
+    second: Purple Effect and Bullet 16x16_16
+  - first:
+      213: 1744166019544786217
+    second: Purple Effect and Bullet 16x16_17
+  - first:
+      213: -8881627636211941916
+    second: Purple Effect and Bullet 16x16_18
+  - first:
+      213: -594137763660275356
+    second: Purple Effect and Bullet 16x16_19
+  - first:
+      213: -5274425796584319041
+    second: Purple Effect and Bullet 16x16_20
+  - first:
+      213: -2083378727687548009
+    second: Purple Effect and Bullet 16x16_21
+  - first:
+      213: -1981662755709795009
+    second: Purple Effect and Bullet 16x16_22
+  - first:
+      213: -2783852041731700387
+    second: Purple Effect and Bullet 16x16_23
+  - first:
+      213: 352982167914699015
+    second: Purple Effect and Bullet 16x16_24
+  - first:
+      213: -4403835781501484209
+    second: Purple Effect and Bullet 16x16_25
+  - first:
+      213: -6196129088494167589
+    second: Purple Effect and Bullet 16x16_26
+  - first:
+      213: -6725343640514118739
+    second: Purple Effect and Bullet 16x16_27
+  - first:
+      213: -1275497248615169248
+    second: Purple Effect and Bullet 16x16_28
+  - first:
+      213: 4802386783151110902
+    second: Purple Effect and Bullet 16x16_29
+  - first:
+      213: -1045368112953636834
+    second: Purple Effect and Bullet 16x16_30
+  - first:
+      213: -713577500108892262
+    second: Purple Effect and Bullet 16x16_31
+  - first:
+      213: -5508285717184739725
+    second: Purple Effect and Bullet 16x16_32
+  - first:
+      213: 731651877628321187
+    second: Purple Effect and Bullet 16x16_33
+  - first:
+      213: -8574278997625940976
+    second: Purple Effect and Bullet 16x16_34
+  - first:
+      213: -3063032946011566187
+    second: Purple Effect and Bullet 16x16_35
+  - first:
+      213: -2551490722092762563
+    second: Purple Effect and Bullet 16x16_36
+  - first:
+      213: -2886276588234504289
+    second: Purple Effect and Bullet 16x16_37
+  - first:
+      213: -5178580489646258133
+    second: Purple Effect and Bullet 16x16_38
+  - first:
+      213: 7383711884930542308
+    second: Purple Effect and Bullet 16x16_39
+  - first:
+      213: -2766017877876079647
+    second: Purple Effect and Bullet 16x16_40
+  - first:
+      213: 8290390205015955389
+    second: Purple Effect and Bullet 16x16_41
+  - first:
+      213: -5432486164934258404
+    second: Purple Effect and Bullet 16x16_42
+  - first:
+      213: -6071667507507949397
+    second: Purple Effect and Bullet 16x16_43
+  - first:
+      213: -8541082761718306738
+    second: Purple Effect and Bullet 16x16_44
+  - first:
+      213: -1030880627314790401
+    second: Purple Effect and Bullet 16x16_45
+  - first:
+      213: -1199636448096323433
+    second: Purple Effect and Bullet 16x16_46
+  - first:
+      213: -4314958660759275365
+    second: Purple Effect and Bullet 16x16_47
+  - first:
+      213: -8036946417665272597
+    second: Purple Effect and Bullet 16x16_48
+  - first:
+      213: 5691003695160246645
+    second: Purple Effect and Bullet 16x16_49
+  - first:
+      213: 4864393374456204503
+    second: Purple Effect and Bullet 16x16_50
+  - first:
+      213: -8059389938213368861
+    second: Purple Effect and Bullet 16x16_51
+  - first:
+      213: -3328211173367143507
+    second: Purple Effect and Bullet 16x16_52
+  - first:
+      213: 4907941018078337897
+    second: Purple Effect and Bullet 16x16_53
+  - first:
+      213: -6571863576434913728
+    second: Purple Effect and Bullet 16x16_54
+  - first:
+      213: 8190592797482270529
+    second: Purple Effect and Bullet 16x16_55
+  - first:
+      213: 2210986297585207923
+    second: Purple Effect and Bullet 16x16_56
+  - first:
+      213: -3438352004500104002
+    second: Purple Effect and Bullet 16x16_57
+  - first:
+      213: -1620206270235325162
+    second: Purple Effect and Bullet 16x16_58
+  - first:
+      213: -5766182181867721991
+    second: Purple Effect and Bullet 16x16_59
+  - first:
+      213: -6014790497436423356
+    second: Purple Effect and Bullet 16x16_60
+  - first:
+      213: -2442347092606842922
+    second: Purple Effect and Bullet 16x16_61
+  - first:
+      213: 6892926074570998856
+    second: Purple Effect and Bullet 16x16_62
+  - first:
+      213: 2608575356674303847
+    second: Purple Effect and Bullet 16x16_63
+  - first:
+      213: 2135984491678388841
+    second: Purple Effect and Bullet 16x16_64
+  - first:
+      213: -5422891445816258844
+    second: Purple Effect and Bullet 16x16_65
+  - first:
+      213: 4010369507774678794
+    second: Purple Effect and Bullet 16x16_66
+  - first:
+      213: -3368785165904149952
+    second: Purple Effect and Bullet 16x16_67
+  - first:
+      213: -2820146502158747523
+    second: Purple Effect and Bullet 16x16_68
+  - first:
+      213: 4810788732200730566
+    second: Purple Effect and Bullet 16x16_69
+  - first:
+      213: -4553380724010970061
+    second: Purple Effect and Bullet 16x16_70
+  - first:
+      213: 311526928449386347
+    second: Purple Effect and Bullet 16x16_71
+  - first:
+      213: 5771654030918355814
+    second: Purple Effect and Bullet 16x16_72
+  - first:
+      213: 4526968323857545918
+    second: Purple Effect and Bullet 16x16_73
+  - first:
+      213: 8169578614595415946
+    second: Purple Effect and Bullet 16x16_74
+  - first:
+      213: 2034291250513472191
+    second: Purple Effect and Bullet 16x16_75
+  - first:
+      213: 2784264748045748637
+    second: Purple Effect and Bullet 16x16_76
+  - first:
+      213: 7034959218206016484
+    second: Purple Effect and Bullet 16x16_77
+  - first:
+      213: 3531131471846802263
+    second: Purple Effect and Bullet 16x16_78
+  - first:
+      213: -8366466453196875564
+    second: Purple Effect and Bullet 16x16_79
+  - first:
+      213: -8213698492398235686
+    second: Purple Effect and Bullet 16x16_80
+  - first:
+      213: 6705396791632603812
+    second: Purple Effect and Bullet 16x16_81
+  - first:
+      213: -1364088099826827066
+    second: Purple Effect and Bullet 16x16_82
+  - first:
+      213: -4296523616636868744
+    second: Purple Effect and Bullet 16x16_83
+  - first:
+      213: -7228578514610095800
+    second: Purple Effect and Bullet 16x16_84
+  - first:
+      213: -5742093960365524295
+    second: Purple Effect and Bullet 16x16_85
+  - first:
+      213: 8330858369466283092
+    second: Purple Effect and Bullet 16x16_86
+  - first:
+      213: 6256443408112064329
+    second: Purple Effect and Bullet 16x16_87
+  - first:
+      213: 3194512385605328738
+    second: Purple Effect and Bullet 16x16_88
+  - first:
+      213: 1906646206162247354
+    second: Purple Effect and Bullet 16x16_89
+  - first:
+      213: 1223572739629494988
+    second: Purple Effect and Bullet 16x16_90
+  - first:
+      213: -4893102494713833407
+    second: Purple Effect and Bullet 16x16_91
+  - first:
+      213: -1330991110073477716
+    second: Purple Effect and Bullet 16x16_92
+  - first:
+      213: 3675355326157810308
+    second: Purple Effect and Bullet 16x16_93
+  - first:
+      213: 968195820080636231
+    second: Purple Effect and Bullet 16x16_94
+  - first:
+      213: -1729035468871964208
+    second: Purple Effect and Bullet 16x16_95
+  - first:
+      213: 8189377157419134050
+    second: Purple Effect and Bullet 16x16_96
+  - first:
+      213: -376050737862477519
+    second: Purple Effect and Bullet 16x16_97
+  - first:
+      213: -6271338344689249072
+    second: Purple Effect and Bullet 16x16_98
+  - first:
+      213: 4508348792470278060
+    second: Purple Effect and Bullet 16x16_99
+  - first:
+      213: -4802124113331504650
+    second: Purple Effect and Bullet 16x16_100
+  - first:
+      213: -6236837732898308495
+    second: Purple Effect and Bullet 16x16_101
+  - first:
+      213: -735108343921175016
+    second: Purple Effect and Bullet 16x16_102
+  - first:
+      213: 6230902873986304207
+    second: Purple Effect and Bullet 16x16_103
+  - first:
+      213: -1888347332321296916
+    second: Purple Effect and Bullet 16x16_104
+  - first:
+      213: -1387000734258921317
+    second: Purple Effect and Bullet 16x16_105
+  - first:
+      213: -1642637635915846965
+    second: Purple Effect and Bullet 16x16_106
+  - first:
+      213: 4001774575617997204
+    second: Purple Effect and Bullet 16x16_107
+  - first:
+      213: -742778087786236747
+    second: Purple Effect and Bullet 16x16_108
+  - first:
+      213: 3293752677073872809
+    second: Purple Effect and Bullet 16x16_109
+  - first:
+      213: -951447314341217507
+    second: Purple Effect and Bullet 16x16_110
+  - first:
+      213: 2199664885975754397
+    second: Purple Effect and Bullet 16x16_111
+  - first:
+      213: 4291133302420663454
+    second: Purple Effect and Bullet 16x16_112
+  - first:
+      213: -878381020516197204
+    second: Purple Effect and Bullet 16x16_113
+  - first:
+      213: 5876570799518643340
+    second: Purple Effect and Bullet 16x16_114
+  - first:
+      213: 2980295250286354769
+    second: Purple Effect and Bullet 16x16_115
+  - first:
+      213: 8410712592458055149
+    second: Purple Effect and Bullet 16x16_116
+  - first:
+      213: -4233796001393037438
+    second: Purple Effect and Bullet 16x16_117
+  - first:
+      213: 3557258392918059251
+    second: Purple Effect and Bullet 16x16_118
+  - first:
+      213: 560611957496377641
+    second: Purple Effect and Bullet 16x16_119
+  - first:
+      213: 2859653491543032017
+    second: Purple Effect and Bullet 16x16_120
+  - first:
+      213: 6932506069168828786
+    second: Purple Effect and Bullet 16x16_121
+  - first:
+      213: -4516033450028141709
+    second: Purple Effect and Bullet 16x16_122
+  - first:
+      213: -3340187157903484751
+    second: Purple Effect and Bullet 16x16_123
+  - first:
+      213: 2816847899182071421
+    second: Purple Effect and Bullet 16x16_124
+  - first:
+      213: 6856939132962119448
+    second: Purple Effect and Bullet 16x16_125
+  - first:
+      213: 4284138451081895533
+    second: Purple Effect and Bullet 16x16_126
+  - first:
+      213: -1519864993975375715
+    second: Purple Effect and Bullet 16x16_127
+  - first:
+      213: 5181054109359936283
+    second: Purple Effect and Bullet 16x16_128
+  - first:
+      213: -323243389666792770
+    second: Purple Effect and Bullet 16x16_129
+  - first:
+      213: -4445873721135320102
+    second: Purple Effect and Bullet 16x16_130
+  - first:
+      213: -3864997916081648617
+    second: Purple Effect and Bullet 16x16_131
+  - first:
+      213: 7056935746324210656
+    second: Purple Effect and Bullet 16x16_132
+  - first:
+      213: 5441244048013647290
+    second: Purple Effect and Bullet 16x16_133
+  - first:
+      213: -2626177167290844619
+    second: Purple Effect and Bullet 16x16_134
+  - first:
+      213: 8001687284527009769
+    second: Purple Effect and Bullet 16x16_135
+  - first:
+      213: -6824739624791666491
+    second: Purple Effect and Bullet 16x16_136
+  - first:
+      213: 8618287841554384717
+    second: Purple Effect and Bullet 16x16_137
+  - first:
+      213: -8971204629527719467
+    second: Purple Effect and Bullet 16x16_138
+  - first:
+      213: -4979964986959862877
+    second: Purple Effect and Bullet 16x16_139
+  - first:
+      213: -9077248585813527824
+    second: Purple Effect and Bullet 16x16_140
+  - first:
+      213: 1646377341186535614
+    second: Purple Effect and Bullet 16x16_141
+  - first:
+      213: -3356513980725710274
+    second: Purple Effect and Bullet 16x16_142
+  - first:
+      213: 3580702384374448625
+    second: Purple Effect and Bullet 16x16_143
+  - first:
+      213: 3277286163860899900
+    second: Purple Effect and Bullet 16x16_144
+  - first:
+      213: -8943345167931056941
+    second: Purple Effect and Bullet 16x16_145
+  - first:
+      213: -6076815123479230850
+    second: Purple Effect and Bullet 16x16_146
+  - first:
+      213: 3074045128070817133
+    second: Purple Effect and Bullet 16x16_147
+  - first:
+      213: 2995744952941847178
+    second: Purple Effect and Bullet 16x16_148
+  - first:
+      213: 6334570668591830621
+    second: Purple Effect and Bullet 16x16_149
+  - first:
+      213: 6000423819144775907
+    second: Purple Effect and Bullet 16x16_150
+  - first:
+      213: -5566466228521404342
+    second: Purple Effect and Bullet 16x16_151
+  - first:
+      213: 5757914007741345855
+    second: Purple Effect and Bullet 16x16_152
+  - first:
+      213: -3437282290246035980
+    second: Purple Effect and Bullet 16x16_153
+  - first:
+      213: 7262935396419883969
+    second: Purple Effect and Bullet 16x16_154
+  - first:
+      213: -5139627126098571212
+    second: Purple Effect and Bullet 16x16_155
+  - first:
+      213: -4106864408418937206
+    second: Purple Effect and Bullet 16x16_156
+  - first:
+      213: -7051250761315514381
+    second: Purple Effect and Bullet 16x16_157
+  - first:
+      213: 6490032055952425233
+    second: Purple Effect and Bullet 16x16_158
+  - first:
+      213: 3938122638417190328
+    second: Purple Effect and Bullet 16x16_159
+  - first:
+      213: -6111623894937857247
+    second: Purple Effect and Bullet 16x16_160
+  - first:
+      213: 1701314855368159203
+    second: Purple Effect and Bullet 16x16_161
+  - first:
+      213: 5193355492191632221
+    second: Purple Effect and Bullet 16x16_162
+  - first:
+      213: 6870197387385445743
+    second: Purple Effect and Bullet 16x16_163
+  - first:
+      213: 7782945700242121897
+    second: Purple Effect and Bullet 16x16_164
+  - first:
+      213: -5321092466115788258
+    second: Purple Effect and Bullet 16x16_165
+  - first:
+      213: 2329906107119843389
+    second: Purple Effect and Bullet 16x16_166
+  - first:
+      213: 3789277498265063473
+    second: Purple Effect and Bullet 16x16_167
+  - first:
+      213: 179376056702028132
+    second: Purple Effect and Bullet 16x16_168
+  - first:
+      213: -8159134784769236400
+    second: Purple Effect and Bullet 16x16_169
+  - first:
+      213: 5120578117861518569
+    second: Purple Effect and Bullet 16x16_170
+  - first:
+      213: 5341783213204715818
+    second: Purple Effect and Bullet 16x16_171
+  - first:
+      213: -5165463308276493057
+    second: Purple Effect and Bullet 16x16_172
+  - first:
+      213: -3244926483423491116
+    second: Purple Effect and Bullet 16x16_173
+  - first:
+      213: 1691666655141554815
+    second: Purple Effect and Bullet 16x16_174
+  - first:
+      213: 3161024488461628596
+    second: Purple Effect and Bullet 16x16_175
+  - first:
+      213: -3769388247346348505
+    second: Purple Effect and Bullet 16x16_176
+  - first:
+      213: -7906346643033309568
+    second: Purple Effect and Bullet 16x16_177
+  - first:
+      213: -1537525226744456361
+    second: Purple Effect and Bullet 16x16_178
+  - first:
+      213: 2582021118921827661
+    second: Purple Effect and Bullet 16x16_179
+  - first:
+      213: 4325675440898401243
+    second: Purple Effect and Bullet 16x16_180
+  - first:
+      213: 9062737299826281547
+    second: Purple Effect and Bullet 16x16_181
+  - first:
+      213: 4764098699856616594
+    second: Purple Effect and Bullet 16x16_182
+  - first:
+      213: -7350819659800799223
+    second: Purple Effect and Bullet 16x16_183
+  - first:
+      213: -8255211552154110475
+    second: Purple Effect and Bullet 16x16_184
+  - first:
+      213: 7253285378417108751
+    second: Purple Effect and Bullet 16x16_185
+  - first:
+      213: -4785674982853285632
+    second: Purple Effect and Bullet 16x16_186
+  - first:
+      213: 4066396838792699010
+    second: Purple Effect and Bullet 16x16_187
+  - first:
+      213: 9157904963610906789
+    second: Purple Effect and Bullet 16x16_188
+  - first:
+      213: -8113565352888347511
+    second: Purple Effect and Bullet 16x16_189
+  - first:
+      213: 5083496205360911577
+    second: Purple Effect and Bullet 16x16_190
+  - first:
+      213: 810803078133409987
+    second: Purple Effect and Bullet 16x16_191
+  - first:
+      213: 5104362211892780515
+    second: Purple Effect and Bullet 16x16_192
+  - first:
+      213: 1866504244367322480
+    second: Purple Effect and Bullet 16x16_193
+  - first:
+      213: -5797087427143652343
+    second: Purple Effect and Bullet 16x16_194
+  - first:
+      213: -2533343617637519038
+    second: Purple Effect and Bullet 16x16_195
+  - first:
+      213: -583364301812350179
+    second: Purple Effect and Bullet 16x16_196
+  - first:
+      213: -4107682988597559286
+    second: Purple Effect and Bullet 16x16_197
+  - first:
+      213: -882162466305100360
+    second: Purple Effect and Bullet 16x16_198
+  - first:
+      213: -4642777344349029013
+    second: Purple Effect and Bullet 16x16_199
+  - first:
+      213: -2672274745915246560
+    second: Purple Effect and Bullet 16x16_200
+  - first:
+      213: -5783223819720886986
+    second: Purple Effect and Bullet 16x16_201
+  - first:
+      213: 1000154805765512952
+    second: Purple Effect and Bullet 16x16_202
+  - first:
+      213: -1426415022137430661
+    second: Purple Effect and Bullet 16x16_203
+  - first:
+      213: -8240835026766766215
+    second: Purple Effect and Bullet 16x16_204
+  - first:
+      213: -1403070187812283854
+    second: Purple Effect and Bullet 16x16_205
+  - first:
+      213: -5680031819300885565
+    second: Purple Effect and Bullet 16x16_206
+  - first:
+      213: 1112978129402001389
+    second: Purple Effect and Bullet 16x16_207
+  - first:
+      213: -7060015886553908776
+    second: Purple Effect and Bullet 16x16_208
+  - first:
+      213: 3159400767813897771
+    second: Purple Effect and Bullet 16x16_209
+  - first:
+      213: 6764391999538941264
+    second: Purple Effect and Bullet 16x16_210
+  - first:
+      213: 4962452999327914403
+    second: Purple Effect and Bullet 16x16_211
+  - first:
+      213: 1072985011589845022
+    second: Purple Effect and Bullet 16x16_212
+  - first:
+      213: -1131938794167831713
+    second: Purple Effect and Bullet 16x16_213
+  - first:
+      213: -6246061118678008555
+    second: Purple Effect and Bullet 16x16_214
+  - first:
+      213: -8900532652922054582
+    second: Purple Effect and Bullet 16x16_215
+  - first:
+      213: -7255509144446106398
+    second: Purple Effect and Bullet 16x16_216
+  - first:
+      213: 6904013409646208235
+    second: Purple Effect and Bullet 16x16_217
+  - first:
+      213: 7384347086590743129
+    second: Purple Effect and Bullet 16x16_218
+  - first:
+      213: 5984928018974170890
+    second: Purple Effect and Bullet 16x16_219
+  - first:
+      213: -4201497434941417933
+    second: Purple Effect and Bullet 16x16_220
+  - first:
+      213: 2077553964920021720
+    second: Purple Effect and Bullet 16x16_221
+  - first:
+      213: 6371759953410499385
+    second: Purple Effect and Bullet 16x16_222
+  - first:
+      213: 2959664859339233570
+    second: Purple Effect and Bullet 16x16_223
+  - first:
+      213: -3846916462147799948
+    second: Purple Effect and Bullet 16x16_224
+  - first:
+      213: 7821058324599971222
+    second: Purple Effect and Bullet 16x16_225
+  - first:
+      213: -4286467988867197584
+    second: Purple Effect and Bullet 16x16_226
+  - first:
+      213: -5853351033931994237
+    second: Purple Effect and Bullet 16x16_227
+  - first:
+      213: 7887579922968167874
+    second: Purple Effect and Bullet 16x16_228
+  - first:
+      213: 4037766836623748269
+    second: Purple Effect and Bullet 16x16_229
+  - first:
+      213: 3021305089352685869
+    second: Purple Effect and Bullet 16x16_230
+  - first:
+      213: 7375590360079666665
+    second: Purple Effect and Bullet 16x16_231
+  - first:
+      213: -1442358595556738664
+    second: Purple Effect and Bullet 16x16_232
+  - first:
+      213: -2434528574415055182
+    second: Purple Effect and Bullet 16x16_233
+  - first:
+      213: 6411204238638686264
+    second: Purple Effect and Bullet 16x16_234
+  - first:
+      213: 8137124081061197132
+    second: Purple Effect and Bullet 16x16_235
+  - first:
+      213: -736981724447044575
+    second: Purple Effect and Bullet 16x16_236
+  - first:
+      213: 7464156792712532637
+    second: Purple Effect and Bullet 16x16_237
+  - first:
+      213: -6825341113275368709
+    second: Purple Effect and Bullet 16x16_238
+  - first:
+      213: -219171701190854285
+    second: Purple Effect and Bullet 16x16_239
+  - first:
+      213: -8689502882862558519
+    second: Purple Effect and Bullet 16x16_240
+  - first:
+      213: 2799647605325148146
+    second: Purple Effect and Bullet 16x16_241
+  - first:
+      213: 1893049682938364928
+    second: Purple Effect and Bullet 16x16_242
+  - first:
+      213: -5233359996678392647
+    second: Purple Effect and Bullet 16x16_243
+  - first:
+      213: -9208002925939688170
+    second: Purple Effect and Bullet 16x16_244
+  - first:
+      213: 2860824909036715196
+    second: Purple Effect and Bullet 16x16_245
+  - first:
+      213: -8367434043560509679
+    second: Purple Effect and Bullet 16x16_246
+  - first:
+      213: 1693226315364833493
+    second: Purple Effect and Bullet 16x16_247
+  - first:
+      213: -6531483995478749229
+    second: Purple Effect and Bullet 16x16_248
+  - first:
+      213: 5575696527001582337
+    second: Purple Effect and Bullet 16x16_249
+  - first:
+      213: 3831716399030802404
+    second: Purple Effect and Bullet 16x16_250
+  - first:
+      213: 33028153298247534
+    second: Purple Effect and Bullet 16x16_251
+  - first:
+      213: -723630872567321450
+    second: Purple Effect and Bullet 16x16_252
+  - first:
+      213: -4274707950916348643
+    second: Purple Effect and Bullet 16x16_253
+  - first:
+      213: -2672189980541468510
+    second: Purple Effect and Bullet 16x16_254
+  - first:
+      213: 3087021121146877745
+    second: Purple Effect and Bullet 16x16_255
+  - first:
+      213: -3284418880359028878
+    second: Purple Effect and Bullet 16x16_256
+  - first:
+      213: -521034860553906087
+    second: Purple Effect and Bullet 16x16_257
+  - first:
+      213: 4421228896114923851
+    second: Purple Effect and Bullet 16x16_258
+  - first:
+      213: -6461847329554125711
+    second: Purple Effect and Bullet 16x16_259
+  - first:
+      213: 6544855003964078416
+    second: Purple Effect and Bullet 16x16_260
+  - first:
+      213: 6649409310297736976
+    second: Purple Effect and Bullet 16x16_261
+  - first:
+      213: 870978362050035224
+    second: Purple Effect and Bullet 16x16_262
+  - first:
+      213: -8835980286807269104
+    second: Purple Effect and Bullet 16x16_263
+  - first:
+      213: -5634372135327342798
+    second: Purple Effect and Bullet 16x16_264
+  - first:
+      213: 5096547630000678161
+    second: Purple Effect and Bullet 16x16_265
+  - first:
+      213: -994251891927430423
+    second: Purple Effect and Bullet 16x16_266
+  - first:
+      213: 5646187127802019991
+    second: Purple Effect and Bullet 16x16_267
+  - first:
+      213: -9213899458468593166
+    second: Purple Effect and Bullet 16x16_268
+  - first:
+      213: 6877897871810375962
+    second: Purple Effect and Bullet 16x16_269
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Purple Effect and Bullet 16x16_0
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 192
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77aa4126f982d14fbae05784fedf97d
+      internalID: -417047365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Effect and Bullet 16x16_1
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 192
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d41a908c0e21824c92a1ed268750afc
+      internalID: -1278214553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Effect and Bullet 16x16_2
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 33
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0b9a13f317935c489f2f00d63fa2d0e
+      internalID: 1959579614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Effect and Bullet 16x16_3
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 33
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c39301465e1c14e927af517103d1b6
+      internalID: 2011417978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Effect and Bullet 16x16_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 33
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e032cec234ccc74459cbd7f39c40272f
+      internalID: 194650845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Effect and Bullet 16x16_5
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 33
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e2991fb6f80a0479c4fad292eb3a5c
+      internalID: 1689755603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Effect and Bullet 16x16_6
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 33
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a800e01285802f449823975021e4ad94
+      internalID: 2060156621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple Effect and Bullet 16x16_7
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 33
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fca11755bbdb7e47a6cdf1eb4f81bd6
+      internalID: -1609116814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HolyEffect_0
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb364a53b1e86774eb3c41d4c7ea7a84
+      internalID: -1159787454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HolyEffect_1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b242e0f8e448524ca9ee6f1199d3659
+      internalID: 243690116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HolyEffect_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374ea0ef33d0e614198002d06b9b6de1
+      internalID: 1550578167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HolyEffect_3
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db8b3327bcee8b543b4ae5d6530c0ffc
+      internalID: -443867408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: eb357e303282a594086f98adf0078132
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      HolyEffect_0: -1159787454
+      HolyEffect_1: 243690116
+      HolyEffect_2: 1550578167
+      HolyEffect_3: -443867408
+      Purple Effect and Bullet 16x16_0: -417047365
+      Purple Effect and Bullet 16x16_1: -1278214553
+      Purple Effect and Bullet 16x16_2: 1959579614
+      Purple Effect and Bullet 16x16_3: 2011417978
+      Purple Effect and Bullet 16x16_4: 194650845
+      Purple Effect and Bullet 16x16_5: 1689755603
+      Purple Effect and Bullet 16x16_6: 2060156621
+      Purple Effect and Bullet 16x16_7: -1609116814
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

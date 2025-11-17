@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7609127525873555550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2799805fb8e61fb48ad99895040917ca, type: 3}
+  m_Name: Spell Root
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -328, y: -104}
+  ports:
+    keys:
+    - targeting
+    - harmfulEffects
+    - helpfulEffects
+    - harmfulEffects 0
+    - helpfulEffects 0
+    values:
+    - _fieldName: targeting
+      _node: {fileID: -7609127525873555550}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: -2127266410388641259}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: harmfulEffects
+      _node: {fileID: -7609127525873555550}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: helpfulEffects
+      _node: {fileID: -7609127525873555550}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: harmfulEffects 0
+      _node: {fileID: -7609127525873555550}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: 2281651453612928603}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 1
+    - _fieldName: helpfulEffects 0
+      _node: {fileID: -7609127525873555550}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 1
+  targeting: 0
+  harmfulEffects: 0
+  helpfulEffects: 0
+  _spellElement: 8
+  _manaCost: 5
+--- !u!114 &-2127266410388641259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdec2c3dd2e9ada4e9575412cdf3d0cc, type: 3}
+  m_Name: Projectile Target
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 24, y: -248}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: -2127266410388641259}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: targeting
+        node: {fileID: -7609127525873555550}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  _effectType: 2
+  _affectedLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  _range: 10
+  _projectileSpeed: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0654d2edc6dc03a43a2dbdd85b282212, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -7609127525873555550}
+  - {fileID: 2281651453612928603}
+  - {fileID: -2127266410388641259}
+  spellName: 
+  spellDescription: 
+--- !u!114 &2281651453612928603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2583be343cf2a864b9e8c743e1227ce7, type: 3}
+  m_Name: Damage Effect
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 24, y: 56}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: 2281651453612928603}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: harmfulEffects 0
+        node: {fileID: -7609127525873555550}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+  _effectName: 
+  _affectedStats: 0
+  isOverTime: 0
+  _duration: 0
+  _numberOfTicks: 0
+  _staminaValue: 0
+  _strengthValue: 0
+  _dexterityValue: 0
+  _intelligenceValue: 0
+  _healthValue: 5
+  _manaValue: 0
+  input: 0

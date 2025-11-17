@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3352569806008953174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d238d29b24cf1f428cdc802b171da71, type: 3}
+  m_Name: Self Target
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -200, y: -184}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: -3352569806008953174}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: targeting
+        node: {fileID: -2419382697068799607}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  _effectType: 0
+  _affectedLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _range: 0
+  _projectileSpeed: 0
+--- !u!114 &-2419382697068799607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2799805fb8e61fb48ad99895040917ca, type: 3}
+  m_Name: Spell Root
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -552, y: -74.5}
+  ports:
+    keys:
+    - targeting
+    - harmfulEffects
+    - helpfulEffects
+    - helpfulEffects 0
+    values:
+    - _fieldName: targeting
+      _node: {fileID: -2419382697068799607}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: -3352569806008953174}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: harmfulEffects
+      _node: {fileID: -2419382697068799607}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: helpfulEffects
+      _node: {fileID: -2419382697068799607}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+    - _fieldName: helpfulEffects 0
+      _node: {fileID: -2419382697068799607}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: 964415616656766328}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 1
+  targeting: 0
+  harmfulEffects: 0
+  helpfulEffects: 0
+  _spellElement: 16
+  _manaCost: 5
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0654d2edc6dc03a43a2dbdd85b282212, type: 3}
+  m_Name: HolyBuff
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -2419382697068799607}
+  - {fileID: -3352569806008953174}
+  - {fileID: 964415616656766328}
+  spellName: 
+  spellDescription: 
+--- !u!114 &964415616656766328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99940f40f5de08b46b91a9b40227c4ca, type: 3}
+  m_Name: Buff Effect
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -216, y: 56}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: 964415616656766328}
+      _typeQualifiedName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: helpfulEffects 0
+        node: {fileID: -2419382697068799607}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
+  _effectName: qweqwe
+  _affectedStats: -1
+  isOverTime: 1
+  _duration: 5
+  _numberOfTicks: 0
+  _staminaValue: 0
+  _strengthValue: 2
+  _dexterityValue: 2
+  _intelligenceValue: 2
+  _healthValue: 0
+  _manaValue: 0
+  input: 0

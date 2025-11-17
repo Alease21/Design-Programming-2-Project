@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e73a00ddce20194590c55e256af3308, type: 3}
+  m_Name: Mace
+  m_EditorClassIdentifier: 
+  weaponName: mace
+  weaponDescription: Test Description
+  _weaponType: 1
+  _weaponPrefab: {fileID: 8441592739089131396, guid: ce01d054ca338204eb05bb219b69b270, type: 3}
+  _damageTypes: -1
+  _physDamage: 1
+  _iceDamage: 2
+  _fireDamage: 3
+  _holyDamage: 4
+  _unholyDamage: 5

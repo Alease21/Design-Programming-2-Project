@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e3885b6e612ba479a33739b28fbb0b, type: 3}
+  m_Name: EnemyClass
+  m_EditorClassIdentifier: 
+  className: 
+  classDescription: 
+  _allowedWeaponTypes: 0
+  _allowedArmorTypes: 0
+  _allowedMagicTypes: 0
+  _maxHealth: 50
+  _maxMana: 50
+  _defaultStam: 10
+  _defaultStr: 10
+  _defaultDex: 10
+  _defaultInt: 10
+  _stamIncreasePerLevel: 1
+  _strIncreasePerLevel: 1
+  _dexIncreasePerLevel: 1
+  _intIncreasePerLevel: 1
+  _startingLevel: 0
+  _initExpToLevel: 100
+  _expModifierOnLevelIncrease: 1.25

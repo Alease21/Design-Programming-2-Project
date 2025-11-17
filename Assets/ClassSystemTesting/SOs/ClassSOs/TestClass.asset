@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e3885b6e612ba479a33739b28fbb0b, type: 3}
+  m_Name: TestClass
+  m_EditorClassIdentifier: 
+  className: TestClass
+  classDescription: 
+  _allowedWeaponTypes: -1
+  _allowedArmorTypes: -1
+  _allowedMagicTypes: -1
+  _maxHealth: 100
+  _maxMana: 50
+  _defaultStam: 9
+  _defaultStr: 9
+  _defaultDex: 7
+  _defaultInt: 9
+  _stamIncreasePerLevel: 1
+  _strIncreasePerLevel: 1
+  _dexIncreasePerLevel: 1
+  _intIncreasePerLevel: 1
+  _startingLevel: 1
+  _initExpToLevel: 100
+  _expModifierOnLevelIncrease: 1.25
