@@ -1,4 +1,5 @@
 using Photon.Pun;
+using System.Numerics;
 
 public abstract class MultiplayerObjBase : MonoBehaviourPunCallbacks, IGUID
 {
@@ -7,15 +8,19 @@ public abstract class MultiplayerObjBase : MonoBehaviourPunCallbacks, IGUID
 
     protected virtual void Awake() 
     {
-        EvaluateGUID();
+        //EvaluateGUID();
         //do guid register once implemented
     }
 
     // Set unique GUID
-    public void EvaluateGUID()
+    [PunRPC]
+    public void EvaluateGUID(Vector2 objWorldPos)
     {
+        UnityEngine.Random.InitState(NetworkManager.instance.dungeonSeed);
+
+        // **add check to ensure no duplicate guids are created
         if (_GUID == string.Empty)
-            _GUID = System.Guid.NewGuid().ToString();
+            _GUID = (UnityEngine.Random.Range(0, int.MaxValue) + int.Parse($"{objWorldPos.X}{objWorldPos.Y}")).ToString();
     }
 
     // Destroy or disable object of matching guid for every player
@@ -30,6 +35,5 @@ public abstract class MultiplayerObjBase : MonoBehaviourPunCallbacks, IGUID
             Destroy(this.gameObject);
         else
             this.gameObject.SetActive(false);
-
     }
 }
