@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static MagicManager;
 
-
 public class PlayerProjectileAttack : MonoBehaviour
 {
     public Vector2 target;

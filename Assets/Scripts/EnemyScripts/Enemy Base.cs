@@ -108,8 +108,8 @@ public class EnemyBase : MultiplayerObjBase, IEnemy
             GameObject coinDrop = Instantiate(coins, transform.position, transform.rotation);
             coinDrop.transform.parent = null;
 
-            //Destroy(this.gameObject);
-            photonView.RPC("OnMultiplayerObjDestroy", Photon.Pun.RpcTarget.All);
+            Destroy(this.gameObject);
+            //photonView.RPC("OnMultiplayerObjDestroy", Photon.Pun.RpcTarget.All);
         }
     }
 }

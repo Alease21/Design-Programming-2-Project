@@ -13,9 +13,9 @@ public class ChestOpen : MonoBehaviour
     }
     private void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (collision.gameObject.CompareTag("Player"))
             {
                 isOpen = true;
                 spriteRen.sprite = openChest;
