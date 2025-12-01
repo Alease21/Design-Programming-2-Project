@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   name: Goblin
-  charSprite: {fileID: 6906566583065577947, guid: 835cb236ef2afb04abc15672f7e6b616, type: 3}
+  sprite: {fileID: 0}
   speed: 5
-  hp: 20
+  maxHealth: 10
   defense: 0
-  isBoss: 0
+  idleDuration: 2
+  roamRadius: 3
+  attackSO: {fileID: 11400000, guid: b7b5f43cc9c514c4bac10b54fade7734, type: 2}
   enemyTier: 1
-  weight: 1

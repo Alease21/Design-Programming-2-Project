@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static WFC.WaveFunctionCollapse;
@@ -21,6 +22,8 @@ namespace WFC
                 instance = this;
             else
                 Destroy(this.gameObject);
+
+            _navMeshSurface = GetComponentInChildren<NavMeshSurface>();
 
             //Initial neighbor sets in case project didn't load with them correctly
             _roomSet.SetNeighbours();
@@ -48,6 +51,7 @@ namespace WFC
                     numDungeonTiles = 0;
 
         private Stopwatch _stopWatch = new Stopwatch();
+        private NavMeshSurface _navMeshSurface;
 
         [Header("Debug & Editing")]
         [SerializeField] private bool _showTileHighlights = false;
@@ -188,6 +192,7 @@ namespace WFC
                         }
                     }
                 }
+                _navMeshSurface.BuildNavMesh();
                 GenerationTimer();
                 WFCFinished?.Invoke();
 
@@ -460,7 +465,8 @@ namespace WFC
                             }
                             else if (tile.name == "Props_78")// Enemy tile **rename me
                             {
-                                GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Enemy"));
+                                //GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Enemy"));
+                                GameObject newEnemy = Instantiate(Resources.Load<GameObject>("NewAIEnemy"));
                                 newEnemy.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
                                 continue;
                             }

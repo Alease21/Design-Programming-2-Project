@@ -6,11 +6,14 @@ using UnityEngine;
 public class EnemySO : ScriptableObject
 {
     public new string name;
-    public Sprite charSprite;
+    public Sprite sprite;
     public float speed;
-    public float hp;
+    public float maxHealth;
     public float defense;
-    public bool isBoss;
+    public float idleDuration;
+    public float roamRadius;
+    public EnemyAttackSO attackSO;
+    //public bool isBoss;
     public int enemyTier;
-    public int weight;
+    //public int weight;
 }

@@ -24,13 +24,13 @@ public class EnemyBase : MultiplayerObjBase, IEnemy
     {
         base.Awake();// call base Awake from MultiplayerGameObject for setting GUID & maybe other stuff eventually
         
-        curHP = baseStats.hp;
+        curHP = baseStats.maxHealth;
 
 
-        if (baseStats.charSprite != null)
+        if (baseStats.sprite != null)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = baseStats.charSprite;
+            spriteRenderer.sprite = baseStats.sprite;
         }
     }
     private void Update()
@@ -51,8 +51,8 @@ public class EnemyBase : MultiplayerObjBase, IEnemy
         var sortedPlayers = playersDict.OrderBy((x) => x.Value);
         curTarget = sortedPlayers.First().Key;
 
-        if (spriteRenderer.sprite != baseStats.charSprite)
-            spriteRenderer.sprite = baseStats.charSprite;
+        if (spriteRenderer.sprite != baseStats.sprite)
+            spriteRenderer.sprite = baseStats.sprite;
 
         if (currentAttack == null)
         {
