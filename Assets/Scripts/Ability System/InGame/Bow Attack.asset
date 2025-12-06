@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec13d2e14115b3540bce049744b3f036, type: 3}
   m_Name: Bow Attack
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   attackRange: 5
   attackCooldown: 2
   attackProj: {fileID: 2713003882366933864, guid: bb3ee6cb7361967409558dce30e89fb6, type: 3}

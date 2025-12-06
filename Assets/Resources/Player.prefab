@@ -56,6 +56,7 @@ MonoBehaviour:
   cooldown: 0
   damage: 0
   repeats: 0
+  damageMultiplier: 1
 --- !u!1 &1939371357064882363
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +100,7 @@ GameObject:
   - component: {fileID: 5937238168901108175}
   - component: {fileID: 6198501137427381892}
   - component: {fileID: 3417155345328388965}
+  - component: {fileID: -838419867764922086}
   - component: {fileID: 8997823328087913801}
   - component: {fileID: 3217791460896389212}
   - component: {fileID: 855726276404800485}
@@ -215,9 +217,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  abilityDuration: 10
-  abilityCooldown: 60
-  damageNullifier: 0.5
+  damageMultiplier: 1
+--- !u!114 &-838419867764922086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238605866392419152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa896f9745a54743a432cd6ec36f688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 0}
+  magic: {fileID: 0}
+  playerClass: 0
+  charmDuration: 10
+  charmCooldown: 60
+  charmDamageMultiplier: 0.5
+  berserkDuration: 10
+  berserkCooldown: 30
+  berserkDamageMultiplier: 2
+  playerSprite: {fileID: 0}
+  berserkColor: {r: 1, g: 0, b: 0, a: 1}
+  healCloudPrefab: {fileID: 1878051863224656105, guid: 47f2351da2299ea498915cbacb9e11ef, type: 3}
+  healCloudCooldown: 20
 --- !u!114 &8997823328087913801
 MonoBehaviour:
   m_ObjectHideFlags: 0
