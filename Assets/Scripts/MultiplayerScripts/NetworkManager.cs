@@ -45,4 +45,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel(sceneName);
     }
+    public bool OnJoinLobby()
+    {
+        return PhotonNetwork.JoinLobby();
+    }
 }

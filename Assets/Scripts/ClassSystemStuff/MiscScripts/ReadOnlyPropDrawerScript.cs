@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 // Create custom ReadOnlyFloat attribute.
@@ -22,7 +16,7 @@ public class ReadOnlyStringAttribute : PropertyAttribute
 {
 
 }
-
+#if UNITY_EDITOR
 // Modify custom ReadOnlyFloat attribute to display float fields as labels
 // to ensure they are easily visible and unchangeable in inspector. 
 [CustomPropertyDrawer(typeof(ReadOnlyFloatAttribute))]
@@ -82,3 +76,4 @@ public class ReadOnlyStringDrawer : PropertyDrawer
         }
     }
 }
+#endif

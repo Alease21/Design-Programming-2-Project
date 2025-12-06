@@ -26,12 +26,15 @@ public class MenuUI : MonoBehaviourPunCallbacks
     [Header("Main Screen")]
     public Button createRoomButton;
     public Button joinRoomButton;
-
+    
     [Header("Lobby Screen")]
     public TextMeshProUGUI playerListText;
+    public GameObject playerListContainer;
     public Button startGameButton;
-
-    private List<RoomInfo> _roomList;
+    public Button[] classButtons;
+    
+    private List<RoomInfo> _roomList = new();
+    private Dictionary<string, GameObject> _playerElements = new();
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
@@ -39,6 +42,10 @@ public class MenuUI : MonoBehaviourPunCallbacks
     }
     private void Start()
     {
+        mainScreen.SetActive(true);
+        joinScreen.SetActive(false);
+        lobbyScreen.SetActive(false);
+
         createRoomButton.interactable = false;
         joinRoomButton.interactable = false;
     }
@@ -62,7 +69,6 @@ public class MenuUI : MonoBehaviourPunCallbacks
         string roomName = $"Room {_roomList.Count + 1}";
         NetworkManager.instance.CreateRoom(roomName /*roomNameInput.text*/);
     }
-
     public void OnJoinRoomButton(string roomName/*TMP_InputField roomNameInput*/)
     {
         NetworkManager.instance.JoinRoom(roomName);
@@ -76,10 +82,17 @@ public class MenuUI : MonoBehaviourPunCallbacks
     [PunRPC]
     public void UpdateLobbyUI()
     {
-        playerListText.text = "";
-        foreach(Player player in PhotonNetwork.PlayerList)
+        for (int i = playerListContainer.transform.childCount - 1; i >= 0; i--)
+            Destroy(playerListContainer.transform.GetChild(i).gameObject);
+        _playerElements = new();
+
+        //playerListText.text = "";
+        foreach (Player player in PhotonNetwork.PlayerList)
         {
-            playerListText.text += player.NickName + "\n";
+            //playerListText.text += player.NickName + "\n";
+            GameObject playerListElement = Instantiate(Resources.Load<GameObject>("UI/PlayerListElement"), playerListContainer.transform);
+            playerListElement.GetComponentInChildren<TextMeshProUGUI>().text = player.NickName;
+            _playerElements.Add(player.NickName, playerListElement.gameObject);
         }
 
         if(PhotonNetwork.IsMasterClient)
@@ -96,13 +109,17 @@ public class MenuUI : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        UpdateLobbyUI();
+        photonView.RPC("UpdateLobbyUI", RpcTarget.All);
     }
-
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        photonView.RPC("UpdateLobbyUI", RpcTarget.All);
+    }
     public void OnLeaveLobbyButton()
     {
         PhotonNetwork.LeaveRoom();
         SetScreen(joinScreen);
+        NetworkManager.instance.OnJoinLobby();
     }
 
     public void StartGameButton()
@@ -112,10 +129,27 @@ public class MenuUI : MonoBehaviourPunCallbacks
     }
     public void MainMenuStart()
     {
-
+        if (NetworkManager.instance.OnJoinLobby())
+            SetScreen(joinScreen);
     }
     public void BackButton()
     {
         SetScreen(mainScreen);
+    }
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
+    public void OnSelectClass(Sprite classSprite)
+    {
+        photonView.RPC(nameof(ChangeClassIcon),
+            RpcTarget.All, PhotonNetwork.NickName, classSprite.name);
+    }
+
+    [PunRPC]
+    public void ChangeClassIcon(string playerName, string spriteName)
+    {
+        _playerElements[playerName].GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>($"ClassUIImages/{spriteName}");
     }
 }

@@ -3,7 +3,7 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class RoomList : MonoBehaviourPunCallbacks
 {
@@ -13,9 +13,11 @@ public class RoomList : MonoBehaviourPunCallbacks
     {
         for (int i = 0; i < roomList.Count; i++)
         {
+            string roomName = roomList[i].Name;
+
             GameObject room = Instantiate(_roomPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Content").transform);
-            room.GetComponent<TextMeshProUGUI>().text = roomList[i].Name;
-            room.GetComponent<Button>().clicked += () => MenuUI.instance.OnJoinRoomButton(roomList[i].Name);
+            room.GetComponentInChildren<TextMeshProUGUI>().text = roomName;
+            room.GetComponentInChildren<Button>().onClick.AddListener(() => MenuUI.instance.OnJoinRoomButton(roomName));
         }
     }
 }
