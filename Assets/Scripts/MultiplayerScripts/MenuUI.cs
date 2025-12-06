@@ -3,11 +3,24 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
+using System.Collections.Generic;
 
 public class MenuUI : MonoBehaviourPunCallbacks
 {
+    public static MenuUI instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
     [Header ("Screens")]
     public GameObject mainScreen;
+    public GameObject joinScreen;
     public GameObject lobbyScreen;
 
     [Header("Main Screen")]
@@ -18,6 +31,12 @@ public class MenuUI : MonoBehaviourPunCallbacks
     public TextMeshProUGUI playerListText;
     public Button startGameButton;
 
+    private List<RoomInfo> _roomList;
+
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        _roomList = roomList;
+    }
     private void Start()
     {
         createRoomButton.interactable = false;
@@ -33,18 +52,20 @@ public class MenuUI : MonoBehaviourPunCallbacks
     private void SetScreen(GameObject screen)
     {
         mainScreen.SetActive(false);
+        joinScreen.SetActive(false);
         lobbyScreen.SetActive(false);
         screen.SetActive(true);
     }
 
-    public void OnCreateRoomButton(TMP_InputField roomNameInput)
+    public void OnCreateRoomButton(/*TMP_InputField roomNameInput*/)
     {
-        NetworkManager.instance.CreateRoom(roomNameInput.text);
+        string roomName = $"Room {_roomList.Count + 1}";
+        NetworkManager.instance.CreateRoom(roomName /*roomNameInput.text*/);
     }
 
-    public void OnJoinRoomButton(TMP_InputField roomNameInput)
+    public void OnJoinRoomButton(string roomName/*TMP_InputField roomNameInput*/)
     {
-        NetworkManager.instance.JoinRoom(roomNameInput.text);
+        NetworkManager.instance.JoinRoom(roomName);
     }
 
     public void OnPlayerNameUpdate(TMP_InputField playerNameInput)
@@ -81,12 +102,20 @@ public class MenuUI : MonoBehaviourPunCallbacks
     public void OnLeaveLobbyButton()
     {
         PhotonNetwork.LeaveRoom();
-        SetScreen(mainScreen);
+        SetScreen(joinScreen);
     }
 
     public void StartGameButton()
     {
         NetworkManager.instance.photonView.RPC("ChangeScene",
             RpcTarget.All, "MainScene");
+    }
+    public void MainMenuStart()
+    {
+
+    }
+    public void BackButton()
+    {
+        SetScreen(mainScreen);
     }
 }
