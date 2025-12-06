@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using NavMeshPlus.Components;
 using Photon.Pun;
 using Photon.Realtime;
 using Unity.AI.Navigation;
@@ -23,7 +24,7 @@ namespace WFC
             else
                 Destroy(this.gameObject);
 
-            _navMeshSurface = GetComponentInChildren<NavMeshSurface>();
+            _navMesh2D = FindAnyObjectByType<NavMeshPlus.Components.NavMeshSurface>();
 
             //Initial neighbor sets in case project didn't load with them correctly
             _roomSet.SetNeighbours();
@@ -49,9 +50,9 @@ namespace WFC
                             _exitRoom;
         private int numPathsOpen = 0,
                     numDungeonTiles = 0;
-
+        
         private Stopwatch _stopWatch = new Stopwatch();
-        private NavMeshSurface _navMeshSurface;
+        [SerializeField] private NavMeshPlus.Components.NavMeshSurface _navMesh2D;
 
         [Header("Debug & Editing")]
         [SerializeField] private bool _showTileHighlights = false;
@@ -192,7 +193,8 @@ namespace WFC
                         }
                     }
                 }
-                _navMeshSurface.BuildNavMesh();
+                _navMesh2D.BuildNavMesh();
+
                 GenerationTimer();
                 WFCFinished?.Invoke();
 
@@ -338,13 +340,20 @@ namespace WFC
                     _environTileMap.SetTile(tilePos, tilemapPrefab.GetTile(prefabTilePos));
 
                     Vector3 spawnedObjPos = (Vector3)tilePos + new Vector3(0.5f, 0.5f, 0f);
+                    if (room.GetRoomByteMap[x,y] == 4 || room.GetRoomByteMap[x,y] == 5)
+                    {
+                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                        newTileBoundary.transform.parent = _boundaryParent;
+                        newTileBoundary.layer = LayerMask.NameToLayer("NavMeshExitBlock");
+                        newTileBoundary.transform.position = spawnedObjPos;
+                    }
 
                     if (room.GetRoomByteMap[x, y] == 1 || room.GetRoomByteMap[x, y] == 2)
                     {
-                        GameObject newTileBoundary = new GameObject($"({x},{y})");
+                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
                         newTileBoundary.transform.parent = _boundaryParent;
                         newTileBoundary.transform.position = spawnedObjPos;
-                        newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                        //newTileBoundary.AddComponent<BoxCollider2D>().size = Vector2.one;
                     }
                     else if (room == _startRoom && playerSpawnsSet < PhotonNetwork.PlayerList.Length &&
                              room.GetRoomByteMap[x, y] == 5)
@@ -357,34 +366,17 @@ namespace WFC
 
                     if ((room == _startRoom) && room.GetRoomByteMap[x, y] == 5)
                     {
+                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                        newTileBoundary.transform.parent = _boundaryParent;
+
                         if (x == 0)
-                        {
-                            GameObject newTileBoundary = new GameObject();
-                            newTileBoundary.transform.parent = _boundaryParent;
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.left;
-                            newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
-                        }
                         if (y == 0)
-                        {
-                            GameObject newTileBoundary = new GameObject();
-                            newTileBoundary.transform.parent = _boundaryParent;
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.down;
-                            newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
-                        }
                         if (x == _roomGrid.GetLength(0) - 1)
-                        {
-                            GameObject newTileBoundary = new GameObject();
-                            newTileBoundary.transform.parent = _boundaryParent;
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.right;
-                            newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
-                        }
                         if (y == _roomGrid.GetLength(1) - 1)
-                        {
-                            GameObject newTileBoundary = new GameObject();
-                            newTileBoundary.transform.parent = _boundaryParent;
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.up;
-                            newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
-                        }
                     }
 
                     if (!_showTileHighlights) continue; // skip tile coloring if bool not checked
@@ -450,10 +442,11 @@ namespace WFC
                                 newChest.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
 
                                 // spawn collider seperate from chest item for trigger enter functions
-                                GameObject newTileBoundary = new GameObject($"({x},{y})");
+                                GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                                //GameObject newTileBoundary = new GameObject($"({x},{y})");
                                 newTileBoundary.transform.parent = _boundaryParent;
                                 newTileBoundary.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
-                                newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                                //newTileBoundary.AddComponent<BoxCollider2D>().size = Vector2.one;
 
                                 continue;
                             }
@@ -466,7 +459,7 @@ namespace WFC
                             else if (tile.name == "Props_78")// Enemy tile **rename me
                             {
                                 //GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Enemy"));
-                                GameObject newEnemy = Instantiate(Resources.Load<GameObject>("NewAIEnemy"));
+                                GameObject newEnemy = Instantiate(Resources.Load<GameObject>("NewGoblin"));
                                 newEnemy.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
                                 continue;
                             }
@@ -481,17 +474,22 @@ namespace WFC
                             {
                                 GameObject newMerchant = Instantiate(Resources.Load<GameObject>("ShopKeep"));
                                 newMerchant.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
-                                newMerchant.AddComponent<BoxCollider>().size = Vector2.one;
+                                newMerchant.AddComponent<BoxCollider2D>().size = Vector2.one;
                                 continue;
                             }
                             */
 
                             if (tile.name[3] == 'C')
                             {
+                                GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                                newTileBoundary.transform.parent = _boundaryParent;
+                                newTileBoundary.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
+                                /*
                                 GameObject newTileBoundary = new GameObject($"({x},{y})");
                                 newTileBoundary.transform.parent = _boundaryParent;
                                 newTileBoundary.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
-                                newTileBoundary.AddComponent<BoxCollider>().size = Vector2.one;
+                                newTileBoundary.AddComponent<BoxCollider2D>().size = Vector2.one;
+                                */
                             }
 
                             _itemTileMap.SetTile(moduleOriginWorld + new Vector3Int(i, j), tile);

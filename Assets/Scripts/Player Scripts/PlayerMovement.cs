@@ -12,11 +12,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     [Range(0, 20)]
     [SerializeField] private float _playerSpeed;
     //private Vector2 _move;
-    private Rigidbody _rb;
+    private Rigidbody2D _rb;
     private Camera _camera;
     public Player photonPlayer;
     public Animator spriteAnimator;
     public bool _playerFrozen = false;
+    public Vector3 GetMouseDir => FindMouseDir();
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -36,11 +37,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         if (!photonView.IsMine)
-            _rb.isKinematic = true;
+            _rb.bodyType = RigidbodyType2D.Kinematic;
     }
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody2D>();
         _camera = Camera.main;
         spriteAnimator = GetComponent<Animator>();
     }
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         SetAnimFloats(horizontal, vertical);
-        _rb.linearVelocity = new Vector3(horizontal * _playerSpeed, vertical * _playerSpeed, _rb.linearVelocity.z);
+        _rb.linearVelocity = new Vector2(horizontal * _playerSpeed, vertical * _playerSpeed);
     }
 
     public void SetAnimFloats(float hori, float verti)
@@ -73,5 +74,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             //stream.SendNext(curFlagTime);
         else if (stream.IsReading) { }
             //curFlagTime = (float)stream.ReceiveNext();
+    }
+
+    public Vector3 FindMouseDir()
+    {
+        Vector3 mouseWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPoint.z = 0f;
+        return (mouseWorldPoint - transform.position).normalized;
     }
 }

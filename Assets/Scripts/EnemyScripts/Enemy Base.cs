@@ -59,7 +59,7 @@ public class EnemyBase : MultiplayerObjBase, IEnemy
             int curAttack = Random.Range(0,attacks.Count);
             currentAttack = attacks[curAttack];
         }
-
+        /*
         if (curTarget != null) //or not downed?
         {
             if (Vector2.Distance(transform.position, curTarget.transform.position) >= currentAttack.attackRange)
@@ -67,7 +67,7 @@ public class EnemyBase : MultiplayerObjBase, IEnemy
             else if (canAttack)
                 if (currentAttack.isProjectile)
                     StartCoroutine(UseProjAttack(currentAttack, curTarget));
-        }
+        }*/
         else //if downed/null downed
         {
             /* check for downed and remove from temp?

@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyAttackSO : ScriptableObject
 {
     public float damage;
-    public float attackRange;
+    //public float attackRange;
     public float attackCooldown;
     public GameObject attackProj;
     public float miniCooldown;

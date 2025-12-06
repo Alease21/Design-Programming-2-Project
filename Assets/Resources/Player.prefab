@@ -97,12 +97,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7460969253122200223}
   - component: {fileID: 5937238168901108175}
+  - component: {fileID: 3972799051815870224}
+  - component: {fileID: 6971674271705393248}
+  - component: {fileID: 2306899298524110207}
   - component: {fileID: 6198501137427381892}
-  - component: {fileID: 3417155345328388965}
   - component: {fileID: 8997823328087913801}
   - component: {fileID: 3217791460896389212}
-  - component: {fileID: 855726276404800485}
-  - component: {fileID: 3729463812668195295}
+  - component: {fileID: 7450211449790298803}
+  - component: {fileID: 609176216284337566}
   - component: {fileID: -5756202362399190919}
   - component: {fileID: 5431061804663901870}
   - component: {fileID: -592886122921607232}
@@ -186,6 +188,88 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3972799051815870224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238605866392419152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756b63e02b6a17a49a8ac2cc49d5e0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitType: 2
+  _characterClass: {fileID: 11400000, guid: 3ef800e78ef7a8940aa204d65de138c5, type: 2}
+  _expGiveOnDeath: 0
+  _expMultiplierOnLevel: 1.25
+  _allowedWeapons: None
+  _allowedArmor: Cloth
+  _allowedMagic: All Magic
+  _level: 0
+  _curExp: 0
+  _maxExpToLevel: 0
+  _health: 0
+  _mana: 0
+  _adjustedStamina: 0
+  _adjustedStrength: 0
+  _adjustedDexterity: 0
+  _adjustedIntelligence: 0
+  _initLevel: 0
+  _initMaxExpToLevel: 100
+  _maxHealth: 10
+  _maxMana: 20
+  _baseStamina: 6
+  _baseStrength: 2
+  _baseDexterity: 10
+  _baseIntelligence: 12
+--- !u!114 &6971674271705393248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238605866392419152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33de17d472dc3b479056d4340196b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainHand: {fileID: 0}
+  _offHand: {fileID: 0}
+  _weaponOffsetFromCenter: 0
+  _swingSpeed: 0
+  _physDamage: 0
+  _iceDamage: 0
+  _fireDamage: 0
+  _holyDamage: 0
+  _unholyDamage: 0
+  _headArmor: {fileID: 0}
+  _chestArmor: {fileID: 0}
+  _legArmor: {fileID: 0}
+  _footArmor: {fileID: 0}
+  _physResist: 0
+  _iceResist: 0
+  _fireResist: 0
+  _holyResist: 0
+  _unholyResist: 0
+--- !u!114 &2306899298524110207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238605866392419152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a57285d6c58feb4e8e8435a5d335289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spell1: {fileID: 0}
+  _spell2: {fileID: 0}
+  _spell3: {fileID: 0}
+  _spell4: {fileID: 0}
 --- !u!114 &6198501137427381892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,22 +286,6 @@ MonoBehaviour:
   _playerSpeed: 10
   spriteAnimator: {fileID: 0}
   _playerFrozen: 0
---- !u!114 &3417155345328388965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4238605866392419152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3de5bcdc36eb1645b7e92420258efdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  abilityDuration: 10
-  abilityCooldown: 60
-  damageNullifier: 0.5
 --- !u!114 &8997823328087913801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,40 +426,43 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &855726276404800485
-Rigidbody:
+--- !u!50 &7450211449790298803
+Rigidbody2D:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4238605866392419152}
-  serializedVersion: 4
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
+    m_Bits: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!136 &3729463812668195295
-CapsuleCollider:
+  m_Constraints: 4
+--- !u!58 &609176216284337566
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4238605866392419152}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -400,14 +471,24 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.45
-  m_Height: 1
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!114 &-5756202362399190919
 MonoBehaviour:
   m_ObjectHideFlags: 0

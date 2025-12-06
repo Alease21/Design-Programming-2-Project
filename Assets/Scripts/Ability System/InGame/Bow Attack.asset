@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Bow Attack
   m_EditorClassIdentifier: 
   damage: 0
-  attackRange: 5
   attackCooldown: 2
   attackProj: {fileID: 2713003882366933864, guid: bb3ee6cb7361967409558dce30e89fb6, type: 3}
-  miniCooldown: 0
+  miniCooldown: 1
   projSpeed: 5
   repeats: 1
   isProjectile: 1
-  range: 10
+  range: 1
   rotation: {x: 0, y: 0, z: 0}
