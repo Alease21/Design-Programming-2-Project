@@ -7,6 +7,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static NetworkManager instance;
     public bool useRandomSeed;
     public int dungeonSeed;
+    public string selectedClassSpriteName;
 
     private void Awake()
     {
