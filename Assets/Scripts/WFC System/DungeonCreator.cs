@@ -342,7 +342,7 @@ namespace WFC
                     Vector3 spawnedObjPos = (Vector3)tilePos + new Vector3(0.5f, 0.5f, 0f);
                     if (room.GetRoomByteMap[x,y] == 4 || room.GetRoomByteMap[x,y] == 5)
                     {
-                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/BoundaryTile"));
                         newTileBoundary.transform.parent = _boundaryParent;
                         newTileBoundary.layer = LayerMask.NameToLayer("NavMeshExitBlock");
                         newTileBoundary.transform.position = spawnedObjPos;
@@ -350,7 +350,7 @@ namespace WFC
 
                     if (room.GetRoomByteMap[x, y] == 1 || room.GetRoomByteMap[x, y] == 2)
                     {
-                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/BoundaryTile"));
                         newTileBoundary.transform.parent = _boundaryParent;
                         newTileBoundary.transform.position = spawnedObjPos;
                         //newTileBoundary.AddComponent<BoxCollider2D>().size = Vector2.one;
@@ -358,7 +358,7 @@ namespace WFC
                     else if (room == _startRoom && playerSpawnsSet < PhotonNetwork.PlayerList.Length &&
                              room.GetRoomByteMap[x, y] == 5)
                     {
-                        GameObject playerSpawn = Instantiate(Resources.Load<GameObject>("PlayerSpawn"), spawnedObjPos, Quaternion.identity);
+                        GameObject playerSpawn = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/PlayerSpawn"), spawnedObjPos, Quaternion.identity);
                         GameManager.instance.spawnPoints[playerSpawnsSet] = playerSpawn.transform;
                         playerSpawnsSet++;
                         UnityEngine.Debug.Log("Player Spawn Spawned");
@@ -366,7 +366,7 @@ namespace WFC
 
                     if ((room == _startRoom) && room.GetRoomByteMap[x, y] == 5)
                     {
-                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                        GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/BoundaryTile"));
                         newTileBoundary.transform.parent = _boundaryParent;
 
                         if (x == 0)
@@ -438,11 +438,11 @@ namespace WFC
 
                             if (tile.name[1] == 'B' && tile.name[tile.name.Length - 1] == '0') // chest tile
                             {
-                                GameObject newChest = Instantiate(Resources.Load<GameObject>("Chest"));
+                                GameObject newChest = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/Chest"));
                                 newChest.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
 
                                 // spawn collider seperate from chest item for trigger enter functions
-                                GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                                GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/BoundaryTile"));
                                 //GameObject newTileBoundary = new GameObject($"({x},{y})");
                                 newTileBoundary.transform.parent = _boundaryParent;
                                 newTileBoundary.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
@@ -452,20 +452,20 @@ namespace WFC
                             }
                             else if (tile.name[1] == 'P' && tile.name[tile.name.Length - 1] == '5') // coin tile
                             {
-                                GameObject newCoin = Instantiate(Resources.Load<GameObject>("Coin"));
+                                GameObject newCoin = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/Coin"));
                                 newCoin.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.11f, 0f);
                                 continue;
                             }
                             else if (tile.name == "Props_78")// Enemy tile **rename me
                             {
                                 //GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Enemy"));
-                                GameObject newEnemy = Instantiate(Resources.Load<GameObject>("NewGoblin"));
+                                GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Units/NewGoblin"));
                                 newEnemy.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
                                 continue;
                             }
                             else if (tile.name == "Props_76")// Health pot tile **rename me
                             {
-                                GameObject newHealthPot = Instantiate(Resources.Load<GameObject>("HealthPotion"));
+                                GameObject newHealthPot = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/HealthPotion"));
                                 newHealthPot.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0f, 0f);
                                 continue;
                             }
@@ -481,7 +481,7 @@ namespace WFC
 
                             if (tile.name[3] == 'C')
                             {
-                                GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("BoundaryTile"));
+                                GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/BoundaryTile"));
                                 newTileBoundary.transform.parent = _boundaryParent;
                                 newTileBoundary.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
                                 /*

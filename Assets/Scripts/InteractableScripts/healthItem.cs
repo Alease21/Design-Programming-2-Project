@@ -9,10 +9,10 @@ public class HealthItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+            UnitScript unit = other.GetComponent<UnitScript>();
+            if (unit != null)
             {
-                playerHealth.Heal(healAmount);
+                unit.ChangeHealth(healAmount, true);
 
                 // Play pickup sound if assigned
                 if (pickupSound != null)

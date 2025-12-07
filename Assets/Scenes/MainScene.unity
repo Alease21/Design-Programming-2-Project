@@ -936,7 +936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e28f91b1d0521c44ab98907ac0b23fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefabLoc: Player
+  playerPrefabLoc: Units/Player
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
