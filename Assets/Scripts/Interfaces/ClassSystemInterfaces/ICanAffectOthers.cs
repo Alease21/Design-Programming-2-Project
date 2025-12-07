@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MagicSystem
+namespace AbilitySystem
 {
     public interface ICanAffectOthers
     {

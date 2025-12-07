@@ -1,10 +1,9 @@
-using MagicSystem;
+using AbilitySystem;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
-    public SpellController caster;
     public LayerMask layerMask = 0;
     public bool isFinished = false;
     public IEnumerable<GameObject> target;

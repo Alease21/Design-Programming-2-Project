@@ -1,4 +1,4 @@
-using MagicSystem;
+using AbilitySystem;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;

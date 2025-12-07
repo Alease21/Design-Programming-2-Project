@@ -28,8 +28,8 @@ public class UnitScript : MonoBehaviour
     [SerializeField] private int _expGiveOnDeath;
     [SerializeField] private float _expMultiplierOnLevel;
 
-    [SerializeField, ReadOnlyString] private string _allowedWeapons;
-    [SerializeField, ReadOnlyString] private string _allowedArmor;
+    //[SerializeField, ReadOnlyString] private string _allowedWeapons;
+    //[SerializeField, ReadOnlyString] private string _allowedArmor;
     [SerializeField, ReadOnlyString] private string _allowedMagic;
 
     //Runtime Unit Stats
@@ -57,19 +57,24 @@ public class UnitScript : MonoBehaviour
     [SerializeField, ReadOnlyInt] private int _baseDexterity;
     [SerializeField, ReadOnlyInt] private int _baseIntelligence;
 
+    //Base Unit Resists
+    [SerializeField, ReadOnlyInt] private int _physResist;
+    [SerializeField, ReadOnlyInt] private int _magicResist;
 
-    private EquipmentController equipmentController;
-
-    public UnitTypes GetUnitType { get { return _unitType; } }
+    public UnitTypes GetUnitType => _unitType;
     public CharacterClassSOBase GetCharacterClass => _characterClass;
-    public int GetStamina { get { return _adjustedStamina; } }
-    public int GetStrength { get { return _adjustedStrength; } }
-    public int GetDexterity { get { return _adjustedDexterity; } }
-    public int GetIntelligence { get { return _adjustedIntelligence; } }
-    public string GetAllowedArmor => _allowedArmor;
-    public string GetAllowedWeapons => _allowedWeapons;
+    public int GetStamina => _adjustedStamina;
+    public int GetStrength => _adjustedStrength;
+    public int GetDexterity => _adjustedDexterity;
+    public int GetIntelligence => _adjustedIntelligence;
+    public int GetPhysResist => _physResist;
+    public int GetMagicResist => _magicResist;
+
+    //public string GetAllowedArmor => _allowedArmor;
+    //public string GetAllowedWeapons => _allowedWeapons;
     public string GetAllowedMagic => _allowedMagic;
     public int GetOnDeathEXP => _expGiveOnDeath;
+
     private void Start()
     {
         UnitInit();
@@ -80,8 +85,8 @@ public class UnitScript : MonoBehaviour
     {
         _expMultiplierOnLevel = _characterClass.GetExpLevelModifier;
 
-        _allowedWeapons = (int)_characterClass.GetAllowedWeapons == -1 ? "All Weapons" : _characterClass.GetAllowedWeapons.ToString();
-        _allowedArmor = (int)_characterClass.GetAllowedArmor == -1 ? "All Armor" : _characterClass.GetAllowedArmor.ToString();
+        //_allowedWeapons = (int)_characterClass.GetAllowedWeapons == -1 ? "All Weapons" : _characterClass.GetAllowedWeapons.ToString();
+        //_allowedArmor = (int)_characterClass.GetAllowedArmor == -1 ? "All Armor" : _characterClass.GetAllowedArmor.ToString();
 
         _maxHealth = _characterClass.GetMaxHealth;
         _maxMana = _characterClass.GetMaxMana;

@@ -1,4 +1,4 @@
-using MagicSystem;
+using AbilitySystem;
 using XNodeEditor;
 using UnityEngine;
 using UnityEditor;

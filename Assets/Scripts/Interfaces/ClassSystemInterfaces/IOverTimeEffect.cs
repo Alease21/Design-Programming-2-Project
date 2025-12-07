@@ -1,7 +1,7 @@
-using MagicSystem;
+using AbilitySystem;
 using System;
 
 public interface IOverTimeEffect
 {
-    public abstract void StartTimedEffect(SpellData abilityData, Action onFinished);
+    public abstract void StartTimedEffect(AbilityData abilityData, Action onFinished);
 }

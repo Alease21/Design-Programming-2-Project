@@ -1,4 +1,4 @@
-using MagicSystem;
+using AbilitySystem;
 using XNodeEditor;
 
 [CustomNodeEditor(typeof(TargetingStrategy))]

@@ -1,4 +1,4 @@
-namespace MagicSystem
+namespace AbilitySystem
 {
     public interface IAuraEffect
     {

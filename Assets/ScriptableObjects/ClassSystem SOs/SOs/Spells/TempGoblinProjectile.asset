@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage Effect
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -136, y: 40}
+  position: {x: -120, y: 8}
   ports:
     keys:
     - input
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: Projectile Target
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -120, y: -216}
+  position: {x: -120, y: -152}
   ports:
     keys:
     - input

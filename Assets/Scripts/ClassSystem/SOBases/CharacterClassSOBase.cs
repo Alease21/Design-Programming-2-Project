@@ -1,3 +1,4 @@
+using AbilitySystem;
 using System;
 using UnityEngine;
 
@@ -36,10 +37,14 @@ public class CharacterClassSOBase : ScriptableObject
     public string classDescription;
 
     [Header("Class Restrictions")]
-    [SerializeField] private AllowedWeaponTypes _allowedWeaponTypes;
-    [SerializeField] private AllowedArmorTypes _allowedArmorTypes;
+    //[SerializeField] private AllowedWeaponTypes _allowedWeaponTypes;
+    //[SerializeField] private AllowedArmorTypes _allowedArmorTypes;
     [SerializeField] private AllowedMagicTypes _allowedMagicTypes;
-    
+
+    //Abilities
+    [SerializeField] private AbilityDefinition _basicAbility;
+    [SerializeField] private AbilityDefinition _ultimateAbility;
+
     [Header("Stats")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _maxMana;
@@ -59,9 +64,11 @@ public class CharacterClassSOBase : ScriptableObject
     [SerializeField] private int _initExpToLevel = 100;
     [SerializeField] private float _expModifierOnLevelIncrease = 1.25f;
 
-    public AllowedWeaponTypes GetAllowedWeapons => _allowedWeaponTypes;
-    public AllowedArmorTypes GetAllowedArmor => _allowedArmorTypes;
+    //public AllowedWeaponTypes GetAllowedWeapons => _allowedWeaponTypes;
+    //public AllowedArmorTypes GetAllowedArmor => _allowedArmorTypes;
     public AllowedMagicTypes GetAllowedMagic => _allowedMagicTypes;
+    public AbilityDefinition GetBasicAbility => _basicAbility;
+    public AbilityDefinition GetUltimateAbility => _ultimateAbility;
     public int GetMaxHealth => _maxHealth;
     public int GetMaxMana => _maxMana;
     public int GetDefaultStam => _defaultStam;

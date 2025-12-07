@@ -2,9 +2,10 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
-[CustomEditor(typeof(EquipmentController)), CanEditMultipleObjects]
+//[CustomEditor(typeof(EquipmentController)), CanEditMultipleObjects]
 public class EquipmentControllerEditor : Editor
 {
+    /*
     public override void OnInspectorGUI()
     {
         serializedObject.UpdateIfRequiredOrScript();
@@ -84,4 +85,5 @@ public class EquipmentControllerEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
+    */
 }

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static DamageTypeEnum;
-
 public class EquipmentController : MonoBehaviour
 {
+    /*
+
     [SerializeField] private WeaponSOBase _mainHand;
     [SerializeField] private WeaponSOBase _offHand;
     [SerializeField] private float _weaponOffsetFromCenter;
@@ -319,4 +320,5 @@ public class EquipmentController : MonoBehaviour
         }
         return dmgReduction;
     }
+*/
 }

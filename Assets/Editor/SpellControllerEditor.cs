@@ -1,12 +1,12 @@
-using MagicSystem;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(SpellController))]
+//[CustomEditor(typeof(SpellController))]
 public class SpellControllerEditor : Editor 
 {
+    /*
     public override void OnInspectorGUI()
     {
         serializedObject.UpdateIfRequiredOrScript();
@@ -46,4 +46,5 @@ public class SpellControllerEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
+    */
 }

@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MagicSystem
+namespace AbilitySystem
 {
     public class SpellController : MonoBehaviour
-    {
-        [SerializeField] protected SpellDefinition _spell1;
-        [SerializeField] protected SpellDefinition _spell2;
-        [SerializeField] protected SpellDefinition _spell3;
-        [SerializeField] protected SpellDefinition _spell4;
+    {/*
+        [SerializeField] protected AbilityDefinition _spell1;
+        [SerializeField] protected AbilityDefinition _spell2;
+        [SerializeField] protected AbilityDefinition _spell3;
+        [SerializeField] protected AbilityDefinition _spell4;
 
-        private Dictionary<SpellDefinition, bool> _spells = new();
+        private Dictionary<AbilityDefinition, bool> _spells = new();
 
         private UnitScript _unit;
 
-        public Dictionary<SpellDefinition, bool> GetSpells => _spells;
+        public Dictionary<AbilityDefinition, bool> GetSpells => _spells;
         public UnitScript GetUnit => _unit;
 
         private void Start()
@@ -36,12 +36,12 @@ namespace MagicSystem
                 CheckValidAndUseSpell(_spell4);
         }
 
-        private void CheckValidAndUseSpell(SpellDefinition spell)
+        private void CheckValidAndUseSpell(AbilityDefinition spell)
         {
             if (_unit == null) _unit = GetComponent<UnitScript>();
 
             if (_spells[spell] == true)
-                spell.UseAility(this);
+                spell.UseAbility(this);
             else
                 Debug.LogError("Attempted Invalid Spell Use");
         }
@@ -54,16 +54,16 @@ namespace MagicSystem
 
             _unit.UpdateSpellInfo();
 
-            Dictionary<SpellDefinition, bool> spells = new();
-            SpellDefinition[] equippedSpells = { _spell1, _spell2, _spell3, _spell4 };
+            Dictionary<AbilityDefinition, bool> spells = new();
+            AbilityDefinition[] equippedSpells = { _spell1, _spell2, _spell3, _spell4 };
             List<bool> tempBoolList = new();
 
             for (int i = 0; i < equippedSpells.Length; i++)
             {
-                SpellDefinition spell = equippedSpells[i];
+                AbilityDefinition spell = equippedSpells[i];
                 if (spell == null) continue;
 
-                bool isValid = _unit.GetAllowedMagic.Contains(equippedSpells[i].GetRootNode.GetSpellElement.ToString()) ||
+                bool isValid = _unit.GetAllowedMagic.Contains(equippedSpells[i].GetRootNode.GetAbilityType.ToString()) ||
                     _unit.GetAllowedMagic.Contains("All");
 
                 tempBoolList.Add(isValid);
@@ -72,6 +72,6 @@ namespace MagicSystem
 
             _spells = spells;
             return tempBoolList.ToArray();
-        }
+        }*/
     }
 }
