@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/ClassUIImages.meta
 guid: c2b267b191623e44eb24e6c87a5f6e44
+========
+guid: e21a9e69ced8ee545b0fba25deec74f8
+>>>>>>>> main:Assets/Resources/AbilityEffects.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
