@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e3885b6e612ba479a33739b28fbb0b, type: 3}
+  m_Name: DuelistGirl
+  m_EditorClassIdentifier: 
+  className: Duelist Girl
+  classDescription: Magic class
+  _allowedWeaponTypes: 0
+  _allowedArmorTypes: 2
+  _allowedMagicTypes: -1
+  _maxHealth: 10
+  _maxMana: 20
+  _defaultStam: 6
+  _defaultStr: 2
+  _defaultDex: 10
+  _defaultInt: 12
+  _stamIncreasePerLevel: 1
+  _strIncreasePerLevel: 1
+  _dexIncreasePerLevel: 1
+  _intIncreasePerLevel: 3
+  _startingLevel: 0
+  _initExpToLevel: 100
+  _expModifierOnLevelIncrease: 1.25
