@@ -141,7 +141,8 @@ public class UnitScript : MonoBehaviour
     // Increase or decrease unit health and call OnDeath if health reaches 0
     public int ChangeHealth(int amount, bool isGain, List<DamageTypes> dmgType = null)
     {
-        amount -= DamageReduction(dmgType);
+        if (!isGain && dmgType != null)
+            amount -= DamageReduction(dmgType);
 
         _health += isGain ? amount : -amount;
 

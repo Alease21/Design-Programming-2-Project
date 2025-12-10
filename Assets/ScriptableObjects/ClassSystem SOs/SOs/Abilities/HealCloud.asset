@@ -185,6 +185,6 @@ MonoBehaviour:
   _intelligenceValue: 0
   _healthValue: 0
   _manaValue: 0
-  objectToSpawn: {fileID: 1878051863224656105, guid: d50c992225ae9d6489f2828438e06749, type: 3}
+  objectToSpawn: {fileID: 1878051863224656105, guid: 147be85ff4021f1439279fcd9dfc2af1, type: 3}
   isFriendly: 1
   input: 0

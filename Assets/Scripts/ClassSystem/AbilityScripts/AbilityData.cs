@@ -7,18 +7,18 @@ namespace AbilitySystem
     public class AbilityData
     {
         private IEnumerable<GameObject> _targets;
-        private PlayerAbilityController _user;
+        private UnitScript _user;
         private AbilityTypes _abilityType;
         private string _abilityAnimName;
         private string _abilityAnimName2;
 
         public IEnumerable<GameObject> Targets { get { return _targets; } set { _targets = value; } }
-        public PlayerAbilityController GetUser => _user;
+        public UnitScript GetUser => _user;
         public AbilityTypes GetAbilityType => _abilityType;
         public string GetAbilityAnimName => _abilityAnimName;
         public string GetAbilityAnimName2 => _abilityAnimName2;
 
-        public AbilityData(PlayerAbilityController user, AbilityTypes abilityType)
+        public AbilityData(UnitScript user, AbilityTypes abilityType)
         {
             _user = user;
             _abilityType = abilityType;
@@ -33,7 +33,14 @@ namespace AbilitySystem
         {
             string animNamePrefix = "";
             string animNameSuffix = "";
-            if (GetAbilityType == AbilityTypes.Magic)
+
+            if (GetAbilityType == AbilityTypes.Physical)
+            {
+                _abilityAnimName = "Arrow";
+                _abilityAnimName2 = "Arrow";
+                return;
+            }
+            else if (GetAbilityType == AbilityTypes.Magic)
                 animNamePrefix = "Magic";
             else if (GetAbilityType == AbilityTypes.Fire)
                 animNamePrefix = "Fire";

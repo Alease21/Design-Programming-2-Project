@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3675604882275736863}
   - component: {fileID: 7196717603047462761}
   - component: {fileID: -1000596657157755282}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ExplosionEffectSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

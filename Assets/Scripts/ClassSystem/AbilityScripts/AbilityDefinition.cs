@@ -22,7 +22,7 @@ namespace AbilitySystem
 		[SerializeField] public string spellName;
         [TextArea(0,5)]
 		[SerializeField] public string spellDescription;
-		public void UseAbility(PlayerAbilityController user)
+		public void UseAbility(UnitScript user)
 		{
             GetRootNode?.UseAbility(user);
 		}

@@ -3,32 +3,64 @@
   "WorkspaceRootPath": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\healeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\healeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\unitscripts\\enemyscripts\\enemyfsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\enemyscripts\\enemyfsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\damageeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\damageeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\wfc system\\dungeoncreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wfc system\\dungeoncreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\buffeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\buffeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\unitscripts\\unitscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\unitscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\debuffeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\debuffeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\_olderassets\\older player scripts\\cloudobjectscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_olderassets\\older player scripts\\cloudobjectscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\abilitydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\unitscripts\\playerscripts\\playerabilitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\playerscripts\\playerabilitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\miscscripts\\damagetypeenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\miscscripts\\damagetypeenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\abilityscripts\\abilitydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\abilitydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\projectiletarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\interfaces\\classsysteminterfaces\\iabilityeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interfaces\\classsysteminterfaces\\iabilityeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\spawnobjecttargetlocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\spawnobjecttargetlocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\projectiletarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\projectiletarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\projectilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\projectilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\abilityrootnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\abilityrootnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\targeting strategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\targeting strategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\radiustargeting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\radiustargeting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\abilityscripts\\abilitydefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\abilitydefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,98 +70,199 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HealEffect.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\HealEffect.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\HealEffect.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\HealEffect.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\HealEffect.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAgwCIAAABSAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "DamageTypeEnum.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MiscScripts\\DamageTypeEnum.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MiscScripts\\DamageTypeEnum.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MiscScripts\\DamageTypeEnum.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MiscScripts\\DamageTypeEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T02:44:00.433Z",
+              "WhenOpened": "2025-12-10T06:09:08.533Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DamageEffect.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DamageEffect.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DamageEffect.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DamageEffect.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DamageEffect.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwCYAAABSAAAAAAAAAA==",
+              "Title": "DungeonCreator.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\DungeonCreator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\WFC System\\DungeonCreator.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\DungeonCreator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\WFC System\\DungeonCreator.cs",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAqwM8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T02:43:44.511Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AbilityRootNode.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwB0AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T02:38:37.242Z",
+              "WhenOpened": "2025-12-10T05:58:37.53Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "BuffEffect.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\BuffEffect.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\BuffEffect.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\BuffEffect.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\BuffEffect.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAA9wB4AAABZAAAAAAAAAA==",
+              "Title": "UnitScript.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\UnitScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\UnitScript.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\UnitScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\UnitScript.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAASwJEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T02:37:57.86Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AbilityData.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAYwBEAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T02:34:11.527Z",
+              "WhenOpened": "2025-12-10T05:56:40.021Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DebuffEffect.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DebuffEffect.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DebuffEffect.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DebuffEffect.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DebuffEffect.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA0wB4AAABZAAAAAAAAAA==",
+              "Title": "CloudObjectScript.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\_OlderAssets\\Older Player Scripts\\CloudObjectScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\_OlderAssets\\Older Player Scripts\\CloudObjectScript.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\_OlderAssets\\Older Player Scripts\\CloudObjectScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\_OlderAssets\\Older Player Scripts\\CloudObjectScript.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T02:32:22.567Z",
+              "WhenOpened": "2025-12-10T05:27:07.38Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
+              "Title": "PlayerAbilityController.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerAbilityController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerAbilityController.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerAbilityController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerAbilityController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwDwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:48:55.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnemyFSM.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\EnemyScripts\\EnemyFSM.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\EnemyScripts\\EnemyFSM.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\EnemyScripts\\EnemyFSM.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\EnemyScripts\\EnemyFSM.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAwCcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:34:52.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SpawnObjectTargetLocation.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\SpawnObjectTargetLocation.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\SpawnObjectTargetLocation.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\SpawnObjectTargetLocation.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\SpawnObjectTargetLocation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T05:29:45.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IAbilityEffect.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\Interfaces\\ClassSystemInterfaces\\IAbilityEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interfaces\\ClassSystemInterfaces\\IAbilityEffect.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\Interfaces\\ClassSystemInterfaces\\IAbilityEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interfaces\\ClassSystemInterfaces\\IAbilityEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:22:51.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AbilityData.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAQwCsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:20:41.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProjectileScript.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:54:02.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "ProjectileTarget.cs",
               "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\ProjectileTarget.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\ProjectileTarget.cs",
               "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\ProjectileTarget.cs",
               "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\ProjectileTarget.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAIwCkAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAhwDcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T02:31:00.553Z",
+              "WhenOpened": "2025-12-10T04:14:58.665Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AbilityRootNode.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAApwCkAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:41:48.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Targeting Strategy.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\Targeting Strategy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\Targeting Strategy.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\Targeting Strategy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\Targeting Strategy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T05:20:08.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AbilityDefinition.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityDefinition.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityDefinition.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityDefinition.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityDefinition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:45:59.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RadiusTargeting.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\RadiusTargeting.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\RadiusTargeting.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\RadiusTargeting.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\RadiusTargeting.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T04:48:09.989Z"
             }
           ]
         }

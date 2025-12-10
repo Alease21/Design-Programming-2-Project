@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4752051454770874944}
   - component: {fileID: 5944205387143760677}
   - component: {fileID: 1792434247329821989}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AuraEffectSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

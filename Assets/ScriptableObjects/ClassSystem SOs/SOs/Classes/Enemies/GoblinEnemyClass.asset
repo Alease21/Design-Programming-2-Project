@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Goblin Enemy
   classDescription: 
-  _allowedWeaponTypes: -1
-  _allowedArmorTypes: 4
-  _allowedMagicTypes: 4
+  _allowedMagicTypes: 0
+  _basicAbility: {fileID: 11400000, guid: fdf2705aef0819549937bb571af738f7, type: 2}
+  _ultimateAbility: {fileID: 0}
   _maxHealth: 10
   _maxMana: 1
   _defaultStam: 10

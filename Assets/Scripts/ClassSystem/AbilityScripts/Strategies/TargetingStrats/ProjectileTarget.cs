@@ -62,7 +62,7 @@ namespace AbilitySystem
             Vector3 initPos = ps.transform.position;
 
             yield return new WaitUntil(() => (ps.transform.position - initPos).magnitude > range);
-            ps.isFinished = true;
+            ps.ProjectileFinished();
         }
     }
 }

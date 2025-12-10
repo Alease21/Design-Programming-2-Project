@@ -1,3 +1,4 @@
+using AbilitySystem;
 using NavMeshPlus.Components;
 using System;
 using System.Collections;
@@ -5,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using WFC;
 
 public enum EnemyStates
 {
@@ -20,8 +22,7 @@ public class EnemyFSM : MonoBehaviour
 
     [SerializeField] private float _idleDuration;
     [SerializeField] private float _roamRadius;
-    //[SerializeField] private EnemyAttackSO _attackSO;
-    [SerializeField] private float tempattackCD;
+    [SerializeField] private AbilityDefinition _attack;
     [SerializeField] private float _tempAttackRange;
     [SerializeField] private float _sightRange;
     [SerializeField] private GameObject _curTargetGO;
@@ -29,8 +30,9 @@ public class EnemyFSM : MonoBehaviour
     [SerializeField] private float _pathingAllowance;
     [SerializeField] private bool _attackOnCooldown = false;
 
-    //private EnemyScript _enemyScript;
+    private NavMeshSurface _navMesh;
     private NavMeshAgent _navMeshAgent;
+    private UnitScript _unitScript;
     private Coroutine _idleCoro = null;
 
     public UnitScript GetCurTarget => _curTargetGO.GetComponent<UnitScript>();
@@ -38,9 +40,13 @@ public class EnemyFSM : MonoBehaviour
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _unitScript = GetComponent<UnitScript>();
+        _attack = _unitScript.GetCharacterClass.GetBasicAbility;
     }
     private void Update()
     {
+        if (!DungeonCreator.instance.IsNavMeshBaked) return;
+
         CheckForPlayer();
 
         switch (_enemyState)
@@ -151,9 +157,8 @@ public class EnemyFSM : MonoBehaviour
             _navMeshAgent.SetDestination(_curTargetGO.transform.position);
         
         if (_navMeshAgent.hasPath)
-            if(_navMeshAgent.remainingDistance <= /*_attackSO.range*/ _tempAttackRange + _pathingAllowance)
+            if(_navMeshAgent.remainingDistance <= _tempAttackRange + _pathingAllowance)
             {
-                //Debug.Log($"remaining dist: {_navMeshAgent.remainingDistance}, range: {/*_attackSO.range*/ _tempAttackRange}, allow {_pathingAllowance}");
                 _navMeshAgent.ResetPath();
                 SwapState(EnemyStates.Attack);
                 return;
@@ -165,13 +170,13 @@ public class EnemyFSM : MonoBehaviour
         if (!_attackOnCooldown)
         {
             StartCoroutine(AttackCooldownCoro());
-            Debug.Log("Attack Used");
+            _attack.UseAbility(_unitScript);
         }
     }
     private IEnumerator AttackCooldownCoro()
     {
         _attackOnCooldown = true;
-        yield return new WaitForSeconds(/*_attackSO.miniCooldown*/ tempattackCD);
+        yield return new WaitForSeconds(_attack.GetRootNode.AbilityCD);
         _attackOnCooldown = false;
     }
 }

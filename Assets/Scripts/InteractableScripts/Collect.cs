@@ -28,10 +28,10 @@ public class Collectible : MonoBehaviour
             spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if player collided with this collectible
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             CollectItem();
         }

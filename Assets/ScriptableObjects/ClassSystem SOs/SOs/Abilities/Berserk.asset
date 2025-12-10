@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Ability Root
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -207, y: -26.5}
+  position: {x: -248, y: -40}
   ports:
     keys:
     - targeting
     - harmfulEffects
     - helpfulEffects
     - helpfulEffects 0
+    - miscEffects
     values:
     - _fieldName: targeting
       _node: {fileID: -4246399013295814381}
@@ -63,10 +64,20 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 2
       _dynamic: 1
+    - _fieldName: miscEffects
+      _node: {fileID: -4246399013295814381}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
   targeting: 0
   harmfulEffects: 0
   helpfulEffects: 0
-  _abilityType: 4
+  miscEffects: 0
+  _abilityType: 8
   _abilityCD: 30
 --- !u!114 &-200698247125821533
 MonoBehaviour:

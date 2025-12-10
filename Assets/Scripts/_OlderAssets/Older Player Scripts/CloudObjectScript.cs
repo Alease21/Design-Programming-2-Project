@@ -2,30 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class CloudObjectScript : MonoBehaviour
 {
     [Header("Cloud Settings")]
     public float duration;
     public int amountPerSecond = 1;
     public bool isFriendly;
+    private Animator _animator;
 
     private readonly List<UnitScript> _unitsInside = new List<UnitScript>();
 
-    private void Reset()
-    {
-        var col = GetComponent<Collider>();
-        if (col != null)
-            col.isTrigger = true;
-    }
-
     private void Awake()
     {
-        StartCoroutine(CloudRoutine());
+        _animator = GetComponent<Animator>();
     }
 
-    private IEnumerator CloudRoutine()
+    public IEnumerator CloudRoutine()
     {
+        if (isFriendly)
+        {
+            _animator.Play("HealingExplosion");
+        }
+        else
+            _animator.Play("PoisonExplosion");
+
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -39,7 +39,7 @@ public class CloudObjectScript : MonoBehaviour
                     continue;
                 }
 
-                p.ChangeHealth(amountPerSecond, true);
+                p.ChangeHealth(amountPerSecond, isFriendly);
             }
 
             yield return new WaitForSeconds(1f);
@@ -51,7 +51,7 @@ public class CloudObjectScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         var unit = other.GetComponentInParent<UnitScript>();
 
@@ -59,7 +59,7 @@ public class CloudObjectScript : MonoBehaviour
             _unitsInside.Add(unit);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         var unit = other.GetComponentInParent<UnitScript>();
 

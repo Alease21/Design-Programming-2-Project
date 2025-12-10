@@ -3,6 +3,7 @@ using System;
 
 public enum AbilityTypes
 {
+    Physical = 2,
     Magic = 4,
     Fire = 8,
     Poison = 16,

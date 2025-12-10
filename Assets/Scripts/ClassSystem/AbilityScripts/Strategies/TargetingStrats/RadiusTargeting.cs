@@ -28,7 +28,7 @@ namespace AbilitySystem
             yield return new WaitForSeconds(duration);
             Destroy(go);
         }
-        private IEnumerable<GameObject> GetGameObjectsInRadius(PlayerAbilityController user)
+        private IEnumerable<GameObject> GetGameObjectsInRadius(UnitScript user)
         {
             Collider2D[] foundObjects = Physics2D.OverlapCircleAll(user.transform.position, _range, _affectedLayers);
 

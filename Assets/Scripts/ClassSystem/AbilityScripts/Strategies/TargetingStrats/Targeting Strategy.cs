@@ -21,7 +21,6 @@ namespace AbilitySystem
         [SerializeField] protected float _range;
         [SerializeField] protected float _projectileSpeed;
 
-
         public abstract void StartTargeting(AbilityData abilityData, Action onFinished);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
-    public LayerMask layerMask = 0;
+    public LayerMask layerMask;
     public bool isFinished = false;
     public List<GameObject> target = new();
     public float range;
@@ -16,15 +16,14 @@ public class ProjectileScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other != null && (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || 
-            other.gameObject.layer == LayerMask.NameToLayer("Default")))
+        if (other != null && ((1 << other.gameObject.layer) & layerMask) != 0)
         {
             target.Add(other.gameObject);
             ProjectileFinished();
         }
     }
 
-    private void ProjectileFinished()
+    public void ProjectileFinished()
     {
         if (target.Count == 0)
         {
@@ -32,7 +31,7 @@ public class ProjectileScript : MonoBehaviour
             emptyTar.transform.position = transform.position;
             target.Add(emptyTar);
         }
-           
+
         isFinished = true;
     }
 }

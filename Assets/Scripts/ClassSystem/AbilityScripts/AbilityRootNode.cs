@@ -19,7 +19,7 @@ namespace AbilitySystem
         public AbilityTypes GetAbilityType => _abilityType;
         public float AbilityCD => _abilityCD;
 
-        public void UseAbility(PlayerAbilityController user)
+        public void UseAbility(UnitScript user)
 		{
             if (_targetingStrategy == null)
                 _targetingStrategy = GetPort("targeting").Connection.node as TargetingStrategy;

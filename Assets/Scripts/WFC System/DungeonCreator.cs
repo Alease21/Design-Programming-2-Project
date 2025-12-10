@@ -55,6 +55,7 @@ namespace WFC
         
         private Stopwatch _stopWatch = new Stopwatch();
         [SerializeField] private NavMeshPlus.Components.NavMeshSurface _navMesh2D;
+        private bool _navMeshBaked = false;
 
         [Header("Debug & Editing")]
         [SerializeField] private bool _showTileHighlights = false;
@@ -69,6 +70,7 @@ namespace WFC
         public RoomElement ExitRoom { get { return _exitRoom; } set { _exitRoom = value; } }
         public Vector2Int GetMapSize { get { return _mapSize; } }
         public Vector2Int GetRoomSize { get { return _roomSize; } }
+        public bool IsNavMeshBaked => _navMeshBaked;
 
         private void Start()
         {
@@ -103,12 +105,6 @@ namespace WFC
         {
             NetworkManager.instance.dungeonSeed = UnityEngine.Random.Range(0, int.MaxValue);
             UnityEngine.Random.InitState(NetworkManager.instance.dungeonSeed);
-        }
-        private void Update()
-        {
-            // Quick input to regenerate dungeon, remove later
-            //if (Input.GetKeyDown(KeyCode.G))
-            //RestartGeneration();
         }
 
         // Displays elapsed time during dungeon generation
@@ -197,14 +193,21 @@ namespace WFC
                         }
                     }
                 }
-                _navMesh2D.BuildNavMesh();
 
                 GenerationTimer();
                 WFCFinished?.Invoke();
 
                 if (PhotonNetwork.IsMasterClient)
                     photonView.RPC("NonMasterStatup", RpcTarget.All, NetworkManager.instance.dungeonSeed); //Start other client WFC with true seed
+
+                Invoke(nameof(BakeNavMesh), 0.5f);//time delay on navmesh building to fix bug
             }
+        }
+
+        public void BakeNavMesh()
+        {
+            _navMesh2D.BuildNavMesh();
+            _navMeshBaked = true;
         }
 
         // Recursive method to search for true path starting from start room. 
@@ -369,7 +372,7 @@ namespace WFC
                         playerSpawnsSet++;
                         UnityEngine.Debug.Log("Player Spawn Spawned");
                     }
-
+                    /*
                     if ((room == _startRoom) && room.GetRoomByteMap[x, y] == 5)
                     {
                         GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/BoundaryTile"));
@@ -384,7 +387,7 @@ namespace WFC
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.right;
                         if (y == _roomGrid.GetLength(1) - 1)
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.up;
-                    }
+                    }*/
 
                     if (!_showTileHighlights) continue; // skip tile coloring if bool not checked
 
@@ -461,7 +464,7 @@ namespace WFC
                             else if (tile.name[1] == 'P' && tile.name[tile.name.Length - 1] == '5') // coin tile
                             {
                                 GameObject newCoin = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/Coin"));
-                                newCoin.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.11f, 0f);
+                                newCoin.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
                                 newCoin.transform.parent = _interactablesParent;
                                 continue;
                             }
@@ -475,7 +478,7 @@ namespace WFC
                             else if (tile.name == "Props_76")// Health pot tile **rename me
                             {
                                 GameObject newHealthPot = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/HealthPotion"));
-                                newHealthPot.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0f, 0f);
+                                newHealthPot.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
                                 newHealthPot.transform.parent = _interactablesParent;
                                 continue;
                             }

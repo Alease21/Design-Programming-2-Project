@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1792434247329821989}
   - component: {fileID: 8222104936143617323}
   - component: {fileID: 6198021842542815052}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ProjectileEffectSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
