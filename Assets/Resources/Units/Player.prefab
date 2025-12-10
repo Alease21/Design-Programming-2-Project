@@ -9,14 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 475932127611024130}
-  - component: {fileID: 3176766290230989272}
   m_Layer: 0
   m_Name: PlayerAttackManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &475932127611024130
 Transform:
   m_ObjectHideFlags: 0
@@ -32,30 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7460969253122200223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3176766290230989272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938138724703345340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e64d05354d89644a9af5957567b1fab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canAttack: 0
-  attackCDBool: 0
-  shooting: 0
-  attackCooldown: 0
-  playerAttack: {fileID: 11400000, guid: 0d9498287b02816429cae0ae5a8e9c72, type: 2}
-  currentShootPoint: {fileID: 0}
-  leftShootPoint: {fileID: 6398863671784751497}
-  rightShootPoint: {fileID: 1939371357064882363}
-  targetArea: {x: 0, y: 0}
-  cooldown: 0
-  damage: 0
-  repeats: 0
 --- !u!1 &1939371357064882363
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1705798162298588391
 Transform:
   m_ObjectHideFlags: 0
@@ -98,8 +73,7 @@ GameObject:
   - component: {fileID: 7460969253122200223}
   - component: {fileID: 5937238168901108175}
   - component: {fileID: 3972799051815870224}
-  - component: {fileID: 6971674271705393248}
-  - component: {fileID: 2306899298524110207}
+  - component: {fileID: -8498524411791659555}
   - component: {fileID: 6198501137427381892}
   - component: {fileID: 8997823328087913801}
   - component: {fileID: 3217791460896389212}
@@ -204,8 +178,6 @@ MonoBehaviour:
   _characterClass: {fileID: 11400000, guid: 3ef800e78ef7a8940aa204d65de138c5, type: 2}
   _expGiveOnDeath: 0
   _expMultiplierOnLevel: 1.25
-  _allowedWeapons: None
-  _allowedArmor: Cloth
   _allowedMagic: All Magic
   _level: 0
   _curExp: 0
@@ -224,37 +196,9 @@ MonoBehaviour:
   _baseStrength: 2
   _baseDexterity: 10
   _baseIntelligence: 12
---- !u!114 &6971674271705393248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4238605866392419152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33de17d472dc3b479056d4340196b87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainHand: {fileID: 0}
-  _offHand: {fileID: 0}
-  _weaponOffsetFromCenter: 0
-  _swingSpeed: 0
-  _physDamage: 0
-  _iceDamage: 0
-  _fireDamage: 0
-  _holyDamage: 0
-  _unholyDamage: 0
-  _headArmor: {fileID: 0}
-  _chestArmor: {fileID: 0}
-  _legArmor: {fileID: 0}
-  _footArmor: {fileID: 0}
   _physResist: 0
-  _iceResist: 0
-  _fireResist: 0
-  _holyResist: 0
-  _unholyResist: 0
---- !u!114 &2306899298524110207
+  _magicResist: 0
+--- !u!114 &-8498524411791659555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,13 +207,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4238605866392419152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a57285d6c58feb4e8e8435a5d335289, type: 3}
+  m_Script: {fileID: 11500000, guid: de62dee2c86cf11419f2ab3024da9182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spell1: {fileID: 0}
-  _spell2: {fileID: 0}
-  _spell3: {fileID: 0}
-  _spell4: {fileID: 0}
+  _basicOnCooldown: 0
+  _ultimateOnCooldown: 0
 --- !u!114 &6198501137427381892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,7 +511,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3173001060260091829
 Transform:
   m_ObjectHideFlags: 0

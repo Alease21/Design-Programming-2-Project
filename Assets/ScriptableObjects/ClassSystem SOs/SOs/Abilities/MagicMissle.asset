@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Spell Root
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -321, y: -65.5}
+  position: {x: -328, y: -24}
   ports:
     keys:
     - targeting
     - harmfulEffects
     - helpfulEffects
     - harmfulEffects 0
-    - harmfulEffects 1
+    - miscEffects
     values:
     - _fieldName: targeting
       _node: {fileID: -1707852740679622743}
@@ -64,23 +64,21 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 2
       _dynamic: 1
-    - _fieldName: harmfulEffects 1
+    - _fieldName: miscEffects
       _node: {fileID: -1707852740679622743}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: 2393008871686303763}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 2
-      _dynamic: 1
+      _dynamic: 0
   targeting: 0
   harmfulEffects: 0
   helpfulEffects: 0
-  _spellElement: 4
-  _manaCost: 2
+  miscEffects: 0
+  _abilityType: 4
+  _abilityCD: 0.5
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +95,6 @@ MonoBehaviour:
   - {fileID: -1707852740679622743}
   - {fileID: 3052027709973402236}
   - {fileID: 2293118260503517439}
-  - {fileID: 2393008871686303763}
   spellName: Duelist Magic Missile
   spellDescription: 
 --- !u!114 &2293118260503517439
@@ -113,7 +110,7 @@ MonoBehaviour:
   m_Name: Damage Effect
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 8, y: 40}
+  position: {x: 8, y: 72}
   ports:
     keys:
     - input
@@ -140,48 +137,6 @@ MonoBehaviour:
   _dexterityValue: 0
   _intelligenceValue: 0
   _healthValue: 5
-  _manaValue: 0
-  input: 0
---- !u!114 &2393008871686303763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1af9cfa08d89a4478043713b0b2fa2b, type: 3}
-  m_Name: Debuff Effect
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 8, y: 200}
-  ports:
-    keys:
-    - input
-    values:
-    - _fieldName: input
-      _node: {fileID: 2393008871686303763}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: harmfulEffects 1
-        node: {fileID: -1707852740679622743}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 2
-      _dynamic: 0
-  _effectName: Magic Missle DOT
-  _affectedStats: 0
-  isOverTime: 1
-  _duration: 0
-  _numberOfTicks: 0
-  _staminaValue: 0
-  _strengthValue: 0
-  _dexterityValue: 0
-  _intelligenceValue: 0
-  _healthValue: 0
   _manaValue: 0
   input: 0
 --- !u!114 &3052027709973402236
@@ -220,4 +175,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _range: 6
-  _projectileSpeed: 5
+  _projectileSpeed: 2

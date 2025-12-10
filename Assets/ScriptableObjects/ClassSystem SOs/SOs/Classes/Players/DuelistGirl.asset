@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Duelist Girl
   classDescription: Magic class
-  _allowedWeaponTypes: 0
-  _allowedArmorTypes: 2
   _allowedMagicTypes: -1
+  _basicAbility: {fileID: 11400000, guid: 72870101c7bc6dd44be7e9806682dc8e, type: 2}
+  _ultimateAbility: {fileID: 11400000, guid: 6cdeb5a89a22fcd4f9ec6de5e4695c94, type: 2}
   _maxHealth: 10
   _maxMana: 20
   _defaultStam: 6

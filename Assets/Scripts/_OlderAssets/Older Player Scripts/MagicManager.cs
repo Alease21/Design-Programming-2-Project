@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
+/*
 public class MagicManager : MonoBehaviour
 {
     public bool canAttack, attackCDBool, shooting;
@@ -96,3 +96,4 @@ public class MagicManager : MonoBehaviour
 
 
 }
+*/

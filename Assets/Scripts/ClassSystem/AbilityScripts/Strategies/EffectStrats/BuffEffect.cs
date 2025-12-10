@@ -27,8 +27,8 @@ namespace AbilitySystem
                 if (uss != null)
                 {
                     uss.StartCoroutine(StatEffectOverDuration(_duration, uss));
-                    _effect = Instantiate(Resources.Load<GameObject>("AuraEffectSprite"), uss.transform.position, Quaternion.identity, uss.transform);
-                    _effect.GetComponent<Animator>().Play(AbilityData.GetAbilityAnimName);
+                    _effect = Instantiate(Resources.Load<GameObject>("AbilityEffects/AuraEffectSprite"), uss.transform.position, Quaternion.identity, uss.transform);
+                    _effect.GetComponent<Animator>().Play(AbilityData.GetAbilityAnimName2);
                 }
             }
         }

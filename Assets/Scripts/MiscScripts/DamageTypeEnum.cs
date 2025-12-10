@@ -9,10 +9,9 @@ public static class DamageTypeEnum
     {
         None = 0,
         Physical = 2,
-        Ice = 4,
-        Fire = 8,
-        Holy = 16,
-        Unholy = 32
+        Magic = 4,
+        //Fire = 8,
+        Poison = 16
     }
 
     // Create and return a list of all independent DamageTypes of a given enum flag.
@@ -33,23 +32,21 @@ public static class DamageTypeEnum
                     break;
                 case 1://not implemented
                     break;
-                case 2://Ice
-                    if (binaryEnum[i] == '1')
-                        allDmgTypes.Add(DamageTypes.Unholy);
+                case 2://not implemented
                     break;
-                case 3://Fire
+                case 3://Poison
                     if (binaryEnum[i] == '1')
-                        allDmgTypes.Add(DamageTypes.Holy);
+                        allDmgTypes.Add(DamageTypes.Poison);
                     break;
-                case 4://Pierce
+                case 4://Fire
+                    //if (binaryEnum[i] == '1')
+                        //allDmgTypes.Add(DamageTypes.Fire);
+                    break;
+                case 5://Magic
                     if (binaryEnum[i] == '1')
-                        allDmgTypes.Add(DamageTypes.Fire);
+                        allDmgTypes.Add(DamageTypes.Magic);
                     break;
-                case 5://Blunt
-                    if (binaryEnum[i] == '1')
-                        allDmgTypes.Add(DamageTypes.Ice);
-                    break;
-                case 6://Slash
+                case 6://Phys
                     if (binaryEnum[i] == '1')
                         allDmgTypes.Add(DamageTypes.Physical);
                     break;

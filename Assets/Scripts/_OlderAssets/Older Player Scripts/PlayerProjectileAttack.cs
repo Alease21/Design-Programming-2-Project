@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/*
 using static MagicManager;
 
 public class PlayerProjectileAttack : MonoBehaviour
@@ -70,3 +71,4 @@ public class PlayerProjectileAttack : MonoBehaviour
     }
 
 }
+*/

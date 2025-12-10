@@ -49,6 +49,7 @@ public class CharacterClassSOBase : ScriptableObject
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _maxMana;
     [Space(5)]
+    private int _defaultStatValue = 10;
     [Range(1, 20)] [SerializeField] private int _defaultStam = 10;
     [Range(1, 20)] [SerializeField] private int _defaultStr = 10;
     [Range(1, 20)] [SerializeField] private int _defaultDex = 10;
@@ -71,6 +72,7 @@ public class CharacterClassSOBase : ScriptableObject
     public AbilityDefinition GetUltimateAbility => _ultimateAbility;
     public int GetMaxHealth => _maxHealth;
     public int GetMaxMana => _maxMana;
+    public int GetDefaultStatValue => _defaultStatValue;
     public int GetDefaultStam => _defaultStam;
     public int GetDefaultStr => _defaultStr;
     public int GetDefaultDex => _defaultDex;

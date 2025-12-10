@@ -143,7 +143,7 @@ public class EnemyFSM : MonoBehaviour
             roamPos = new Vector2(UnityEngine.Random.Range(-_roamRadius, _roamRadius), UnityEngine.Random.Range(-_roamRadius, _roamRadius));
             hit = Physics2D.Raycast(transform.position, roamPos.normalized, roamPos.magnitude, LayerMask.GetMask("Default"));
             onNavmesh = NavMesh.SamplePosition(roamPos + (Vector2)transform.position, out NavMeshHit navHit, roamPos.magnitude, NavMesh.GetAreaFromName("Walkable"));
-        } while (hit == true && !onNavmesh && _navMeshAgent.SetDestination(roamPos + (Vector2)transform.position));
+        } while (hit == true && !onNavmesh && !_navMeshAgent.SetDestination(roamPos + (Vector2)transform.position));
     }
     private void ChaseActions()
     {

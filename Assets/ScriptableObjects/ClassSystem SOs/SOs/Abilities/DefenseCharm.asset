@@ -1,42 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7558469541308983962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d238d29b24cf1f428cdc802b171da71, type: 3}
-  m_Name: Self Target
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 152, y: -88}
-  ports:
-    keys:
-    - input
-    values:
-    - _fieldName: input
-      _node: {fileID: -7558469541308983962}
-      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: targeting
-        node: {fileID: 7920935260986145636}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 1
-      _typeConstraint: 0
-      _dynamic: 0
-  input: 0
-  _effectType: 0
-  _affectedLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  _range: 0
-  _projectileSpeed: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 7920935260986145636}
-  - {fileID: -7558469541308983962}
   - {fileID: 2641435224699534011}
+  - {fileID: 4629724712423579434}
   spellName: 
   spellDescription: 
 --- !u!114 &2641435224699534011
@@ -68,7 +31,7 @@ MonoBehaviour:
   m_Name: Buff Effect
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 152, y: 24}
+  position: {x: 104, y: -8}
   ports:
     keys:
     - input
@@ -85,18 +48,55 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 2
       _dynamic: 0
-  _effectName: 
-  _affectedStats: 0
+  _effectName: Defense Charm
+  _affectedStats: 2
   isOverTime: 1
-  _duration: 0
+  _duration: 10
   _numberOfTicks: 0
-  _staminaValue: 0
+  _staminaValue: 10
   _strengthValue: 0
   _dexterityValue: 0
   _intelligenceValue: 0
   _healthValue: 0
   _manaValue: 0
   input: 0
+--- !u!114 &4629724712423579434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ff835a184314c4a8cf63d678ac56dc, type: 3}
+  m_Name: Radius Targeting
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 104, y: -168}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: 4629724712423579434}
+      _typeQualifiedName: System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: targeting
+        node: {fileID: 7920935260986145636}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  input: 0
+  _effectType: 4
+  _affectedLayers:
+    serializedVersion: 2
+    m_Bits: 320
+  _range: 8
+  _projectileSpeed: 0
 --- !u!114 &7920935260986145636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
     - harmfulEffects
     - helpfulEffects
     - helpfulEffects 0
+    - miscEffects
     values:
     - _fieldName: targeting
       _node: {fileID: 7920935260986145636}
@@ -124,7 +125,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: input
-        node: {fileID: -7558469541308983962}
+        node: {fileID: 4629724712423579434}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -160,8 +161,18 @@ MonoBehaviour:
       _connectionType: 1
       _typeConstraint: 2
       _dynamic: 1
+    - _fieldName: miscEffects
+      _node: {fileID: 7920935260986145636}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 2
+      _dynamic: 0
   targeting: 0
   harmfulEffects: 0
   helpfulEffects: 0
-  _spellElement: 4
-  _manaCost: 0
+  miscEffects: 0
+  _abilityType: 4
+  _abilityCD: 30

@@ -21,8 +21,8 @@ public class UnitScriptEditor : Editor
             if (unitScript.GetUnitType != UnitTypes.Player)
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("_expGiveOnDeath"));
             GUILayout.Space(10);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_allowedWeapons"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_allowedArmor"));
+            //EditorGUILayout.PropertyField(serializedObject.FindProperty("_allowedWeapons"));
+            //EditorGUILayout.PropertyField(serializedObject.FindProperty("_allowedArmor"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_allowedMagic"));
             EditorGUI.indentLevel--;
 

@@ -15,10 +15,10 @@ namespace AbilitySystem
         public override void StartTargeting(AbilityData abilityData, Action onFinished)
         {
             abilityData.Targets = GetGameObjectsInRadius(abilityData.GetUser);
-            GameObject explosion = Instantiate(Resources.Load<GameObject>("ExplosionEffectSprite"), abilityData.GetUser.transform.position, Quaternion.identity);
+            GameObject explosion = Instantiate(Resources.Load<GameObject>("AbilityEffects/ExplosionEffectSprite"), abilityData.GetUser.transform.position, Quaternion.identity);
             explosion.transform.localScale = Vector3.one * _range;
 
-            AnimationClip clip = Resources.Load<AnimationClip>($"Anims/{abilityData.GetAbilityType}");
+            AnimationClip clip = Resources.Load<AnimationClip>($"Anims/{abilityData.GetAbilityAnimName}");
             explosion.GetComponent<Animator>().Play(abilityData.GetAbilityAnimName);
             explosion.GetComponent<GeneralEffectScript>().StartCoroutine(DestroyOnTimer(clip.length, explosion));
             onFinished();

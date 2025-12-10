@@ -19,22 +19,22 @@ namespace AbilitySystem
 
         private GameObject _effect;
 
-        public void StartEffect(AbilityData AbilityData, Action onFinished)
+        public void StartEffect(AbilityData abilityData, Action onFinished)
         {
-            foreach (var target in AbilityData.Targets)
+            foreach (var target in abilityData.Targets)
             {
                 UnitScript uss = target.GetComponent<UnitScript>();
                 if (uss != null)
                 {
                     uss.StartCoroutine(StatEffectOverDuration(_duration, uss));
-                    _effect = Instantiate(Resources.Load<GameObject>("AuraEffectSprite"), uss.transform.position, Quaternion.identity, uss.transform);
-                    _effect.GetComponent<Animator>().Play(AbilityData.GetAbilityAnimName);
+                    _effect = Instantiate(Resources.Load<GameObject>("AbilityEffects/AuraEffectSprite"), uss.transform.position, Quaternion.identity, uss.transform);
+                    _effect.GetComponent<Animator>().Play(abilityData.GetAbilityAnimName2);
                 }
             }
         }
         public IEnumerator StatEffectOverDuration(float duration, UnitScript target)
         {
-            int[] statVals = new int[3];
+            int[] statVals = new int[4];
             List<string> statTypes = new List<string>(GetAffectedStats.ToString().Split(", "));
 
             if (statTypes.Contains("Stamina") || statTypes.Contains("-1"))

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using static MagicManager;
-
+/*
 public class EnemyBase : MultiplayerObjBase, IEnemy
 {
     public EnemySO baseStats;
@@ -67,7 +66,7 @@ public class EnemyBase : MultiplayerObjBase, IEnemy
             else if (canAttack)
                 if (currentAttack.isProjectile)
                     StartCoroutine(UseProjAttack(currentAttack, curTarget));
-        }*/
+        }
         else //if downed/null downed
         {
             /* check for downed and remove from temp?
@@ -76,7 +75,7 @@ public class EnemyBase : MultiplayerObjBase, IEnemy
                 playersDict[playersDict.ElementAt(i).Key] = Vector2.Distance(transform.position, playersDict.ElementAt(i).Key.transform.position);
             var sortedPlayers2 = playersDict.OrderBy((x) => x.Value);
             curTarget = sortedPlayers.ElementAt(0).Key;
-            */
+            
         }
 
         //LookAtPlayer();
@@ -131,3 +130,4 @@ public class EnemyBase : MultiplayerObjBase, IEnemy
         }
     }
 }
+*/

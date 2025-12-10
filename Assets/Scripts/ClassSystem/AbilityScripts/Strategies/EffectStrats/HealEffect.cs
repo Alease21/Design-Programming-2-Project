@@ -32,7 +32,7 @@ namespace AbilitySystem
         private IEnumerator HealOverTimeCoro(int amount, float duration, UnitScript target, AbilityData AbilityData)
         {
             GameObject effect = Instantiate(Resources.Load<GameObject>("AuraEffectSprite"), target.transform.position, Quaternion.identity, target.transform);
-            effect.GetComponent<Animator>().Play(AbilityData.GetAbilityAnimName);
+            effect.GetComponent<Animator>().Play(AbilityData.GetAbilityAnimName2);
 
             int newAmount = amount;
             float tickTime = duration / _numberOfTicks;

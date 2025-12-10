@@ -56,7 +56,7 @@ public class UnitScript : MonoBehaviour
     [SerializeField, ReadOnlyInt] private int _baseStrength;
     [SerializeField, ReadOnlyInt] private int _baseDexterity;
     [SerializeField, ReadOnlyInt] private int _baseIntelligence;
-
+   
     //Base Unit Resists
     [SerializeField, ReadOnlyInt] private int _physResist;
     [SerializeField, ReadOnlyInt] private int _magicResist;
@@ -141,6 +141,8 @@ public class UnitScript : MonoBehaviour
     // Increase or decrease unit health and call OnDeath if health reaches 0
     public int ChangeHealth(int amount, bool isGain, List<DamageTypes> dmgType = null)
     {
+        amount -= DamageReduction(dmgType);
+
         _health += isGain ? amount : -amount;
 
         if (_health >= _maxHealth)
@@ -153,6 +155,19 @@ public class UnitScript : MonoBehaviour
         }
 
         return 0;
+    }
+
+    //Calculate phys and magic resist 
+    private int DamageReduction(List<DamageTypes> dmgType)
+    {
+        int reductionAmout = 0;
+
+        if (dmgType.Contains(DamageTypes.Physical))
+            reductionAmout += _physResist;
+        if (dmgType.Contains(DamageTypes.Magic))
+            reductionAmout += _magicResist;
+
+        return reductionAmout;
     }
 
     //Death stuff
@@ -206,6 +221,9 @@ public class UnitScript : MonoBehaviour
         _adjustedStrength += isBuff ? values[1] : -values[1];
         _adjustedDexterity += isBuff ? values[2] : -values[2];
         _adjustedIntelligence += isBuff ? values[3] : -values[3];
+
+        _physResist = _adjustedStamina - _characterClass.GetDefaultStatValue;
+        _magicResist = _adjustedIntelligence - _characterClass.GetDefaultStatValue;
     }
 
     //Reset stats to default values (also used in initialization)
@@ -215,5 +233,8 @@ public class UnitScript : MonoBehaviour
         _adjustedStrength = _baseStrength;
         _adjustedDexterity = _baseDexterity;
         _adjustedIntelligence = _baseIntelligence;
+
+        _physResist = 0;
+        _magicResist = 0;
     }
 }

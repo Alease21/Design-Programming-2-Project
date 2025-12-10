@@ -33,15 +33,15 @@ namespace AbilitySystem
                 Debug.LogError("Proj target dir error. invalid unit type used");
             }
 
-            GameObject spellGO = Instantiate(Resources.Load<GameObject>("ProjectileEffectSprite"),
+            GameObject abilityGO = Instantiate(Resources.Load<GameObject>("AbilityEffects/ProjectileEffectSprite"),
             abilityData.GetUser.transform.position, Quaternion.LookRotation(Vector3.back, -dir));
-            
-            spellGO.GetComponent<Animator>().Play(abilityData.GetAbilityAnimName);
 
-            Rigidbody2D rb = spellGO.GetComponent<Rigidbody2D>();
+            abilityGO.GetComponent<Animator>().Play(abilityData.GetAbilityAnimName);
+
+            Rigidbody2D rb = abilityGO.GetComponent<Rigidbody2D>();
             rb.AddForce(dir * _projectileSpeed, ForceMode2D.Impulse);
 
-            ProjectileScript ps = spellGO.AddComponent<ProjectileScript>();
+            ProjectileScript ps = abilityGO.AddComponent<ProjectileScript>();
             ps.layerMask = _affectedLayers;
             ps.range = _range;
             ps.StartCoroutine(ProjectileCoroutine(ps, abilityData, onFinished));

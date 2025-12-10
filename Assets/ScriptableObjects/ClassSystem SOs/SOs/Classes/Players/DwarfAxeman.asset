@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Dwarf Axeman
   classDescription: Melee/tank class
-  _allowedWeaponTypes: -1
-  _allowedArmorTypes: -1
   _allowedMagicTypes: 0
+  _basicAbility: {fileID: 0}
+  _ultimateAbility: {fileID: 11400000, guid: f46f033f22f7090458641bc9abb0f2cc, type: 2}
   _maxHealth: 25
   _maxMana: 0
   _defaultStam: 12

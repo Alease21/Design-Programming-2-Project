@@ -16,7 +16,7 @@ public class AbilityRootNodeEditor : NodeEditor
 
         GUILayout.Label((node.graph as AbilityDefinition).spellName, EditorStyles.boldLabel);
         NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("targeting"));
-        NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_manaCost"));
+        NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_abilityCD"));
         NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_abilityType"));
         GUILayout.Space(5);
 
@@ -28,6 +28,8 @@ public class AbilityRootNodeEditor : NodeEditor
                 NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("helpfulEffects"));
             if (CanBeHarmful(targetStrat))
                 NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("harmfulEffects"));
+            if (CanBeMisc(targetStrat))
+                NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("miscEffects"));
         }
 
         serializedObject.ApplyModifiedProperties();
@@ -36,12 +38,18 @@ public class AbilityRootNodeEditor : NodeEditor
     {
         return strat is SelfTarget || strat is ICanAffectOthers && (
              (strat as ICanAffectOthers).GetEffectType == EffectType.Helpful ||
-             (strat as ICanAffectOthers).GetEffectType == EffectType.Both);
+             (strat as ICanAffectOthers).GetEffectType == EffectType.All);
     }
     private bool CanBeHarmful(TargetingStrategy strat)
     {
         return strat is ICanAffectOthers && (
              (strat as ICanAffectOthers).GetEffectType == EffectType.Harmful ||
-             (strat as ICanAffectOthers).GetEffectType == EffectType.Both);
+             (strat as ICanAffectOthers).GetEffectType == EffectType.All);
+    }
+    private bool CanBeMisc(TargetingStrategy strat)
+    {
+        return strat is ICanAffectOthers && (
+             (strat as ICanAffectOthers).GetEffectType == EffectType.Misc ||
+             (strat as ICanAffectOthers).GetEffectType == EffectType.All);
     }
 }

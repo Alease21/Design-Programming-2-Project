@@ -1,14 +1,9 @@
 using AbilitySystem;
 using System.Collections;
+using UnityEditor.Playables;
 using UnityEngine;
-public enum PlayerClassType
-{
-    Dwarf,        // Berserk Shout
-    PlagueDoctor,   // Healing Cloud
-    MagicGal        // Defense Charm
-}
 
-[RequireComponent(typeof(PlayerHealthManager))]
+[RequireComponent(typeof(UnitScript))]
 public class PlayerAbilityController : MonoBehaviour
 {
     //[Header("References")]
@@ -28,9 +23,13 @@ public class PlayerAbilityController : MonoBehaviour
     private AbilityDefinition _basicAbility;
     private AbilityDefinition _ultimateAbility;
 
-    public bool AbilityActive { get; private set; }
-    public bool AbilityOnCooldown { get; private set; }
-    public float AbilityCooldownRemaining { get; private set; }
+    //private bool _basicActive = false;
+    [SerializeField]private bool _basicOnCooldown = false;
+    //private float _basicCooldownRemaining;
+
+    //private bool _ultimateActive = false;
+    [SerializeField] private bool _ultimateOnCooldown = false;
+    //private float _ultimateCooldownRemaining;
     
     //[Header("Berserk Shout")]
     //public float berserkDuration = 10f;
@@ -59,21 +58,44 @@ public class PlayerAbilityController : MonoBehaviour
         _basicAbility = _unitScript.GetCharacterClass.GetBasicAbility;
         _ultimateAbility = _unitScript.GetCharacterClass.GetUltimateAbility;
     }
-
-
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+            if (!_basicOnCooldown)
+                StartCoroutine(BasicAbilityCoolDownCoro());
+
         if (Input.GetKeyDown(KeyCode.Q))
-            TryUseAbility();
+            if (!_ultimateOnCooldown)
+                StartCoroutine(UltimateAbilityCoolDownCoro());
     }
 
-    public bool TryUseAbility()
+    public IEnumerator BasicAbilityCoolDownCoro()
     {
-        if (AbilityActive || AbilityOnCooldown)
-            return false;
+        _basicAbility.UseAbility(this);
+        _basicOnCooldown = true;
+        float abilityCD = _basicAbility.GetRootNode.AbilityCD;
 
+        for (float timer = 0f; timer < abilityCD; timer += Time.deltaTime)
+        {
+            //update a ui thing?
+            yield return null;
+        }
+
+        _basicOnCooldown = false;
+    }
+    public IEnumerator UltimateAbilityCoolDownCoro()
+    {
         _ultimateAbility.UseAbility(this);
-        return true;
+        _ultimateOnCooldown = true;
+        float abilityCD = _ultimateAbility.GetRootNode.AbilityCD;
+
+        for (float timer = 0f; timer < abilityCD; timer += Time.deltaTime)
+        {
+            //update a ui thing?
+            yield return null;
+        }
+
+        _ultimateOnCooldown = false;
     }
 
     /*

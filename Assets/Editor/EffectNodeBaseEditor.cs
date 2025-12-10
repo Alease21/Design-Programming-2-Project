@@ -42,9 +42,15 @@ public class EffectNodeBaseEditor : NodeEditor
                 GUILayout.Space(5);
             }
         }
+        if (node is SpawnObjectTargetLocation)
+        {
+            NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("objectToSpawn"));
+            NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("isFriendly"));
+        }
 
         if (node is not BuffEffect && node is not DebuffEffect)
             NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("isOverTime"));
+
         if (node.isOverTime)
         {
             EditorGUI.indentLevel++;

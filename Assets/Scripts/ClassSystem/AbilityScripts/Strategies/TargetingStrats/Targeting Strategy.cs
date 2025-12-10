@@ -4,9 +4,10 @@ using UnityEngine;
 public enum EffectType
 {
     None = 0,
-    Both = -1,
+    All = -1,
     Harmful = 2,
     Helpful = 4,
+    Misc = 8
 }
 
 namespace AbilitySystem

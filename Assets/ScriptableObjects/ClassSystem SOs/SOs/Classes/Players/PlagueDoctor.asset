@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   className: Plague Doctor
   classDescription: healer/support, ranged
-  _allowedWeaponTypes: 0
-  _allowedArmorTypes: 6
   _allowedMagicTypes: 0
+  _basicAbility: {fileID: 11400000, guid: 72139f0ee518e4c448e68a6063378e0a, type: 2}
+  _ultimateAbility: {fileID: 11400000, guid: 5ef014f097434a74a81630a046406d0f, type: 2}
   _maxHealth: 15
   _maxMana: 15
   _defaultStam: 6

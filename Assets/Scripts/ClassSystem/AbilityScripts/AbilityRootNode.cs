@@ -3,26 +3,24 @@ using XNode;
 
 namespace AbilitySystem
 {
-    [CreateNodeMenu("Spell RootNode")]
+    [CreateNodeMenu("Ability RootNode")]
     public class AbilityRootNode : AbilityNodeBase
     {
 		[Output(connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)] public byte targeting;
         [Output(dynamicPortList = true, connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)] public int harmfulEffects;
         [Output(dynamicPortList = true, connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)] public bool helpfulEffects;
+        [Output(dynamicPortList = true, connectionType = ConnectionType.Override, typeConstraint = TypeConstraint.Strict)] public float miscEffects;
 
         [SerializeField] protected AbilityTypes _abilityType;
-        [SerializeField] protected int _manaCost;
+        [SerializeField] private float _abilityCD;
 
         private TargetingStrategy _targetingStrategy;
 
         public AbilityTypes GetAbilityType => _abilityType;
-        public int GetManaCost => _manaCost;
+        public float AbilityCD => _abilityCD;
 
         public void UseAbility(PlayerAbilityController user)
 		{
-            // Check if spell can be cast, return if not, else cast spell
-            if (!user.GetComponent<UnitScript>().ChangeMana(_manaCost, false)) return;
-
             if (_targetingStrategy == null)
                 _targetingStrategy = GetPort("targeting").Connection.node as TargetingStrategy;
 

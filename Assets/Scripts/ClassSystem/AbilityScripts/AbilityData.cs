@@ -10,11 +10,13 @@ namespace AbilitySystem
         private PlayerAbilityController _user;
         private AbilityTypes _abilityType;
         private string _abilityAnimName;
+        private string _abilityAnimName2;
 
         public IEnumerable<GameObject> Targets { get { return _targets; } set { _targets = value; } }
         public PlayerAbilityController GetUser => _user;
         public AbilityTypes GetAbilityType => _abilityType;
         public string GetAbilityAnimName => _abilityAnimName;
+        public string GetAbilityAnimName2 => _abilityAnimName2;
 
         public AbilityData(PlayerAbilityController user, AbilityTypes abilityType)
         {
@@ -29,7 +31,6 @@ namespace AbilitySystem
 
         public void DetermineSpellAnimName(TargetingStrategy tarStrat)
         {
-            string subFolderPath = "AbilityEffects/";
             string animNamePrefix = "";
             string animNameSuffix = "";
             if (GetAbilityType == AbilityTypes.Magic)
@@ -48,7 +49,8 @@ namespace AbilitySystem
             else if (tarStrat is ProjectileTarget)
                 animNameSuffix = "Projectile";
 
-            _abilityAnimName = subFolderPath + animNamePrefix + animNameSuffix;
+            _abilityAnimName = animNamePrefix + animNameSuffix;
+            _abilityAnimName2 = animNamePrefix + "Aura";
         }
     }
 }

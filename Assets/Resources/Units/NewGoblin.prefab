@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1195104905
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_Sprite: {fileID: -4187411208922253474, guid: 835cb236ef2afb04abc15672f7e6b616, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,8 +97,6 @@ GameObject:
   m_Component:
   - component: {fileID: 194768363456400458}
   - component: {fileID: 8841245042128056790}
-  - component: {fileID: 5578208833618800501}
-  - component: {fileID: 4890018491324185348}
   - component: {fileID: 853953938612626476}
   - component: {fileID: 355609476439431706}
   - component: {fileID: 4441541267536806699}
@@ -144,8 +142,6 @@ MonoBehaviour:
   _characterClass: {fileID: 11400000, guid: 21e9d42f77390fd4c9decb7b49218059, type: 2}
   _expGiveOnDeath: 75
   _expMultiplierOnLevel: 1.25
-  _allowedWeapons: All Weapons
-  _allowedArmor: Leather
   _allowedMagic: Fire
   _level: 0
   _curExp: 0
@@ -164,52 +160,8 @@ MonoBehaviour:
   _baseStrength: 10
   _baseDexterity: 10
   _baseIntelligence: 10
---- !u!114 &5578208833618800501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6647386337124346014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33de17d472dc3b479056d4340196b87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainHand: {fileID: 0}
-  _offHand: {fileID: 0}
-  _weaponOffsetFromCenter: 0
-  _swingSpeed: 0
-  _physDamage: 0
-  _iceDamage: 0
-  _fireDamage: 0
-  _holyDamage: 0
-  _unholyDamage: 0
-  _headArmor: {fileID: 0}
-  _chestArmor: {fileID: 0}
-  _legArmor: {fileID: 0}
-  _footArmor: {fileID: 0}
   _physResist: 0
-  _iceResist: 0
-  _fireResist: 0
-  _holyResist: 0
-  _unholyResist: 0
---- !u!114 &4890018491324185348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6647386337124346014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a57285d6c58feb4e8e8435a5d335289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spell1: {fileID: 0}
-  _spell2: {fileID: 0}
-  _spell3: {fileID: 0}
-  _spell4: {fileID: 0}
+  _magicResist: 0
 --- !u!114 &853953938612626476
 MonoBehaviour:
   m_ObjectHideFlags: 0

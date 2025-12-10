@@ -1,12 +1,13 @@
 using AbilitySystem;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
     public LayerMask layerMask = 0;
     public bool isFinished = false;
-    public IEnumerable<GameObject> target;
+    public List<GameObject> target = new();
     public float range;
 
     private void Awake()
@@ -18,13 +19,20 @@ public class ProjectileScript : MonoBehaviour
         if (other != null && (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || 
             other.gameObject.layer == LayerMask.NameToLayer("Default")))
         {
-            target = new List<GameObject>() { other.gameObject };
+            target.Add(other.gameObject);
             ProjectileFinished();
         }
     }
 
     private void ProjectileFinished()
     {
+        if (target.Count == 0)
+        {
+            GameObject emptyTar = new GameObject();
+            emptyTar.transform.position = transform.position;
+            target.Add(emptyTar);
+        }
+           
         isFinished = true;
     }
 }
