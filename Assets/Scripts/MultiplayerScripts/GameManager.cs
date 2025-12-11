@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using Photon.Pun;
 using System.Linq;
 using WFC;
@@ -11,7 +12,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public string playerPrefabLoc;
 
     public Transform[] spawnPoints = new Transform[4];
-    public PlayerMovement[] players;
+    public PlayerMultiplayerIdScript[] players;
+    public List<EnemyFSM> enemies = new();
     private int _playersInGame;
 
     public static GameManager instance;
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void OnWFCDone()
     {
-        players = new PlayerMovement[PhotonNetwork.PlayerList.Length];
+        players = new PlayerMultiplayerIdScript[PhotonNetwork.PlayerList.Length];
         photonView.RPC("ImInGame", RpcTarget.All);
     }
     [PunRPC]
@@ -55,11 +57,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         playerScript.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
 
-    public PlayerMovement GetPlayer(int playerID)
+    public PlayerMultiplayerIdScript GetPlayer(int playerID)
     {
         return players.First(p => p.id == playerID);
     }
-    public PlayerMovement GetPlayer(GameObject playerObj)
+    public PlayerMultiplayerIdScript GetPlayer(GameObject playerObj)
     {
         return players.First(p => p.gameObject == playerObj);
     }

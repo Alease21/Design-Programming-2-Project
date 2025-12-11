@@ -18,7 +18,8 @@ namespace AbilitySystem
 
             if (unit.GetUnitType == UnitTypes.Player)
             {
-                dir = abilityData.GetUser.GetComponent<PlayerMovement>().GetMouseDir;
+                dir = abilityData.GetUser.GetComponent<PlayerAbilityController>().GetTrueMouseDir;
+                //dir = abilityData.GetUser.GetComponent<PlayerMovement>().GetMouseDir;
             }
             else if (unit.GetUnitType == UnitTypes.Enemy)
             {

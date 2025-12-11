@@ -48,6 +48,22 @@ MonoBehaviour:
   - OnMultiplayerObjDestroy
   - EvaluateGUID
   - ChangeClassIcon
+  - StartAbility
+  - StartBasicAbility
+  - StartUltimateAbility
+  - AttackActions
+  - ChaseActions
+  - IdleActions
+  - RoamActions
+  - CheckForPlayer
+  - SetChaseTargetDestination
+  - SetRoamTargetDestination
+  - StartAttackCoroAndUseAbility
+  - StartIdleCoroutine
+  - SwapToAttackFromChase
+  - SwapToIdleFromRoam
+  - SwapState
+  - SetCurrentTarget
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

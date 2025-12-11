@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 3972799051815870224}
   - component: {fileID: -8498524411791659555}
   - component: {fileID: 6198501137427381892}
+  - component: {fileID: -4254100344766727165}
   - component: {fileID: 8997823328087913801}
   - component: {fileID: 3217791460896389212}
   - component: {fileID: 7450211449790298803}
@@ -175,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitType: 2
-  _characterClass: {fileID: 11400000, guid: 4d2a3cc2feb58ee4d8ed0649ea87faee, type: 2}
+  _characterClass: {fileID: 11400000, guid: 3ef800e78ef7a8940aa204d65de138c5, type: 2}
   _expGiveOnDeath: 0
   _expMultiplierOnLevel: 1.25
   _allowedMagic: All Magic
@@ -190,12 +191,12 @@ MonoBehaviour:
   _adjustedIntelligence: 0
   _initLevel: 0
   _initMaxExpToLevel: 100
-  _maxHealth: 15
-  _maxMana: 15
+  _maxHealth: 10
+  _maxMana: 20
   _baseStamina: 6
-  _baseStrength: 4
+  _baseStrength: 2
   _baseDexterity: 10
-  _baseIntelligence: 10
+  _baseIntelligence: 12
   _physResist: 0
   _magicResist: 0
 --- !u!114 &-8498524411791659555
@@ -222,10 +223,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714c2e1b49db3e24d8f7da5d315b5137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   _playerSpeed: 10
   spriteAnimator: {fileID: 0}
   _playerFrozen: 0
+--- !u!114 &-4254100344766727165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238605866392419152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46af07acc72d67944a5e14b7376fec5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!114 &8997823328087913801
 MonoBehaviour:
   m_ObjectHideFlags: 0

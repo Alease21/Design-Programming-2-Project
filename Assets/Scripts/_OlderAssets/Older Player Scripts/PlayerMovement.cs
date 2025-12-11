@@ -6,15 +6,10 @@ using WFC;
 
 public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
-    [HideInInspector]
-    public int id;
-
     [Range(0, 20)]
-    [SerializeField] private float _playerSpeed;
-    //private Vector2 _move;
+    [SerializeField] public float playerSpeed;
     private Rigidbody2D _rb;
     private Camera _camera;
-    public Player photonPlayer;
     public Animator spriteAnimator;
     public bool _playerFrozen = false;
     public Vector3 GetMouseDir => FindMouseDir();
@@ -24,27 +19,17 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         //_move = context.ReadValue<Vector2>();
     }
-
-    [PunRPC]
-    public void Initialize(Player player)
-    {
-        photonPlayer = player;
-        id = player.ActorNumber;
-        GameManager.instance.players[id - 1] = this;
-
-        if (id == 1) //can do random selection here if wanted
-        {
-            //GameManager.instance.GiveFlag(id, true);
-        }
-
-        if (!photonView.IsMine)
-            _rb.bodyType = RigidbodyType2D.Kinematic;
-    }
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _camera = Camera.main;
         spriteAnimator = GetComponent<Animator>();
+    }
+
+    public void InitializeRB()
+    {
+        if (!photonView.IsMine)
+            _rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     private void FixedUpdate()
@@ -60,7 +45,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         SetAnimFloats(horizontal, vertical);
-        _rb.linearVelocity = new Vector2(horizontal * _playerSpeed, vertical * _playerSpeed);
+        _rb.linearVelocity = new Vector2(horizontal * playerSpeed, vertical * playerSpeed);
     }
 
     public void SetAnimFloats(float hori, float verti)

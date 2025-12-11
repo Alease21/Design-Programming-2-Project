@@ -186,6 +186,7 @@ MonoBehaviour:
   closedChest: {fileID: -229268930, guid: 1e2770bc4c15b1d4d91b8ced5b93715a, type: 3}
   isOpen: 0
   spriteRen: {fileID: 0}
+  playerInRange: 0
 --- !u!114 &-4928953866936809585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +207,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2610574419724214675}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

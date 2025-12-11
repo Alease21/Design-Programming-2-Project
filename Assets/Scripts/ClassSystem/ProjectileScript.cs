@@ -16,7 +16,11 @@ public class ProjectileScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other != null && ((1 << other.gameObject.layer) & layerMask) != 0)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            ProjectileFinished();
+        }
+        else if (other != null && ((1 << other.gameObject.layer) & layerMask) != 0)
         {
             target.Add(other.gameObject);
             ProjectileFinished();

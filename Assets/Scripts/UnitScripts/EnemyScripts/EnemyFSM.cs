@@ -1,6 +1,6 @@
 using AbilitySystem;
 using NavMeshPlus.Components;
-using System;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ public enum EnemyStates
     Chase,
     Attack
 }
-public class EnemyFSM : MonoBehaviour
+public class EnemyFSM : MonoBehaviourPunCallbacks
 {
     [SerializeField] private EnemyStates _enemyState = EnemyStates.None;
 
@@ -29,25 +29,31 @@ public class EnemyFSM : MonoBehaviour
     [SerializeField] private Dictionary<GameObject, float> playersDict = new();
     [SerializeField] private float _pathingAllowance;
     [SerializeField] private bool _attackOnCooldown = false;
+    //[SerializeField] private int _enemyID;
 
-    private NavMeshSurface _navMesh;
     private NavMeshAgent _navMeshAgent;
     private UnitScript _unitScript;
     private Coroutine _idleCoro = null;
 
     public UnitScript GetCurTarget => _curTargetGO.GetComponent<UnitScript>();
+    public int GetEnemyID => photonView.ViewID;
 
     private void Awake()
     {
+        GameManager.instance.enemies.Add(this);
+        photonView.ViewID = GameManager.instance.enemies.IndexOf(this) + 10;
+
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _unitScript = GetComponent<UnitScript>();
         _attack = _unitScript.GetCharacterClass.GetBasicAbility;
     }
     private void Update()
     {
+        if (!PhotonNetwork.IsMasterClient) return;
         if (!DungeonCreator.instance.IsNavMeshBaked) return;
 
         CheckForPlayer();
+        //photonView.RPC(nameof(CheckForPlayer), RpcTarget.Others, GetEnemyID);
 
         switch (_enemyState)
         {
@@ -85,31 +91,54 @@ public class EnemyFSM : MonoBehaviour
         {
             _curTargetGO = null;
             if (_enemyState != EnemyStates.Idle && _enemyState != EnemyStates.Roam)
-                SwapState(EnemyStates.Idle);
+                photonView.RPC(nameof(SwapState), RpcTarget.All, GetEnemyID, EnemyStates.Idle);
+                //SwapState(EnemyStates.Idle);
             return;
         }
+        int playerID = closest.Key.GetComponent<PlayerMultiplayerIdScript>().id;
 
-        _curTargetGO = closest.Key;
+        if (_curTargetGO == null || (_curTargetGO != null && playerID != _curTargetGO.GetComponent<PlayerMultiplayerIdScript>().id))
+            photonView.RPC(nameof(SetCurrentTarget), RpcTarget.All, GetEnemyID, playerID);
+            //_curTargetGO = closest.Key;
 
         RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, (Vector2)(_curTargetGO.transform.position - transform.position).normalized, _sightRange, LayerMask.GetMask("Player", "Default"));
         if (hit == false || hit.collider.gameObject.layer != LayerMask.NameToLayer("Player"))
         {
             if (_enemyState != EnemyStates.Idle && _enemyState != EnemyStates.Roam)
-                SwapState(EnemyStates.Idle);
+                photonView.RPC(nameof(SwapState), RpcTarget.All, GetEnemyID, EnemyStates.Idle);
+                //SwapState(EnemyStates.Idle);
             return;
         }
 
         if (closest.Value <= _tempAttackRange)
         {
             if (_enemyState != EnemyStates.Attack)
-                SwapState(EnemyStates.Attack);
+                photonView.RPC(nameof(SwapState), RpcTarget.All, GetEnemyID, EnemyStates.Attack);
+                //SwapState(EnemyStates.Attack);
         }
         else
             if (_enemyState != EnemyStates.Chase)
-                SwapState(EnemyStates.Chase);
+            photonView.RPC(nameof(SwapState), RpcTarget.All, GetEnemyID, EnemyStates.Chase);
+            //SwapState(EnemyStates.Chase);
     }
-    private void SwapState(EnemyStates newState)
+    [PunRPC]
+    public void SetCurrentTarget(int id, int targetID)
     {
+        if (id != GetEnemyID) return;
+
+        foreach (var p in GameManager.instance.players)
+            if (p.id == targetID)
+            {
+                _curTargetGO = p.gameObject;
+                break;
+            }
+    }
+
+    [PunRPC]
+    private void SwapState(int id, EnemyStates newState)
+    {
+        if (id != GetEnemyID) return;
+
         _enemyState = newState;
 
         if (_idleCoro != null)
@@ -118,26 +147,38 @@ public class EnemyFSM : MonoBehaviour
             _idleCoro = null;
         }
     }
+
     private void IdleActions()
     {
         if (_idleCoro == null)
-            _idleCoro = StartCoroutine(IdleWaitCoro());
+            photonView.RPC(nameof(StartIdleCoroutine), RpcTarget.All, GetEnemyID);
+            //_idleCoro = StartCoroutine(IdleWaitCoro());
+    }
+    [PunRPC]
+    private void StartIdleCoroutine(int id)
+    {
+        if (id != GetEnemyID) return;
+
+        _idleCoro = StartCoroutine(IdleWaitCoro());
     }
     private IEnumerator IdleWaitCoro()
     {
         _enemyState = EnemyStates.Idle;
         yield return new WaitForSeconds(_idleDuration);
-        SwapState(EnemyStates.Roam);
+        //photonView.RPC(nameof(SwapState), RpcTarget.All, GetEnemyID, EnemyStates.Roam);
+        SwapState(GetEnemyID, EnemyStates.Roam);
         _idleCoro = null;
     }
+
     private void RoamActions()
     {
         if (_navMeshAgent.hasPath) return;
 
         if (_navMeshAgent.velocity.magnitude > 0f && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathingAllowance)
         {
-            _navMeshAgent.ResetPath();
-            SwapState(EnemyStates.Idle);
+            photonView.RPC(nameof(SwapToIdleFromRoam), RpcTarget.All, GetEnemyID);
+            //_navMeshAgent.ResetPath();
+            //SwapState(EnemyStates.Idle);
             return;
         }
 
@@ -149,30 +190,81 @@ public class EnemyFSM : MonoBehaviour
             roamPos = new Vector2(UnityEngine.Random.Range(-_roamRadius, _roamRadius), UnityEngine.Random.Range(-_roamRadius, _roamRadius));
             hit = Physics2D.Raycast(transform.position, roamPos.normalized, roamPos.magnitude, LayerMask.GetMask("Default"));
             onNavmesh = NavMesh.SamplePosition(roamPos + (Vector2)transform.position, out NavMeshHit navHit, roamPos.magnitude, NavMesh.GetAreaFromName("Walkable"));
-        } while (hit == true && !onNavmesh && !_navMeshAgent.SetDestination(roamPos + (Vector2)transform.position));
+        } while (hit == true && !onNavmesh);
+
+        photonView.RPC(nameof(SetRoamTargetDestination), RpcTarget.All, GetEnemyID, roamPos);
+        //_navMeshAgent.SetDestination(roamPos + (Vector2)transform.position);
     }
+    [PunRPC]
+    private void SwapToIdleFromRoam(int id)
+    {
+        if (id != GetEnemyID) return;
+
+        _navMeshAgent.ResetPath();
+        //photonView.RPC(nameof(SwapState), RpcTarget.All, GetEnemyID, EnemyStates.Idle);
+        SwapState(GetEnemyID, EnemyStates.Idle);
+    }
+
+    [PunRPC]
+    private void SetRoamTargetDestination(int id, Vector2 roamPos)
+    {
+        if (id != GetEnemyID) return;
+
+        _navMeshAgent.SetDestination(roamPos + (Vector2)transform.position);
+    }
+
     private void ChaseActions()
     {
         if (_curTargetGO != null)
-            _navMeshAgent.SetDestination(_curTargetGO.transform.position);
+            photonView.RPC(nameof(SetChaseTargetDestination), RpcTarget.All, GetEnemyID);
+            //_navMeshAgent.SetDestination(_curTargetGO.transform.position);
         
         if (_navMeshAgent.hasPath)
             if(_navMeshAgent.remainingDistance <= _tempAttackRange + _pathingAllowance)
             {
-                _navMeshAgent.ResetPath();
-                SwapState(EnemyStates.Attack);
+                photonView.RPC(nameof(SwapToAttackFromChase), RpcTarget.All, GetEnemyID);
+                //_navMeshAgent.ResetPath();
+                //SwapState(EnemyStates.Attack);
                 return;
             }
     }
+    [PunRPC]
+    private void SetChaseTargetDestination(int id)
+    {
+        if (id != GetEnemyID) return;
+
+        _navMeshAgent.SetDestination(_curTargetGO.transform.position);
+    }
+    [PunRPC]
+    private void SwapToAttackFromChase(int id)
+    {
+        if (id != GetEnemyID) return;
+
+        _navMeshAgent.ResetPath();
+        //photonView.RPC(nameof(SwapState), RpcTarget.All, GetEnemyID, EnemyStates.Attack);
+        SwapState(GetEnemyID, EnemyStates.Attack);
+    }
+
     private void AttackActions()
     {
         // use attack action
         if (!_attackOnCooldown)
         {
-            StartCoroutine(AttackCooldownCoro());
-            _attack.UseAbility(_unitScript);
+            photonView.RPC(nameof(StartAttackCoroAndUseAbility), RpcTarget.All, GetEnemyID);
+
+            //StartCoroutine(AttackCooldownCoro());
+            //_attack.UseAbility(_unitScript);
         }
     }
+    [PunRPC]
+    private void StartAttackCoroAndUseAbility(int id)
+    {
+        if (id != GetEnemyID) return;
+
+        StartCoroutine(AttackCooldownCoro());
+        _attack.UseAbility(_unitScript);
+    }
+
     private IEnumerator AttackCooldownCoro()
     {
         _attackOnCooldown = true;

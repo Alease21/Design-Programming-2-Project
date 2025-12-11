@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: Spawn Object Target Location
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -184, y: 72}
+  position: {x: -184, y: 56}
   ports:
     keys:
     - input

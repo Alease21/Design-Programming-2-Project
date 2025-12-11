@@ -1,10 +1,10 @@
 using AbilitySystem;
+using Photon.Pun;
 using System.Collections;
-using UnityEditor.Playables;
 using UnityEngine;
 
 [RequireComponent(typeof(UnitScript))]
-public class PlayerAbilityController : MonoBehaviour
+public class PlayerAbilityController : MonoBehaviourPunCallbacks
 {
     private UnitScript _unitScript;
     private AbilityDefinition _basicAbility;
@@ -12,9 +12,16 @@ public class PlayerAbilityController : MonoBehaviour
 
     private bool _basicOnCooldown = false;
     private bool _ultimateOnCooldown = false;
+    private Vector3 _trueMouseDir;
+
+    private PlayerMultiplayerIdScript _multiplayerIdScript;
+
+    public Vector3 GetTrueMouseDir => _trueMouseDir;
 
     private void Awake()
     {
+        _multiplayerIdScript = GetComponent<PlayerMultiplayerIdScript>();
+
         if (!TryGetComponent<UnitScript>(out _unitScript)) return;
 
         _basicAbility = _unitScript.GetCharacterClass.GetBasicAbility;
@@ -22,15 +29,40 @@ public class PlayerAbilityController : MonoBehaviour
     }
     private void Update()
     {
+        if (!photonView.IsMine) return;
+
         if (Input.GetMouseButtonDown(0))
             if (!_basicOnCooldown && _basicAbility != null)
-                StartCoroutine(BasicAbilityCoolDownCoro());
+            {
+                _trueMouseDir = GetComponent<PlayerMovement>().GetMouseDir;
+                photonView.RPC(nameof(StartBasicAbility), RpcTarget.All, _multiplayerIdScript.id, _trueMouseDir);
+            }
 
         if (Input.GetKeyDown(KeyCode.Q))
             if (!_ultimateOnCooldown && _ultimateAbility != null)
-                StartCoroutine(UltimateAbilityCoolDownCoro());
+            {
+                _trueMouseDir = GetComponent<PlayerMovement>().GetMouseDir;
+                photonView.RPC(nameof(StartUltimateAbility), RpcTarget.All, _multiplayerIdScript.id, _trueMouseDir);
+            }
     }
-
+    [PunRPC]
+    public void StartBasicAbility(int id, Vector3 mouseDir)
+    {
+        if (id == _multiplayerIdScript.id)
+        {
+            _trueMouseDir = mouseDir;
+            StartCoroutine(BasicAbilityCoolDownCoro());
+        }
+    }
+    [PunRPC]
+    public void StartUltimateAbility(int id, Vector3 mouseDir)
+    {
+        if (id == _multiplayerIdScript.id)
+        {
+            _trueMouseDir = mouseDir;
+            StartCoroutine(UltimateAbilityCoolDownCoro());
+        }
+    }
     public IEnumerator BasicAbilityCoolDownCoro()
     {
         _basicAbility?.UseAbility(_unitScript);

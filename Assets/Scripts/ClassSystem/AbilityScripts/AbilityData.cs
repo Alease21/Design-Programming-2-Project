@@ -29,7 +29,7 @@ namespace AbilitySystem
             _user?.StartCoroutine(coroutine);
         }
 
-        public void DetermineSpellAnimName(TargetingStrategy tarStrat)
+        public void DetermineAbilityAnimName(TargetingStrategy tarStrat)
         {
             string animNamePrefix = "";
             string animNameSuffix = "";

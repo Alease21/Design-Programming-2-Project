@@ -25,7 +25,7 @@ namespace AbilitySystem
                 _targetingStrategy = GetPort("targeting").Connection.node as TargetingStrategy;
 
             AbilityData AbilityData = new AbilityData(user, _abilityType);
-            AbilityData.DetermineSpellAnimName(_targetingStrategy);
+            AbilityData.DetermineAbilityAnimName(_targetingStrategy);
 			_targetingStrategy?.StartTargeting(AbilityData, () =>
 			{
 				InitAbility(AbilityData);

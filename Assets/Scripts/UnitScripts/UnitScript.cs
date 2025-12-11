@@ -1,6 +1,7 @@
+using Photon.Pun;
 using System;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using static DamageTypeEnum;
 
 [Flags]
@@ -20,7 +21,7 @@ public enum UnitTypes
     Friendly = 4,
     Enemy = 8
 }
-public class UnitScript : MonoBehaviour
+public class UnitScript : MonoBehaviourPunCallbacks
 {
     //Unit Info
     [SerializeField] private UnitTypes _unitType;
@@ -74,6 +75,8 @@ public class UnitScript : MonoBehaviour
     //public string GetAllowedWeapons => _allowedWeapons;
     public string GetAllowedMagic => _allowedMagic;
     public int GetOnDeathEXP => _expGiveOnDeath;
+
+    public Action<int> PlayerDowned;
 
     private void Start()
     {
