@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using static DamageTypeEnum;
-using static UnityEngine.GraphicsBuffer;
 
 namespace AbilitySystem
 {

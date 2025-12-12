@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using WFC;
@@ -7,7 +8,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static NetworkManager instance;
     public bool useRandomSeed;
     public int dungeonSeed;
-    public string selectedClassSpriteName;
+    public Dictionary<int, string> playersAndClass = new();
 
     private void Awake()
     {
@@ -33,17 +34,29 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void CreateRoom(string roomName)
     {
         PhotonNetwork.CreateRoom(roomName);
-        if (useRandomSeed) dungeonSeed = Random.Range(0, int.MaxValue);
+        if (useRandomSeed) 
+            dungeonSeed = Random.Range(0, int.MaxValue);
     }
 
     public void JoinRoom(string roomName)
     {
         PhotonNetwork.JoinRoom(roomName);
     }
-
+    public void LeaveRoom()
+    {
+        photonView.RPC(nameof(RemovePlayerFromClassDict), RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber);
+        PhotonNetwork.LeaveRoom();
+    }
+    [PunRPC]
+    public void RemovePlayerFromClassDict(int id)
+    {
+        playersAndClass.Remove(id);
+    }
     [PunRPC]
     public void ChangeScene(string sceneName)
     {
+        PhotonNetwork.CleanRpcBufferIfMine(photonView);
+
         PhotonNetwork.LoadLevel(sceneName);
     }
     public bool OnJoinLobby()

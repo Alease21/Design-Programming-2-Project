@@ -11,13 +11,23 @@ public class RoomList : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        var content = GameObject.Find("Content").transform;
+
+        for (int i = content.childCount - 1; i >= 0; i--)
+            Destroy(content.GetChild(i).gameObject);
+
         for (int i = 0; i < roomList.Count; i++)
         {
+            if (roomList[i].RemovedFromList)
+                continue;
+
             string roomName = roomList[i].Name;
 
-            GameObject room = Instantiate(_roomPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Content").transform);
+            GameObject room = Instantiate(_roomPrefab, Vector3.zero, Quaternion.identity, content);
             room.GetComponentInChildren<TextMeshProUGUI>().text = roomName;
-            room.GetComponentInChildren<Button>().onClick.AddListener(() => MenuUI.instance.OnJoinRoomButton(roomName));
+            var button = room.GetComponentInChildren<Button>();
+            button.onClick.AddListener(() => MenuUI.instance.OnJoinRoomButton(roomName));
+            button.interactable = roomList[i].IsOpen;
         }
     }
 }

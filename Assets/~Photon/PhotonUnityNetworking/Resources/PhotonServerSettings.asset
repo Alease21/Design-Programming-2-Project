@@ -64,6 +64,13 @@ MonoBehaviour:
   - SwapToIdleFromRoam
   - SwapState
   - SetCurrentTarget
+  - AddUnavailableRoom
+  - DisableRoomButton
+  - MyClassIsSelected
+  - AssignClass
+  - RemovePlayerFromClassDict
+  - OnPlayerRevived
+  - DisplayWin
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

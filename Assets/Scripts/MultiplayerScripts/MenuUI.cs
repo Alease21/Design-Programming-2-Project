@@ -1,10 +1,12 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class MenuUI : MonoBehaviourPunCallbacks
 {
@@ -21,7 +23,7 @@ public class MenuUI : MonoBehaviourPunCallbacks
     [Header ("Screens")]
     public GameObject mainScreen;
     public GameObject joinScreen;
-    public GameObject lobbyScreen;
+    public GameObject roomScreen;
 
     [Header("Main Screen")]
     public Button createRoomButton;
@@ -34,7 +36,7 @@ public class MenuUI : MonoBehaviourPunCallbacks
     public Button[] classButtons;
     
     private List<RoomInfo> _roomList = new();
-    private Dictionary<string, GameObject> _playerElements = new();
+    private Dictionary<int, GameObject> _playerElements = new();
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
@@ -44,7 +46,7 @@ public class MenuUI : MonoBehaviourPunCallbacks
     {
         mainScreen.SetActive(true);
         joinScreen.SetActive(false);
-        lobbyScreen.SetActive(false);
+        roomScreen.SetActive(false);
 
         createRoomButton.interactable = false;
         joinRoomButton.interactable = false;
@@ -60,16 +62,16 @@ public class MenuUI : MonoBehaviourPunCallbacks
     {
         mainScreen.SetActive(false);
         joinScreen.SetActive(false);
-        lobbyScreen.SetActive(false);
+        roomScreen.SetActive(false);
         screen.SetActive(true);
     }
 
-    public void OnCreateRoomButton(/*TMP_InputField roomNameInput*/)
+    public void OnCreateRoomButton()
     {
         string roomName = $"Room {_roomList.Count + 1}";
-        NetworkManager.instance.CreateRoom(roomName /*roomNameInput.text*/);
+        NetworkManager.instance.CreateRoom(roomName);
     }
-    public void OnJoinRoomButton(string roomName/*TMP_InputField roomNameInput*/)
+    public void OnJoinRoomButton(string roomName)
     {
         NetworkManager.instance.JoinRoom(roomName);
     }
@@ -86,24 +88,32 @@ public class MenuUI : MonoBehaviourPunCallbacks
             Destroy(playerListContainer.transform.GetChild(i).gameObject);
         _playerElements = new();
 
-        //playerListText.text = "";
+        ResetClassButtons();
+        
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-            //playerListText.text += player.NickName + "\n";
+            /*int tempCounter = 0;
+            while (_playerElements.ContainsKey(player.ActorNumber))
+            {
+                tempCounter++;
+                player.NickName += $" ({tempCounter})";
+            }*/
+
             GameObject playerListElement = Instantiate(Resources.Load<GameObject>("UI/PlayerListElement"), playerListContainer.transform);
             playerListElement.GetComponentInChildren<TextMeshProUGUI>().text = player.NickName;
-            _playerElements.Add(player.NickName, playerListElement.gameObject);
+
+            if (NetworkManager.instance.playersAndClass.ContainsKey(player.ActorNumber))
+                playerListElement.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>($"ClassUIImages/{NetworkManager.instance.playersAndClass[player.ActorNumber]}");
+
+            _playerElements.Add(player.ActorNumber, playerListElement.gameObject);
         }
 
-        if(PhotonNetwork.IsMasterClient)
-            startGameButton.interactable = true;
-        else
-            startGameButton.interactable = false;
+        startGameButton.interactable = PhotonNetwork.IsMasterClient && (NetworkManager.instance.playersAndClass.Count == PhotonNetwork.PlayerList.Length);
     }
 
     public override void OnJoinedRoom()
     {
-        SetScreen(lobbyScreen);
+        SetScreen(roomScreen);
         photonView.RPC("UpdateLobbyUI", RpcTarget.All);
     }
 
@@ -115,23 +125,25 @@ public class MenuUI : MonoBehaviourPunCallbacks
     {
         photonView.RPC("UpdateLobbyUI", RpcTarget.All);
     }
-    public void OnLeaveLobbyButton()
+    public void OnLeaveRoomButton()
     {
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.CleanRpcBufferIfMine(photonView);
+        NetworkManager.instance.LeaveRoom();
         SetScreen(joinScreen);
-        NetworkManager.instance.OnJoinLobby();
     }
 
     public void StartGameButton()
     {
-        NetworkManager.instance.photonView.RPC("ChangeScene",
-            RpcTarget.All, "MainScene");
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+
+        NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "MainScene");
     }
     public void MainMenuStart()
     {
         if (NetworkManager.instance.OnJoinLobby())
             SetScreen(joinScreen);
     }
+
     public void BackButton()
     {
         SetScreen(mainScreen);
@@ -143,13 +155,41 @@ public class MenuUI : MonoBehaviourPunCallbacks
 
     public void OnSelectClass(Sprite classSprite)
     {
-        photonView.RPC(nameof(ChangeClassIcon),
-            RpcTarget.All, PhotonNetwork.NickName, classSprite.name);
-    }
+        photonView.RPC(nameof(MyClassIsSelected), RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber, classSprite.name);
 
-    [PunRPC]
-    public void ChangeClassIcon(string playerName, string spriteName)
+        photonView.RPC(nameof(ChangeClassIcon), RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.ActorNumber, classSprite.name);
+
+        ResetClassButtons();
+    }
+    public void ResetClassButtons()
     {
-        _playerElements[playerName].GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>($"ClassUIImages/{spriteName}");
+        string className = "";
+        if (NetworkManager.instance.playersAndClass.ContainsKey(PhotonNetwork.LocalPlayer.ActorNumber))
+            className = NetworkManager.instance.playersAndClass[PhotonNetwork.LocalPlayer.ActorNumber];
+
+        foreach (var b in classButtons)
+            b.interactable = true;
+
+        if (className.Contains("Dwarf"))
+            classButtons[0].interactable = false;
+        else if (className.Contains("Duelist"))
+            classButtons[1].interactable = false;
+        else if (className.Contains("Plague"))
+            classButtons[2].interactable = false;
+    }
+    [PunRPC]
+    private void MyClassIsSelected(int id, string classSpriteName)
+    {
+        NetworkManager.instance.playersAndClass[id] = classSpriteName;
+
+        if (NetworkManager.instance.playersAndClass.Count == PhotonNetwork.PlayerList.Length)
+            if (PhotonNetwork.IsMasterClient)
+                startGameButton.interactable = true;
+    }
+    [PunRPC]
+    public void ChangeClassIcon(int id, string spriteName)
+    {
+        NetworkManager.instance.playersAndClass[id] = spriteName;
+        UpdateLobbyUI();
     }
 }

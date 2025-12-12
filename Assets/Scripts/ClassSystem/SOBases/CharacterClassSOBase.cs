@@ -37,8 +37,7 @@ public class CharacterClassSOBase : ScriptableObject
     public string classDescription;
 
     [Header("Class Restrictions")]
-    //[SerializeField] private AllowedWeaponTypes _allowedWeaponTypes;
-    //[SerializeField] private AllowedArmorTypes _allowedArmorTypes;
+    [SerializeField] private UnitTypes _unitType;
     [SerializeField] private AllowedMagicTypes _allowedMagicTypes;
 
     //Abilities
@@ -64,9 +63,9 @@ public class CharacterClassSOBase : ScriptableObject
     [SerializeField] private int _startingLevel;
     [SerializeField] private int _initExpToLevel = 100;
     [SerializeField] private float _expModifierOnLevelIncrease = 1.25f;
+    [SerializeField] private int _expGiveOnDeath;
 
-    //public AllowedWeaponTypes GetAllowedWeapons => _allowedWeaponTypes;
-    //public AllowedArmorTypes GetAllowedArmor => _allowedArmorTypes;
+    public UnitTypes GetUnitType => _unitType;
     public AllowedMagicTypes GetAllowedMagic => _allowedMagicTypes;
     public AbilityDefinition GetBasicAbility => _basicAbility;
     public AbilityDefinition GetUltimateAbility => _ultimateAbility;
@@ -84,4 +83,5 @@ public class CharacterClassSOBase : ScriptableObject
     public int GetStartingLevel => _startingLevel;
     public int GetInitExpToLevel => _initExpToLevel;
     public float GetExpLevelModifier => _expModifierOnLevelIncrease;
+    public int GetExpGiveOnDeath => _expGiveOnDeath;
 }

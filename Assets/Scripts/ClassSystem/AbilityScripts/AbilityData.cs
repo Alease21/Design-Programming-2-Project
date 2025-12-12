@@ -36,8 +36,17 @@ namespace AbilitySystem
 
             if (GetAbilityType == AbilityTypes.Physical)
             {
-                _abilityAnimName = "Arrow";
-                _abilityAnimName2 = "Arrow";
+                if (tarStrat is ProjectileTarget)
+                {
+                    _abilityAnimName = "Arrow";
+                    _abilityAnimName2 = "Arrow";
+                }
+                else if (tarStrat is RadiusTargeting)
+                {
+                    _abilityAnimName = "SpinAttack";
+                    _abilityAnimName2 = "SpinAttack";
+                }
+
                 return;
             }
             else if (GetAbilityType == AbilityTypes.Magic)

@@ -17,8 +17,6 @@ namespace AbilitySystem
         public int GetDexterityModifierValue => _dexterityValue;
         public int GetIntelligenceModifierValue => _intelligenceValue;
 
-        private GameObject _effect;
-
         public void StartEffect(AbilityData abilityData, Action onFinished)
         {
             foreach (var target in abilityData.Targets)
@@ -26,13 +24,13 @@ namespace AbilitySystem
                 UnitScript uss = target.GetComponent<UnitScript>();
                 if (uss != null)
                 {
-                    uss.StartCoroutine(StatEffectOverDuration(_duration, uss));
-                    _effect = Instantiate(Resources.Load<GameObject>("AbilityEffects/AuraEffectSprite"), uss.transform.position, Quaternion.identity, uss.transform);
-                    _effect.GetComponent<Animator>().Play(abilityData.GetAbilityAnimName2);
+                    GameObject effect = Instantiate(Resources.Load<GameObject>("AbilityEffects/AuraEffectSprite"), uss.transform.position, Quaternion.identity, uss.transform);
+                    effect.GetComponent<Animator>().Play(abilityData.GetAbilityAnimName2);
+                    uss.StartCoroutine(StatEffectOverDuration(_duration, uss, effect));
                 }
             }
         }
-        public IEnumerator StatEffectOverDuration(float duration, UnitScript target)
+        public IEnumerator StatEffectOverDuration(float duration, UnitScript target, GameObject effect)
         {
             int[] statVals = new int[4];
             List<string> statTypes = new List<string>(GetAffectedStats.ToString().Split(", "));
@@ -48,7 +46,7 @@ namespace AbilitySystem
 
             target.UpdateStats(statVals, false); //apply debuff
             yield return new WaitForSeconds(duration);
-            Destroy(_effect);
+            Destroy(effect);
             target.UpdateStats(statVals, true); //undo debuff
         }
     }

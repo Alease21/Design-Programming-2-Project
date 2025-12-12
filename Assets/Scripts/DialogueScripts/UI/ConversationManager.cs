@@ -713,11 +713,12 @@ namespace DialogueEditor
 
         private void ClearOptions()
         {
+            /*
             while (m_uiOptions.Count != 0)
             {
                 GameObject.Destroy(m_uiOptions[0].gameObject);
                 m_uiOptions.RemoveAt(0);
-            }
+            }*/
         }
 
         private void SetColorAlpha(MaskableGraphic graphic, float a)

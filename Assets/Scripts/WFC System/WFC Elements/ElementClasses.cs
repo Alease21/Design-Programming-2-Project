@@ -65,7 +65,9 @@ namespace WFC
                             _position.y == 0 && tilePos.y == 0 || _position.y == mapSize.y - 1 && tilePos.y == roomSize.y - 1)
                         {
                             _roomByteMap[x, y] = 5;//Tile is dungeon entrance/exit (used for tile color)
-                            extraPlayerSpawnLocations.Add(tilePos + SpawnPlaceDir(tilePos));
+                            
+                            if (DungeonCreator.instance.StartRoom == this)
+                                extraPlayerSpawnLocations.Add(tilePos + SpawnPlaceDir(tilePos));
                         }
                         else
                             _roomByteMap[x, y] = 4;// general room entrance/exit tile
@@ -90,7 +92,7 @@ namespace WFC
             _roomByteMap = FindTruePathThroughRoom(_roomByteMap, pathLocations.ToArray());
 
             foreach (Vector2Int spawnLoc in extraPlayerSpawnLocations)
-                _roomByteMap[spawnLoc.x, spawnLoc.y] = 5;
+                _roomByteMap[spawnLoc.x, spawnLoc.y] = 6;
         }
         public Vector2Int SpawnPlaceDir(Vector2Int dungeonExitPos)
         {

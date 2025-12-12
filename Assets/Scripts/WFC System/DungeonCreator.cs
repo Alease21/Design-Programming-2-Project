@@ -58,7 +58,7 @@ namespace WFC
         private bool _navMeshBaked = false;
 
         [Header("Debug & Editing")]
-        [SerializeField] private bool _showTileHighlights = false;
+        //[SerializeField] private bool _showTileHighlights = false;
         [SerializeField] private bool _createRoomPathPlaceholders = false;
 
         public event Action WFCFinished; //currently just used for triggering client side player spawn
@@ -364,7 +364,7 @@ namespace WFC
                         newTileBoundary.transform.position = spawnedObjPos;
                     }
                     else if (room == _startRoom && playerSpawnsSet < PhotonNetwork.PlayerList.Length &&
-                             room.GetRoomByteMap[x, y] == 5)
+                             (room.GetRoomByteMap[x, y] == 5 || room.GetRoomByteMap[x,y] == 6))
                     {
                         GameObject playerSpawn = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/PlayerSpawn"), spawnedObjPos, Quaternion.identity);
                         playerSpawn.transform.parent = _unitsParent;
@@ -372,23 +372,38 @@ namespace WFC
                         playerSpawnsSet++;
                         UnityEngine.Debug.Log("Player Spawn Spawned");
                     }
-                    /*
-                    if ((room == _startRoom) && room.GetRoomByteMap[x, y] == 5)
+                    else if (room == _exitRoom && room.GetRoomByteMap[x, y] == 5)
+                    {
+                        GameObject playerSpawn = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/DungeonWinTile"), spawnedObjPos, Quaternion.identity);
+                        playerSpawn.transform.parent = _interactablesParent;
+                    }
+                    
+                    if ((room == _startRoom || room == _exitRoom) && room.GetRoomByteMap[x, y] == 5)
                     {
                         GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/BoundaryTile"));
                         newTileBoundary.transform.parent = _boundaryParent;
-                        newTileBoundary.name = $"({x},{y})";
+                        newTileBoundary.name = $"OOB ({x},{y})";
+                        UnityEngine.Debug.Log($"exit extra boundary created ({x},{y})");
 
                         if (x == 0)
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.left;
-                        if (y == 0)
+                        else if (y == 0)
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.down;
-                        if (x == _roomGrid.GetLength(0) - 1)
+                        else if (x == _roomSize.x - 1)
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.right;
-                        if (y == _roomGrid.GetLength(1) - 1)
+                        else if (y == _roomSize.y - 1)
                             newTileBoundary.transform.position = spawnedObjPos + Vector3.up;
-                    }*/
+                    }
 
+                    // Color win tiles green for some clarity
+                    if (room.GetRoomByteMap[x, y] == 5)
+                        if (_exitRoom == room)
+                        {
+                            _environTileMap.SetTileFlags(tilePos, TileFlags.None);
+                            _environTileMap.SetColor(tilePos, Color.green);
+                        }
+
+                    /* old Tile Coloring
                     if (!_showTileHighlights) continue; // skip tile coloring if bool not checked
 
                     _environTileMap.SetTileFlags(tilePos, TileFlags.None);
@@ -402,6 +417,7 @@ namespace WFC
                         else if (_exitRoom == room)
                             _environTileMap.SetColor(tilePos, Color.red);
                     }
+                    */
                 }
             }
         }
@@ -470,6 +486,8 @@ namespace WFC
                             }
                             else if (tile.name == "Props_78")// Enemy tile **rename me
                             {
+                                if (room == _startRoom) continue;
+
                                 GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Units/NewGoblin"));
                                 newEnemy.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
                                 newEnemy.transform.parent = _unitsParent;
@@ -496,6 +514,8 @@ namespace WFC
                             {
                                 GameObject newTileBoundary = Instantiate(Resources.Load<GameObject>("DungeonGenObjs/BoundaryTile"));
                                 newTileBoundary.name = $"({x},{y})";
+                                if (tile.name[1] == 'P')
+                                    newTileBoundary.transform.localScale *= 0.5f;
                                 newTileBoundary.transform.parent = _boundaryParent;
                                 newTileBoundary.transform.position = moduleOriginWorld + new Vector3Int(i, j) + new Vector3(0.5f, 0.5f, 0f);
                             }

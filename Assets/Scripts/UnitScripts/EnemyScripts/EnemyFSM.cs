@@ -74,16 +74,33 @@ public class EnemyFSM : MonoBehaviourPunCallbacks
     private void CheckForPlayer()
     {
         if (_curTargetGO == null)
-        {
+        { 
             foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
                 if (!playersDict.ContainsKey(player))
                     playersDict.Add(player, Vector2.Distance(transform.position, player.transform.position));
-
-            if (playersDict.Count == 0) return;
+            for (var i = playersDict.Count - 1; i > 0; i--)
+                if (playersDict.ElementAt(i).Key == null)
+                    playersDict.Remove(playersDict.ElementAt(i).Key);
         }
 
+
         for (int i = 0; i < playersDict.Count; i++)
-            playersDict[playersDict.ElementAt(i).Key] = Vector2.Distance(transform.position, playersDict.ElementAt(i).Key.transform.position);
+        {
+            var player = playersDict.ElementAt(i).Key;
+
+            if (player == null) 
+            { 
+                playersDict.Remove(player);
+                continue; 
+            }
+
+            playersDict[player] = Vector2.Distance(transform.position, player.transform.position);
+        }
+        if (playersDict.Count == 0)
+        {
+            _curTargetGO = null;
+            return;
+        }
         var sortedPlayers = playersDict.OrderBy(x => x.Value);
         var closest = sortedPlayers.First();
 
@@ -127,7 +144,7 @@ public class EnemyFSM : MonoBehaviourPunCallbacks
         if (id != GetEnemyID) return;
 
         foreach (var p in GameManager.instance.players)
-            if (p.id == targetID)
+            if (p?.id == targetID)
             {
                 _curTargetGO = p.gameObject;
                 break;
@@ -185,11 +202,18 @@ public class EnemyFSM : MonoBehaviourPunCallbacks
         Vector2 roamPos = Vector2.zero;
         RaycastHit2D hit;
         bool onNavmesh;
+        int attemptCounter = 0;
         do
         {
             roamPos = new Vector2(UnityEngine.Random.Range(-_roamRadius, _roamRadius), UnityEngine.Random.Range(-_roamRadius, _roamRadius));
             hit = Physics2D.Raycast(transform.position, roamPos.normalized, roamPos.magnitude, LayerMask.GetMask("Default"));
             onNavmesh = NavMesh.SamplePosition(roamPos + (Vector2)transform.position, out NavMeshHit navHit, roamPos.magnitude, NavMesh.GetAreaFromName("Walkable"));
+            attemptCounter++;
+            if (attemptCounter > 15)
+            {
+                photonView.RPC(nameof(SwapState), RpcTarget.All, GetEnemyID, EnemyStates.Idle);
+                return;
+            }
         } while (hit == true && !onNavmesh);
 
         photonView.RPC(nameof(SetRoamTargetDestination), RpcTarget.All, GetEnemyID, roamPos);

@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     public List<EnemyFSM> enemies = new();
     private int _playersInGame;
 
+    public GameObject winDisplay;
+    public float winTextDuration = 5f;
+    public bool gameWon = false;
+
     public static GameManager instance;
     private void Awake()
     {
@@ -39,7 +43,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (_playersInGame == PhotonNetwork.PlayerList.Length)
             SpawnPlayer();
     }
-
+    
     private void SpawnPlayer()
     {
         int playerIndex = 0;
@@ -51,8 +55,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
 
         GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLoc, spawnPoints[playerIndex].position, Quaternion.identity);
-
-        PlayerMovement playerScript = playerObj.GetComponent<PlayerMovement>();
+        playerObj.name = $"Player - {playerIndex}";
+        PlayerMultiplayerIdScript playerScript = playerObj.GetComponent<PlayerMultiplayerIdScript>();
 
         playerScript.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
@@ -66,11 +70,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         return players.First(p => p.gameObject == playerObj);
     }
 
-    //not currently used. was auto invoked on game end in example
-    private void BackToMenu()
+    public void BackToMenu()
     {
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LeaveLobby();
 
+        NetworkManager.instance.playersAndClass = new();
         NetworkManager.instance.ChangeScene("Menu");
+    }
+
+    [PunRPC]
+    public void DisplayWin()
+    {
+        gameWon = true;
+        winDisplay.SetActive(true);
+        Invoke(nameof(BackToMenu), winTextDuration);
     }
 }

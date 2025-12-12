@@ -23,6 +23,9 @@ public enum UnitTypes
 }
 public class UnitScript : MonoBehaviourPunCallbacks
 {
+    private PlayerDownedScript _playerDownedScript;
+    private PlayerMultiplayerIdScript _playerMultiplayerIdScript;
+
     //Unit Info
     [SerializeField] private UnitTypes _unitType;
     [SerializeField] private CharacterClassSOBase _characterClass;
@@ -77,10 +80,45 @@ public class UnitScript : MonoBehaviourPunCallbacks
     public int GetOnDeathEXP => _expGiveOnDeath;
 
     public Action<int> PlayerDowned;
+    public Action PlayerClassLoaded;
 
     private void Start()
     {
+        _playerMultiplayerIdScript = GetComponent<PlayerMultiplayerIdScript>();
+        _playerDownedScript = GetComponent<PlayerDownedScript>();
+        
         UnitInit();
+    }
+
+    [PunRPC]
+    private void AssignClass(string classSpriteName = "Goblin")
+    {
+        if (_unitType == UnitTypes.Player && NetworkManager.instance.playersAndClass.ContainsKey(_playerMultiplayerIdScript.id))
+            classSpriteName = NetworkManager.instance.playersAndClass[_playerMultiplayerIdScript.id];
+
+        if (_unitType == UnitTypes.Player && !NetworkManager.instance.playersAndClass.ContainsKey(_playerMultiplayerIdScript.id))
+            Debug.Log("player not in dict");
+
+        CharacterClassSOBase tempCharacterClass = null; 
+
+        switch (classSpriteName)
+        {
+            case "Goblin":
+                tempCharacterClass = Resources.Load<CharacterClassSOBase>("Classes/Enemies/GoblinEnemyClass");
+                break;
+            case "Dwarf1":
+                tempCharacterClass = Resources.Load<CharacterClassSOBase>("Classes/Players/DwarfAxeman");
+                break;
+            case "PlagueD1":
+                tempCharacterClass = Resources.Load<CharacterClassSOBase>("Classes/Players/PlagueDoctor");
+                break;
+            case "Duelist1":
+                tempCharacterClass = Resources.Load<CharacterClassSOBase>("Classes/Players/DuelistGirl");
+                break;
+        }
+
+        _characterClass = tempCharacterClass;
+        PlayerClassLoaded?.Invoke();
     }
 
     // Set initial values from class SO during editing (called from editor script)
@@ -96,6 +134,7 @@ public class UnitScript : MonoBehaviourPunCallbacks
         
         _initLevel = _characterClass.GetStartingLevel;
         _initMaxExpToLevel = _characterClass.GetInitExpToLevel;
+        _expGiveOnDeath = _characterClass.GetExpGiveOnDeath;
 
         _baseStamina = _characterClass.GetDefaultStam;
         _baseStrength = _characterClass.GetDefaultStr;
@@ -110,6 +149,10 @@ public class UnitScript : MonoBehaviourPunCallbacks
     // Initialize unit stats
     private void UnitInit()
     {
+        AssignClass();
+        UpdateClassInfoInspector();
+
+        _unitType = _characterClass.GetUnitType;
         _health = _maxHealth;
         _mana = _maxMana;
         _level = _initLevel;
@@ -144,6 +187,8 @@ public class UnitScript : MonoBehaviourPunCallbacks
     // Increase or decrease unit health and call OnDeath if health reaches 0
     public int ChangeHealth(int amount, bool isGain, List<DamageTypes> dmgType = null)
     {
+        if (_unitType == UnitTypes.Player && _playerDownedScript.IsDowned) return 0;
+
         if (!isGain && dmgType != null)
             amount -= DamageReduction(dmgType);
 
@@ -154,7 +199,10 @@ public class UnitScript : MonoBehaviourPunCallbacks
         else if (_health <= 0)
         {
             _health = 0;
-            Invoke("OnDeath", 0.1f);
+            if (_unitType == UnitTypes.Player)
+                PlayerDowned?.Invoke(GetComponent<PlayerMultiplayerIdScript>().id);
+            else
+                Invoke(nameof(OnDeath), 0.1f);
             return _expGiveOnDeath;
         }
 
@@ -178,6 +226,11 @@ public class UnitScript : MonoBehaviourPunCallbacks
     public void OnDeath()
     {
         Destroy(gameObject);
+    }
+    public void OnRevive()
+    {
+        _health = _maxHealth;
+        _mana = _maxMana;
     }
 
     // Increase or decrease unit mana until it reaches 0
@@ -209,7 +262,7 @@ public class UnitScript : MonoBehaviourPunCallbacks
     private void UnitLevelUp()
     {
         _level++;
-        _curExp = 0;
+        _curExp -= _maxExpToLevel;
         _maxExpToLevel = (int)(_maxExpToLevel * _expMultiplierOnLevel);
         int[] statIncreases= new int[] { _characterClass.GetStamIncPerLevel, 
                                          _characterClass.GetStrIncPerLevel, 

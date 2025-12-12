@@ -319,7 +319,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.97585213, g: 1, b: 0.76862746, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.5984911, g: 1, b: 0.5518868, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.6, g: 1, b: 0.5529412, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 389642200}
   - component: {fileID: 389642201}
   m_Layer: 5
-  m_Name: LobbyButtons
+  m_Name: RoomButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2999,15 +2999,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainScreen: {fileID: 671037314}
   joinScreen: {fileID: 1731754252}
-  lobbyScreen: {fileID: 1789780832}
+  roomScreen: {fileID: 1789780832}
   createRoomButton: {fileID: 1880465833}
   joinRoomButton: {fileID: 1053423520}
   playerListText: {fileID: 275978398}
   playerListContainer: {fileID: 170401429}
   startGameButton: {fileID: 1292454031}
   classButtons:
-  - {fileID: 51226022}
   - {fileID: 1889666897}
+  - {fileID: 51226022}
   - {fileID: 1506758699}
 --- !u!1 &1051031992
 GameObject:
@@ -3664,7 +3664,6 @@ GameObject:
   - component: {fileID: 1188269439}
   - component: {fileID: 1188269438}
   - component: {fileID: 1188269437}
-  - component: {fileID: 1188269436}
   m_Layer: 5
   m_Name: Player List
   m_TagString: Untagged
@@ -3692,19 +3691,6 @@ RectTransform:
   m_AnchoredPosition: {x: 266.12955, y: -51.193}
   m_SizeDelta: {x: 287.74, y: 358.613}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1188269436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188269434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc216de0524d2cc43b57cd6e59b11b0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _roomPrefab: {fileID: 130824971227931182, guid: 5d10ac79441cc8b40a6a808f0207b680, type: 3}
 --- !u!114 &1188269437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4321,7 +4307,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.97585213, g: 1, b: 0.76862746, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.5984911, g: 1, b: 0.5518868, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.6, g: 1, b: 0.5529412, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5060,7 +5046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leave Lobby
+  m_text: Leave Room
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5329,7 +5315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789780833}
   m_Layer: 5
-  m_Name: LobbyScreen
+  m_Name: RoomScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5359,71 +5345,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00043964, y: -0.0000019073}
   m_SizeDelta: {x: 820, y: 461}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1803704718
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2322696382142237780, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_Name
-      value: NetworkManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5999913726708179399, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: useRandomSeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6838450148045557477, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395913847806768095, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 226855d12c521cc4ca801bd21d006be2, type: 3}
 --- !u!1 &1880465831
 GameObject:
   m_ObjectHideFlags: 0
@@ -5621,7 +5542,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.97585213, g: 1, b: 0.76862746, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.5984911, g: 1, b: 0.5518868, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.6, g: 1, b: 0.5529412, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6183,7 +6104,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1005450806}
         m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
-        m_MethodName: OnLeaveLobbyButton
+        m_MethodName: OnLeaveRoomButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6454,4 +6375,3 @@ SceneRoots:
   - {fileID: 1304696578}
   - {fileID: 1005450804}
   - {fileID: 559267864}
-  - {fileID: 1803704718}

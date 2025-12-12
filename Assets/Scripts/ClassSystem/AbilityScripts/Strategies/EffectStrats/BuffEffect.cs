@@ -17,8 +17,6 @@ namespace AbilitySystem
         public int GetDexterityModifierValue => _dexterityValue;
         public int GetIntelligenceModifierValue => _intelligenceValue;
 
-        private GameObject _effect;
-
         public void StartEffect(AbilityData AbilityData, Action onFinished)
         {
             foreach (var target in AbilityData.Targets)
@@ -26,17 +24,19 @@ namespace AbilitySystem
                 UnitScript uss = target.GetComponent<UnitScript>();
                 if (uss != null)
                 {
-                    uss.StartCoroutine(StatEffectOverDuration(_duration, uss));
-                    _effect = Instantiate(Resources.Load<GameObject>("AbilityEffects/AuraEffectSprite"), uss.transform.position, Quaternion.identity, uss.transform);
-                    _effect.GetComponent<Animator>().Play(AbilityData.GetAbilityAnimName2);
+                    GameObject effect = Instantiate(Resources.Load<GameObject>("AbilityEffects/AuraEffectSprite"), uss.transform.position, Quaternion.identity, uss.transform);
+                    effect.GetComponent<Animator>().Play(AbilityData.GetAbilityAnimName2);
+                    uss.StartCoroutine(StatEffectOverDuration(_duration, uss, effect));
                 }
             }
         }
 
-        public IEnumerator StatEffectOverDuration(float duration, UnitScript target)
+        public IEnumerator StatEffectOverDuration(float duration, UnitScript target, GameObject effect)
         {
             int[] statVals = new int[4];
             List<string> statTypes = new List<string>(GetAffectedStats.ToString().Split(", "));
+
+            Debug.Log($"buff on {target.gameObject.name}, dur: {duration}");
 
             if (statTypes.Contains("Stamina") || statTypes.Contains("-1"))
                 statVals[0] = GetStaminaModifierValue;
@@ -49,7 +49,7 @@ namespace AbilitySystem
 
             target.UpdateStats(statVals, true); //apply buff
             yield return new WaitForSeconds(duration);
-            Destroy(_effect);
+            Destroy(effect);
             target.UpdateStats(statVals, false); //undo buff
         }
     }

@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayerAbilityController : MonoBehaviourPunCallbacks
 {
     private UnitScript _unitScript;
-    private AbilityDefinition _basicAbility;
-    private AbilityDefinition _ultimateAbility;
+    [SerializeField] private AbilityDefinition _basicAbility;
+    [SerializeField] private AbilityDefinition _ultimateAbility;
 
     private bool _basicOnCooldown = false;
     private bool _ultimateOnCooldown = false;
@@ -20,12 +20,20 @@ public class PlayerAbilityController : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        _multiplayerIdScript = GetComponent<PlayerMultiplayerIdScript>();
-
         if (!TryGetComponent<UnitScript>(out _unitScript)) return;
+        _unitScript.PlayerClassLoaded += GrabAbilities;
 
+        _multiplayerIdScript = GetComponent<PlayerMultiplayerIdScript>();
+    }
+    private void OnDestroy()
+    {
+        _unitScript.PlayerClassLoaded -= GrabAbilities;
+    }
+    public void GrabAbilities()
+    {
         _basicAbility = _unitScript.GetCharacterClass.GetBasicAbility;
         _ultimateAbility = _unitScript.GetCharacterClass.GetUltimateAbility;
+        Debug.Log($"unit: {gameObject.name}, class {_unitScript.GetCharacterClass.name}, basic: {_basicAbility?.name}, ult: {_ultimateAbility?.name}");
     }
     private void Update()
     {

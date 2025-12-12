@@ -16,6 +16,8 @@ namespace AbilitySystem
         {
             abilityData.Targets = GetGameObjectsInRadius(abilityData.GetUser);
             GameObject explosion = Instantiate(Resources.Load<GameObject>("AbilityEffects/ExplosionEffectSprite"), abilityData.GetUser.transform.position, Quaternion.identity);
+            if (abilityData.GetAbilityType == AbilityTypes.Physical)
+                explosion.transform.parent = abilityData.GetUser.transform;
             explosion.transform.localScale = Vector3.one * _range;
 
             AnimationClip clip = Resources.Load<AnimationClip>($"Anims/{abilityData.GetAbilityAnimName}");

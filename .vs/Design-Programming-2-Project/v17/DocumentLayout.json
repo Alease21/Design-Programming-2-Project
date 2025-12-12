@@ -3,60 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\unitscripts\\playerscripts\\playerrevivescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\playerscripts\\playerrevivescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\unitscripts\\playerscripts\\playerdownedscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\playerscripts\\playerdownedscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\unitscripts\\unitscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\unitscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\_olderassets\\older player scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\_olderassets\\older player scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\sobases\\characterclasssobase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\sobases\\characterclasssobase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\unitscripts\\playerscripts\\playerabilitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\playerscripts\\playerabilitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\damageeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\damageeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\abilityscripts\\abilitydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\abilitydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\healeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\effectstrats\\healeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\radiustargeting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\radiustargeting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\unitscripts\\playerscripts\\playermultiplayeridscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\playerscripts\\playermultiplayeridscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\abilityscripts\\abilityrootnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\abilityrootnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\wfc system\\dungeoncreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wfc system\\dungeoncreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\classsystem\\projectilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\projectilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\unitscripts\\enemyscripts\\enemyfsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\enemyscripts\\enemyfsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\projectiletarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\abilityscripts\\strategies\\targetingstrats\\projectiletarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\unitscripts\\playerscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unitscripts\\playerscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\multiplayerscripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayerscripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\wfc system\\dungeoncreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wfc system\\dungeoncreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\multiplayerscripts\\networkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayerscripts\\networkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\miscscripts\\wintilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\miscscripts\\wintilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\multiplayerscripts\\menuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayerscripts\\menuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\assets\\scripts\\wfc system\\wfc elements\\elementclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wfc system\\wfc elements\\elementclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,178 +62,171 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlayerReviveScript.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerReviveScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerReviveScript.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerReviveScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerReviveScript.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAIwE4AAAAmAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "DamageEffect.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DamageEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DamageEffect.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DamageEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\DamageEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T02:46:41.717Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerDownedScript.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerDownedScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerDownedScript.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerDownedScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerDownedScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T02:23:31.145Z",
+              "WhenOpened": "2025-12-12T12:47:45.141Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PlayerMovement.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\_OlderAssets\\Older Player Scripts\\PlayerMovement.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\_OlderAssets\\Older Player Scripts\\PlayerMovement.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\_OlderAssets\\Older Player Scripts\\PlayerMovement.cs",
-              "RelativeToolTip": "Assets\\Scripts\\_OlderAssets\\Older Player Scripts\\PlayerMovement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
+              "Title": "HealEffect.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\HealEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\HealEffect.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\HealEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\EffectStrats\\HealEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T23:20:56.463Z"
+              "WhenOpened": "2025-12-12T12:45:56.687Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "CharacterClassSOBase.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\SOBases\\CharacterClassSOBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\SOBases\\CharacterClassSOBase.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\SOBases\\CharacterClassSOBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\SOBases\\CharacterClassSOBase.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwFUAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T12:43:41.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "UnitScript.cs",
               "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\UnitScript.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\UnitScript.cs",
               "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\UnitScript.cs",
               "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\UnitScript.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAkwFIAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAPsAAAAAAAAAAAAmwAcBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T23:26:16.666Z",
+              "WhenOpened": "2025-12-12T12:39:37.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProjectileTarget.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\ProjectileTarget.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\ProjectileTarget.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\ProjectileTarget.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\ProjectileTarget.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAIwDgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T12:23:38.847Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AbilityData.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityData.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwBIAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T02:05:32.245Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PlayerMultiplayerIdScript.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerMultiplayerIdScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerMultiplayerIdScript.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerMultiplayerIdScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerMultiplayerIdScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T02:03:59.132Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PlayerAbilityController.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerAbilityController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerAbilityController.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerAbilityController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerAbilityController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T23:14:11.73Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RadiusTargeting.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\RadiusTargeting.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\RadiusTargeting.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\RadiusTargeting.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\Strategies\\TargetingStrats\\RadiusTargeting.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T02:03:23.999Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AbilityRootNode.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\AbilityScripts\\AbilityRootNode.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAswBwAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T02:05:57.238Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "ProjectileScript.cs",
               "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
               "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
               "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T01:50:56.641Z"
+              "WhenOpened": "2025-12-12T11:20:43.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\PlayerScripts\\PlayerMovement.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA5wCUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T11:58:33.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "WinTileScript.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MiscScripts\\WinTileScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MiscScripts\\WinTileScript.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MiscScripts\\WinTileScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MiscScripts\\WinTileScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T11:11:33.091Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "ElementClasses.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\WFC Elements\\ElementClasses.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\WFC System\\WFC Elements\\ElementClasses.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\WFC Elements\\ElementClasses.cs",
+              "RelativeToolTip": "Assets\\Scripts\\WFC System\\WFC Elements\\ElementClasses.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAYwFIAAAB4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T10:54:01.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "DungeonCreator.cs",
               "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\DungeonCreator.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WFC System\\DungeonCreator.cs",
               "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\DungeonCreator.cs",
               "RelativeToolTip": "Assets\\Scripts\\WFC System\\DungeonCreator.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMgBAAAAAAAAAAAAAAUCAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T00:43:28.214Z"
+              "WhenOpened": "2025-12-12T10:53:15.856Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EnemyFSM.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\EnemyScripts\\EnemyFSM.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UnitScripts\\EnemyScripts\\EnemyFSM.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\UnitScripts\\EnemyScripts\\EnemyFSM.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UnitScripts\\EnemyScripts\\EnemyFSM.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAASwHwAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T23:27:00.41Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T23:19:37.014Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 9,
               "Title": "NetworkManager.cs",
               "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\NetworkManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MultiplayerScripts\\NetworkManager.cs",
               "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\NetworkManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\MultiplayerScripts\\NetworkManager.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowAsAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T23:19:52.468Z"
+              "WhenOpened": "2025-12-12T11:12:38.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAqwEMAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T11:12:43.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MenuUI.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\MenuUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MultiplayerScripts\\MenuUI.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\MenuUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MultiplayerScripts\\MenuUI.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAAAKoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T11:42:38.173Z"
             }
           ]
         }
