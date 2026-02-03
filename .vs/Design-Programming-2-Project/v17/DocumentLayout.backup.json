@@ -7,28 +7,8 @@
       "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wfc system\\dungeoncreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\multiplayerscripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayerscripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\multiplayerscripts\\networkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayerscripts\\networkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\miscscripts\\wintilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\miscscripts\\wintilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\multiplayerscripts\\menuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayerscripts\\menuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\wfc system\\wfc elements\\elementclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wfc system\\wfc elements\\elementclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\classsystem\\projectilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\classsystem\\projectilescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|c:\\users\\aleas\\onedrive\\documents\\github\\design-programming-2-project\\assets\\scripts\\wfc system\\so bases\\modules\\itemtilemodulegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85491375-E7BB-AF4F-5D12-645727A2898C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wfc system\\so bases\\modules\\itemtilemodulegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,73 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MenuUI.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\MenuUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\MultiplayerScripts\\MenuUI.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\MenuUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\MultiplayerScripts\\MenuUI.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAAAKoAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T11:42:38.173Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\MultiplayerScripts\\GameManager.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAqwEMAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T11:12:43.25Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NetworkManager.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\NetworkManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\MultiplayerScripts\\NetworkManager.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MultiplayerScripts\\NetworkManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\MultiplayerScripts\\NetworkManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T11:12:38.542Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WinTileScript.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MiscScripts\\WinTileScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\MiscScripts\\WinTileScript.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\MiscScripts\\WinTileScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\MiscScripts\\WinTileScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T11:11:33.091Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ElementClasses.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\WFC Elements\\ElementClasses.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\WFC System\\WFC Elements\\ElementClasses.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\WFC Elements\\ElementClasses.cs",
-              "RelativeToolTip": "Assets\\Scripts\\WFC System\\WFC Elements\\ElementClasses.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAYwFIAAAB4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T10:54:01.222Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -113,22 +28,22 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\WFC System\\DungeonCreator.cs",
               "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\DungeonCreator.cs",
               "RelativeToolTip": "Assets\\Scripts\\WFC System\\DungeonCreator.cs",
-              "ViewState": "AgIAAKYAAAAAAAAAAADwv7kAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAC4BAAAAAAAAAAAAAE4BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T10:53:15.856Z",
+              "WhenOpened": "2026-01-30T07:37:41.415Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProjectileScript.cs",
-              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
-              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ClassSystem\\ProjectileScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ItemTileModuleGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\SO Bases\\Modules\\ItemTileModuleGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\WFC System\\SO Bases\\Modules\\ItemTileModuleGenerator.cs",
+              "ToolTip": "C:\\Users\\ALeas\\OneDrive\\Documents\\GitHub\\Design-Programming-2-Project\\Assets\\Scripts\\WFC System\\SO Bases\\Modules\\ItemTileModuleGenerator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\WFC System\\SO Bases\\Modules\\ItemTileModuleGenerator.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T11:20:43.133Z",
+              "WhenOpened": "2026-01-30T07:31:28.107Z",
               "EditorCaption": ""
             }
           ]
